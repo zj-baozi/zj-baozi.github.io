@@ -1,0 +1,314 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>F2E Weekly-2014-03-15 | 前端记录</title>
+  <meta name="author" content="Dickey Leo">
+  
+  <meta name="description" content="javascript模式读书笔记">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="F2E Weekly-2014-03-07"/>
+  <meta property="og:site_name" content="前端记录"/>
+
+  
+    <meta property="og:image" content="/img/jspatterns/observer-cover.jpg" />
+  
+
+  <link href="/favicon.png" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="前端记录" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-44813171-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+
+
+<body>
+  <header id="header" class="inner"><div class="alignleft">
+  <h1><a href="/">前端记录</a></h1>
+  <h2><a href="/"></a></h2>
+</div>
+<nav id="main-nav" class="alignright">
+  <ul>
+    
+      <li><a href="/">首页</a></li>
+    
+      <li><a href="/archives">所有文章</a></li>
+    
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+<div class="clearfix"></div></header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2014-03-06T16:00:00.000Z"><a href="/2014/03/07/F2EWeekly/">3月 15, 2014</a></time>
+      
+      
+  
+    <h1 class="title">《javascript模式》读书笔记 -2014-03-15</h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p></p>
+<a id="more"></a>
+
+
+<h3>基本技巧</h3>
+<ul>
+<li>1、尽量多使用对象的组合，而不是使用类的继承。（这句话的意思是通过已有的对象组合来获取新对象，是比通过很长的父 - 子继承来创建新的对象更好的一种方法。）</li>
+<li>2、原型（Prototypes）<br/>
+
+    原型是一个对象，并且创建的每一个对象都会自动获取一个Prototypes属性，该属性指象一个新的空对象。该对象几乎等同于采用对象字面量或Object()创建的对象，区别在于它的constructor属性指向了所创建的函数，而不是指向内置的Object()函数。
+    <strong>总结：原型就是一个对象（不是一个类，也不是其他特殊的元素），每一个函数都有prototype属性。</strong>
+
+</li>
+<li>
+    3、由于Javascript的两个特性，导致总是出乎意料地创建全局变量：
+    <ol>
+        <li>javascript可直接使用变量，甚至无需声明；</li>
+        <li>javascript有个暗示全局变量（implied globals）的概念，即任何变量，如果未经声明，就为全局对象所有。</li>
+
+    </ol>
+</li>
+    <li>
+        <pre>
+            function sum(x,y){
+            //反例，result为暗示全局变量
+            result = x+y;
+            return result;
+            }
+        </pre>
+    </li>
+    <li>
+        4、隐含全局变量和明确定义的全局变量的不同之处在于能否使用delete操作符撤销变量：
+        <ol>
+            <li>使用var 创建的全局变量不能被delete 删除</li>
+            <li>不使用var创建的隐含全局变量可以删除。</li>
+            <li><strong>（这表明隐含全局变量严格来讲不是真正的变量，而是全局对象的属性。属性可以通过delete操作符删除，但变量不可以。）</strong></li>
+        </ol>
+    </li>
+    <li>
+        5、访问全局对象
+        <pre>
+        var global = (function(){
+             return this;
+        }());
+        </pre>
+        <strong>按这种方式通常能获得全局对象，因为this在函数内部作为一个函数调用（而不是通过构造器new创建）时，往往指向该全局对象。</strong>
+    </li>
+    <li>6、单一var 模式
+        <pre>
+        var a,b,c;
+        </pre>
+        <strong>javascript允许在函数的任意地方声明多个变量，无论在哪里声明，效果都等同于在函数顶部进行声明。这就是所谓的提升。</strong>
+        <pre>
+        //反例
+        myname = ‘global’;//全局变量
+        function fund(){
+             alert(myname); //未定义
+             var myname = ‘local’;
+             alert(myname); // 局部变量 local
+        }
+        </pre>
+        <strong>原因是：所有的变量声明都会提升到函数的最顶层。</strong>
+
+    </li>
+    <li>
+        7、当遍历对象属性来过滤遇到原型链属性时，使用hasOwnProperty（）方法是非常重要的。
+        <pre>
+        var man={
+             hands:2,
+             b:3,
+             c:2
+        }
+        if(typeof Object.prototype.clone === ‘undefined’){
+             Object.prototype.clone = function(){};
+        }
+
+
+        for(var i in man){
+             if(man.hasOwnProperty(i)){
+                  console.log(i,’:’,man[i]);
+             }
+        }
+        </pre>
+        <strong>如果不使用hasOwnProperty来进行过滤，将会显示出clone()</strong>
+    </li>
+    <li>
+        8、另外一种使用hasOwnProperty()的模式是在Object.prototype中调用该函数：
+        <pre>
+        var i,hasOwn = Object.prototype.hasOwnProperty;
+
+        for(var i in man){
+             if(hasOwn.call(man,i)){
+                  console.log(i,’:’,man[i]);
+             }
+        }
+        </pre>
+    </li>
+    <li>
+        9、不要增加内置原型（例如给Object(),Array和Function等增加内置构造函数），如下情形除外：
+        <ol>
+            <li>当未来的ECMAScript版本或javascript方法</li>
+            <li>准确地用文档记录下来，并和团队交流清楚</li>
+            <li>检查了自定义的属性和方法并未存在时。也许在其他地方已经实现了该方法，或者某个支持的浏览器中javasript引擎的一部分。</li>
+        </ol>
+    </li>
+    <li>10、避免使用隐式类型转换，（即===来做对比）</li>
+    <li>11、eval()是魔鬼，因为它会影响作用域链</li>
+    <li>12、使用parseInt()的数值约定
+        <pre>
+            year = parseInt(year,10);
+        </pre>
+        在EC3中，0开始的字符串会被当做八进制处理，而在EC5中发生了改变。为了避免不一致性的未预期的结果，每次都具体指定进制参数：
+    </li>
+
+</ul>
+
+
+      
+    </div>
+    <footer>
+      
+        
+  
+ <!-- <div class="categories">
+    <a href="/categories/每周播报/">每周播报</a>
+  </div>-->
+
+        
+  
+  <div class="tags">
+    <a href="/tags/F2E Weekly/">F2E Weekly</a>
+  </div>
+
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+<!-- Duoshuo Comment BEGIN -->
+<div class="ds-thread"></div>
+<script type="text/javascript">
+    var duoshuoQuery = {short_name:"dickeyblog"};
+    (function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';ds.async = true;
+        ds.src = 'http://static.duoshuo.com/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0]
+                || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+</script>
+<!-- Duoshuo Comment END -->
+</div></div>
+    <aside id="sidebar" class="alignright">
+  <div class="search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="搜索">
+    <input type="hidden" name="q" value="site:dickeylth.github.io">
+  </form>
+</div>
+
+  
+<div class="widget tag">
+  <h3 class="title">分类</h3>
+  <ul class="entry">
+  
+    <!--<li><a href="/categories/每周播报/">每周播报</a><small>6</small></li>-->
+  
+    <li><a href="/categories/笔记/">笔记</a><small>1</small></li>
+  
+    <li><a href="/categories/翻译/">翻译</a><small>0</small></li>
+  
+  </ul>
+</div>
+
+
+  
+<div class="widget tagcloud">
+  <h3 class="title">标签云</h3>
+  <div class="entry">
+    <a href="/tags/F2E Weekly/" style="font-size: 20.00px;">F2E Weekly</a><a href="/tags/Gulp/" style="font-size: 10.00px;">Gulp</a><a href="/tags/JavaScript/" style="font-size: 10.00px;">JavaScript</a><a href="/tags/JavaScript API/" style="font-size: 10.00px;">JavaScript API</a><a href="/tags/JavaScript设计模式/" style="font-size: 16.67px;">JavaScript设计模式</a><a href="/tags/Promise/" style="font-size: 13.33px;">Promise</a>
+  </div>
+</div>
+
+
+  
+<div class="widget tag">
+  <h3 class="title">最新文章</h3>
+  <ul class="entry">
+    
+      <!--<li>
+        <a href="/2014/03/14/F2EWeekly/">F2E Weekly-2014-03-14</a>
+      </li>-->
+    
+
+    
+  </ul>
+</div>
+
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><div class="alignleft">
+  
+  &copy; 2014 Dickey Leo
+  
+</div>
+<div class="clearfix"></div></footer>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+</body>
+</html>
