@@ -1,0 +1,466 @@
+---
+layout: post
+title:  "《javascript模式》读书笔记"
+date:   2014-03-31 14:18:21
+categories: 笔记
+---
+
+<div class="entry">
+      
+        <p></p>
+<a id="more"></a>
+
+
+<h3>基本技巧</h3>
+<ul>
+<li>1、尽量多使用对象的组合，而不是使用类的继承。（这句话的意思是通过已有的对象组合来获取新对象，是比通过很长的父 - 子继承来创建新的对象更好的一种方法。）</li>
+<li>2、原型（Prototypes）<br/>
+
+    原型是一个对象，并且创建的每一个对象都会自动获取一个Prototypes属性，该属性指象一个新的空对象。该对象几乎等同于采用对象字面量或Object()创建的对象，区别在于它的constructor属性指向了所创建的函数，而不是指向内置的Object()函数。
+    <strong>总结：原型就是一个对象（不是一个类，也不是其他特殊的元素），每一个函数都有prototype属性。</strong>
+
+</li>
+<li>
+    3、由于Javascript的两个特性，导致总是出乎意料地创建全局变量：
+    <ol>
+        <li>javascript可直接使用变量，甚至无需声明；</li>
+        <li>javascript有个暗示全局变量（implied globals）的概念，即任何变量，如果未经声明，就为全局对象所有。</li>
+
+    </ol>
+</li>
+    <li>
+        <pre>
+            function sum(x,y){
+            //反例，result为暗示全局变量
+            result = x+y;
+            return result;
+            }
+        </pre>
+    </li>
+    <li>
+        4、隐含全局变量和明确定义的全局变量的不同之处在于能否使用delete操作符撤销变量：
+        <ol>
+            <li>使用var 创建的全局变量不能被delete 删除</li>
+            <li>不使用var创建的隐含全局变量可以删除。</li>
+            <li><strong>（这表明隐含全局变量严格来讲不是真正的变量，而是全局对象的属性。属性可以通过delete操作符删除，但变量不可以。）</strong></li>
+        </ol>
+    </li>
+    <li>
+        5、访问全局对象
+        <pre>
+        var global = (function(){
+             return this;
+        }());
+        </pre>
+        <strong>按这种方式通常能获得全局对象，因为this在函数内部作为一个函数调用（而不是通过构造器new创建）时，往往指向该全局对象。</strong>
+    </li>
+    <li>6、单一var 模式
+        <pre>
+        var a,b,c;
+        </pre>
+        <strong>javascript允许在函数的任意地方声明多个变量，无论在哪里声明，效果都等同于在函数顶部进行声明。这就是所谓的提升。</strong>
+        <pre>
+        //反例
+        myname = ‘global’;//全局变量
+        function fund(){
+             alert(myname); //未定义
+             var myname = ‘local’;
+             alert(myname); // 局部变量 local
+        }
+        </pre>
+        <strong>原因是：所有的变量声明都会提升到函数的最顶层。</strong>
+
+    </li>
+    <li>
+        7、当遍历对象属性来过滤遇到原型链属性时，使用hasOwnProperty（）方法是非常重要的。
+        <pre>
+        var man={
+             hands:2,
+             b:3,
+             c:2
+        }
+        if(typeof Object.prototype.clone === ‘undefined’){
+             Object.prototype.clone = function(){};
+        }
+
+
+        for(var i in man){
+             if(man.hasOwnProperty(i)){
+                  console.log(i,’:’,man[i]);
+             }
+        }
+        </pre>
+        <strong>如果不使用hasOwnProperty来进行过滤，将会显示出clone()</strong>
+    </li>
+    <li>
+        8、另外一种使用hasOwnProperty()的模式是在Object.prototype中调用该函数：
+        <pre>
+        var i,hasOwn = Object.prototype.hasOwnProperty;
+
+        for(var i in man){
+             if(hasOwn.call(man,i)){
+                  console.log(i,’:’,man[i]);
+             }
+        }
+        </pre>
+    </li>
+    <li>
+        9、不要增加内置原型（例如给Object(),Array和Function等增加内置构造函数），如下情形除外：
+        <ol>
+            <li>当未来的ECMAScript版本或javascript方法</li>
+            <li>准确地用文档记录下来，并和团队交流清楚</li>
+            <li>检查了自定义的属性和方法并未存在时。也许在其他地方已经实现了该方法，或者某个支持的浏览器中javasript引擎的一部分。</li>
+        </ol>
+    </li>
+    <li>10、避免使用隐式类型转换，（即===来做对比）</li>
+    <li>11、eval()是魔鬼，因为它会影响作用域链</li>
+    <li>12、使用parseInt()的数值约定
+        <pre>
+            year = parseInt(year,10);
+        </pre>
+        在EC3中，0开始的字符串会被当做八进制处理，而在EC5中发生了改变。为了避免不一致性的未预期的结果，每次都具体指定进制参数：
+        <pre>
+        year = parseInt(year,10);
+        </pre>
+    </li>
+
+</ul>
+        <h3>二、字面量和构造函数</h3>
+        <ul>
+            <li>
+                1、所谓的空对象即｛｝，实际在javascript中没有任何空对象，即使最简单的｛｝对象也具有从Object.prototype继承的属性和方法。空只表示没有自己的属性。
+            </li>
+            <li>当使用new操作符调用构造函数时，函数内部将会发生以下情况：
+            <ol>
+                <li>创建一个空对象并且this变量引用该对象，同时还继承了该函数的原型。</li>
+                <li>属性和方法被加入到this引用的对象中。</li>
+                <li>新创建的对象由this所引用，并且最后隐式地返回this（如果没有显式地返回其它对象。）</li>
+            </ol>
+                <pre>
+
+var Person =function(name){
+     this.name = name;
+     this.say = function(){
+          return ‘I am ‘ + this.name;
+     }
+}
+                </pre>
+            </li>
+            <li>以上在后台的执行情况:
+                <pre>
+
+var Person =function(name){
+
+
+     //使用对象字面量模式创建一个新对象
+     var this ={};
+     //向this添加属性和方法
+     this.name = name;
+     this.say = function(){
+          return ‘I am ‘ + this.name;
+     }
+     //return this;
+}
+                </pre>
+            </li>
+            <li>将say()方法添加到this中。其造成的结果是在任何时候调用new Person()时都会在内存中创建一个新的函数。更好的选择应该是将方法添加到Person类的原型中。
+            <pre>
+
+Person.prototype.say=function(){
+     return ‘I am ‘+this.name;
+}
+var Objectmaker = function(){
+            //下面的’name‘属性将被忽略
+            //这是因为构造函数决定改为返回另一个对象
+            this.name = 'This is it';
+            //创建并返回一个新对象
+            var that ={};
+            that.name = 'And that"s that';
+            return that;
+        };
+        //测试
+        var o = new Objectmaker();
+        console.log(o.name);  // 'And that"s that'
+            </pre>
+            </li>
+           <li>4、忘记了使用new操作符，从而导致构造函数中的this指向了全局对象（在浏览器中，this将会指向window）.
+           <pre>
+               //测试
+            var o = new Objectmaker();
+            console.log(o.name);
+
+            function Waffle(){
+                this.tastes = 'yummy';
+            }
+            //定义一个新对象
+            var good_morning = new Waffle();
+            console.log(typeof good_morning); //object
+            console.log(good_morning.tastes); //yummy
+            //反例
+            var good_morning2 = Waffle();
+            console.log(typeof good_morning2);// undefined
+            console.log(window.tastes);  // yummy
+           </pre>
+           </li>
+            <li>
+                （PS:上面的意外行为在ECMAscript5中得到了解决，并且在严格模式中，this不会指向全局对象。如果不能使用ES5呢？下面有方法帮助我们解决）
+            </li>
+            <li>5、解决方案一：命名约定</li>
+            <li>
+                遵循命名约定一定程度上有助于避免上面忘记使用new所带来的问题，但命名约定也只是一种建议，并不能强制保证正确的行为。何为命名约定？即并不是将所有的成员添加到this中，而是将成员添加到that中，并且最后返回that.
+                <pre>
+
+function Waffle(){
+     var that ={};
+     that.tastes = ‘yummy’;
+     return that;
+}
+//甚至省去that变量，直接返回对象
+function Waffle(){
+     return {
+          tastes:’yummy'
+     }
+}
+                </pre>
+            </li>
+            <li>
+                使用上面任何一种Waffle()的实现方式都总是会返回一个对象，而无论它是如何被调用的：
+                <pre>
+
+var first = new Waffle(),
+     second = Waffle();
+console.log(first.tastes); // yummy
+console.log(second.tastes) // yummy
+                </pre>
+                缺点： <br/>
+                这种模式的问题在于它会丢失到原型的链接，因此任何您添加到Waffle()原型的成员，对于对象来说都是不可用的。
+            </li>
+            <li>6、解决方案二：自调用构造函数 <br />
+                可以在构造函数中检查this是否为构造函数的一个实例，如果为否，构造函数可以再次调用自身，并且在这次调用中正确地使用new操作符；
+                <pre>
+
+function Waffle(){
+                if(!(this instanceof Waffle)){
+                    return new Waffle();
+                }
+                this.tastes = 'yummy';
+            }
+            Waffle.prototype.wantAnother = true;
+
+            //测试调用
+            var first = new Waffle(),
+                second = Waffle();
+            console.log(first.tastes); // yummy
+            console.log(second.tastes);// yummy
+                </pre>
+                或者使用arguments.callee代替函数名，但ES5严格模式中并不支持arguments.callee属性
+            </li>
+            <li>
+                7、数组字面量和构造函数的区别：<br />
+                <pre>
+                    // 具有一个元素的数组
+            var a =[3];
+            console.log(a.length); // 1
+            console.log(a[0]); // 3
+            //具有三个元素的数组
+            var a = new Array(3);
+            console.log(a.length); //3
+            console.log(a[0]); // undefined
+                </pre>
+                <strong>newArray(3)创建一个长度为3的数组，但是该数组中并没有实际的元素</strong><br/>
+                <pre>
+                    //符点数的情况
+            var a = [3.14];
+            console.log(a[0]); //3.14
+            var a = new Array(3.14); //RangeError:invalid array length(范围错误，不合法的数组长度。)
+            console.log(typeof a); //undefined
+                </pre>
+                为了避免在运行创建动态数组可能产生的潜在错误，坚持使用数组字面量程序会更安全。
+            </li>
+            <li>
+                <pre>
+
+var white = new Array(256).join(‘ ‘);
+console..log(white.length);  //255
+                </pre>
+
+                为什么是255个空白字符串而不是256个？ <br>
+                先看下join()方法的定义：用于将数组中所有元素放入一个字符串。元素是通过指定的分隔符进行分隔的。   <br>
+                在两个元素之间插入指定字符串，而256个字符其中能插的就255个位置，所以length为255 <br>
+                typeof 数组，返回的是’object’ ，如果需要检测某个值是否为数组，可以检查代码是否存在length或者数组的方法，比如slice()，以此来确定该值是否具有“数组性质”。但检查机制并不健壮。还可以使用instanceof Array来检查，但在某些IE浏览器版本中不同框架中运行并不正确。<br>
+            </li>
+            <li>ES5中定义了一个新方法Array.isArray()，该函数在参数为数组时返回true:
+            <pre>
+
+Array.isArray([]); //true
+Array.isArray({
+     length:1,
+     ‘0’:1,
+     slice:function(){
+
+     }
+}) //false
+            </pre>
+                如果无法使用新方法，可以通过调用Object.prototype.toString()方法对其进行检查。如果在数组上、下文环境中调用了toString的call()方法，它该返回字符串“[object Array]”，如果该上、下文是一个对象，则它应该返回“[object Object]”。<br>
+                <pre>
+                    if(typeof Array.isArray === 'undefined'){
+                Array.isArray = function(arg){
+                    return Object.prototype.toString.call(arg) === '[object Array]';
+                }
+ }
+                </pre>
+            </li>
+            <li>
+                8、JSON.parse() 将json字符串解析为json对象，比eval方法要安全很多。<br>JSON.stringify()将json对象解析为字符串
+            </li>
+            <li>9、基本对象
+            <pre>
+                var greet = 'Hello there';
+            //为了使用split()方法，基本数据类型被转换成对象
+            greet.split(' ')[0]; //Hello
+            //试图增加一个原始数据类型并不导致错误
+            greet.smile = true;
+            //但是它并不实际运行
+            typeof greet.smile; //undefined
+            </pre>
+            </li>
+            <li>10、错误对象</li>
+        </ul>
+        <h3>四、函数</h3>
+        <ul>
+           <li>
+               1、函数就是对象，其表现如下：
+               <ol>
+                   <li>函数可以在运行时动态创建，还可以在程序执行过程中创建。</li>
+                   <li>函数可以分配给变量，可以将它们的引用复制到其他变量，可以被扩展，此外，除少数特殊情况外，函数还可以被删除。</li>
+                   <li>可以作为参数传递给其他函数，并且还可以由其他函数返回。</li>
+                   <li>函数可以有自己的属性和方法。</li>
+               </ol>
+           </li>
+            <li>2、函数表达式，又名匿名函数
+            <pre>
+
+var add = function(a,b){
+     return a+b;
+};
+            </pre>
+
+            </li>
+             <li>
+                 2、函数的提升<br>
+                 变量提升：对于所有的变量，无论在函数体的何处进行声明，都会在后台被提升到函数顶部。而这对于函数同样适用，其原因在于函数只是分配给变量的对象。唯一“明白”的地方在于当使用函数声明时，函数定义也被提升，而不仅仅是函数声明被提升。<br>
+                 <pre>
+                     function foo(){
+               alert('global foo');
+
+           }
+           function bar(){
+               alert('global bar');
+           }
+           function hoistMe(){
+               console.log(typeof foo); //function
+               console.log(typeof bar); // undefined
+               foo();//local foo
+               bar(); // TypeError:bar is not a function
+
+               //函数声明
+               //变量foo以及其实现者被提升
+               function foo(){
+                   alert('local foo');
+               }
+
+               //函数表达式
+               //仅变量’bar‘被提升
+               //函数实现并未被提升
+               var bar = function(){
+                   alert('local bar');
+               }
+
+           }
+           hoistMe();
+                 </pre>
+             </li>
+            <li>
+                3、回调模式<br>
+                <pre>
+                    var findNodes = function(){
+                var i = 10000,//大而繁重的循环
+                    nodes=[], //存储该结果
+                    found;//找到了下一个节点
+                while(i){
+                    i -=1;
+                    //复杂逻辑
+                    nodes.push(found);
+                }
+                return nodes;
+            }
+            var hide = function(nodes){
+                var i = 0,max=nodes.length;
+                for(;i<max;i+=1){
+                    nodes[i].style.display = 'none';
+                }
+            }
+            //执行该函数
+            hide(findNodes());
+                </pre>
+                以上这个实现是低效的，因为hide()必须再次循环遍历由findNodes()所返回的数组节点，如果能避免这种循环，并且只要在findNodes()中选择便可隐藏节点，那么这将是更高效的实现方式：采用回调模式，将节点隐藏逻辑以回调函数方式传递给findNodes()并委托其执行。
+            </li>
+            <li>
+                4、回调与作用域 <br>
+                <pre>
+                    //回调与作用域
+            var myapp ={};
+            myapp.color='green';
+            myapp.paint = function(node){
+              node.style.color = this.color;
+            }
+            var findNodes = function(callback){
+                //内容同上
+                if(typeof callback === 'function'){
+                    callback(found);
+                }
+            }
+            findNodes(myapp.paint)
+                </pre>
+
+                它不会按照预期的那样运行，这是由于this.color没有被定义，由于findNodes()是一个全局函数，因此，对象this引用了全局对象。类似的，如果findNodes()是一个名为dom的对象的方法（dom.findNodes()），那么回调内部的this将指向dom，而不是预期的myapp.<br>
+                解决方案是：传递回调函数，并且另外还传递该回调函数所属的对象： <br>
+                <pre>
+                    findNodes(myapp.paint,myapp);
+                </pre>
+                修改findNodes()以绑定所传递进入的对象：
+                <pre>
+
+var findNodes = function(callback,callback_obj){
+     if(typeof callback === ‘function’){
+          callback.call(callback_obj,found);
+     }
+}
+
+                </pre>
+            </li>
+            <li>
+                2）、传递一个对象和一个方法以用做回调函数的另一种选择是，将其中的方法作为字符串来传递，因此无需重复两次输入该对象的名称，即：
+                <pre>
+
+findNodes(myapp.paint,myapp);
+
+改为：findNodes(‘paint’,myapp);
+
+var findNodes = function(callback,callback_obj){
+     if(typeof callback === ’string’){
+          callback = callback_obj[calback];
+     }
+     if(typeof callback === ‘function’){
+          callback.call(callback_obj,found);
+     }
+
+}
+                </pre>
+            </li>
+            <li>
+                5、异步事件监听器
+            </li>
+        </ul>
+    </div>
+
