@@ -839,3 +839,7 @@ pre .clojure .title {
 pre .deletion {
     color: #dc322f;
 }
+.c90{
+    color:#690;
+    font-size:14px;
+}

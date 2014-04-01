@@ -1,0 +1,206 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>javascript模式 | 前端记录</title>
+  <meta name="author" content="zj-baozi">
+  
+  <meta name="description" content="javascript模式-读书笔记">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="javascript模式-2014-03-15"/>
+  <meta property="og:site_name" content="前端记录"/>
+
+  
+    <meta property="og:image" content="/img/jspatterns/observer-cover.jpg" />
+  
+
+  <link href="/favicon.png" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="前端记录" type="application/atom+xml">
+
+    <script>
+        (function(){
+            var Objectmaker = function(){
+                //下面的’name‘属性将被忽略
+                //这是因为构造函数决定改为返回另一个对象
+                this.name = 'This is it';
+                //创建并返回一个新对象
+                var that ={};
+                that.name = 'And that"s that';
+                return that;
+            };
+            //测试
+            var o = new Objectmaker();
+            console.log(o.name);
+
+            function Waffle(){
+                this.tastes = 'yummy';
+            }
+            //定义一个新对象
+            var good_morning = new Waffle();
+            console.log(typeof good_morning); //object
+            console.log(good_morning.tastes); //yummy
+            //反例
+            var good_morning2 = Waffle();
+            console.log(typeof good_morning2);// undefined
+            console.log(window.tastes);  // yummy
+
+
+            //自调用构造函数
+
+            function Waffle(){
+                if(!(this instanceof Waffle)){
+                    return new Waffle();
+                }
+                this.tastes = 'yummy';
+            }
+            Waffle.prototype.wantAnother = true;
+
+            //测试调用
+            var first = new Waffle(),
+                second = Waffle();
+            console.log(first.tastes); // yummy
+            console.log(second.tastes);// yummy
+
+            //数组
+            // 具有一个元素的数组
+            var a =[3];
+            console.log(a.length); // 1
+            console.log(a[0]); // 3
+            //具有三个元素的数组
+            var a = new Array(3);
+            console.log(a.length); //3
+            console.log(a[0]); // undefined
+
+            //符点数的情况
+            var a = [3.14];
+            console.log(a[0]); //3.14
+            var a = new Array(3.14); //RangeError:invalid array length(范围错误，不合法的数组长度。)
+            console.log(typeof a); //undefined
+
+            //数组检测
+            if(typeof Array.isArray === 'undefined'){
+                Array.isArray = function(arg){
+                    return Object.prototype.toString.call(arg) === '[object Array]';
+                }
+            }
+
+            //基本对象
+            var greet = 'Hello there';
+            //为了使用split()方法，基本数据类型被转换成对象
+            greet.split(' ')[0]; //Hello
+            //试图增加一个原始数据类型并不导致错误
+            greet.smile = true;
+            //但是它并不实际运行
+            typeof greet.smile; //undefined
+
+        })();
+
+        (function(){
+           //函数
+           function foo(){
+               alert('global foo');
+
+           }
+           function bar(){
+               alert('global bar');
+           }
+           function hoistMe(){
+               console.log(typeof foo); //function
+               console.log(typeof bar); // undefined
+               foo();//local foo
+               bar(); // TypeError:bar is not a function
+
+               //函数声明
+               //变量foo以及其实现者被提升
+               function foo(){
+                   alert('local foo');
+               }
+
+               //函数表达式
+               //仅变量’bar‘被提升
+               //函数实现并未被提升
+               var bar = function(){
+                   alert('local bar');
+               }
+
+           }
+           hoistMe();
+
+            //回调示例
+            var findNodes = function(){
+                var i = 10000,//大而繁重的循环
+                    nodes=[], //存储该结果
+                    found;//找到了下一个节点
+                while(i){
+                    i -=1;
+                    //复杂逻辑
+                    nodes.push(found);
+                }
+                return nodes;
+            }
+            var hide = function(nodes){
+                var i = 0,max=nodes.length;
+                for(;i<max;i+=1){
+                    nodes[i].style.display = 'none';
+                }
+            }
+            //执行该函数
+            hide(findNodes());
+            //重构findNodes()以接受一个回调函数
+            var findNodes = function(callback){
+                var i = 10000,
+                    nodes = [],
+                    found;
+                //检查回调函数是否为可调用的
+                if(typeof callback !== 'function'){
+                    callback = false;
+                }
+                while(i){
+                    i-=1;
+                    //这里是复杂的逻辑...
+                    //运行回调函数
+                    if(callback){
+                        callback(found);
+                    }
+                    nodes.push(found);
+                }
+                return nodes;
+            }
+            var hide = function(node){
+                node.style.display = 'none';
+            }
+            //找到指定节点，并在后续执行中将其隐藏起来
+            findNodes(hide);
+            //或者：
+            findNodes(function(node){
+              node.style.display = 'block';
+            });
+            //回调与作用域
+            var myapp ={};
+            myapp.color='green';
+            myapp.paint = function(node){
+              node.style.color = this.color;
+            }
+            /*var findNodes = function(callback){
+                //内容同上
+                if(typeof callback === 'function'){
+                    callback(found);
+                }
+            }
+            findNodes(myapp.paint)*/
+
+
+        })();
+    </script>
+</head>
+
+
+<body>
+
+
+</body>
+</html>

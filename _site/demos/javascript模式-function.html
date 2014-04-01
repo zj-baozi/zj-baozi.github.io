@@ -1,0 +1,243 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>javascript模式 | 前端记录</title>
+  <meta name="author" content="zj-baozi">
+  
+  <meta name="description" content="javascript模式-读书笔记">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="javascript模式-2014-03-15"/>
+  <meta property="og:site_name" content="前端记录"/>
+
+  
+    <meta property="og:image" content="/img/jspatterns/observer-cover.jpg" />
+  
+
+  <link href="/favicon.png" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="前端记录" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+<!--<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-44813171-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>-->
+    <script>
+        (function(){
+            /*var setup = function(){
+                var count = 0;
+                return function(){
+                    return alert(count += 1);
+                };
+            };
+            //用法
+            var next = setup();
+            next(); //1
+            next(); //2
+            next(); //3
+
+            //自定义函数
+            var scareMe = function(){
+                alert('Boo');
+                scareMe = function(){
+                    alert('Double boo!');
+                };
+            };
+            scareMe(); //Boo
+            scareMe(); //double boo!
+            //即时函数,jslint推荐的做法
+            (function(){
+               alert('watch out');
+            }());
+            //第二种做法
+            (function(){
+              alert('watch out');
+            })();
+
+
+            //返回函数
+            var setup = function(){
+                alert(1);
+                return function(){
+                    alert(2);
+                };
+            };
+            //使用setup函数
+            var my = setup(); //1
+            my();        //2*/
+
+            //即时对象模式
+            ({
+                //在这里配置常数
+                maxWidth:600,
+                maxHeight:400,
+                //还可以定义一些实用的方法
+                gimmeMax:function(){
+                    return this.maxWidth + 'x'+this.maxHeight;
+                },
+                init:function(){
+                    console.log(this.gimmeMax());
+                    //更多初始化任务...
+                }
+            }).init();
+
+            //初始化时分支
+            //之前
+            var utils = {
+                addListener:function(el,type,fn){
+                    if(typeof window.addEventListener === 'function'){
+                        el.addEventListener(type,fn,false);
+                    }else if(typeof document.attachEvent === 'funciton'){ //IE
+                        el.attachEvent('on'+type,fn);
+                    }else{  //更早版本的浏览器
+                        el['on' + type] = fn;
+                    }
+                },
+                removeListener:function(){
+                    //几乎同上
+                    //removeEventListener,detachEvent
+                }
+            }
+            //之后
+            var util={
+                addEventListener:null,
+                removeListener:null
+            };
+            if(typeof window.addEventListener === 'function'){
+                util.addEventListener = function(el,type,fn){
+                    el.addEventListener(type,fn,false);
+                };
+                util.removeEventListener = function(el,type,fn){
+                    el.removeEventListener(type,fn,false);
+                };
+            }else if(typeof document.attachEvent === 'funciton'){ //IE
+                util.addEventListener = function(el,type,fn){
+                    el.attachEvent('on'+type,fn);
+                };
+                util.removeEventListener = function(el,type,fn){
+                    el.detachEvent('on'+type,fn);
+                };
+            }else{  //更早版本的浏览器
+                util.addEventListener = function(el,type,fn){
+                    el['on' + type] = fn;
+                };
+                util.removeEventListener = function(el,type,fn){
+                    el['on' + type] = null;
+                };
+            }
+
+
+            //缓存存储
+            var myFunc = function(param){
+                if(!myFunc.cache[param]){
+                    var result ={};
+                    //开销很大的操作
+                    myFunc.cache[param] = result;
+                }
+                return myFunc.cache[param];
+            }
+            //缓存存储
+            myFunc.cache = {};
+            //如果param有很多，或者很复杂，对此的通用解决方案是将它们序列化。
+            var myFunc = function(param){
+                var cachekey = JSON.stringify(Array.prototype.slice.call(arguments)),
+                        result;
+                if(!myFunc.cache[cachekey]){
+                    result = {};
+                    //开销很大的操作
+                    myFunc.cache[param] = result;
+                }
+                return myFunc.cache[param];
+            }
+
+            //函数应用
+            var sayHi = function(who){
+                return console.log('Hello' + (who ? ','+who : '') + '!');
+            };
+            //调用函数
+            sayHi(); // Hello
+            sayHi('world'); //Hello,world!
+            sayHi.apply(null,['hello']); // Hello,hello!
+            var alien = {
+                sayHi:function(who){
+                    return console.log('Hello hi' + (who ? ','+who : '') + '!');
+                }
+            };
+            alien.sayHi('world');
+            sayHi.apply(alien,['humans']);
+
+            //第二种更有效率，节省了一个数组
+            sayHi.apply(alien,['humans']);
+            sayHi.call(alien,'humans');
+
+            //curry化的add()函数
+            //接受部分参数列表
+            function add(x,y){
+                var oldx = x,oldy = y;
+
+                if(typeof oldy === 'undefined'){  //部分
+                    return function(newy){
+                        return oldx + newy;
+                    }
+                }
+                //完全应用
+                return x+y;
+            }
+            //测试
+            console.log(typeof add(5)); //function
+            console.log(add(3)(4)); //7
+            //创建并存储一个新函数
+            var add2000 = add(2000);
+            console.log(add2000(10));//2010
+
+            //通用curry化函数的示例
+            function schonfinkelize(fn){
+              var slice = Array.prototype.slice,
+                  stored_args = slice.call(arguments,1);
+              return function(){
+                  var new_args = slice.call(arguments),
+                      args = stored_args.concat(new_args);
+                  return fn.apply(null,args);
+              }
+            }
+            //curry化测试
+            function add(x,y){
+                return x+y;
+            }
+            //将一个函数curry化以获得一个新的函数
+            var newadd = schonfinkelize(add,5);
+            newadd(4); //9
+            //另一种选择---直接调用新函数
+            schonfinkelize(add,6)(7); // 13
+
+        })();
+
+
+    </script>
+</head>
+
+
+<body>
+   借用Array.prototype中的slice()方法可以帮助我们将arguments变成一个数组，并且使用该数组工作更加方便。
+
+何时使用Curry化
+当发现正在调用同一个函数，并且传递的参数绝大多数都是相同的，那么该函数可能是用于Curry化的一个很好的候选参数。
+
+
+
+
+
+</body>
+</html>
