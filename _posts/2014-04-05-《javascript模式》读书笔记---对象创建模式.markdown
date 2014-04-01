@@ -91,7 +91,16 @@ categories: 笔记
     <ul>
         <li>在使用命名空间之前要先检查它是否已存在：</li>
         <li>
-            <pre></pre>
+            <pre>
+							//不安全的代码
+                var MYAPP = {};
+                //更好的代码风格
+                if(typeof MYAPP === 'undefined'){
+                    var MYAPP = {};
+                }
+                //或者用更短的语句
+                var MYAPP = MYAPP || {};
+</pre>
             <script>
                 //不安全的代码
                 var MYAPP = {};
@@ -118,6 +127,27 @@ categories: 笔记
         </li>
         <li>函数实现：（如果已经存在则不会重新创建它）
             <pre>
+							var MYAPP = MYAPP || {};
+                MYAPP.namespace = function(ns_string){
+                    var parts = ns_string.split('.'),
+                        parent = MYAPP,
+                        i;
+                    //剥离最前面的冗余全局变量
+                    if(parts[0] === 'MYAPP'){
+                        parts = parts.splice(1);
+                    }
+                    for(i=0;i< parts.length;i++){
+                        //如果属性不存在则创建
+                        if(typeof parent[parts[i]] === 'undefined'){
+                            parent[parts[i]]={};
+                        }
+                        parent = parent[parts[i]];
+                    }
+                    return parent;
+
+                }
+                var module2 = MYAPP.namespace('MYAPP.modules.module2');
+                MYAPP.namespace('modules.module52');
 
             </pre>
             <script>
