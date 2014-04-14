@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  《javascript模式》读书笔记—代码复用模式（继承）
-date:   2014-04-05 14:18:21
+date:   2014-04-13 20:18:21
 categories: 笔记
 ---
 
