@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script>
+
+//要继承的对象
+var parent ={
+    name:'Papa'
+};
+//新对象
+var child = object(parent);
+//测试
+alert(child.name); //Para
+
+function object(o){
+    function F(){};
+    F.prototype = o;
+    return new F();
+}
+/*//父构造函数
+function Person(){
+    this.name = 'Adam';
+}
+//添加到原型的属性
+Person.prototype.getName = function(){
+    return this.name;
+}
+//创建一个新的Person类对象
+var papa = new Person();
+//继承
+var kid = object(papa);
+//测试自身属性和继承的原型属性
+console.log(kid.getName());*/
+
+        //第二种变化
+
+//父构造函数
+function Person(){
+    this.name = 'Adam';
+}
+//添加到原型的属性
+Person.prototype.getName = function(){
+    return this.name;
+}
+
+//继承
+var kid = object(Person.prototype);
+//测试自身属性和继承的原型属性
+console.log(typeof kid.getName); //function ,在原型中
+console.log(typeof kid.name);    //undefined ，只有原型是继承的
+//console.log(kid.getName());
+    </script>
+</head>
+<body>
+
+</body>
+</html>

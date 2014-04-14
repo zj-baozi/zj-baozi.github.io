@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script>
+
+        var Klass = function(Parent,props){
+          var Child, F,i;
+          //新构造函数
+          Child = function(){
+              if(Child.uber && Child.uber.hasOwnProperty("__constructor")){
+                  Child.uber.__construct.apply(this,arguments);
+              }
+          }
+        }
+    </script>
+</head>
+<body>
+
+</body>
+</html>

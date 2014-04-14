@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script>
+
+        //父构造函数
+        function Parent(name){
+            this.name = name || 'Adam';
+        }
+        //向该原型添加功能
+        Parent.prototype.say = function(){
+            return this.name;
+        };
+        //空白的子构造函数
+        function Child(name){}
+
+        //继承的魔力在此发生
+        inherit(Child,Parent);
+
+        //模式
+        function inherit(C,P){
+            var F = function(){};
+            F.prototype = P.prototype;
+            C.prototype = new F();
+            C.uber = P.prototype;
+        }
+
+        (function(){
+var kid = new Child();
+console.log(kid.constructor.name);  // Parent
+console.log(kid.constructor === Parent); // true
+        }());
+        //改进
+var  inherit = (function(){
+   var F = function(){};
+   return function(C,P){
+       var F = function(){};
+       F.prototype = P.prototype;
+       C.prototype = new F();
+       C.uber = P.prototype;
+   }
+}());
+    </script>
+</head>
+<body>
+
+</body>
+</html>

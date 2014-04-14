@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script>
+//父构造函数
+function Article(){
+    this.tags = ['js','css'];
+}
+var article = new Article();
+function BlogPost(){}
+//默认模式
+BlogPost.prototype = article;
+var blog = new BlogPost();
+
+//借用构造函数模式
+function StaticPage(){
+    Article.call(this);
+}
+var page = new StaticPage();
+alert(article.hasOwnProperty('tags')); //true
+alert(blog.hasOwnProperty('tags')); //false
+alert(page.hasOwnProperty('tags')); // true
+        //默认模式导致了blog对象通过原型以获得对tags属性的访问，因此blog对象中没有将article作为自身的属性，因此当调用hasOwnProperty()时会返回false.
+        //相反，page对象本身则具有一个tags属性，这是由于它在使用借用构造函数的时候，新对象会获得父对象中tags成员的副本（不是引用）。
+
+        blog.tags.push('html');
+        page.tags.push('php');
+        //alert()
+        alert(article.tags.join(','));
+        //子对象blog修改了其tags属性，而这种方式同时也会修改父对象article，这是由于本质上blog.tags和article.tags都指向了同一个数组。但是，修改page.tags时却不会影响其父对象article，这是由于在继承过程中page.tags是独立创建的一个副本。
+        //原型链
+//父构造函数
+function Parent(name){
+    this.name = name || 'Ann';
+}
+//向该原型添加功能
+Parent.prototype.say = function(){
+    return this.name;
+};
+//子构造函数
+function Child(name){
+    Parent.apply(this,arguments);
+}
+var kid = new Child('Patik');
+console.log(kid.name); // Patik
+console.log(typeof kid.say); //undefined
+        //只复制了属性，原型链断开
+
+        //通过借用构造函数实现多重继承
+function Cat(){
+    this.legs = 4;
+    this.say = function(){
+        return 'meaowww';
+    }
+}
+function Bird(){
+    this.wings = 2;
+    this.fly = true;
+}
+function CatWings(){
+    Cat.apply(this);
+    Bird.apply(this);
+}
+var jane = new  CatWings();
+console.dir(jane);
+        //借用构造函数的缺点是无法从原型中继承任何东西，并且原型也仅是添加可重用方法以及属性的位置，它并不会为每个实例重新创建原型。
+        //优点是：可以获得父对象自身成员的真实副本，并且也不会存在子对象意外覆盖父对象属性的风险。
+        //类式继承模式#3   借用和设置原型
+        //思想：结合前两种模式，先借用构造函数，然后还设置子构造函数的原型使其指向一个构造函数创建的新实例。
+function Child(a,b,c,d){
+   Parent.apply(this,arguments);
+}
+Child.prototype = new Parent();
+
+        //优点：对象能够获得父对象本身的成员副本以及指向父对象中可复用功能（以原型成员方式实现的那些功能）的引用。同时，子对象也能够将做任意参数传递到父构造函数中。
+        //todo 优缺点
+
+function Parent(name){
+    this.name = name || 'Ann';
+}
+//向该原型添加功能
+Parent.prototype.say = function(){
+    return this.name;
+};
+//子构造函数
+function Child(name){
+    Parent.apply(this,arguments);
+}
+Child.prototype = new Parent();
+var kid = new Child('Patik');
+console.log(kid.name); // Patik
+console.log(kid.say()); //Patik
+delete kid.name;
+console.log(kid.name); // Ann
+
+        //类式继承模式#4 共享原型
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

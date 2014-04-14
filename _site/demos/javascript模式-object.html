@@ -508,6 +508,86 @@
             </script>
         </li>
     </ul>
+    <h3>揭示模式</h3>
+    <ul>
+        <li>
+            <pre>
+               MYAPP.utilities.array = (function(){
+                    //依赖
+                    var uobj = MYAPP.utilities.object,
+                            ulang = MYAPP.utilities.lang,
+                    //私有属性
+                            array_string = '[object Array]',
+                            ops = Object.prototype.toString,
+
+                    //私有方法
+                    isArray = function(){
+
+                    },
+                    inArray = function(){
+
+                    };
+
+
+                    //揭示公有API
+                    return{
+                        inArray:inArray,
+                        isArray:isArray
+                    }
+                }());
+            </pre>
+            <script>
+                MYAPP.utilities.array = (function(){
+                    //依赖
+                    var uobj = MYAPP.utilities.object,
+                            ulang = MYAPP.utilities.lang,
+                    //私有属性
+                            array_string = '[object Array]',
+                            ops = Object.prototype.toString,
+
+                    //私有方法
+                    isArray = function(){
+
+                    },
+                    inArray = function(){
+
+                    };
+
+
+                    //揭示公有API
+                    return{
+                        inArray:inArray,
+                        isArray:isArray
+                    }
+                }());
+            </script>
+        </li>
+    </ul>
+    <h3>将全局变量导入到模块中</h3>
+    <ul>
+        <li>在常见的变化模式中，可以将参数传递到包装了模块的即时函数中。导入全局变量有助于加速即时函数中的全局符号解析的速度，因为这些导入的变量成为了该函数的局部变量。
+        <pre>
+
+        </pre>
+            <script>
+                MYAPP.utilities.module = (function(app,global){
+                  //引用全局对象
+                  //以及现在被转换成局部变量的全局应用程序命名空间对象
+                }(MYAPP,this));
+            </script>
+        </li>
+
+    </ul>
+    <h3>沙箱模式</h3>
+    <strong class="c90">
+        提供了一个可用于模块运行的环境，且不会对其他模块和个人沙箱造成任何影响。<br>
+        沙箱模式解决了命名空间模式的如下几个缺点：
+    </strong>
+    <ul>
+        <li>对单个全局变量的依赖变成了对应用程序的全局变量依赖。</li>
+        <li>对这种以点分割的名字来说，需要输入更长的字符，并且在运行时需要解析更长的时间，比如MYAPP.utilites.array</li>
+    </ul>
+    未完待续。。。
 </div>
 
 </body>

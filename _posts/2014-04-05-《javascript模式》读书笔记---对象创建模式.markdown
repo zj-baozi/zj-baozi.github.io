@@ -574,7 +574,10 @@ categories: 笔记
     <ul>
         <li>在常见的变化模式中，可以将参数传递到包装了模块的即时函数中。导入全局变量有助于加速即时函数中的全局符号解析的速度，因为这些导入的变量成为了该函数的局部变量。
         <pre>
-
+MYAPP.utilities.module = (function(app,global){
+   //引用全局对象
+   //以及现在被转换成局部变量的全局应用程序命名空间对象
+}(MYAPP,this));
         </pre>
             <script>
                 MYAPP.utilities.module = (function(app,global){

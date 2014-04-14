@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script>
+
+        //父构造函数
+        function Parent(name){
+            this.name = name || 'Adam';
+        }
+        //向该原型添加功能
+        Parent.prototype.say = function(){
+            return this.name;
+        };
+        //空白的子构造函数
+        function Child(name){}
+
+        //继承的魔力在此发生
+        inherit(Child,Parent);
+
+        //默认模式
+        function inherit(C,P){
+            C.prototype = new P();
+        }
+        (function(){
+            var s = new Child('Seth');
+            console.log(s.say());
+        }());
+    </script>
+</head>
+<body>
+
+</body>
+</html>
