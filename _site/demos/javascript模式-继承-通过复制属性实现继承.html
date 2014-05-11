@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script>
+        //浅复制
+function extend(parent,child){
+    var i;
+    child = child || {};
+    for(i in parent){
+      if(parent.hasOwnProperty(i)){
+          child[i] = parent[i];
+      }
+    }
+    return child;
+}
+        /*var dad = {name:'Adam'};
+        var kid = extend(dad);
+        console.log(kid.name);
+        */
+/*
+var dad = {
+    counts:[1,2,3],
+    reds:{paper:true}
+};
+var kid = extend(dad);
+kid.counts.push(4);
+console.log(dad.counts.toString()); //1,2,3,4
+console.log(dad.reds === kid.reds);
+*/
+
+//深复制
+function extendDeep(parent,child){
+    var i,
+        toStr = Object.prototype.toString,
+            astr = '[object Array]';
+    child = child || {};
+    for(i in parent){
+        if(parent.hasOwnProperty(i)){
+            if(typeof parent[i] === 'object'){
+                child[i] = (toStr.call(parent[i]) === astr)? [] :{};
+                extendDeep(parent[i],child[i]);
+            } else{
+                child[i] = parent[i];
+            }
+        }
+    }
+    return child;
+}
+var dad = {
+    counts:[1,2,3],
+    reds:{paper:true}
+};
+var kid2 = extendDeep(dad);
+kid2.counts.push(4);
+console.log(kid2.counts.toString());  //1,2,3,4
+console.log(dad.counts.toString());   //1,2,3
+console.log(dad.reds === kid2.reds);  //false
+
+        //混入mix-in
+function mix(){
+    var arg,prop,child = {};
+    for(arg = 0;arg <arguments.length;arg += 1){
+        for(prop in arguments[arg]){
+            if(arguments[arg].hasOwnProperty(prop)){
+                child[prop] = arguments[arg][prop];
+            }
+        }
+    }
+    return child;
+}
+var cake = mix(
+        {eggs:2,large:true},
+        {butter:1,salted:true},
+        {flour:'3 aaaa'},
+        {sugar:{aa:'ee'}
+        }
+)
+console.dir(cake);
+    </script>
+</head>
+<body>
+
+</body>
+</html>

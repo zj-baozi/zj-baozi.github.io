@@ -46,7 +46,7 @@
             <div class="entry">
 
                 <h2>《javascript模式》读书笔记—代码复用模式（继承）</h2>
-<p class="meta">05 Apr 2014</p>
+<p class="meta">13 Apr 2014</p>
 
 <div class="post">
 <p><strong>在谈及代码复用的时候，首先想到的是代码的继承性。</strong></p>
@@ -324,6 +324,116 @@ child.hasOwnProperty(&#39;age&#39;); // true
 </code>
 可能还会发现一些js类已经实现了原型继承模式，例如，YUI3中的Y.Object()方法</p>
 
+<h2>通过复制属性实现继承</h2>
+
+<p><strong>通过复制属性实现继承，对象将从另外一个对象中获取功能，其方法是仅需将其复制即可。</strong></p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">function extend(parent,child){
+    var i;
+    child = child || {};
+    for(i in parent){
+      if(parent.hasOwnProperty(i)){
+          child[i] = parent[i];
+      }
+    }
+    return child;
+}
+</code></pre></div>
+<p><strong>上面是简单实现，它仅遍历父对象的成员并将其复制出来。child可选</strong>
+<strong>上面给出的是浅复制对象，深度复制意味着属性检查，如果即将复制的属性是一个对象或者一个数组，这样的话，它将会递归遍历该属性并且还会将该属性中的元素复制出来。在使用浅复制（由于对象是通过引用传递的），如果改变了子对象的属性，并且该属性恰 好是一个对象，那么这种操作表示也正在修改父对象。当处理对象或数组时，可能导致意外发生</strong></p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">var dad = {
+    counts:[1,2,3],
+    reds:{paper:true}
+};
+var kid = extend(dad);
+kid.counts.push(4);
+console.log(dad.counts.toString()); //1,2,3,4
+console.log(dad.reds === kid.reds);//true(引用)
+</code></pre></div>
+<p><strong>修改extend()以实现深度复制，需要做的是检查某个属性的类型是否为对象，如果是，递归复制出该对象的属性，另外，检查该对象是否为一个真实对象或者一个数组。</strong></p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">//深复制
+function extendDeep(parent,child){
+    var i,
+        toStr = Object.prototype.toString,
+            astr = &#39;[object Array]&#39;;
+    child = child || {};
+    for(i in parent){
+        if(parent.hasOwnProperty(i)){
+            if(typeof parent[i] === &#39;object&#39;){
+                child[i] = (toStr.call(parent[i]) === astr)? [] :{};
+                extendDeep(parent[i],child[i]);
+            } else{
+                child[i] = parent[i];
+            }
+        }
+    }
+    return child;
+}
+var dad = {
+    counts:[1,2,3],
+    reds:{paper:true}
+};
+var kid2 = extendDeep(dad);
+kid2.counts.push(4);
+console.log(kid2.counts.toString());  //1,2,3,4
+console.log(dad.counts.toString());   //1,2,3
+console.log(dad.reds === kid2.reds);  //false
+</code></pre></div>
+<h2>混入</h2>
+
+<p><strong>mix-in（混入）模式并不是复制一个完整的对象，而是从多个对象中复制出任意的成员并将这些成员组合成一个新的对象。</strong>
+<strong>具体实现：遍历每个参数，并且复制出传递给该函数的每个对象中的每个属性。</strong></p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">function mix(){
+    var arg,prop,child = {};
+    for(arg = 0;arg &lt;arguments.length;arg += 1){
+        for(prop in arguments[arg]){
+            if(arguments[arg].hasOwnProperty(prop)){
+                child[prop] = arguments[arg][prop];
+            }
+        }
+    }
+    return child;
+}
+var cake = mix(
+        {eggs:2,large:true},
+        {butter:1,salted:true},
+        {flour:&#39;3 aaaa&#39;},
+        {sugar:{aa:&#39;ee&#39;}
+        }
+)
+console.dir(cake);
+</code></pre></div>
+<h2>借用方法</h2>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">function f(){
+    var args = [].slice.call(arguements,1,3);
+    return args;
+}
+</code></pre></div>
+<p><strong>以上为借用数组方法，arguments借用数组的方法，如slice()转化为数组</strong>
+<strong>创建一个空数组的原因只是为了使用数组的方法。此外，能够实现同功能的是直接从Array的原型中借用方法，即：Array.prototype.slice.call()，字符较长，却可以节省创建一个空数组的工作。</strong></p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">function bind(o,m){
+    return function(){
+        return m.apply(o,[].slice.call(arguments));
+    }
+}
+</code></pre></div>
+<p><strong>奢侈的拥有绑定所需要付出的代价就是额外闭包的开销。</strong></p>
+
+<h2>Function.prototype.bind()</h2>
+
+<p><strong>ES5中将bind()方法添加到Function.prototype，使得bind()就像apply()和call()一样简单易用。</strong>
+<code>
+if(typeof Function.prototype.bind === &#39;undefined&#39;){
+    Function.prototype.bind = function(thisArg){
+        var fn = this,
+            slice = Array.prototype.slice,
+            args = slice.call(arguments,1);
+        return function(){
+            return fn.apply(thisArg,args.concat(slice.call(arguments)));
+        }   
+    }
+}
+</code></p>
+
 </div>
 
             </div>
@@ -338,7 +448,7 @@ child.hasOwnProperty(&#39;age&#39;); // true
 
 
                <!-- <div class="tags">
-                    <a href="/tags/F2E Weekly/">{"笔记"=>[<Post: /%E7%AC%94%E8%AE%B0/2014/04/05/《javascript模式》读书笔记---对象创建模式>, <Post: /%E7%AC%94%E8%AE%B0/2014/04/05/《javascript模式》读书笔记---函数>, <Post: /%E7%AC%94%E8%AE%B0/2014/04/05/《javascript模式》读书笔记---代码复用模式>, <Post: /%E7%AC%94%E8%AE%B0/2014/03/31/《javascript模式》读书笔记---基础知识>, <Post: /%E7%AC%94%E8%AE%B0/2014/03/31/hasOwnPropertyVSisPrototypeOf>], "转载"=>[<Post: /%E8%BD%AC%E8%BD%BD/2014/03/31/javascript-object.prototype.toString()>, <Post: /%E8%BD%AC%E8%BD%BD/2014/03/31/javascipt-object>], "jekyll"=>[<Post: /jekyll/update/2014/03/31/welcome-to-jekyll>], "update"=>[<Post: /jekyll/update/2014/03/31/welcome-to-jekyll>]}</a>
+                    <a href="/tags/F2E Weekly/">{"笔记"=>[<Post: /%E7%AC%94%E8%AE%B0/2014/04/19/《javascript模式》读书笔记---DOM和浏览器模式>, <Post: /%E7%AC%94%E8%AE%B0/2014/04/19/javascript设计模式-策略模式>, <Post: /%E7%AC%94%E8%AE%B0/2014/04/13/《javascript模式》读书笔记---代码复用模式>, <Post: /%E7%AC%94%E8%AE%B0/2014/04/05/《javascript模式》读书笔记---对象创建模式>, <Post: /%E7%AC%94%E8%AE%B0/2014/04/05/《javascript模式》读书笔记---函数>, <Post: /%E7%AC%94%E8%AE%B0/2014/03/31/《javascript模式》读书笔记---基础知识>, <Post: /%E7%AC%94%E8%AE%B0/2014/03/31/hasOwnPropertyVSisPrototypeOf>], "转载"=>[<Post: /%E8%BD%AC%E8%BD%BD/2014/05/10/cookie>, <Post: /%E8%BD%AC%E8%BD%BD/2014/05/09/escape,encodeURI,encodeURIComponent的区别>, <Post: /%E8%BD%AC%E8%BD%BD/2014/03/31/javascript-object.prototype.toString()>, <Post: /%E8%BD%AC%E8%BD%BD/2014/03/31/javascipt-object>], "jekyll"=>[<Post: /jekyll/update/2014/03/31/welcome-to-jekyll>], "update"=>[<Post: /jekyll/update/2014/03/31/welcome-to-jekyll>]}</a>
                 </div>-->
 
 
@@ -379,13 +489,25 @@ child.hasOwnProperty(&#39;age&#39;); // true
                     <ul class="entry">
                         
 
+                        <li><a href="/%E8%BD%AC%E8%BD%BD/2014/05/10/cookie.html">转载</a></li>
+                        
+
+                        <li><a href="/%E8%BD%AC%E8%BD%BD/2014/05/09/escape%2CencodeURI%2CencodeURIComponent%E7%9A%84%E5%8C%BA%E5%88%AB.html">转载</a></li>
+                        
+
+                        <li><a href="/%E7%AC%94%E8%AE%B0/2014/04/19/%E3%80%8Ajavascript%E6%A8%A1%E5%BC%8F%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0---DOM%E5%92%8C%E6%B5%8F%E8%A7%88%E5%99%A8%E6%A8%A1%E5%BC%8F.html">笔记</a></li>
+                        
+
+                        <li><a href="/%E7%AC%94%E8%AE%B0/2014/04/19/javascript%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E7%AD%96%E7%95%A5%E6%A8%A1%E5%BC%8F.html">笔记</a></li>
+                        
+
+                        <li><a href="/%E7%AC%94%E8%AE%B0/2014/04/13/%E3%80%8Ajavascript%E6%A8%A1%E5%BC%8F%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0---%E4%BB%A3%E7%A0%81%E5%A4%8D%E7%94%A8%E6%A8%A1%E5%BC%8F.html">笔记</a></li>
+                        
+
                         <li><a href="/%E7%AC%94%E8%AE%B0/2014/04/05/%E3%80%8Ajavascript%E6%A8%A1%E5%BC%8F%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0---%E5%AF%B9%E8%B1%A1%E5%88%9B%E5%BB%BA%E6%A8%A1%E5%BC%8F.html">笔记</a></li>
                         
 
                         <li><a href="/%E7%AC%94%E8%AE%B0/2014/04/05/%E3%80%8Ajavascript%E6%A8%A1%E5%BC%8F%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0---%E5%87%BD%E6%95%B0.html">笔记</a></li>
-                        
-
-                        <li><a href="/%E7%AC%94%E8%AE%B0/2014/04/05/%E3%80%8Ajavascript%E6%A8%A1%E5%BC%8F%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0---%E4%BB%A3%E7%A0%81%E5%A4%8D%E7%94%A8%E6%A8%A1%E5%BC%8F.html">笔记</a></li>
                         
 
                         <li><a href="/%E7%AC%94%E8%AE%B0/2014/03/31/%E3%80%8Ajavascript%E6%A8%A1%E5%BC%8F%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0---%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86.html">笔记</a></li>
@@ -419,11 +541,19 @@ child.hasOwnProperty(&#39;age&#39;); // true
                     <h3 class="title">最新文章</h3>
                     <ul class="entry">
                         
+                        <li><span>10 May 2014</span> &raquo; <a href="/%E8%BD%AC%E8%BD%BD/2014/05/10/cookie.html">JavaScript 操作 Cookie</a></li>
+                        
+                        <li><span>09 May 2014</span> &raquo; <a href="/%E8%BD%AC%E8%BD%BD/2014/05/09/escape%2CencodeURI%2CencodeURIComponent%E7%9A%84%E5%8C%BA%E5%88%AB.html">escape,encodeURI和encodeURIComponent的区别</a></li>
+                        
+                        <li><span>19 Apr 2014</span> &raquo; <a href="/%E7%AC%94%E8%AE%B0/2014/04/19/%E3%80%8Ajavascript%E6%A8%A1%E5%BC%8F%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0---DOM%E5%92%8C%E6%B5%8F%E8%A7%88%E5%99%A8%E6%A8%A1%E5%BC%8F.html">《javascript模式》读书笔记—DOM和浏览器模式</a></li>
+                        
+                        <li><span>19 Apr 2014</span> &raquo; <a href="/%E7%AC%94%E8%AE%B0/2014/04/19/javascript%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E7%AD%96%E7%95%A5%E6%A8%A1%E5%BC%8F.html">《javascript模式》-策略模式</a></li>
+                        
+                        <li><span>13 Apr 2014</span> &raquo; <a href="/%E7%AC%94%E8%AE%B0/2014/04/13/%E3%80%8Ajavascript%E6%A8%A1%E5%BC%8F%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0---%E4%BB%A3%E7%A0%81%E5%A4%8D%E7%94%A8%E6%A8%A1%E5%BC%8F.html">《javascript模式》读书笔记—代码复用模式（继承）</a></li>
+                        
                         <li><span>05 Apr 2014</span> &raquo; <a href="/%E7%AC%94%E8%AE%B0/2014/04/05/%E3%80%8Ajavascript%E6%A8%A1%E5%BC%8F%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0---%E5%AF%B9%E8%B1%A1%E5%88%9B%E5%BB%BA%E6%A8%A1%E5%BC%8F.html">《javascript模式》读书笔记—对象创建模式</a></li>
                         
                         <li><span>05 Apr 2014</span> &raquo; <a href="/%E7%AC%94%E8%AE%B0/2014/04/05/%E3%80%8Ajavascript%E6%A8%A1%E5%BC%8F%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0---%E5%87%BD%E6%95%B0.html">《javascript模式》读书笔记---函数</a></li>
-                        
-                        <li><span>05 Apr 2014</span> &raquo; <a href="/%E7%AC%94%E8%AE%B0/2014/04/05/%E3%80%8Ajavascript%E6%A8%A1%E5%BC%8F%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0---%E4%BB%A3%E7%A0%81%E5%A4%8D%E7%94%A8%E6%A8%A1%E5%BC%8F.html">《javascript模式》读书笔记—代码复用模式（继承）</a></li>
                         
                         <li><span>31 Mar 2014</span> &raquo; <a href="/%E7%AC%94%E8%AE%B0/2014/03/31/%E3%80%8Ajavascript%E6%A8%A1%E5%BC%8F%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0---%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86.html">《javascript模式》读书笔记---基础知识</a></li>
                         

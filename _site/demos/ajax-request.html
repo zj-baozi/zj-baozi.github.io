@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script>
+        (function(){
+          var res = new XMLHttpRequest();
+          res.open('get','http://www.taobao.com',false);//同步
+          res.send(null);
+          if(res.status === 200){
+              console.log(res.responseText);
+          }
+
+          //异步
+          var res = new XMLHttpRequest();
+          res.open('get','http://www.baidu.com',true);
+          res.send(null);
+          res.onreadystatechange = function(){
+              if(res.readystate ===4){
+                  if(res.status === 200){
+                      console.log(res.responseText);
+                  }else{
+                      console.log(Error,res.statusText);
+                  }
+              }
+          }
+        })();
+    </script>
+</head>
+<body>
+
+</body>
+</html>
