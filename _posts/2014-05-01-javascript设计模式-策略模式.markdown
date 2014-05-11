@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  《javascript模式》读书笔记—DOM和浏览器模式
+title:  《javascript模式》-策略模式
 date:   2014-04-19 20:18:21
 categories: 笔记
 ---
@@ -16,9 +16,6 @@ categories: 笔记
 http://www.kankanews.com/ICkengine/archives/100710.shtml
 
 
-```
-new Image().src = 'http://*.*.page.php';
-```
-**无阻塞加载、延迟加载、按需加载、预加载javascript的实现**
+
 
 
