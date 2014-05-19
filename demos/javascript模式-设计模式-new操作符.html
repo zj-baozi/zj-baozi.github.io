@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+<script>
+ //静态属性中的实例
+ function Universe(){
+     //我们有一个现有的实例吗？
+     if(typeof Universe.instance === 'object'){
+         return Universe.instance;
+     }
+     //正常进行
+     this.start_time = 0;
+     this.bang = 'Big';
+
+     //缓存
+     Universe.instance = this;
+
+     //隐式返回
+     return this;
+ }
+   var  uni = new Universe();
+   var  uni2 = new Universe();
+    console.log(uni === uni2);
+
+//闭包中的实例
+function Universe2(){
+    //缓存实例
+    var instance = this;
+
+    //正常进行
+    this.start_time = 0;
+    this.bang  = 'Big';
+
+    //重写该构造函数
+    Universe2 = function(){
+        return instance;
+    }
+}
+    /*var uni3 = new Universe2();
+    var uni4 = new Universe2();
+    console.log(uni3 === uni4);*/
+    Universe2.prototype.nothing = true;
+    var uni3 = new Universe2();
+    //在创建初始化对象之后，
+    //再次向该原型添加属性
+    Universe2.prototype.everything = true;
+    var uni4 = new Universe2();
+    console.log(uni3.nothing);//true
+    console.log(uni4.nothing); //true
+    console.log('everything:'+uni3.everything);//undefined
+    console.log('everything:'+uni4.everything);//undefined
+    console.log(uni3.constructor.name); //Universe2
+    //但是很奇怪
+    console.log(uni2.constructor === Universe2); //false
+
+ //如果需要使原型和构造函数指针按照预期的那样运行，
+    function Universe3(){
+        //缓存实例
+        var instance;
+
+        //重写构造函数
+        Universe3 = function(){
+            return instance;
+        }
+
+        //保留原型属性
+        Universe3.prototype = this;
+
+        //实例
+        instance = new Universe3();
+
+        //重置构造函数指针
+        instance.constructor = Universe3;
+
+        //所有功能
+        instance.start_time =0;
+        instance.bang = 'Big';
+        return instance;
+    }
+ Universe3.prototype.nothing = true;
+ var uni5 = new Universe3();
+ Universe3.prototype.everything = true;
+ var uni6 = new Universe3();
+ console.log(uni5 === uni6);//true
+ console.log('nothing:'+uni5.nothing);//true
+ console.log('nothing:'+uni6.nothing);//true
+ console.log('everything:'+uni5.everything);//true
+ console.log('everything:'+uni6.everything);//true
+ console.log(uni5.bang);//Big
+ //但是很奇怪
+ console.log(uni5.constructor === Universe3); //true
+
+ var Universe;
+ (function(){
+   var instance;
+     Universe = function Universe(){
+       if(instance){
+           return instance;
+       }
+       instance = this;
+         //所有功能
+         this.start_name=0;
+         this.name = 'Big';
+     }
+ }());
+</script>
+</head>
+<body>
+
+</body>
+</html>
