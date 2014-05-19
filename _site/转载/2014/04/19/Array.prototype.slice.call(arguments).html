@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title>escape,encodeURI和encodeURIComponent的区别</title>
+        <title>Array.prototype.slice.call(arguments)</title>
         <meta name="viewport" content="width=device-width">
 
         <!-- syntax highlighting CSS -->
@@ -45,66 +45,64 @@
             </header>
             <div class="entry">
 
-                <h2>escape,encodeURI和encodeURIComponent的区别</h2>
-<p class="meta">09 May 2014</p>
+                <h2>Array.prototype.slice.call(arguments)</h2>
+<p class="meta">19 Apr 2014</p>
 
 <div class="post">
-<p>今天听到一篇关于编码的分享，对于escape,encodeURI,encodeURIComponent的区别确实没仔细研究过，于是上网查一些资料，以记录。</p>
+<p>我们知道，Array.prototype.slice.call(arguments)能将具有length属性的对象转成数组，除了IE下的节点集合（因为ie下的dom对象是以com对象的形式实现的，js对象与com对象不能进行转换）</p>
 
-<p>一、escape和它们不是同一类
-<strong>简单来说，escape是对字符串(string)进行编码(而另外两种是对URL)，作用是让它们在所有电脑上可读。
-编码之后的效果是%XX或者%uXXXX这种形式。
-其中 ASCII字母 数字 @*/+ 这几个字符不会被编码，其余的都会。</strong>
-最关键的是，当你需要对URL编码时，请忘记这个方法，这个方法是针对字符串使用的，不适用于URL。
-二、最常用的encodeURI和encodeURIComponent</p>
+<p>如：</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">1 var a={length:2,0:&#39;first&#39;,1:&#39;second&#39;};
+2 Array.prototype.slice.call(a);//  [&quot;first&quot;, &quot;second&quot;]
+3  
+4 var a={length:2};
+5 Array.prototype.slice.call(a);//  [undefined, undefined]
+</code></pre></div>
+<p>可能刚开始学习js的童鞋并不是很能理解这句为什么能实现这样的功能。比如我就是一个，所以，来探究一下。</p>
 
-<p>对URL编码是常见的事，所以这两个方法应该是实际中要特别注意的。
-它们都是编码URL，唯一区别就是编码的字符范围，其中
-encodeURI方法不会对下列字符编码 ASCII字母 数字 ~!@#$&amp;<em>()=:/,;?+&#39;
-encodeURIComponent方法不会对下列字符编码 ASCII字母 数字 ~!</em>()&#39;
-所以encodeURIComponent比encodeURI编码的范围更大。
-实际例子来说，encodeURIComponent会把 http:// 编码成 http%3A%2F%2F 而encodeURI却不会。</p>
+<p>首先，slice有两个用法，一个是String.slice,一个是Array.slice，第一个返回的是字符串，第二个返回的是数组，这里我们看第2个。</p>
 
-<p>总结：</p>
+<p>Array.prototype.slice.call(arguments)能够将arguments转成数组，那么就是arguments.toArray().slice();
+到这里，是不是就可以说Array.prototype.slice.call(arguments)的过程就是先将传入进来的第一个参数转为数组，再调用slice？</p>
 
-<p><strong>escape对0-255以外的unicode值进行编码时输出%u</strong><strong>格式，其它情况下escape，encodeURI，encodeURIComponent编码结果相同。</strong></p>
+<p>再看call的用法，如下例子</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">1 var a = function(){
+2      console.log(this);    // &#39;littledu&#39;
+3      console.log(typeof this);      //  Object
+4      console.log(this instanceof String);    // true
+5 }
+6 a.call(&#39;littledu&#39;);
+</code></pre></div>
+<p>可以看出，call了后，就把当前函数推入所传参数的作用域中去了，不知道这样说对不对，但反正this就指向了所传进去的对象就肯定的了。</p>
 
-<p><strong>escape不编码字符有69个：*，+，-，.，/，@，_，0-9，a-z，A-Z</strong></p>
+<p>到这里，基本就差不多了，我们可以大胆猜一下slice的内部实现，如下</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">1 Array.prototype.slice = function(start,end){
+2      var result = new Array();
+3      start = start || 0;
+4      end = end || this.length; //this指向调用的对象，当用了call后，能够改变this的指向，也就是指向传进来的对象，这是关键
+5      for(var i = start; i &lt; end; i++){
+6           result.push(this[i]);
+7      }
+8      return result;
+9 }
+</code></pre></div>
+<p>大概就是这样吧，理解就行，不深究。</p>
 
-<p>*<em>encodeURI不编码字符有82个：!，#，$，&amp;，&#39;，(，)，</em>，+，,，-，.，/，:，;，=，?，@，_，~，0-9，a-z，A-Z **</p>
-
-<p><strong>encodeURIComponent不编码字符有71个：!， &#39;，(，)，*，-，.，_，~，0-9，a-z，A-Z</strong></p>
-
-<p>三、最重要的，什么场合应该用什么方法</p>
-
-<p>1、如果只是编码字符串，不和URL有半毛钱关系，那么用escape。</p>
-
-<p>2、如果你需要编码整个URL，然后需要使用这个URL，那么用encodeURI。
-比如
-encodeURI(&quot;http://www.cnblogs.com/season-huang/some other thing&quot;);</p>
-
-<p>编码后会变为
-&quot;http://www.cnblogs.com/season-huang/some%20other%20thing&quot;;</p>
-
-<p>其中，空格被编码成了%20。但是如果你用了encodeURIComponent，那么结果变为</p>
-
-<p>&quot;http%3A%2F%2Fwww.cnblogs.com%2Fseason-huang%2Fsome%20other%20thing&quot;</p>
-
-<p>看到了区别吗，连 &quot;/&quot; 都被编码了，整个URL已经没法用了。
-3、当你需要编码URL中的参数的时候，那么encodeURIComponent是最好方法。</p>
-
-<p>var param = &quot;http://www.cnblogs.com/season-huang/&quot;; //param为参数
-param = encodeURIComponent(param);
-var url = &quot;http://www.cnblogs.com?next=&quot; + param;
-console.log(url) //&quot;http://www.cnblogs.com?next=http%3A%2F%2Fwww.cnblogs.com%2Fseason-huang%2F&quot;</p>
-
-<p>看到了把，参数中的 &quot;/&quot; 可以编码，如果用encodeURI肯定要出问题，因为后面的/是需要编码的。</p>
-
-<p>参考地址：</p>
-
-<p>http://www.zhihu.com/question/21861899/answer/20300871
-http://blog.csdn.net/swc493197713/article/details/7589772
-http://www.92csz.com/03/986.html</p>
+<p>最后，附个转成数组的通用函数</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text"> 1 var toArray = function(s){
+ 2     try{
+ 3         return Array.prototype.slice.call(s);
+ 4     } catch(e){
+ 5             var arr = [];
+ 6             for(var i = 0,len = s.length; i &lt; len; i++){
+ 7                 //arr.push(s[i]);
+                   arr[i] = s[i];  //据说这样比push快
+ 8             }
+ 9              return arr;
+10     }
+11 }
+</code></pre></div>
+<p>转自：http://www.cnblogs.com/littledu/archive/2012/05/19/2508672.html</p>
 
 </div>
 

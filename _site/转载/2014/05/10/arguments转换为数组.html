@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title>escape,encodeURI和encodeURIComponent的区别</title>
+        <title>arguments转换为数组</title>
         <meta name="viewport" content="width=device-width">
 
         <!-- syntax highlighting CSS -->
@@ -45,66 +45,68 @@
             </header>
             <div class="entry">
 
-                <h2>escape,encodeURI和encodeURIComponent的区别</h2>
-<p class="meta">09 May 2014</p>
+                <h2>arguments转换为数组</h2>
+<p class="meta">10 May 2014</p>
 
 <div class="post">
-<p>今天听到一篇关于编码的分享，对于escape,encodeURI,encodeURIComponent的区别确实没仔细研究过，于是上网查一些资料，以记录。</p>
+<p>Array.prototype.slice.call(arguments,0);</p>
 
-<p>一、escape和它们不是同一类
-<strong>简单来说，escape是对字符串(string)进行编码(而另外两种是对URL)，作用是让它们在所有电脑上可读。
-编码之后的效果是%XX或者%uXXXX这种形式。
-其中 ASCII字母 数字 @*/+ 这几个字符不会被编码，其余的都会。</strong>
-最关键的是，当你需要对URL编码时，请忘记这个方法，这个方法是针对字符串使用的，不适用于URL。
-二、最常用的encodeURI和encodeURIComponent</p>
+<p>实际参数在函数中我们可以使用 arguments 对象获得 （注：形参可通过 arguments.callee获得），虽然 arguments 对象与数组形似，但仍不是真正意义上的数组。</p>
 
-<p>对URL编码是常见的事，所以这两个方法应该是实际中要特别注意的。
-它们都是编码URL，唯一区别就是编码的字符范围，其中
-encodeURI方法不会对下列字符编码 ASCII字母 数字 ~!@#$&amp;<em>()=:/,;?+&#39;
-encodeURIComponent方法不会对下列字符编码 ASCII字母 数字 ~!</em>()&#39;
-所以encodeURIComponent比encodeURI编码的范围更大。
-实际例子来说，encodeURIComponent会把 http:// 编码成 http%3A%2F%2F 而encodeURI却不会。</p>
+<p>值得庆幸的是，我们可以通过数组的 slice 方法将 arguments 对象转换成真正的数组：
+<code>
+var args = Array.prototype.slice.call(arguments, 0);
+</code></p>
 
-<p>总结：</p>
+<p>对于slice 方法，ECMAScript 262 中 15.4.4.10 Array.prototype.slice (start, end) 章节有备注：
+The slice function is intentionally generic; it does not require that its this value be an Array object. Therefore it can be transferred to other kinds of objects for use as a method. Whether the slice function can be applied successfully to a host object is implementation-dependent.
+《Pro JavaScript Design Patterns》（《JavaScript 设计模式》）的作者 Dustin Diaz 曾指出：
+instead of…</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">var args = Array.prototype.slice.call(arguments, 0); // 怿飞注：下称方法一
+do this…
+var args = [].slice.call(arguments, 0); // 怿飞注：下称方法二
+</code></pre></div>
+<p>但二者的性能差异真的存在吗？经过个人简单测试发现：
+在 arguments.length 较小的时候，方法二性能上稍有一点点优势，而在arguments.length 较大的时候，方法一却又稍有优势。
+2010年1月30日更新（测试地址http://www.planabc.net/demo/toarray/arguments.html  已打不开了）：几经验证，性能差异不大，反而第一张方法性能稍优势一点，或许由于第二种方法创建新数组产生开销。</p>
 
-<p><strong>escape对0-255以外的unicode值进行编码时输出%u</strong><strong>格式，其它情况下escape，encodeURI，encodeURIComponent编码结果相同。</strong></p>
+<p>最后附上方法三，最老土的方式：</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">var args = [];
+for (var i = 1; i &lt; arguments.length; i++) {
+    args.push(arguments[i]);
+}
+</code></pre></div>
+<p>不过对于平常来说，个人建议使用第一种方法，但任何解决方案，没有最好的，只有最合适：</p>
 
-<p><strong>escape不编码字符有69个：*，+，-，.，/，@，_，0-9，a-z，A-Z</strong></p>
+<h2>var args = Array.prototype.slice.call(arguments, 0); </h2>
 
-<p>*<em>encodeURI不编码字符有82个：!，#，$，&amp;，&#39;，(，)，</em>，+，,，-，.，/，:，;，=，?，@，_，~，0-9，a-z，A-Z **</p>
+<p>如何将 NodeList （比如：document.getElementsByTagName(&#39;div&#39;)）转换成数组呢？
+解决方案简单如下：</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">function nodeListToArray(nodes){
+    var arr, length;
 
-<p><strong>encodeURIComponent不编码字符有71个：!， &#39;，(，)，*，-，.，_，~，0-9，a-z，A-Z</strong></p>
+    try {
+        // works in every browser except IE
+        arr = [].slice.call(nodes);
+        return arr;
+    } catch(err){
+        // slower, but works in IE
+        arr = [];
+        length = nodes.length;
 
-<p>三、最重要的，什么场合应该用什么方法</p>
+        for(var i = 0; i &lt; length; i++){
+             arr.push(nodes[i]);
+         }  
 
-<p>1、如果只是编码字符串，不和URL有半毛钱关系，那么用escape。</p>
+        return arr;
+    }
+} 
+</code></pre></div>
+<p>为什么 IE 中 NodeList 不可以使用 [].slice.call(nodes) 方法转换呢？</p>
 
-<p>2、如果你需要编码整个URL，然后需要使用这个URL，那么用encodeURI。
-比如
-encodeURI(&quot;http://www.cnblogs.com/season-huang/some other thing&quot;);</p>
+<p><strong>In Internet Explorer it throws an error that it can&#39;t run Array.prototype.slice.call(nodes) because a DOM NodeList is not a JavaScript object.</strong></p>
 
-<p>编码后会变为
-&quot;http://www.cnblogs.com/season-huang/some%20other%20thing&quot;;</p>
-
-<p>其中，空格被编码成了%20。但是如果你用了encodeURIComponent，那么结果变为</p>
-
-<p>&quot;http%3A%2F%2Fwww.cnblogs.com%2Fseason-huang%2Fsome%20other%20thing&quot;</p>
-
-<p>看到了区别吗，连 &quot;/&quot; 都被编码了，整个URL已经没法用了。
-3、当你需要编码URL中的参数的时候，那么encodeURIComponent是最好方法。</p>
-
-<p>var param = &quot;http://www.cnblogs.com/season-huang/&quot;; //param为参数
-param = encodeURIComponent(param);
-var url = &quot;http://www.cnblogs.com?next=&quot; + param;
-console.log(url) //&quot;http://www.cnblogs.com?next=http%3A%2F%2Fwww.cnblogs.com%2Fseason-huang%2F&quot;</p>
-
-<p>看到了把，参数中的 &quot;/&quot; 可以编码，如果用encodeURI肯定要出问题，因为后面的/是需要编码的。</p>
-
-<p>参考地址：</p>
-
-<p>http://www.zhihu.com/question/21861899/answer/20300871
-http://blog.csdn.net/swc493197713/article/details/7589772
-http://www.92csz.com/03/986.html</p>
+<p>转自：http://www.planabc.net/2010/01/06/arguments<em>to</em>array/</p>
 
 </div>
 
