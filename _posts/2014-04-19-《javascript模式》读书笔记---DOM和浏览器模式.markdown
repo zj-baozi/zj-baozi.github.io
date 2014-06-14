@@ -2,7 +2,7 @@
 layout: post
 title:  《javascript模式》读书笔记—DOM和浏览器模式
 date:   2014-04-19 20:18:21
-categories: 笔记
+categories: 笔记 javascript模式
 ---
 
 

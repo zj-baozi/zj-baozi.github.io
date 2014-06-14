@@ -3,7 +3,7 @@ layout: post
 title:  escape,encodeURI和encodeURIComponent的区别
 date:   2014-05-9 20:18:21
 
-categories: 转载
+categories: 转载 javascript基础
 ---
 
 

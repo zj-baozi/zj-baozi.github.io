@@ -2,7 +2,7 @@
 layout: post
 title:  《javascript模式》读书笔记—代码复用模式（继承）
 date:   2014-04-13 20:18:21
-categories: 笔记
+categories: 笔记 javascript模式
 ---
 
 
@@ -11,7 +11,7 @@ categories: 笔记
 javascript没有类的概念，但有构造函数，并且new操作符的语法与那些使用类的编程语言在语法上有许多相处之处。 这种语法上的相似性导致了许多程序员按照类的方式考虑javascript，并产生了一些假定在类的基础上的开发思路和继承模式。我们将这种实现方式称之为“类式”继承模式。
 实现类式继承的目标是通过构造函数Child()获取来自于另外一个构造函数Parent()的属性，从而创建对象。
 
- 
+
 ``` js
 var Person  = new Person();
 ```         

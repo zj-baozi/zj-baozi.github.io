@@ -3,7 +3,7 @@ layout: post
 title:  23种设计模式及解释（中英文对照）
 date:   2014-04-19 20:18:21
 
-categories: 转载
+categories: 转载 javascript设计模式
 ---
 
 

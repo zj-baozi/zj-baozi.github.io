@@ -3,14 +3,14 @@ layout: post
 title:  JavaScript 操作 Cookie
 date:   2014-05-10 20:18:21
 
-categories: 转载
+categories: 转载 javascript基础
 ---
 
 
 　　从事web开发也有些日子了，cookie 是个啥差不多能说明白，可是实际自己一上手操作就是得去搜索(你们懂的)，结果被鄙视了...所以就写一篇博文做为自己的学习笔记，嘿嘿，博客的好处在此体现出来了。
 
  
-
+ 
 　　什么是 Cookie
 
 　　“cookie 是存储于访问者的计算机中的变量。每当同一台计算机通过浏览器请求某个页面时，就会发送这个 cookie。你可以使用 JavaScript 来创建和取回 cookie 的值。” - w3school

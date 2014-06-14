@@ -3,7 +3,7 @@ layout: post
 title:  arguments转换为数组
 date:   2014-05-10 20:18:21
 
-categories: 转载
+categories: 转载 javascript基础
 ---
 
 
@@ -18,6 +18,7 @@ Array.prototype.slice.call(arguments,0);
 ```
 var args = Array.prototype.slice.call(arguments, 0);
 ```
+
 
 对于slice 方法，ECMAScript 262 中 15.4.4.10 Array.prototype.slice (start, end) 章节有备注：
 The slice function is intentionally generic; it does not require that its this value be an Array object. Therefore it can be transferred to other kinds of objects for use as a method. Whether the slice function can be applied successfully to a host object is implementation-dependent.

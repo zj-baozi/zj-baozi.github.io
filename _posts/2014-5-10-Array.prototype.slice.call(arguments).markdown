@@ -3,7 +3,7 @@ layout: post
 title:  Array.prototype.slice.call(arguments)
 date:   2014-04-19 20:18:21
 
-categories: 转载
+categories: 转载 javascript基础
 ---
 
 
@@ -18,6 +18,8 @@ categories: 转载
 4 var a={length:2};
 5 Array.prototype.slice.call(a);//  [undefined, undefined]
 ```
+
+
 可能刚开始学习js的童鞋并不是很能理解这句为什么能实现这样的功能。比如我就是一个，所以，来探究一下。
 
 首先，slice有两个用法，一个是String.slice,一个是Array.slice，第一个返回的是字符串，第二个返回的是数组，这里我们看第2个。

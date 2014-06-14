@@ -3,7 +3,7 @@ layout: post
 title:  《javascript模式》读书笔记---设计模式-外观模式
 date:   2014-05-24 21:50:21
 
-categories: 笔记
+categories: 笔记 javascript设计模式
 ---
 
 

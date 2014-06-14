@@ -4,7 +4,7 @@ title:  《javascript模式》读书笔记---设计模式-代理模式
 date:   2014-05-25 11:35:21
 
 
-category: 笔记
+category: javascript模式 设计模式
 ---
 
 代理模式

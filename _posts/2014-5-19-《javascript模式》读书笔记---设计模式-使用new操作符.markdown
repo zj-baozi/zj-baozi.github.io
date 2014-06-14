@@ -3,7 +3,7 @@ layout: post
 title:  《javascript模式》读书笔记---设计模式-使用new操作符
 date:   2014-05-19 20:42:21
 
-categories: 笔记
+categories: 笔记 javasript设计模式
 ---
 
 
@@ -17,6 +17,7 @@ javascript中具有new语法可全名用构造函数来创建对象，而且有�
 　　var uni2 = new Universe();
 　　console.log(uni === uni2);  //结果为true
 ```
+
 
 在上面的例子中，uni对象仅在第一次调用构造函数时被创建。在第二次（以及第三次。。。）创建时将会返回同一个uni对象。这就是为什么uni===uni2,因为它们本质上指向同一个对象的两个引用。
 如何实现呢？

@@ -17,7 +17,8 @@ categories: 笔记 javascript模式
            <li>函数可以有自己的属性和方法。</li>
        </ol>
    </li>
-   excerpt_separator
+  
+  
    <li><h3>2、函数表达式，又名匿名函数</h3>
             <pre>
 
