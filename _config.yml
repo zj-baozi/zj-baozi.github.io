@@ -2,6 +2,7 @@ name: 前端记录
 safe: false
 markdown: redcarpet
 pygments: true
+baseurl: "http://zj-baozi.github.io"
 tag_page_layout: tag_page
 tag_page_dir: tag
 tag_feed_layout: tag_feed
