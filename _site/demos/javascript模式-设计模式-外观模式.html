@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+<script>
+var myevent={
+    stop:function(e){
+        if(typeof e.preventDefault === 'function'){
+            e.preventDefault();
+        }
+        if(typeof e.stopPropagation === 'function'){
+            e.stopPropagation();
+        }
+        //ie浏览器
+        if(typeof e.returnValue === 'boolean'){
+            e.returnValue = false;
+        }
+        if(typeof e.cancelBubble === 'boolean'){
+            e.cancelBubble = true;
+        }
+    }
+}
+
+
+</script>
+</head>
+<body>
+
+</body>
+</html>

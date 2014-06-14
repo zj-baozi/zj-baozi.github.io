@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/><meta name="exporter-version" content="Evernote Mac 5.4.4 (402282)"/><meta name="author" content="jennyzj"/><meta name="created" content="2014-05-29 13:08:28 +0000"/><meta name="updated" content="2014-05-29 13:08:45 +0000"/><title>前端Assets发布体系优化方案</title></head><body style="word-wrap: break-word; -webkit-nbsp-mode: space; -webkit-line-break: after-white-space;">
+<h1 style="font-family: 'Trebuchet MS', Verdana, sans-serif; padding: 2px 10px 1px 0px; font-size: 20px; color: rgb(85, 85, 85); background-color: rgb(255, 255, 255);"><span style="-evernote-last-insertion-point:true;"/>前端Assets发布体系优化方案</h1>
+<p style="color: rgb(34, 34, 34); font-family: 'Microsoft Yahei', 'Hiragino Sans GB', 'Helvetica Neue', 'WenQuanYi Micro Hei', sans-serif; font-size: 13px; line-height: 22.100000381469727px; background-color: rgb(255, 255, 255);">@陶清 @阿大 @仙羽 @法海 @晨萱 共同参与制定</p>
+<div title="编辑此区域" style="float: right; white-space: nowrap; line-height: 1.4em; padding-left: 10px; font-size: 13px; color: rgb(34, 34, 34); font-family: 'Microsoft Yahei', 'Hiragino Sans GB', 'Helvetica Neue', 'WenQuanYi Micro Hei', sans-serif; background-color: rgb(255, 255, 255);"><a href="http://velocity.alibaba-inc.com/projects/f2e-tools/wiki/Assets_Publish/edit?section=2" style="color: rgb(17, 102, 153); text-decoration: none; opacity: 0.4;"><img src="%E5%89%8D%E7%AB%AFAssets%E5%8F%91%E5%B8%83%E4%BD%93%E7%B3%BB%E4%BC%98%E5%8C%96%E6%96%B9%E6%A1%88.resources/b3096acc7f3d938e9e36a984fd43957d.png" height="16" width="16"/></a></div>
+<a name="概述" style="color: rgb(17, 102, 153); font-family: 'Microsoft Yahei', 'Hiragino Sans GB', 'Helvetica Neue', 'WenQuanYi Micro Hei', sans-serif; font-size: 13px; line-height: 22.100000381469727px; background-color: rgb(255, 255, 255);"/>
+<h2 style="font-family: 'Trebuchet MS', Verdana, sans-serif; padding: 2px 10px 1px 0px; color: rgb(85, 85, 85); font-size: 16px; background-color: rgb(255, 255, 255);">概述</h2>
+<div title="编辑此区域" style="float: right; white-space: nowrap; line-height: 1.4em; padding-left: 10px; font-size: 13px; color: rgb(34, 34, 34); font-family: 'Microsoft Yahei', 'Hiragino Sans GB', 'Helvetica Neue', 'WenQuanYi Micro Hei', sans-serif; background-color: rgb(255, 255, 255);"><a href="http://velocity.alibaba-inc.com/projects/f2e-tools/wiki/Assets_Publish/edit?section=3" style="color: rgb(17, 102, 153); text-decoration: none; opacity: 0.4;"><img src="%E5%89%8D%E7%AB%AFAssets%E5%8F%91%E5%B8%83%E4%BD%93%E7%B3%BB%E4%BC%98%E5%8C%96%E6%96%B9%E6%A1%88.resources/b3096acc7f3d938e9e36a984fd43957d.png" height="16" width="16"/></a></div>
+<a name="现状" style="color: rgb(17, 102, 153); font-family: 'Microsoft Yahei', 'Hiragino Sans GB', 'Helvetica Neue', 'WenQuanYi Micro Hei', sans-serif; font-size: 13px; line-height: 22.100000381469727px; background-color: rgb(255, 255, 255);"/>
+<h3 style="font-family: 'Trebuchet MS', Verdana, sans-serif; padding: 2px 10px 1px 0px; color: rgb(85, 85, 85); font-size: 13px; line-height: 22.100000381469727px; background-color: rgb(255, 255, 255);">现状</h3>
+<p style="color: rgb(34, 34, 34); font-family: 'Microsoft Yahei', 'Hiragino Sans GB', 'Helvetica Neue', 'WenQuanYi Micro Hei', sans-serif; font-size: 13px; line-height: 22.100000381469727px; background-color: rgb(255, 255, 255);">现有发布系统以SVN+RMS为核心，仅从对前端开发的影响上来看，存在以下问题：</p>
+<ol style="color: rgb(34, 34, 34); font-family: 'Microsoft Yahei', 'Hiragino Sans GB', 'Helvetica Neue', 'WenQuanYi Micro Hei', sans-serif; font-size: 13px; line-height: 22.100000381469727px; background-color: rgb(255, 255, 255);">
+<li>RMS发布环节管理比较粗糙，发布的各个环节均由前端开发手工保障，覆盖式的发布，<a style="color: rgb(17, 102, 153);">容易导致线上问题</a>。</li>
+<li>SVN无力高效的支持<a style="color: rgb(17, 102, 153);">分支开发、主线发布</a>的开发/上线模式。在版本控制领域，SVN已经是一个过时工具，合并分支效率低、有瑕疵的分支合并算法、基于文件而非仓库的版本管理，容易引入Bug，被淘汰只是时间问题。</li>
+<li>SVN+RMS的模式使得前端开发在各种GUI工具间切换，使得发布环节<a style="color: rgb(17, 102, 153);">效率低下</a>。在前端工具逐渐命令行，一键式，自动化，集成编辑器的大趋势下，愈发显得效率低下和对前端开发者不友好。前端需要一套工具，灵活高效的处理在联调、测试、预发、发布、紧急Bugfix等各种场景下，对站点、项目、模块、组件的发布问题。</li>
+</ol>
+<p style="color: rgb(34, 34, 34); font-family: 'Microsoft Yahei', 'Hiragino Sans GB', 'Helvetica Neue', 'WenQuanYi Micro Hei', sans-serif; font-size: 13px; line-height: 22.100000381469727px; background-color: rgb(255, 255, 255);">以上问题在项目交接的场景中会更加容易犯错，以下是一个真实案例。</p>
+<blockquote style="border-left-width: 3px; border-left-style: solid; border-left-color: rgb(208, 229, 242); padding-left: 0.6em; line-height: 22px; vertical-align: baseline; color: rgb(34, 34, 34); font-family: 'Microsoft Yahei', 'Hiragino Sans GB', 'Helvetica Neue', 'WenQuanYi Micro Hei', sans-serif; font-size: 13px; background-color: rgb(255, 255, 255);">
+<p>开发者甲实现特性1修改了A文件并且提交到SVN。于此同时，开发者乙为了实现特性2同时修改了A、B两个文件，也提交到了SVN。由于工作安排变化，甲交接特性1给开发者丙，开发者丙从SVN更新整个应用代码，在本地继续特性1的bug修改(在不知道特性2其实也被加入进来的情况下)。上线时，开发者丙在RMS中，观察到文件B可能也需要被发布的情况下，由于被告知特性1仅与文件A有关，为了最小影响，选择只发布文件A上线。由于文件A依赖文件B，上线后出现故障。<br/>
+<img src="%E5%89%8D%E7%AB%AFAssets%E5%8F%91%E5%B8%83%E4%BD%93%E7%B3%BB%E4%BC%98%E5%8C%96%E6%96%B9%E6%A1%88.resources/3ea128bc4943cfacb4174f575cfe700b.png" height="611" width="673"/></p>
+</blockquote>
+<p style="color: rgb(34, 34, 34); font-family: 'Microsoft Yahei', 'Hiragino Sans GB', 'Helvetica Neue', 'WenQuanYi Micro Hei', sans-serif; font-size: 13px; line-height: 22.100000381469727px; background-color: rgb(255, 255, 255);">当然，如果使用了svn分支，这个问题也能避免。问题是，svn分支很不好用。</p>
+<div title="编辑此区域" style="float: right; white-space: nowrap; line-height: 1.4em; padding-left: 10px; font-size: 13px; color: rgb(34, 34, 34); font-family: 'Microsoft Yahei', 'Hiragino Sans GB', 'Helvetica Neue', 'WenQuanYi Micro Hei', sans-serif; background-color: rgb(255, 255, 255);"><a href="http://velocity.alibaba-inc.com/projects/f2e-tools/wiki/Assets_Publish/edit?section=4" style="color: rgb(17, 102, 153); text-decoration: none; opacity: 0.4;"><img src="%E5%89%8D%E7%AB%AFAssets%E5%8F%91%E5%B8%83%E4%BD%93%E7%B3%BB%E4%BC%98%E5%8C%96%E6%96%B9%E6%A1%88.resources/b3096acc7f3d938e9e36a984fd43957d.png" height="16" width="16"/></a></div>
+<a name="目标" style="color: rgb(17, 102, 153); font-family: 'Microsoft Yahei', 'Hiragino Sans GB', 'Helvetica Neue', 'WenQuanYi Micro Hei', sans-serif; font-size: 13px; line-height: 22.100000381469727px; background-color: rgb(255, 255, 255);"/>
+<h3 style="font-family: 'Trebuchet MS', Verdana, sans-serif; padding: 2px 10px 1px 0px; color: rgb(85, 85, 85); font-size: 13px; line-height: 22.100000381469727px; background-color: rgb(255, 255, 255);">目标</h3>
+<p style="color: rgb(34, 34, 34); font-family: 'Microsoft Yahei', 'Hiragino Sans GB', 'Helvetica Neue', 'WenQuanYi Micro Hei', sans-serif; font-size: 13px; line-height: 22.100000381469727px; background-color: rgb(255, 255, 255);">让前端Assets发布过程更加**安全**、高效。在解决所有现状问题的基础上，发布体系还应能够达成以下目标：</p>
+<ul style="color: rgb(34, 34, 34); font-family: 'Microsoft Yahei', 'Hiragino Sans GB', 'Helvetica Neue', 'WenQuanYi Micro Hei', sans-serif; font-size: 13px; line-height: 22.100000381469727px; background-color: rgb(255, 255, 255);">
+<li>一旦发布出现问题，前端能够快速回滚</li>
+<li>流畅的支持beta，灰度发布( 比目前更容易的)</li>
+<li>简化发布步骤，减少犯错的环节</li>
+</ul>
+<div title="编辑此区域" style="float: right; white-space: nowrap; line-height: 1.4em; padding-left: 10px; font-size: 13px; color: rgb(34, 34, 34); font-family: 'Microsoft Yahei', 'Hiragino Sans GB', 'Helvetica Neue', 'WenQuanYi Micro Hei', sans-serif; background-color: rgb(255, 255, 255);"><a href="http://velocity.alibaba-inc.com/projects/f2e-tools/wiki/Assets_Publish/edit?section=5" style="color: rgb(17, 102, 153); text-decoration: none; opacity: 0.4;"><img src="%E5%89%8D%E7%AB%AFAssets%E5%8F%91%E5%B8%83%E4%BD%93%E7%B3%BB%E4%BC%98%E5%8C%96%E6%96%B9%E6%A1%88.resources/b3096acc7f3d938e9e36a984fd43957d.png" height="16" width="16"/></a></div>
+<a name="解决方案总纲" style="color: rgb(17, 102, 153); font-family: 'Microsoft Yahei', 'Hiragino Sans GB', 'Helvetica Neue', 'WenQuanYi Micro Hei', sans-serif; font-size: 13px; line-height: 22.100000381469727px; background-color: rgb(255, 255, 255);"/>
+<h2 style="font-family: 'Trebuchet MS', Verdana, sans-serif; padding: 2px 10px 1px 0px; color: rgb(85, 85, 85); font-size: 16px; background-color: rgb(255, 255, 255);">解决方案总纲</h2>
+<div title="编辑此区域" style="float: right; white-space: nowrap; line-height: 1.4em; padding-left: 10px; font-size: 13px; color: rgb(34, 34, 34); font-family: 'Microsoft Yahei', 'Hiragino Sans GB', 'Helvetica Neue', 'WenQuanYi Micro Hei', sans-serif; background-color: rgb(255, 255, 255);"><a href="http://velocity.alibaba-inc.com/projects/f2e-tools/wiki/Assets_Publish/edit?section=6" style="color: rgb(17, 102, 153); text-decoration: none; opacity: 0.4;"><img src="%E5%89%8D%E7%AB%AFAssets%E5%8F%91%E5%B8%83%E4%BD%93%E7%B3%BB%E4%BC%98%E5%8C%96%E6%96%B9%E6%A1%88.resources/b3096acc7f3d938e9e36a984fd43957d.png" height="16" width="16"/></a></div>
+<a name="核心机制" style="color: rgb(17, 102, 153); font-family: 'Microsoft Yahei', 'Hiragino Sans GB', 'Helvetica Neue', 'WenQuanYi Micro Hei', sans-serif; font-size: 13px; line-height: 22.100000381469727px; background-color: rgb(255, 255, 255);"/>
+<h3 style="font-family: 'Trebuchet MS', Verdana, sans-serif; padding: 2px 10px 1px 0px; color: rgb(85, 85, 85); font-size: 13px; line-height: 22.100000381469727px; background-color: rgb(255, 255, 255);">核心机制</h3>
+<p style="color: rgb(34, 34, 34); font-family: 'Microsoft Yahei', 'Hiragino Sans GB', 'Helvetica Neue', 'WenQuanYi Micro Hei', sans-serif; font-size: 13px; line-height: 22.100000381469727px; background-color: rgb(255, 255, 255);">对于**业务应用开发**提供一种机制，使得发布的Assets**不覆盖线上代码**。基于这个机制，给每次发布的文件/模块/应用一个版本号/时间戳，保证文件名不与线上重名。一方面，前端代码有因为其容易被引用的特点，实际上已成为一种**一旦发布即永远存在**的服务。另一方面，这样做还能够带来以下好处：</p>
+<ol style="color: rgb(34, 34, 34); font-family: 'Microsoft Yahei', 'Hiragino Sans GB', 'Helvetica Neue', 'WenQuanYi Micro Hei', sans-serif; font-size: 13px; line-height: 22.100000381469727px; background-color: rgb(255, 255, 255);">
+<li>不覆盖线上文件，不会影响未知的引用模块/页面。</li>
+<li><strong>不再需要预发环境</strong>验证，简化产品发布流程，减少工作量的同时减少犯错。</li>
+<li>不用担心误发布。因为前端总是先发布。这样发布后还有一次机会做**真正的线上测试**。</li>
+</ol>
+<p style="color: rgb(34, 34, 34); font-family: 'Microsoft Yahei', 'Hiragino Sans GB', 'Helvetica Neue', 'WenQuanYi Micro Hei', sans-serif; font-size: 13px; line-height: 22.100000381469727px; background-color: rgb(255, 255, 255);">每个方案几乎都有两面性，这种机制是对**线上友好**的，却不是**开发友好**的。引入这种机制后，我们要思考以下3个问题：</p>
+<ol style="color: rgb(34, 34, 34); font-family: 'Microsoft Yahei', 'Hiragino Sans GB', 'Helvetica Neue', 'WenQuanYi Micro Hei', sans-serif; font-size: 13px; line-height: 22.100000381469727px; background-color: rgb(255, 255, 255);">
+<li>时间戳打在哪里？是文件还是目录？如果是目录，到哪一级目录？差别会很大。</li>
+<li>静态资源引用[<sup>1]的路径变更。静态资源引用的/文件名将会携带版本/时间戳信息，一旦产生一次发布，大量的引用路径变化会引入很多手工劳动。</sup></li>
+<li>动态资源引用[<sup>2]的路径变更。模块加载路径也会携带版本/时间戳信息。在发布时修改大量动态资源引用路径的会引入很多手工劳动，增加引入错误的概率。</sup></li>
+</ol>
+<p style="color: rgb(34, 34, 34); font-family: 'Microsoft Yahei', 'Hiragino Sans GB', 'Helvetica Neue', 'WenQuanYi Micro Hei', sans-serif; font-size: 13px; line-height: 22.100000381469727px; background-color: rgb(255, 255, 255);">基于**不覆盖线上代码**机制，同时又解决了因此机制带来的开发问题，才能是一个完整的最终方案。后续章节会对这几个问题展开叙述。</p>
+<p style="color: rgb(34, 34, 34); font-family: 'Microsoft Yahei', 'Hiragino Sans GB', 'Helvetica Neue', 'WenQuanYi Micro Hei', sans-serif; font-size: 13px; line-height: 22.100000381469727px; background-color: rgb(255, 255, 255);">对于**组件应用开发**，如kissy、zoojs应该提供覆盖发布的机制，放更多的权限。</p>
+<div title="编辑此区域" style="float: right; white-space: nowrap; line-height: 1.4em; padding-left: 10px; font-size: 13px; color: rgb(34, 34, 34); font-family: 'Microsoft Yahei', 'Hiragino Sans GB', 'Helvetica Neue', 'WenQuanYi Micro Hei', sans-serif; background-color: rgb(255, 255, 255);"><a href="http://velocity.alibaba-inc.com/projects/f2e-tools/wiki/Assets_Publish/edit?section=7" style="color: rgb(17, 102, 153); text-decoration: none; opacity: 0.4;"><img src="%E5%89%8D%E7%AB%AFAssets%E5%8F%91%E5%B8%83%E4%BD%93%E7%B3%BB%E4%BC%98%E5%8C%96%E6%96%B9%E6%A1%88.resources/b3096acc7f3d938e9e36a984fd43957d.png" height="16" width="16"/></a></div>
+<a name="辅助机制" style="color: rgb(17, 102, 153); font-family: 'Microsoft Yahei', 'Hiragino Sans GB', 'Helvetica Neue', 'WenQuanYi Micro Hei', sans-serif; font-size: 13px; line-height: 22.100000381469727px; background-color: rgb(255, 255, 255);"/>
+<h3 style="font-family: 'Trebuchet MS', Verdana, sans-serif; padding: 2px 10px 1px 0px; color: rgb(85, 85, 85); font-size: 13px; line-height: 22.100000381469727px; background-color: rgb(255, 255, 255);">辅助机制</h3>
+<p style="color: rgb(34, 34, 34); font-family: 'Microsoft Yahei', 'Hiragino Sans GB', 'Helvetica Neue', 'WenQuanYi Micro Hei', sans-serif; font-size: 13px; line-height: 22.100000381469727px; background-color: rgb(255, 255, 255);"><strong>从SVN转移到GIT</strong>，这是一个有助于全面提升效率的转变。首先这种转变对于解决<a href="http://velocity.alibaba-inc.com/projects/f2e-tools/wiki/Assets_Publish#issue1" style="color: rgb(17, 102, 153); text-decoration: none;">问题1</a>所提到的误发布有帮助；其次对于<a href="http://velocity.alibaba-inc.com/projects/f2e-tools/wiki/Assets_Publish#issue2" style="color: rgb(17, 102, 153); text-decoration: none;">问题2</a>的分支/主干式的发布方式有天然的良好适应性；最后，GIT的运行包提供了一个非常强大的命令行环境，对于<a href="http://velocity.alibaba-inc.com/projects/f2e-tools/wiki/Assets_Publish#issue3" style="color: rgb(17, 102, 153); text-decoration: none;">问题3</a>所提到的效率困境也有很大帮助。</p>
+<p style="color: rgb(34, 34, 34); font-family: 'Microsoft Yahei', 'Hiragino Sans GB', 'Helvetica Neue', 'WenQuanYi Micro Hei', sans-serif; font-size: 13px; line-height: 22.100000381469727px; background-color: rgb(255, 255, 255);">SVN的版本粒度是文件级，GIT的版本粒度是仓库级。GIT认为，版本管理的最小单位应该在仓库，项目在某个时刻的所有文件构成的“快照”体现了一个真正“版本”，因此，每个“版本”都应该保证自己是可工作的最小特性集合。这是GIT与SVN在版本管理哲学上的本质区别。这个重要的特性使得前面提到的项目交接的案例能够得以解决。</p>
+<p style="color: rgb(34, 34, 34); font-family: 'Microsoft Yahei', 'Hiragino Sans GB', 'Helvetica Neue', 'WenQuanYi Micro Hei', sans-serif; font-size: 13px; line-height: 22.100000381469727px; background-color: rgb(255, 255, 255);">GIT中，合并一个分支只需要0.01秒。高效强大的分支特性使得合并分支，和基于分支的开发成为一件愉悦的事情。在SVN中每当启动一个分支时都小心翼翼相比，GIT可以随时随意的开启、合并分支。</p>
+<p style="color: rgb(34, 34, 34); font-family: 'Microsoft Yahei', 'Hiragino Sans GB', 'Helvetica Neue', 'WenQuanYi Micro Hei', sans-serif; font-size: 13px; line-height: 22.100000381469727px; background-color: rgb(255, 255, 255);">在windows平台下GIT提供了全套命令行环境有助于提升前端的工具化程度，提高前端开发者为自己制造工具的可能性。</p>
+<p style="color: rgb(34, 34, 34); font-family: 'Microsoft Yahei', 'Hiragino Sans GB', 'Helvetica Neue', 'WenQuanYi Micro Hei', sans-serif; font-size: 13px; line-height: 22.100000381469727px; background-color: rgb(255, 255, 255);">关于GIT的其他强大之处请参考：<a href="http://ux.etao.net/git/whygitisbetter/#cheap-local-branching" style="color: rgb(17, 102, 153); text-decoration: none;">Why Git is better than X</a></p>
+<div title="编辑此区域" style="float: right; white-space: nowrap; line-height: 1.4em; padding-left: 10px; font-size: 13px; color: rgb(34, 34, 34); font-family: 'Microsoft Yahei', 'Hiragino Sans GB', 'Helvetica Neue', 'WenQuanYi Micro Hei', sans-serif; background-color: rgb(255, 255, 255);"><a href="http://velocity.alibaba-inc.com/projects/f2e-tools/wiki/Assets_Publish/edit?section=8" style="color: rgb(17, 102, 153); text-decoration: none; opacity: 0.4;"><img src="%E5%89%8D%E7%AB%AFAssets%E5%8F%91%E5%B8%83%E4%BD%93%E7%B3%BB%E4%BC%98%E5%8C%96%E6%96%B9%E6%A1%88.resources/b3096acc7f3d938e9e36a984fd43957d.png" height="16" width="16"/></a></div>
+<a name="现有淘系前端解决方案" style="color: rgb(17, 102, 153); font-family: 'Microsoft Yahei', 'Hiragino Sans GB', 'Helvetica Neue', 'WenQuanYi Micro Hei', sans-serif; font-size: 13px; line-height: 22.100000381469727px; background-color: rgb(255, 255, 255);"/>
+<h2 style="font-family: 'Trebuchet MS', Verdana, sans-serif; padding: 2px 10px 1px 0px; color: rgb(85, 85, 85); font-size: 16px; background-color: rgb(255, 255, 255);">现有淘系前端解决方案</h2>
+<p style="color: rgb(34, 34, 34); font-family: 'Microsoft Yahei', 'Hiragino Sans GB', 'Helvetica Neue', 'WenQuanYi Micro Hei', sans-serif; font-size: 13px; line-height: 22.100000381469727px; background-color: rgb(255, 255, 255);">目前集团各前端团队对发布环节都有所改进，目前了解到的，比较成体系的有4套</p>
+<ol style="color: rgb(34, 34, 34); font-family: 'Microsoft Yahei', 'Hiragino Sans GB', 'Helvetica Neue', 'WenQuanYi Micro Hei', sans-serif; font-size: 13px; line-height: 22.100000381469727px; background-color: rgb(255, 255, 255);">
+<li>ATT / <a href="http://wiki.ued.taobao.net/doku.php?id=team:b2c:f2e:assets:start" style="color: rgb(17, 102, 153); text-decoration: none;">TAP</a> <code style="white-space: pre-wrap; padding: 2px; border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; color: rgb(102, 102, 102); background-color: rgb(244, 244, 244); background-position: initial initial; background-repeat: initial initial;">天猫 @铁军 @仙羽</code></li>
+<li>templates_inc / <a href="http://velocity.alibaba-inc.com/issues/51" style="color: rgb(17, 102, 153); text-decoration: none;">彩虹桥(bifrost)</a> <code style="white-space: pre-wrap; padding: 2px; border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; color: rgb(102, 102, 102); background-color: rgb(244, 244, 244); background-position: initial initial; background-repeat: initial initial;">一淘 @阿大</code></li>
+<li>vmarket / <a href="http://gitlab.taobao.ali.com/hanwen.sah/rms-cli/tree/master" style="color: rgb(17, 102, 153); text-decoration: none;">rms-cli</a> <code style="white-space: pre-wrap; padding: 2px; border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; color: rgb(102, 102, 102); background-color: rgb(244, 244, 244); background-position: initial initial; background-repeat: initial initial;">淘宝 @瀚文</code></li>
+<li>Clam / <a href="http://gitlab.taobao.ali.com/jay.li/clam-tools/tree/master" style="color: rgb(17, 102, 153); text-decoration: none;">Clam-Tools</a> <code style="white-space: pre-wrap; padding: 2px; border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; color: rgb(102, 102, 102); background-color: rgb(244, 244, 244); background-position: initial initial; background-repeat: initial initial;">淘宝北京 @拔赤 @陶清</code></li>
+</ol>
+<p style="color: rgb(34, 34, 34); font-family: 'Microsoft Yahei', 'Hiragino Sans GB', 'Helvetica Neue', 'WenQuanYi Micro Hei', sans-serif; font-size: 13px; line-height: 22.100000381469727px; background-color: rgb(255, 255, 255);">这些方案里面，前面一个都是一个带有“构建”性质的工具，后一个是与之配合的发布工具。<br/>
+这些方案都不约而同的选择了用Git替代SVN，并且基于**不覆盖线上代码**的原则做了进一步设计。此处不再详述。以下描述各方案的本质区别。(目前尚不完整，后续补全)</p>
+<div title="编辑此区域" style="float: right; white-space: nowrap; line-height: 1.4em; padding-left: 10px; font-size: 13px; color: rgb(34, 34, 34); font-family: 'Microsoft Yahei', 'Hiragino Sans GB', 'Helvetica Neue', 'WenQuanYi Micro Hei', sans-serif; background-color: rgb(255, 255, 255);"><a href="http://velocity.alibaba-inc.com/projects/f2e-tools/wiki/Assets_Publish/edit?section=9" style="color: rgb(17, 102, 153); text-decoration: none; opacity: 0.4;"><img src="%E5%89%8D%E7%AB%AFAssets%E5%8F%91%E5%B8%83%E4%BD%93%E7%B3%BB%E4%BC%98%E5%8C%96%E6%96%B9%E6%A1%88.resources/b3096acc7f3d938e9e36a984fd43957d.png" height="16" width="16"/></a></div>
+<a name="时间戳的位置" style="color: rgb(17, 102, 153); font-family: 'Microsoft Yahei', 'Hiragino Sans GB', 'Helvetica Neue', 'WenQuanYi Micro Hei', sans-serif; font-size: 13px; line-height: 22.100000381469727px; background-color: rgb(255, 255, 255);"/>
+<h3 style="font-family: 'Trebuchet MS', Verdana, sans-serif; padding: 2px 10px 1px 0px; color: rgb(85, 85, 85); font-size: 13px; line-height: 22.100000381469727px; background-color: rgb(255, 255, 255);">时间戳的位置</h3>
+<p style="color: rgb(34, 34, 34); font-family: 'Microsoft Yahei', 'Hiragino Sans GB', 'Helvetica Neue', 'WenQuanYi Micro Hei', sans-serif; font-size: 13px; line-height: 22.100000381469727px; background-color: rgb(255, 255, 255);">经过3月下旬与各团队的沟通，总体来说，时间戳打在目录上被认为是一个更好的方案(如有异议，请反馈)。</p>
+<ul style="color: rgb(34, 34, 34); font-family: 'Microsoft Yahei', 'Hiragino Sans GB', 'Helvetica Neue', 'WenQuanYi Micro Hei', sans-serif; font-size: 13px; line-height: 22.100000381469727px; background-color: rgb(255, 255, 255);">
+<li>ATT / TAP方案：时间戳打在<a href="http://wiki.ued.taobao.net/doku.php?id=team:b2c:f2e:assets:intro#%E9%9D%99%E6%80%81%E5%BC%95%E7%94%A8" style="color: rgb(17, 102, 153); text-decoration: none;">最小包目录</a></li>
+<li>templates_inc / bifrost方案：时间戳打在应用目录[<sup>3]</sup></li>
+<li>Clam / Clam-Tool：时间戳打在应用目录[<sup>3]</sup></li>
+<li>rms-cli : 这个方案不关心时间戳问题，只是负责将文件夹内容通过rms发布到CDN</li>
+</ul>
+<div title="编辑此区域" style="float: right; white-space: nowrap; line-height: 1.4em; padding-left: 10px; font-size: 13px; color: rgb(34, 34, 34); font-family: 'Microsoft Yahei', 'Hiragino Sans GB', 'Helvetica Neue', 'WenQuanYi Micro Hei', sans-serif; background-color: rgb(255, 255, 255);"><a href="http://velocity.alibaba-inc.com/projects/f2e-tools/wiki/Assets_Publish/edit?section=10" style="color: rgb(17, 102, 153); text-decoration: none; opacity: 0.4;"><img src="%E5%89%8D%E7%AB%AFAssets%E5%8F%91%E5%B8%83%E4%BD%93%E7%B3%BB%E4%BC%98%E5%8C%96%E6%96%B9%E6%A1%88.resources/b3096acc7f3d938e9e36a984fd43957d.png" height="16" width="16"/></a></div>
+<a name="静态资源引用路径" style="color: rgb(17, 102, 153); font-family: 'Microsoft Yahei', 'Hiragino Sans GB', 'Helvetica Neue', 'WenQuanYi Micro Hei', sans-serif; font-size: 13px; line-height: 22.100000381469727px; background-color: rgb(255, 255, 255);"/>
+<h3 style="font-family: 'Trebuchet MS', Verdana, sans-serif; padding: 2px 10px 1px 0px; color: rgb(85, 85, 85); font-size: 13px; line-height: 22.100000381469727px; background-color: rgb(255, 255, 255);">静态资源引用路径</h3>
+<ul style="color: rgb(34, 34, 34); font-family: 'Microsoft Yahei', 'Hiragino Sans GB', 'Helvetica Neue', 'WenQuanYi Micro Hei', sans-serif; font-size: 13px; line-height: 22.100000381469727px; background-color: rgb(255, 255, 255);">
+<li>
+<p>templates_inc/bifrost方案：<br/>
+<br/>
+在templates_inc方案里，前端使用php写demo，不通过script或者link标签引入资源，而是通过自定义php函数引入资源。通过这个过程对开发者屏蔽了将要上线资源的版本信息。生成最终demo。</p>
+</li>
+<li>
+<p>ATT/TAP方案：<br/>
+<br/>
+在ATT/TAP方案里，前端直接通过vm来写demo，在后端模板中引入资源不是通过script或者link标签，而通过在VM模板中引入的函数<a href="http://wiki.ued.taobao.net/doku.php?id=team:b2c:f2e:assets:assetstool" style="color: rgb(17, 102, 153); text-decoration: none;">assestTool</a>来完成 ，在后端套页面过程中这个函数代理了资源引用的过程，能够做到开发时候对开发者友好，上线后对线上环境友好。</p>
+<p><img src="%E5%89%8D%E7%AB%AFAssets%E5%8F%91%E5%B8%83%E4%BD%93%E7%B3%BB%E4%BC%98%E5%8C%96%E6%96%B9%E6%A1%88.resources/b1a1e1d17f9eeb4355aa5c05a710fc4d.png" height="513" width="1379"/></p>
+<p>这个方案中，前端提供资源引用的配置数据。后端套页面环节通过约定的机制引用资源，最终使得前端开发者在开发环节不必关心发布后的版本信息。</p>
+</li>
+<li>
+<p>CLAM/Clam-Tool方案：<br/>
+<br/>
+在Clam-Tool方案里，前端使用自建基于nodejs的demo环境，基于纯HTML语法引入script和link。在构建阶段，引入的的script和link会最终转换为携带版本信息的真正链接。<br/>
+<img src="%E5%89%8D%E7%AB%AFAssets%E5%8F%91%E5%B8%83%E4%BD%93%E7%B3%BB%E4%BC%98%E5%8C%96%E6%96%B9%E6%A1%88.resources/ff26d9497e81f5a73893e77b6f816dde.png" height="465" width="756"/></p>
+</li>
+<li>
+<p>vmarket 方案：<br/>
+<br/>
+这个方案里，前端使用vm来写demo。不同于ATT方案的是，vmarket通过引入一个VM变量来标识资源引用的版本号。不需要构建环节就可以做到对线上环境友好。只是每次可能需要手动修改一个变量的值，成本与执行一个构建命令等同。</p>
+</li>
+</ul>
+<div title="编辑此区域" style="float: right; white-space: nowrap; line-height: 1.4em; padding-left: 10px; font-size: 13px; color: rgb(34, 34, 34); font-family: 'Microsoft Yahei', 'Hiragino Sans GB', 'Helvetica Neue', 'WenQuanYi Micro Hei', sans-serif; background-color: rgb(255, 255, 255);"><a href="http://velocity.alibaba-inc.com/projects/f2e-tools/wiki/Assets_Publish/edit?section=11" style="color: rgb(17, 102, 153); text-decoration: none; opacity: 0.4;"><img src="%E5%89%8D%E7%AB%AFAssets%E5%8F%91%E5%B8%83%E4%BD%93%E7%B3%BB%E4%BC%98%E5%8C%96%E6%96%B9%E6%A1%88.resources/b3096acc7f3d938e9e36a984fd43957d.png" height="16" width="16"/></a></div>
+<a name="动态资源引用路径" style="color: rgb(17, 102, 153); font-family: 'Microsoft Yahei', 'Hiragino Sans GB', 'Helvetica Neue', 'WenQuanYi Micro Hei', sans-serif; font-size: 13px; line-height: 22.100000381469727px; background-color: rgb(255, 255, 255);"/>
+<h3 style="font-family: 'Trebuchet MS', Verdana, sans-serif; padding: 2px 10px 1px 0px; color: rgb(85, 85, 85); font-size: 13px; line-height: 22.100000381469727px; background-color: rgb(255, 255, 255);">动态资源引用路径</h3>
+<ul style="color: rgb(34, 34, 34); font-family: 'Microsoft Yahei', 'Hiragino Sans GB', 'Helvetica Neue', 'WenQuanYi Micro Hei', sans-serif; font-size: 13px; line-height: 22.100000381469727px; background-color: rgb(255, 255, 255);">
+<li>
+<p>自动生成模块依赖配置：<br/>
+<br/>
+在这个方案里面，通过构建工具解析一定的数据格式，生成config(seed)文件。<br/>
+TAP方案:<br/>
+<br/>
+<img src="%E5%89%8D%E7%AB%AFAssets%E5%8F%91%E5%B8%83%E4%BD%93%E7%B3%BB%E4%BC%98%E5%8C%96%E6%96%B9%E6%A1%88.resources/8a3564c631427e580ef2acceff449ba4.png" height="486" width="543"/></p>
+</li>
+<li>
+<p>替换依赖配置变量：<br/>
+<br/>
+Clam通过在构建期遍历所有javascript文件，替换其中变量，达到修改动态资源引用路径的目的。这个过程是在构建时完成的。<br/>
+<img src="%E5%89%8D%E7%AB%AFAssets%E5%8F%91%E5%B8%83%E4%BD%93%E7%B3%BB%E4%BC%98%E5%8C%96%E6%96%B9%E6%A1%88.resources/ee7d40e5746a4748e3115b10e121ae85.png" height="561" width="733"/></p>
+</li>
+</ul>
+<div title="编辑此区域" style="float: right; white-space: nowrap; line-height: 1.4em; padding-left: 10px; font-size: 13px; color: rgb(34, 34, 34); font-family: 'Microsoft Yahei', 'Hiragino Sans GB', 'Helvetica Neue', 'WenQuanYi Micro Hei', sans-serif; background-color: rgb(255, 255, 255);"><a href="http://velocity.alibaba-inc.com/projects/f2e-tools/wiki/Assets_Publish/edit?section=12" style="color: rgb(17, 102, 153); text-decoration: none; opacity: 0.4;"><img src="%E5%89%8D%E7%AB%AFAssets%E5%8F%91%E5%B8%83%E4%BD%93%E7%B3%BB%E4%BC%98%E5%8C%96%E6%96%B9%E6%A1%88.resources/b3096acc7f3d938e9e36a984fd43957d.png" height="16" width="16"/></a></div>
+<a name="触发方式" style="color: rgb(17, 102, 153); font-family: 'Microsoft Yahei', 'Hiragino Sans GB', 'Helvetica Neue', 'WenQuanYi Micro Hei', sans-serif; font-size: 13px; line-height: 22.100000381469727px; background-color: rgb(255, 255, 255);"/>
+<h3 style="font-family: 'Trebuchet MS', Verdana, sans-serif; padding: 2px 10px 1px 0px; color: rgb(85, 85, 85); font-size: 13px; line-height: 22.100000381469727px; background-color: rgb(255, 255, 255);">触发方式</h3>
+<ul style="color: rgb(34, 34, 34); font-family: 'Microsoft Yahei', 'Hiragino Sans GB', 'Helvetica Neue', 'WenQuanYi Micro Hei', sans-serif; font-size: 13px; line-height: 22.100000381469727px; background-color: rgb(255, 255, 255);">
+<li>
+<p>本地hook式<br/>
+<br/>
+TAP、Clam-Tool、RMS-CLI都是此种方式。本地hook式的方式要求开发人员本机必须安装svn，工具将发布内容复制到svn目录中然后调用RMS接口发布。</p>
+</li>
+<li>
+<p>服务器hook式<br/>
+bifrost在Git仓库服务器上触发发布。服务器hook式的方式不要求开发人员本机安装svn，工具将在服务器通过svn发布。<br/>
+<img src="%E5%89%8D%E7%AB%AFAssets%E5%8F%91%E5%B8%83%E4%BD%93%E7%B3%BB%E4%BC%98%E5%8C%96%E6%96%B9%E6%A1%88.resources/9269776a3399688a6755da593340ebcf.png" height="436" width="625"/></p>
+</li>
+</ul>
+<div title="编辑此区域" style="float: right; white-space: nowrap; line-height: 1.4em; padding-left: 10px; font-size: 13px; color: rgb(34, 34, 34); font-family: 'Microsoft Yahei', 'Hiragino Sans GB', 'Helvetica Neue', 'WenQuanYi Micro Hei', sans-serif; background-color: rgb(255, 255, 255);"><a href="http://velocity.alibaba-inc.com/projects/f2e-tools/wiki/Assets_Publish/edit?section=13" style="color: rgb(17, 102, 153); text-decoration: none; opacity: 0.4;"><img src="%E5%89%8D%E7%AB%AFAssets%E5%8F%91%E5%B8%83%E4%BD%93%E7%B3%BB%E4%BC%98%E5%8C%96%E6%96%B9%E6%A1%88.resources/b3096acc7f3d938e9e36a984fd43957d.png" height="16" width="16"/></a></div>
+<a name="最终方案" style="color: rgb(17, 102, 153); font-family: 'Microsoft Yahei', 'Hiragino Sans GB', 'Helvetica Neue', 'WenQuanYi Micro Hei', sans-serif; font-size: 13px; line-height: 22.100000381469727px; background-color: rgb(255, 255, 255);"/>
+<h2 style="font-family: 'Trebuchet MS', Verdana, sans-serif; padding: 2px 10px 1px 0px; color: rgb(85, 85, 85); font-size: 16px; background-color: rgb(255, 255, 255);">最终方案</h2>
+<div title="编辑此区域" style="float: right; white-space: nowrap; line-height: 1.4em; padding-left: 10px; font-size: 13px; color: rgb(34, 34, 34); font-family: 'Microsoft Yahei', 'Hiragino Sans GB', 'Helvetica Neue', 'WenQuanYi Micro Hei', sans-serif; background-color: rgb(255, 255, 255);"><a href="http://velocity.alibaba-inc.com/projects/f2e-tools/wiki/Assets_Publish/edit?section=14" style="color: rgb(17, 102, 153); text-decoration: none; opacity: 0.4;"><img src="%E5%89%8D%E7%AB%AFAssets%E5%8F%91%E5%B8%83%E4%BD%93%E7%B3%BB%E4%BC%98%E5%8C%96%E6%96%B9%E6%A1%88.resources/b3096acc7f3d938e9e36a984fd43957d.png" height="16" width="16"/></a></div>
+<a name="原则" style="color: rgb(17, 102, 153); font-family: 'Microsoft Yahei', 'Hiragino Sans GB', 'Helvetica Neue', 'WenQuanYi Micro Hei', sans-serif; font-size: 13px; line-height: 22.100000381469727px; background-color: rgb(255, 255, 255);"/>
+<h3 style="font-family: 'Trebuchet MS', Verdana, sans-serif; padding: 2px 10px 1px 0px; color: rgb(85, 85, 85); font-size: 13px; line-height: 22.100000381469727px; background-color: rgb(255, 255, 255);">原则</h3>
+<ol style="color: rgb(34, 34, 34); font-family: 'Microsoft Yahei', 'Hiragino Sans GB', 'Helvetica Neue', 'WenQuanYi Micro Hei', sans-serif; font-size: 13px; line-height: 22.100000381469727px; background-color: rgb(255, 255, 255);">
+<li>
+<p>代码直接通过GitLab发布。通过GitLab发布的内容，在SVN将不可见。</p>
+<p><img src="%E5%89%8D%E7%AB%AFAssets%E5%8F%91%E5%B8%83%E4%BD%93%E7%B3%BB%E4%BC%98%E5%8C%96%E6%96%B9%E6%A1%88.resources/f90135eacee06a0f17ea86184e214de6.png" height="467" width="438"/></p>
+</li>
+<li>
+<p>将不影响在SVN维护的老代码，新项目启动逐步通过 GitLab做版本管理，慢慢废弃SVN。</p>
+</li>
+<li>
+<p>GitLab上，按照各前端团队的需求为各团队建立自己的Group。一个团队可以有多个 <strong>Group</strong>[<sup>4]。Group是受控的，由SCM团队统一管理。需要发布的Git仓库放在团队Group下。</sup></p>
+</li>
+<li>
+<p>每个需要发布的Git仓库需要在GitLab配置中中指定一个该仓库的发布路径，鼓励将demo和Assets放到同一个库中维护。发布时只发布构建目录。 <strong>开发时候对开发人员友好，上线后对线上环境友好</strong>。基于此思想，前端代码必然会存在两种型式，未来前端构建会越来越流行。</p>
+</li>
+<li>
+<p>在SCM的视角，重新理解**应用垂直化**的含义。前端代码有自己的仓库，构建后的ASSETS和模板成为对应用的输出，在应用的仓库中有一个路径存放或者前端代码干脆拆分出来。</p>
+</li>
+</ol>
+<div title="编辑此区域" style="float: right; white-space: nowrap; line-height: 1.4em; padding-left: 10px; font-size: 13px; color: rgb(34, 34, 34); font-family: 'Microsoft Yahei', 'Hiragino Sans GB', 'Helvetica Neue', 'WenQuanYi Micro Hei', sans-serif; background-color: rgb(255, 255, 255);"><a href="http://velocity.alibaba-inc.com/projects/f2e-tools/wiki/Assets_Publish/edit?section=15" style="color: rgb(17, 102, 153); text-decoration: none; opacity: 0.4;"><img src="%E5%89%8D%E7%AB%AFAssets%E5%8F%91%E5%B8%83%E4%BD%93%E7%B3%BB%E4%BC%98%E5%8C%96%E6%96%B9%E6%A1%88.resources/b3096acc7f3d938e9e36a984fd43957d.png" height="16" width="16"/></a></div>
+<a name="发布路径" style="color: rgb(17, 102, 153); font-family: 'Microsoft Yahei', 'Hiragino Sans GB', 'Helvetica Neue', 'WenQuanYi Micro Hei', sans-serif; font-size: 13px; line-height: 22.100000381469727px; background-color: rgb(255, 255, 255);"/>
+<h3 style="font-family: 'Trebuchet MS', Verdana, sans-serif; padding: 2px 10px 1px 0px; color: rgb(85, 85, 85); font-size: 13px; line-height: 22.100000381469727px; background-color: rgb(255, 255, 255);">发布路径</h3>
+<ul style="color: rgb(34, 34, 34); font-family: 'Microsoft Yahei', 'Hiragino Sans GB', 'Helvetica Neue', 'WenQuanYi Micro Hei', sans-serif; font-size: 13px; line-height: 22.100000381469727px; background-color: rgb(255, 255, 255);">
+<li>
+<p>业务级应用<br/>
+<br/>
+Git仓库的内容发布路径按照<a href="http://a.tbcdn.cn/g/%5BGroup%5D/%5BGit%E4%BB%93%E5%BA%93%5D/%5BTag%5D/%5B%E5%8F%91%E5%B8%83%E8%B7%AF%E5%BE%84%5D%E7%9A%84%E8%A7%84%E5%88%99%E5%8F%91%E5%B8%83%E3%80%82%E5%85%B6%E4%B8%AD%E2%80%9C%E5%8F%91%E5%B8%83%E8%B7%AF%E5%BE%84%E2%80%9D%E6%98%AF%E4%B8%80%E4%B8%AAGitlab%E6%96%B0%E5%A2%9E%E9%85%8D%E7%BD%AE%E9%A1%B9%E3%80%82" style="color: rgb(17, 102, 153); text-decoration: none;">http://a.tbcdn.cn/g/[Group]/[Git仓库]/[Tag]/[发布路径]的规则发布。其中“发布路径”是一个Gitlab新增配置项。</a></p>
+<p><img src="%E5%89%8D%E7%AB%AFAssets%E5%8F%91%E5%B8%83%E4%BD%93%E7%B3%BB%E4%BC%98%E5%8C%96%E6%96%B9%E6%A1%88.resources/2d37e9dc053c6f8148fd201dff614195.png" height="706" width="800"/></p>
+</li>
+<li>
+<p>组件级应用<br/>
+<br/>
+提供简单发布接口，不增加时间戳(Git Tag)路径，直接将组件发布到对应路径。这样做的原因是组件级开发，其发布路径也是对外接口的一部分，需要组件开发者完全掌握其最终发布路径。</p>
+<p>发布路径为：<a href="http://a.tbcdn.cn/g/%5BGroup%5D/%5BGit%E4%BB%93%E5%BA%93%5D/%5B%E5%8F%91%E5%B8%83%E8%B7%AF%E5%BE%84%5D" style="color: rgb(17, 102, 153); text-decoration: none;">http://a.tbcdn.cn/g/[Group]/[Git仓库]/[发布路径]</a></p>
+</li>
+</ul>
+<p style="color: rgb(34, 34, 34); font-family: 'Microsoft Yahei', 'Hiragino Sans GB', 'Helvetica Neue', 'WenQuanYi Micro Hei', sans-serif; font-size: 13px; line-height: 22.100000381469727px; background-color: rgb(255, 255, 255);">发布路径跟Git强行约定而非配置的原因如下：</p>
+<ol style="color: rgb(34, 34, 34); font-family: 'Microsoft Yahei', 'Hiragino Sans GB', 'Helvetica Neue', 'WenQuanYi Micro Hei', sans-serif; font-size: 13px; line-height: 22.100000381469727px; background-color: rgb(255, 255, 255);">
+<li>在团队内基于约定大于配置的思路，能够提高效率。</li>
+<li>通过GitLab的天然检查重复仓库的机制，保证仓库发布不会覆盖线上路径。</li>
+</ol>
+<div title="编辑此区域" style="float: right; white-space: nowrap; line-height: 1.4em; padding-left: 10px; font-size: 13px; color: rgb(34, 34, 34); font-family: 'Microsoft Yahei', 'Hiragino Sans GB', 'Helvetica Neue', 'WenQuanYi Micro Hei', sans-serif; background-color: rgb(255, 255, 255);"><a href="http://velocity.alibaba-inc.com/projects/f2e-tools/wiki/Assets_Publish/edit?section=16" style="color: rgb(17, 102, 153); text-decoration: none; opacity: 0.4;"><img src="%E5%89%8D%E7%AB%AFAssets%E5%8F%91%E5%B8%83%E4%BD%93%E7%B3%BB%E4%BC%98%E5%8C%96%E6%96%B9%E6%A1%88.resources/b3096acc7f3d938e9e36a984fd43957d.png" height="16" width="16"/></a></div>
+<a name="工作流" style="color: rgb(17, 102, 153); font-family: 'Microsoft Yahei', 'Hiragino Sans GB', 'Helvetica Neue', 'WenQuanYi Micro Hei', sans-serif; font-size: 13px; line-height: 22.100000381469727px; background-color: rgb(255, 255, 255);"/>
+<h3 style="font-family: 'Trebuchet MS', Verdana, sans-serif; padding: 2px 10px 1px 0px; color: rgb(85, 85, 85); font-size: 13px; line-height: 22.100000381469727px; background-color: rgb(255, 255, 255);">工作流</h3>
+<ol style="color: rgb(34, 34, 34); font-family: 'Microsoft Yahei', 'Hiragino Sans GB', 'Helvetica Neue', 'WenQuanYi Micro Hei', sans-serif; font-size: 13px; line-height: 22.100000381469727px; background-color: rgb(255, 255, 255);">
+<li>Git仓库中master分支没有权限直接push。所有的开发都在daily分支上进行。daily分支的命名为<code style="white-space: pre-wrap; padding: 2px; border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; color: rgb(102, 102, 102); background-color: rgb(244, 244, 244); background-position: initial initial; background-repeat: initial initial;">daily/x.y.z</code>，其中<code style="white-space: pre-wrap; padding: 2px; border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; color: rgb(102, 102, 102); background-color: rgb(244, 244, 244); background-position: initial initial; background-repeat: initial initial;">x.y.z</code>是以数字或者点符号组成的字符串，用来标记版本，如<code style="white-space: pre-wrap; padding: 2px; border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; color: rgb(102, 102, 102); background-color: rgb(244, 244, 244); background-position: initial initial; background-repeat: initial initial;">1.2.1</code> 、<code style="white-space: pre-wrap; padding: 2px; border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; color: rgb(102, 102, 102); background-color: rgb(244, 244, 244); background-position: initial initial; background-repeat: initial initial;">20130401</code>。</li>
+<li>每当开始一个项目，本地启动一个**daily/x.y.z**分支，在本地分支上进行开发。</li>
+<li>本地分支开发完成，需要发布到日常环境测试或者联调时，推送 dayly/x.y.z分支到gitlab。gitlab将通过hook将代码实时发布至日常环境。</li>
+<li>联调完成，通过测试，需要最终发布上线时，给 daily/x.y.z分支打标签(又叫做tag或者里程碑) publish/x.y.z。推送该标签到gitlab服务器，做一系列检查后，最后部署文件到CDN。一旦一个daily分支被发布。服务端将删除远程daily分支，并且拒绝再次被推送此版本号。这样做的目的是保证版本号不会重复发布。</li>
+<li>修改线上Bug时，需要重新拉出daily分支，并且以新的版本号发布。</li>
+</ol>
+<p style="color: rgb(34, 34, 34); font-family: 'Microsoft Yahei', 'Hiragino Sans GB', 'Helvetica Neue', 'WenQuanYi Micro Hei', sans-serif; font-size: 13px; line-height: 22.100000381469727px; background-color: rgb(255, 255, 255);">伴随工作流，Git分支情况如下图所示：<br/>
+<br/>
+<img src="%E5%89%8D%E7%AB%AFAssets%E5%8F%91%E5%B8%83%E4%BD%93%E7%B3%BB%E4%BC%98%E5%8C%96%E6%96%B9%E6%A1%88.resources/309695836910f2c77f2f77abe1d30cf4.png" height="338" width="753"/></p>
+<div title="编辑此区域" style="float: right; white-space: nowrap; line-height: 1.4em; padding-left: 10px; font-size: 13px; color: rgb(34, 34, 34); font-family: 'Microsoft Yahei', 'Hiragino Sans GB', 'Helvetica Neue', 'WenQuanYi Micro Hei', sans-serif; background-color: rgb(255, 255, 255);"><a href="http://velocity.alibaba-inc.com/projects/f2e-tools/wiki/Assets_Publish/edit?section=17" style="color: rgb(17, 102, 153); text-decoration: none; opacity: 0.4;"><img src="%E5%89%8D%E7%AB%AFAssets%E5%8F%91%E5%B8%83%E4%BD%93%E7%B3%BB%E4%BC%98%E5%8C%96%E6%96%B9%E6%A1%88.resources/b3096acc7f3d938e9e36a984fd43957d.png" height="16" width="16"/></a></div>
+<a name="影响" style="color: rgb(17, 102, 153); font-family: 'Microsoft Yahei', 'Hiragino Sans GB', 'Helvetica Neue', 'WenQuanYi Micro Hei', sans-serif; font-size: 13px; line-height: 22.100000381469727px; background-color: rgb(255, 255, 255);"/>
+<h3 style="font-family: 'Trebuchet MS', Verdana, sans-serif; padding: 2px 10px 1px 0px; color: rgb(85, 85, 85); font-size: 13px; line-height: 22.100000381469727px; background-color: rgb(255, 255, 255);">影响</h3>
+<p style="color: rgb(34, 34, 34); font-family: 'Microsoft Yahei', 'Hiragino Sans GB', 'Helvetica Neue', 'WenQuanYi Micro Hei', sans-serif; font-size: 13px; line-height: 22.100000381469727px; background-color: rgb(255, 255, 255);">新发布方案与现有方案最大的不同有两点。</p>
+<ol style="color: rgb(34, 34, 34); font-family: 'Microsoft Yahei', 'Hiragino Sans GB', 'Helvetica Neue', 'WenQuanYi Micro Hei', sans-serif; font-size: 13px; line-height: 22.100000381469727px; background-color: rgb(255, 255, 255);">
+<li>时间戳由发布系统强制增加。时间戳导致的Assets路径变更引入更多的工作量。各团队需要一个自己的构建系统或者其他方案妥善解决这个问题。</li>
+<li>需要转变项目组织思路。目前的发布是单个文件粒度，可以选择发布单个文件。转变到新方案后，发布的最小粒度是项目，一次发布即发布整个仓库(和Git的版本管理思路一脉相承的)。采用新方案后，应该更加细粒度，扁平化的组织仓库结构，将真正高内聚的一些页面和组件组织到一个项目中，对项目架构有一定要求。</li>
+</ol>
+<p style="color: rgb(34, 34, 34); font-family: 'Microsoft Yahei', 'Hiragino Sans GB', 'Helvetica Neue', 'WenQuanYi Micro Hei', sans-serif; font-size: 13px; line-height: 22.100000381469727px; background-color: rgb(255, 255, 255);">新方案基于整个仓库的发布、以及上线后还有一次机会做真正的线上测试，这些机制能够比较好的解决本文最初提到的极端案例。</p>
+<div title="编辑此区域" style="float: right; white-space: nowrap; line-height: 1.4em; padding-left: 10px; font-size: 13px; color: rgb(34, 34, 34); font-family: 'Microsoft Yahei', 'Hiragino Sans GB', 'Helvetica Neue', 'WenQuanYi Micro Hei', sans-serif; background-color: rgb(255, 255, 255);"><a href="http://velocity.alibaba-inc.com/projects/f2e-tools/wiki/Assets_Publish/edit?section=18" style="color: rgb(17, 102, 153); text-decoration: none; opacity: 0.4;"><img src="%E5%89%8D%E7%AB%AFAssets%E5%8F%91%E5%B8%83%E4%BD%93%E7%B3%BB%E4%BC%98%E5%8C%96%E6%96%B9%E6%A1%88.resources/b3096acc7f3d938e9e36a984fd43957d.png" height="16" width="16"/></a></div>
+<a name="给RMS和GitLab的包需求" style="color: rgb(17, 102, 153); font-family: 'Microsoft Yahei', 'Hiragino Sans GB', 'Helvetica Neue', 'WenQuanYi Micro Hei', sans-serif; font-size: 13px; line-height: 22.100000381469727px; background-color: rgb(255, 255, 255);"/>
+<h3 style="font-family: 'Trebuchet MS', Verdana, sans-serif; padding: 2px 10px 1px 0px; color: rgb(85, 85, 85); font-size: 13px; line-height: 22.100000381469727px; background-color: rgb(255, 255, 255);">给RMS和GitLab的包需求</h3>
+<ol style="color: rgb(34, 34, 34); font-family: 'Microsoft Yahei', 'Hiragino Sans GB', 'Helvetica Neue', 'WenQuanYi Micro Hei', sans-serif; font-size: 13px; line-height: 22.100000381469727px; background-color: rgb(255, 255, 255);">
+<li>GitLab后台系统中内部按照各前端团队规划，定义和管理Group名。Group的起名受限，保证Group名不会重复。在SCM管理系统中注册的Group名即为为保留字，普通用户在GitLab新创建Group时需要判断，不能以保留字作为Group名字。一旦一个Group在SCM系统中注册，即该Group被认为是“可发布的”。</li>
+<li>在GitLab后台管理系统中每个Group增加一个配置项---- “组件级应用”或者“业务级应用”。标识一个Git仓库是否组件级应用。组件级应用发布时候允许覆盖发布，不会在发布路径上增加Tag。</li>
+<li>在RMS中新增一个接口，可以不依赖svn直接发布。接口为一个post请求，通过zip包传递文件内容、发布路径两个参数即可发布。</li>
+<li>在RMS中新增一个接口，可以不依赖svn直接日常发布。接口同发布接口。</li>
+<li>在GitLab中为每个Git仓库增加一个配置项----“发布路径”。标识 一个Git仓库发布时的代码路径。</li>
+<li>任何人都没有master的权限。</li>
+<li>
+<p>在GitLab中增加服务端hook，发布内容到日常环境。如果一个分支以"daily/[x.y.z]"的形式被推送到Gitlab。则触发日常发布动作。</p>
+<ol>
+<li>如果Git仓库所在的Group被标记为“组件级应用”，则按照<a href="http://a.tbcdn.cn/g/%5BGroup%5D/%5B%E4%BB%93%E5%BA%93%E5%90%8D%5D/%5B%E5%8F%91%E5%B8%83%E8%B7%AF%E5%BE%84%5D" style="color: rgb(17, 102, 153); text-decoration: none;">http://a.tbcdn.cn/g/[Group]/[仓库名]/[发布路径]</a> 的形式作为最终路径发布。</li>
+<li>如果Git仓库所在的Group被标记为“业务级应用”，则按照<a href="http://a.tbcdn.cn/g/%5BGroup%5D/%5B%E4%BB%93%E5%BA%93%E5%90%8D%5D/%5B%E5%88%86%E6%94%AF%E5%90%8D%5D/%5B%E5%8F%91%E5%B8%83%E8%B7%AF%E5%BE%84%5D" style="color: rgb(17, 102, 153); text-decoration: none;">http://a.tbcdn.cn/g/[Group]/[仓库名]/[分支名]/[发布路径]</a> 的形式作为最终路径发布。其中，分支名为一个由数字和字符"."组成的字符串。</li>
+<li>日常环境统一发布到assetes.daily.taobao.net所在的服务器。</li>
+<li>时间戳检查。检查daily/xxxxxx分支检查是否存在对应的publish/xxxxxx标签。如果标签已经存在则说明这个时间戳曾经使用过,发布到日常失败，在git命令行返回中给出错误提示。该检查只在创建daily分支时生效。一旦一个daily分支被创建，此项检查跳过。</li>
+<li>时间戳检查。检查daily/xxxx是否比现有服务端所有daily分支更新，检查是否比所有publish标签更新。这样做是为了保证版本号是递增的。一旦一个daily分支被创建，此项检查跳过。</li>
+<li>与master分支合并。将master分支上的代码合并到daily/xxxxxx分支上。</li>
+<li>调用RMS接口，直接将内容发布到日常环境。</li>
+</ol>
+</li>
+<li>
+<p>在GitLab中增加服务端hook，正式发布内容到线上。如果一个tag"publish/[x.y.z]"被推送到Gitlab。则触发正式发布动作。</p>
+<ol>
+<li>如果Git仓库所在的Group被标记为“组件级应用”，则按照<a href="http://a.tbcdn.cn/g/%5BGroup%5D/%5B%E4%BB%93%E5%BA%93%E5%90%8D%5D/%5B%E5%8F%91%E5%B8%83%E8%B7%AF%E5%BE%84%5D" style="color: rgb(17, 102, 153); text-decoration: none;">http://a.tbcdn.cn/g/[Group]/[仓库名]/[发布路径]</a> 的形式作为最终路径发布。</li>
+<li>如果Git仓库所在的Group被标记为“业务级应用”，则按照<a href="http://a.tbcdn.cn/g/%5BGroup%5D/%5B%E4%BB%93%E5%BA%93%E5%90%8D%5D/%5Btag%E5%90%8D%5D/%5B%E5%8F%91%E5%B8%83%E8%B7%AF%E5%BE%84%5D" style="color: rgb(17, 102, 153); text-decoration: none;">http://a.tbcdn.cn/g/[Group]/[仓库名]/[tag名]/[发布路径]</a> 的形式作为最终路径发布。其中，分支名为一个由数字和字符"."组成的字符串。</li>
+<li>检查对应的daily分支。检查中央仓库中是否存在与当前标签时间戳对应的daily分支，如果没有则抛出错误。</li>
+<li>SHA1对比。检查当前标签的hash值是否和对应daily分支的hash值一致，不一致则抛出错误。这一步检查的目的是为了保证上线的代码和测试的代码是同一份代码。</li>
+<li>检测master分支上是否有新发布。如果有则抛出错误，提示开发者需要先合并master分支再发布。</li>
+<li>发布上线。调用RMS接口正式发布上线。</li>
+<li>归档。将成功发布上线的代码合并到master分支。</li>
+<li>更新清理中央仓库。将部署环境的master分支更新推送到中央仓库并删除中央仓库中当前标签对应的daily分支，防止中央仓库上分支泛滥。</li>
+</ol>
+</li>
+<li>
+<p><a href="http://%E7%94%B3%E8%AF%B7%E6%96%B0%E7%9A%84%E7%9A%84%E5%9F%9F%E5%90%8D%EF%BC%8Cg.tbcdn.cn%E3%80%82%E6%8C%87%E5%90%91a.tbcdn.cn/g%EF%BC%8C%E4%BB%A5%E7%AE%80%E5%8C%96%E5%89%8D%E7%AB%AF%E4%BB%A3%E7%A0%81%E5%86%97%E4%BD%99%E5%BA%A6%E3%80%82">申请新的的域名，g.tbcdn.cn。指向a.tbcdn.cn/g，以简化前端代码冗余度。</a></p>
+</li>
+</ol>
+<div title="编辑此区域" style="float: right; white-space: nowrap; line-height: 1.4em; padding-left: 10px; font-size: 13px; color: rgb(34, 34, 34); font-family: 'Microsoft Yahei', 'Hiragino Sans GB', 'Helvetica Neue', 'WenQuanYi Micro Hei', sans-serif; background-color: rgb(255, 255, 255);"><a href="http://velocity.alibaba-inc.com/projects/f2e-tools/wiki/Assets_Publish/edit?section=19" style="color: rgb(17, 102, 153); text-decoration: none; opacity: 0.4;"><img src="%E5%89%8D%E7%AB%AFAssets%E5%8F%91%E5%B8%83%E4%BD%93%E7%B3%BB%E4%BC%98%E5%8C%96%E6%96%B9%E6%A1%88.resources/b3096acc7f3d938e9e36a984fd43957d.png" height="16" width="16"/></a></div>
+<a name="概念引用" style="color: rgb(17, 102, 153); font-family: 'Microsoft Yahei', 'Hiragino Sans GB', 'Helvetica Neue', 'WenQuanYi Micro Hei', sans-serif; font-size: 13px; line-height: 22.100000381469727px; background-color: rgb(255, 255, 255);"/>
+<h1 style="font-family: 'Trebuchet MS', Verdana, sans-serif; padding: 2px 10px 1px 0px; font-size: 20px; color: rgb(85, 85, 85); background-color: rgb(255, 255, 255);">概念引用</h1>
+<ol style="color: rgb(34, 34, 34); font-family: 'Microsoft Yahei', 'Hiragino Sans GB', 'Helvetica Neue', 'WenQuanYi Micro Hei', sans-serif; font-size: 13px; line-height: 22.100000381469727px; background-color: rgb(255, 255, 255);">
+<li>
+<p>静态资源引用，泛指在静态HTML输出中通过script或者link标签引入的资源。</p>
+</li>
+<li>
+<p>动态资源引用，泛指通过script在页面运行期动态引入的script或者css资源。一般的，我们会比较多的使用Kissy**模块加载器**来动态引入资源。但是对于动态资源引用本质的认识，我们不应该局限于某种模块加载器的认知，被束缚于已知。</p>
+</li>
+<li>
+<p>应用目录，一个完整的前端应用，或其中一个相对独立的某一个业务场景。如：一个单页富应用或者业务耦合度较高，用户使用路径很近的一组页面</p>
+</li>
+<li>
+<p>在Gitlab上，为原生Git仓库增加的组织层级。是原生Git仓库的容器。约定术语为Group。 </p>
+</li>
+</ol>
+</body></html>

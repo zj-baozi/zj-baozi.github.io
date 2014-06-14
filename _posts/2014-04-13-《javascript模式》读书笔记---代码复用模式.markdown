@@ -229,7 +229,7 @@ function inherit(C,P){
 
 ```
 var  inherit = (function(){
-   var F = function(){};
+   
    return function(C,P){
        var F = function(){};
        F.prototype = P.prototype;
@@ -308,6 +308,7 @@ console.log(typeof kid.name);    //undefined ，只有原型是继承的
 var child = Object.create(parent);
 ```
 **Object.create()接受一个额外的参数，即一个对象。这个额外对象的属性将会被添加到新对象中，以此作为新对象自身的属性，然后Object.create()返回该新对象。这提供了很大的方便，仅采用一个方法调用即可实现继承并在此基础上构造子对象。**
+
 ```
 var child = Object.create(parent,{
 	age:{value:2}
@@ -421,6 +422,7 @@ function bind(o,m){
 **奢侈的拥有绑定所需要付出的代价就是额外闭包的开销。**
 ## Function.prototype.bind()
 **ES5中将bind()方法添加到Function.prototype，使得bind()就像apply()和call()一样简单易用。**
+
 ```
 if(typeof Function.prototype.bind === 'undefined'){
 	Function.prototype.bind = function(thisArg){

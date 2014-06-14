@@ -11,7 +11,9 @@
 
         <!-- Custom CSS -->
         <link rel="stylesheet" href="/css/main.css">
-
+        <!-- Google Analytics Start-->
+        <!--{% include google_analytics.ext %}-->
+        <!-- Google Analytics End -->
     </head>
     <body>
 
@@ -33,99 +35,68 @@
                 <div class="clearfix"></div>
             </header>
             <div id="content" class="inner">
-            <div id="main-col" class="alignleft">
-            <div id="wrapper">
-            <article class="post">
+                <div id="main-col" class="alignleft">
+                <div id="wrapper">
+                <article class="post">
+
+                    <div class="post-content">
+                        <header>
+                            <div class="icon"></div>
+                        </header>
+                        <div class="entry">
+
+                            {{ content }}
+                        </div>
+                        <footer>
+                            <div class="clearfix"></div>
+                        </footer>
+                    </div>
+                </article>
+
+                <!-- Duoshuo Comment BEGIN -->
+                <div class="ds-thread"></div>
+                <script type="text/javascript">
+                    var duoshuoQuery = {short_name:"zj-baozi"};
+                    (function() {
+                        var ds = document.createElement('script');
+                        ds.type = 'text/javascript';ds.async = true;
+                        ds.src = 'http://static.duoshuo.com/embed.js';
+                        ds.charset = 'UTF-8';
+                        (document.getElementsByTagName('head')[0]
+                                || document.getElementsByTagName('body')[0]).appendChild(ds);
+                    })();
+                </script>
+                <!-- Duoshuo Comment END -->
+                </div></div>
+                <aside id="sidebar" class="alignright">
+                    <div class="search">
+                        <form action="//google.com/search" method="get" accept-charset="utf-8">
+                            <input type="search" name="q" results="0" placeholder="搜索">
+                            <input type="hidden" name="q" value="site:zj-baozi.github.io">
+                        </form>
+                    </div>
 
 
+                    <div class="widget tag">
+                        {% include categories.ext %}
 
-            <div class="post-content">
-            <header>
-                <div class="icon"></div>
-            </header>
-            <div class="entry">
+                    </div>
+                    <div class="widget tag">
+                        <!--归挡-->
+                        {% include archives.ext %}
+                    </div>
+                    <!--<div class="widget tag">
+                        <h3 class="title">最新文章</h3>
+                        <ul class="entry">
+                            {% for post in site.posts %}
+                            <li><span>{{ post.date | date_to_string }}</span> &raquo; <a href="{{ post.url }}">{{ post.title }}</a></li>
+                            {% endfor %}
 
-                {{ content }}
-            </div>
-            <footer>
+                        </ul>
+                    </div>-->
 
-
-
-                <!-- <div class="categories">
-                   <a href="/categories/每周播报/">每周播报</a>
-                 </div>-->
-
-
-
-               <!-- <div class="tags">
-                    <a href="/tags/F2E Weekly/">{{ site.categories }}</a>
-                </div>-->
-
-
-
+                </aside>
                 <div class="clearfix"></div>
-            </footer>
-            </div>
-            </article>
-
-
-
-            <!-- Duoshuo Comment BEGIN -->
-            <div class="ds-thread"></div>
-            <script type="text/javascript">
-                var duoshuoQuery = {short_name:"zj-baozi"};
-                (function() {
-                    var ds = document.createElement('script');
-                    ds.type = 'text/javascript';ds.async = true;
-                    ds.src = 'http://static.duoshuo.com/embed.js';
-                    ds.charset = 'UTF-8';
-                    (document.getElementsByTagName('head')[0]
-                            || document.getElementsByTagName('body')[0]).appendChild(ds);
-                })();
-            </script>
-            <!-- Duoshuo Comment END -->
-            </div></div>
-            <aside id="sidebar" class="alignright">
-                <div class="search">
-                    <form action="//google.com/search" method="get" accept-charset="utf-8">
-                        <input type="search" name="q" results="0" placeholder="搜索">
-                        <input type="hidden" name="q" value="site:zj-baozi.github.io">
-                    </form>
-                </div>
-
-
-                <div class="widget tag">
-                    <h3 class="title">分类</h3>
-                    <ul class="entry">
-                        {% for post in site.posts %}
-
-                        <li><a href="{{ post.url }}">{{ post.categories }}</a></li>
-                        {% endfor %}
-                        <!--<li><a href="/categories/笔记/">笔记</a><small>1</small></li>
-
-                        <li><a href="/categories/翻译/">翻译</a><small>0</small></li>-->
-
-                    </ul>
-                </div>
-
-
-
-
-
-
-
-                <div class="widget tag">
-                    <h3 class="title">最新文章</h3>
-                    <ul class="entry">
-                        {% for post in site.posts %}
-                        <li><span>{{ post.date | date_to_string }}</span> &raquo; <a href="{{ post.url }}">{{ post.title }}</a></li>
-                        {% endfor %}
-
-                    </ul>
-                </div>
-
-            </aside>
-            <div class="clearfix"></div>
             </div>
 
 

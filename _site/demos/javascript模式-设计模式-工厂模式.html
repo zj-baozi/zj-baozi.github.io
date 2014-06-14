@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script>
+        function CarMaker() {
+        }
+        CarMaker.prototype.drive = function () {
+            return 'Vroom, I have ' + this.doors + 'doors';
+        };
+        CarMaker.factory = function (type) {
+            var constr = type,
+                    newcar;
+            //如果构造函数不存在，则发生错误
+            if (typeof CarMaker[constr] !== 'function') {
+                throw{
+                    name: 'Error',
+                    message: constr + "does't exist"
+                }
+            }
+            //在这里，构造函数是已知存在的
+            //我们使得原型继承父类，但仅继承一次
+            if(typeof CarMaker[constr].prototype.drive !== 'function'){
+                CarMaker[constr].prototype = new CarMaker();
+            }
+            //创建一个新的实例
+            newcar = new CarMaker[constr]();
+            //可选择性的调用一些方法然后返回...
+            return newcar;
+        };
+        //定义特定的汽车制造商
+        CarMaker.Compact = function(){
+            this.doors = 4;
+        };
+        CarMaker.Convertible = function(){
+            this.doors = 2;
+        };
+        CarMaker.SUV = function(){
+            this.doors = 24;
+        };
+
+
+        //使用
+        (function(){
+            var corolla = CarMaker.factory('Compact');
+            var solstice = CarMaker.factory('Convertible');
+            var cherokee = CarMaker.factory('SUV');
+            console.log(corolla.drive());
+            console.log(solstice.drive());
+            console.log();
+            cherokee.drive();
+        })();
+    </script>
+</head>
+<body>
+
+</body>
+</html>

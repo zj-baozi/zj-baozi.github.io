@@ -534,7 +534,18 @@ footer .addthis iframe {
     font-weight: normal;
     margin-bottom: 15px;
 }
-#pagination a {
+.pagination{
+    overflow:hidden;
+    margin-top:25px;
+    margin-left:250px;
+}
+.pagination p,.pagination ul,.pagination ul li{
+    margin-top:0;
+    margin-left:0;
+    display:inline;
+    float:left;
+}
+.pagination a ,.pagination span{
     display: block;
     padding: 5px 10px;
     background: #ddd;
@@ -543,22 +554,25 @@ footer .addthis iframe {
     text-shadow: 0 0 1px #fff;
     margin-bottom: 50px;
 }
-#pagination a:hover {
+.pagination .disabled span,.pagination .current-page{
+    background:none;
+}
+.pagination a:hover {
     background: #258fb8;
     color: #fff;
     text-decoration: none;
     text-shadow: none;
 }
-#pagination .prev:before {
+.pagination .prev:before {
     content: '\f053';
     padding-right: 10px;
     font-family: FontAwesome;
 }
-#pagination .next:after {
+/*.pagination .next:after {
     content: '\f054';
     padding-left: 10px;
     font-family: FontAwesome;
-}
+}*/
 .archive-title {
     color: #999;
     font-weight: normal;

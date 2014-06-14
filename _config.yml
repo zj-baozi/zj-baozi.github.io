@@ -1,7 +1,13 @@
 name: 前端记录
+safe: false
 markdown: redcarpet
 pygments: true
 tag_page_layout: tag_page
 tag_page_dir: tag
 tag_feed_layout: tag_feed
 tag_feed_dir: tag
+extensions: [tables]
+excerpt_separator: "\n\n\n"
+paginate: 5
+paginate_path: "page:num"
+
