@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>canvas</title>
+    <script>
+        function drawDiagonal(){
+            //取得canvas元素及其绘图上下文
+            var canvas = document.getElementById('canvas');
+            var context = canvas.getContext('2d');
+            //用绝对坐标来创建一条路径
+            context.beginPath();
+            context.moveTo(70,140);
+            context.lineTo(140,70);
+            //将这条线绘制到canvas上
+            context.stroke();
+
+        }
+        window.addEventListener('load',drawDiagonal,true);
+
+    </script>
+</head>
+<body>
+   <canvas id="canvas"></canvas>
+</body>
+</html>

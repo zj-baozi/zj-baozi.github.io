@@ -324,3 +324,29 @@ Array.isArray({
         </ul>
             </div>
 
+非读书笔记
+最近在做项目时无意中发现一个bug 
+~location.search.indexOf('ks-debug') 这句前面的“~”是什么意思？是想转换为boolean类型？
+那也应该是~~啊
+
+```
+var debug = ~location.search.indexOf('ks-debug');
+
+if (debug !== true) {...}
+
+```
+此bug已存在很久了，就算是两个~~也代表是转换为数字类型的boolean值，值为1或0
+
+**~~是一种利用符号进行类型转换，转换为数字类型的方式**
+
+```
+~~true == 1
+~~false == 0
+~~"" == 0
+~~[] == 0
+
+~~undefined ==0
+~~!undefined == 1
+~~null == 0
+~~!null == 1
+```

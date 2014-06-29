@@ -1,0 +1,852 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>about media query</title>
+        <meta name="viewport" content="width=device-width">
+
+        <!-- syntax highlighting CSS -->
+        <link rel="stylesheet" href="/css/syntax.css">
+
+        <!-- Custom CSS -->
+        <link rel="stylesheet" href="/css/main.css">
+        <!-- Google Analytics Start-->
+        <!--<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-48100787-1', 'zj-baozi.github.io');
+  ga('send', 'pageview');
+
+</script>
+-->
+        <!-- Google Analytics End -->
+    </head>
+    <body>
+
+        <div class="site">
+            <header id="header" class="inner"><div class="alignleft">
+                <h1><a href="/">前端记录</a></h1>
+                <h2><a href="/"></a></h2>
+            </div>
+                <nav id="main-nav" class="alignright">
+                    <ul>
+
+                        <li><a href="/">首页</a></li>
+
+                        <li><a href="/archives">所有文章</a></li>
+
+                    </ul>
+                    <div class="clearfix"></div>
+                </nav>
+                <div class="clearfix"></div>
+            </header>
+            <div id="content" class="inner">
+                <div id="main-col" class="alignleft">
+                <div id="wrapper">
+                <article class="post">
+
+                    <div class="post-content">
+                        <header>
+                            <div class="icon"></div>
+                        </header>
+                        <div class="entry">
+
+                            <p>HTML5在业界迅猛发展，移动终端的WEBAPP，手机游戏等已经如雨后春笋一般，遍地开花。什么地方可以使用，什么地方必须使用，如何用？本文旨在针对电子商务和门户网站的桌面用户，提供一个向上向下兼容的HTML5前端解决方案，实现优雅降级，渐进增强，利用HTML5的新生特性优化交互流程，提高用户体验。</p>
+
+<p>如果此时你还不太了解HTML5能做些什么，请花20分钟，看完GOOGLE的这个HTML5演示文稿。</p>
+
+<p>&lt;&lt;绝世秘籍之Html5&gt;&gt; 8-)当然，用GOOGLE的产品使用谷歌的浏览器才能获得最佳的体验</p>
+
+<p>项目代号：青蛙 （1.两栖动物，能在不同的环境生存 ；2.蝌蚪到青蛙的进化如同HTML4到HTML5演变）</p>
+
+<p>项目组主要成员：舒克，灵玉，完真，小扁</p>
+
+<p>SVN：http://svn.taobao-develop.com/repos/assets/beijing/dp/trunk/app/dp/s/html5</p>
+
+<p>技术拆分</p>
+
+<p>HTML5目前正在草案的拟定阶段，各大浏览器由于规范的不统一，实现不一致，如何让他们的表现近乎一致，我们先将Html5拆分为以下几个块 </p>
+
+<p>模块  目标  进度  负责人
+Html5模板 + 常用结构代码    给出通用HTML5模板和常用结构代码    60% 舒克
+渐进增强的CSS3 建立通用样式库，提供CSS3代码工具  30% 舒克/灵玉
+增强的HTML5表单    表单使用规范，降级方案   20% 灵玉
+图形  Canvas绘图库，曲线图，视觉特效  0%  小扁
+文件操作    提供出常用文件操作相关组件(文件拖拽，上传，预览) 0%  舒克
+本地存储+离线浏览   提供演示DEMO    0%  完真
+高级应用    提供WebWorkers WebSocket使用DEMO，沉淀   10% 完真
+应用场景</p>
+
+<p>HTML结构代码规范</p>
+
+<p>HTML5的兼容方案采用了Html5Shiv,并针对性的做了加强，嗅探器统一采用Mondernizr</p>
+
+<p>新增标签的兼容性解决方案 Html5shiv
+嗅探器 Modernizr
+页面统一模板</p>
+
+<p>&lt;!doctype html&gt;
+&lt;!--[if lt IE 7]&gt;<html class="no-js ie ie6 lte9 lte8 lte7"> &lt;![endif]--&gt;
+&lt;!--[if IE 7]&gt;<html class="no-js ie ie7 lte9 lte8 lte7"> &lt;![endif]--&gt;
+&lt;!--[if IE 8]&gt;<html class="no-js ie ie8 lte9 lte8"> &lt;![endif]--&gt;
+&lt;!--[if IE 9]&gt;<html class="no-js ie ie9 lte9"> &lt;![endif]--&gt;
+&lt;!--[if gt IE 9]&gt;<html class="no-js">&lt;![endif]--&gt;
+&lt;!--[if !IE]&gt;&lt;!--&gt;<html>&lt;!--&lt;![endif]--&gt;
+<head>
+    <meta charset="gbk">
+    <title>淘宝Html5模板</title>
+    <meta name="description" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    &lt;!-- 响应式设计代码 --&gt;
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <link type="image/x-icon" href="http://www.taobao.com/favicon.ico" rel="shortcut icon" />
+    &lt;!-- html5reset and css3 --&gt;
+    <link rel="stylesheet" href="http://a.tbcdn.cn/??p/global/1.0/global-min.css"/>
+    <link rel="stylesheet" href="http://a.tbcdn.cn/??app/dp/s/html5/css/common-min.css"/>
+    &lt;!--[if lt IE 9]&gt;<script src="http://a.tbcdn.cn/app/dp/s/html5/js/??html5shiv-min.js,modernizr-v2.5.3-min.js"></script>&lt;![endif]--&gt;
+    &lt;!--[if gte IE 9]&gt;&lt;!--&gt;<script src="http://a.tbcdn.cn/app/dp/s/html5/js/modernizr-v2.5.3-min.js"></script>&lt;!--&lt;![endif]--&gt;
+</head>
+<body>
+    <div class="page">
+       &lt;!-- 页头 begin --&gt;
+       <header class="header">
+          <h1>Logo</h1>
+          <nav class="nav">
+              <ul class="nav-list">
+                  <li class="nav-item has-trans"><a href="#">首页</a></li>
+                  <li class="nav-item has-trans"><a href="#">二级频道</a></li>
+                  <li class="nav-item has-trans selected"><a href="#">二级频道</a></li>
+                  <li class="nav-item has-trans"><a href="#">二级频道</a></li>
+                  <li class="nav-item has-trans"><a href="http://www.zhifubao.com">二级频道</a></li>
+              </ul>
+          </nav>
+       </header>
+       &lt;!-- 页头 end --&gt;
+       &lt;!-- 主体 begin --&gt;
+       <div class="content">
+           Content
+       </div>
+       &lt;!-- 主体 end --&gt;
+       &lt;!-- 页脚 begin --&gt;
+       <footer class="footer">
+           <p>页脚内容</p>
+       </footer>
+       &lt;!-- 页脚 end --&gt;
+    </div>
+</body>
+</html>
+html5实践头部代码VMCOMMON引用地址</p>
+
+<p>$control.setTemplate(&quot;vmcommon/p/3.0/html5/assets.vm&quot;)
+DEMO:http://a.tbcdn.cn/app/dp/s/html5/html5-template.html</p>
+
+<p>模块结构代码：</p>
+
+<p><section class="mod">
+    <header class="hd">
+        <h2>Module Title</h2>
+    </header>
+    <div class="bd">
+        Module Content
+    </div>
+    <footer class="ft"></footer>
+</section>
+<section class="mod">
+   ...
+</section></p>
+
+<p>h5tpl-boxleft-
+DEMO:http://a.tbcdn.cn/app/dp/s/html5/html5-demo.html
+合理使用符合语义的html5标签</p>
+
+<p>解除 section ,article ,div 标签的使用困惑 http://www.qianduan.net/html5-differences-in-the-div-section-article.html
+article标签不是每一个页面都必须出现，尤其集合页（频道首页等）,而主要应用在详情页（宝贝详情页，正文阅读页）,需要结合<header>标签使用.
+section标签主要用于具体模块的外层结构.
+div标签主要用于页面布局等无语意的结构代码</p>
+
+<p>渐进增强之CSS3</p>
+
+<p>随着浏览器的不断升级，新版浏览器对于CSS3的支持已经可以让我们放心大胆的使用，这里我们提供一些常用的类，并存放在common-min.css文件内，不需要自己重新书写CSS3代码便可以直接调用</p>
+
+<p>公用样式库</p>
+
+<p>我们在html5/css/common-min.css除了HTML5的reset之外，文件里面提供一些常用的渐进增强的公用样式</p>
+
+<p>给元素加上过渡动画效果 在改变width,height,left,top,opacity等属性时触发
+.has-trans {
+    -webkit-transition: all 0.3s ease-out;  /* Saf3.2+, Chrome <em>/
+    -moz-transition: all 0.3s ease-out;  /</em> FF4+ <em>/
+    -ms-transition: all 0.3s ease-out;  /</em> IE10 <em>/
+    -o-transition: all 0.3s ease-out;  /</em> Opera 10.5+ */
+    transition: all 0.3s ease-out;
+}
+更多特殊动画特效 http://a.tbcdn.cn/app/dp/s/html5/html5-demo.html
+CSS Gradient 渐变工具</p>
+
+<p>推荐学习 Mastering css3 gradients
+代码生成工具 http://www.colorzilla.com/gradient-editor/
+Form API 增强表单元素的应用</p>
+
+<p>FORM元素规范写法：写法演示
+基于HTML5表单验证 http://a.tbcdn.cn/app/dp/s/html5/html5forms/html5-forms-yui.html
+最新表单内容概述：
+输入类型    用途  注释
+tel 用于输入电话号码。 tel 不执行特定语法，因此如果您想确保特定的格式，可以使用 pattern 或 setCustomValidity() 执行额外的验证。
+search  用于提示用户输入要搜索的文字。   search 和 text 之间的区别主要在于样式上。使用 search 输入类型可能会导致输入字段的样式与平台的搜索字段相一致。
+url 用于输入单个网址。 url 用于输入单个表示很大范围值的绝对网址。
+email   用于输入单个电子邮件地址或电子邮件地址列表。  如果指定了 multiple 属性，就可以输入多个电子邮件地址，以逗号分隔。
+datetime    用于输入时区设置为 UTC 的日期和时间。<br>
+date    用于输入不含时区的日期。<br>
+month   用于输入含年份和月份但不含时区的日期。<br>
+week    用于输入含年份和周数但不含时区的日期。   例如，此格式的日期 2011-W05 表示 2011 年的第 5 周。
+time    用于输入含小时、分钟、秒和秒的小数部分但不含时区的时间值。 
+datetime-local  用于输入不含时区的日期和时间。<br>
+number  用于输入数字。   有效值为浮点数。
+特别注意：number的值在校验时，默认只允许整数，如果要让输入框支持小数输入，需要加 step=&quot;any&quot; ,关于step属性的其他介绍参考：http://blog.isotoma.com/2012/03/html5-input-typenumber-and-decimalsfloats-in-chrome/</p>
+
+<p>range   用于输入数字，但与 number 的区别在于无需输入具体数字。   在大部分支持该类型的浏览器中，范围控件的实施形式为滑块。
+color   用于通过颜色池控件选择颜色。  值必须为有效的小写简单颜色，例如 #ffffff。
+属性  用途  注释
+autofocus   用于在网页加载后对焦到相关元素上的输入。    autofocus 的目标可以是输入、选择、文本区域和按钮。
+placeholder 用于提示用户应输入的数据类型。   在对焦到相关元素以及用户输入数据之前，系统会以浅色文字显示占位符值。您可以在输入和文本区域中指定该值。
+form    用于指定输入元素所属的一或多个表单。  借助 form 属性，您可以将输入元素放在网页的任何位置上，而不是只能放在表单元素中。同时，单个输入元素可与多个表单关联。
+required    用于表示必填元素的布尔值属性。   required 属性有助于在不使用自定义 JavaScript 的情况下执行基于浏览器的验证。
+autocomplete    用于指定浏览器不应根据用户的历史记录自动填充或预先填充某个字段。    autocomplete 属性可用于信用卡号或一次性密码等您不想自动填充的字段。默认情况下，autocomplete 处于 on 状态，因此如果您想停用该属性，请将其设置为 off。
+pattern 用于根据正则表达式验证元素的值。    在使用 pattern 时，您也应指定 title 值，以便向用户提供预期模式的说明。
+dirname 用于随表单提交控件的方向。 例如，如果用户按从右到左的方向输入文本数据，且输入元素包含 dirname 属性，那么系统就会将指明从右到左方向的内容随输入值一起提交。
+novalidate  在表单元素上指定该属性即可停用表单提交验证。<br>
+formaction  用于覆盖表单元素上的 action 属性。 input 和 button 元素支持此属性。
+formenctype 用于覆盖表单元素上的 enctype 属性。    input 和 button 元素支持此属性。
+formmethod  用于覆盖表单元素上的 method 属性。 input 和 button 元素支持此属性。
+formnovalidate  用于覆盖表单元素上的 novalidate 属性。 input 和 button 元素支持此属性。
+formtarget  用于覆盖表单元素上的 target 属性。 input 和 button 元素支持此属性。
+更过内容参看：http://www.html5rocks.com/zh/tutorials/forms/html5forms/</p>
+
+<p>注意事项：
+HTML5 Form 的支持还非常差，并且一些 input type 的外观在各浏览器中表现不一致；把握 HTML5 Form 的关键是更注重的是功能和主义而非外观。枚举类 HTML 属性，如果没有给出特定的值，通常都会有一个默认的值。比如autocomplete, contenteditable。
+兼容性解法方案大多是用 JS 来实现表现上的模仿，用 CSS 实现外观的模仿；具体可参考js降级最佳方案：html5FormUI DEMO by YUI3。没有真正的解法方案。不过，值得注意的是，因为 Form 表单都采用了优雅降级的兼容方式，如果浏览器检测不到，默认会理解为 type=”text”。因此，我们强烈推荐使用html5form，比如：作用 placeholder 来做 input 的描述，使用 pattern 来做正测自己定义的属性，用 type=’email’ 这样的新 input 类型来做特定类型的标签。
+http://www.w3.org/TR/html5/forms.html#dom-form-checkvalidity
+CSS3 Style
+css3 border-radius
+.box_round {
+  -webkit-border-radius: 12px; /* Saf3-4, iOS 1-3.2, Android ≤1.6 <em>/
+     -moz-border-radius: 12px; /</em> FF1-3.6 <em>/
+          border-radius: 12px; /</em> Opera 10.5, IE9, Saf5, Chrome, FF4, iOS 4, Android 2.1+ */
+}
+兼容border-radius解决方案推荐使用VML(支持ie6/7/8)
+  var css = document.createStyleSheet();
+  css.addRule(&quot;v\:roundrect&quot;, &quot;behavior: url(#default#VML);display:inline-block;&quot;);
+  var rect = document.createElement(&quot;v:roundrect&quot;);
+  setAttribute(rect,{arcsize:&quot;20px&quot;,stroked:false,fillcolor:#000});
+  rect.css({width:&quot;20px&quot;,height:&quot;20px&quot;,antialias:true})
+css3 Style DEMO
+WebSocket介绍</p>
+
+<p>以下部分内容翻译自<a href="WebSocket%E5%8D%8F%E8%AE%AE">RFC 6455</a></p>
+
+<p>背景知识</p>
+
+<p>众所周知，创建一个web应用（比如即时消息和游戏应用）需要客户端和服务器之间进行双向通信，HTTP是一种基于消息(message)的请求(request )/应答(response)协议，客户端向服务器发送HTTP请求，然后服务器经过一系列处理之后向客户端发送响应消息。 
+所谓”上游（Upstream）”是指数据流方向来自一个单一的用户站点到一个中心网络。</p>
+
+<p>这会导致各种各样的问题出现：</p>
+
+<p>服务器被强制为每一个客户端使用不同的底层TCP连接：一个连接负责发送通知到客户端，另一个新的连接负责从客户端接收新的请求通知.
+对于每个客户端到服务器的HTTP header信息来说，使用单线通讯协议的开销是非常大的.
+客户端脚本被迫保持一个从向外发送连接一直到接收外部连接的跟踪回复过程的映射(mapping).
+WebSocket协议使用一个单独的TCP链接解决客户机和浏览器两端的通信问题，它与客户端WebSocket API结合起来提供了一个可以替代HTTP长连接的可供客户端和服务器之间进行双向通信的方法。</p>
+
+<p>它使用的安全模型为基于本地的常用浏览器的安全模型；
+该协议由架构在TCP协议之上的基于消息帧的开放握手协议构成；
+这项技术的目标是提供不依赖于需要打开多个http连接(比如使用XHR轮询或者使用iframe进行长连接)就能和服务器进行双向通信的基于浏览器的应用程序的机制。
+WebSocket协议试图达到的目标是：在现有HTTP协议的架构上解决现有HTTP双向通信的问题; 正因为如此，它被设计在HTTP端口80和端口443上工作，也同样支持HTTP代理和网络中间件,即使这意味着一些特定的基于当前环境的复杂性， 但是，设计不会将WebSocket限制在HTTP上，因为将来的实现方式可能会是使用一个基于特定端口的更简单的握手协议来重构整个WebSocket协议。 
+最后这一点很重要，因为网络交互的流量模式和标准HTTP流量并不匹配，并且包含了一些特定组件的负载。</p>
+
+<p>浏览器对WebSocket协议支持情况
+Hixie 75/76:</p>
+
+<p>Chrome 6.0
+Safari 5.0.2
+iOS 4.2
+Firefox 4.0 - 因为草案协议的安全问题，因此被屏蔽，需要在about:config中设置才能支持
+Opera 11 - 需要设置才能支持.
+HyBi-07+:</p>
+
+<p>Chrome 14.0
+Firefox 6.0 - prefixed: MozWebSocket
+IE9, IE10 - via downloadable Silverlight extension
+Hybi-10:</p>
+
+<p>Chrome 14
+Firefox 7+
+IE 10 (from Windows 8 developer preview)
+RFC 6455:</p>
+
+<p>Chrome 16
+Firefox11.0</p>
+
+<p>客户端API</p>
+
+<p>API参考:http://dev.w3.org/html5/websockets/</p>
+
+<p>API 描述
+WebSocket(url, protocols)    1. url: 要连接的地址 
+2. protocols: {String} 或者 {Array}。当是 {String} 的时候相当于数组中的值 [&#39;ws&#39;]；当是 {String} 的时候，表示一个协议集
+readyState   WebSocket 属性。表示 WebSocket 的状态
+bufferAmount     WebSocket 属性。返回 send() 排队队列中以 utf-8 编码文本的字节数
+send()   WebSocket 方法。使用 WebSocket 传输数据
+close()  WebSocket 方法。有下面几种情况：
+- 当 readyState 属性的状态是 CLOSING 或者 CLOSED，不做任何事 
+- 当 WebSocket 还没有建立链接。断掉链接，并把 readState 的状态设置为 CLOSING 
+- 当 WebSocket 还未进行关闭握手，开始关闭握手，并把 readState 的状态设置为 CLOSING 
+- 其他状态，把 readState 的状态设置为 CLOSING
+WebSocket 事件    描述
+onopen  当 readyState 状态为 OPEN 时触发
+onmessage   当 WebSocket 链接收到文本数据，客户端会创建一个 MessageEvent。触发些事件
+onerror 当 WebSocket 出现异常时触发
+onclose 当 WebSocket 已经关闭，客户端会通过 CloseEvent 创建一个 close 事件
+readyStat 状态码 message 描述
+0   CONNECTING   链接仍没有建立，连接中
+1   OPEN     建立 WebSocket 链接，可以进行交互
+2   CLOSING  正在进行关闭握手
+3   CLOSED   链接已经关闭，或者打不开
+浏览器端使用方法</p>
+
+<p>浏览器检测:</p>
+
+<p>var hasWebSockets = !!(window.WebSocket);</p>
+
+<p>1.创建WebSocket实例</p>
+
+<p>var socket = new WebSocket(&#39;ws://localhost:8080&#39;);
+需要注意的是，这里的URL不是以http开头，而是ws。因为我们使用的是WebSocket协议而不是普通的HTTP协议</p>
+
+<p>2.定义 Socket 打开时的回调方法</p>
+
+<p>socket.onopen = function(event) { 
+      // 向服务器发送消息
+      socket.send(&#39;Hello Server!&#39;); 
+   } </p>
+
+<p>3.定义消息接收回调方法</p>
+
+<p>socket.onmessage = function(event) { 
+     console.log(&#39;Got a message from server!&#39;);
+  }; 
+onmessage事件提供了data属性，它可以包含消息 Body部分，通过event.dat 可以取到。消息的 Body 部分必须是一个字符串，可以进行序列化/反序列化操作，以便传递更多的数据。</p>
+
+<p>4.Socket 关闭回调方法</p>
+
+<p>socket.onclose = function(event) { 
+     console.log(&#39;Client notified socket has closed&#39;, event); 
+  }; </p>
+
+<p>5.关闭 Socket 方法</p>
+
+<p>socket.close();
+服务器端协议概述</p>
+
+<p>该协议包含两部分：握手和数据交换</p>
+
+<p>客户端发送的握手请求如下：</p>
+
+<p>GET /chat HTTP/1.1 
+   Host: server.example.com 
+   Upgrade: websocket 
+   Connection: Upgrade 
+   Sec-WebSocket-Key: dGhlIHNh 
+   Origin: http://example.com 
+   Sec-WebSocket-Protocol: chat 
+   Sec-WebSocket-Version: 13 
+开放握手协议是为了兼容基于HTTP服务器端的软件和中间件，所以HTTP客户端和WebSocket客户端可以使用同一端口进行和服务器的通信。 因此WebSocket客户端的握手请求是一个”升级版(Upgrade)“的HTTP请求。 HTTP1.1协议规范中定义了客户端握手请求头中的字段是无序的，因此接收方收到的不同的请求头域的字段顺序是无意义的。
+GET方法中的Request-URI是被用来标识WebSocket连接的端点,允许一个IP发送至多个域， 也允许一个服务器上存在多个WebSocket端点.(注:端点endpoint 相当于一个URL地址 提供某种网络服务)</p>
+
+<p>客户端请求头的HOST字段包含了接收握手协议的主机名,因此使用任一方的主机，客户端和服务器端都可以互相验证它们是否同意握手.</p>
+
+<p>额外的头字段用于WebSocket协议选项，在该版本[RFC6455]中典型的选项是子协议字段(Sec-WebSocket-Protocol), 客户端支持列表中的扩展字段(Sec-WebSocket-Extension)、请求头中的Origin字段等等。 
+请求头中的Sec-WebSocket-Protocol可以用来标识哪一种子协议(WS协议在应用层)是能够被客户端支持的。 
+客户端发送的握手请求必须是有效地http request格式；服务器端返回的响应必须是有效地http响应状态格式.<a href="HTTP1.1%E5%8D%8F%E8%AE%AE">RFC2616</a>解释了这两种格式的定义；也可能会出现额外的头域字段。比如cookies。</p>
+
+<p>当客户端和服务器端都发送了各自的握手连接后，如果连接成功，就开始进行数据传输。这是一个双向通信的过程，每方都可以向另一方独立发送数据。 握手成功之后，客户端和服务器端互相传输数据单元，数据单元的即是在本规范中被称为”消息”的概念。 在单线通讯协议中，一条消息是由一个或多个帧构成。 WebSocket的消息并不一定对应于一个特定的网络层帧,有可能会被某些网络中间件合并或拆分成为一条消息片段</p>
+
+<p>每个帧都有一个关联的类型.属于同一消息的每个帧包含相同的数据类型。 从广义上讲,有文本数据类型(在[RFC3629]中被解释为UTF-8文本)、二进制数据(被用于应用程序)、还有控制封包(不承载应用程序的数据，而是协议级信令，比如”应该关闭连接的信号”)。 该版本协议定义了六种帧类型，还有十种保留类型以便将来使用</p>
+
+<p>服务器端发送的握手响应如下：</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">HTTP/1.1 101 Switching Protocols 
+Upgrade: websocket 
+Connection: Upgrade 
+Sec-WebSocket-Accept: s3pPLMBiTxaQ9kYGzzhZRbK+xOo= 
+Sec-WebSocket-Protocol: chat 
+</code></pre></div>
+<p>服务器端的握手连接比客户端的要简单许多. 第一行是HTTP状态和相应状态码(101:服务器遵从客户的请求转换到另外一种协议)</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">HTTP/1.1 101 Switching Protocols 
+</code></pre></div>
+<p>其他超过101的状态码表示WebSocket握手未完成，但是HTTP语义依然适用，header遵循其状态码而定</p>
+
+<p>-Connection和Upgrade字段表示完成了HTTP协议更新 
+-Sec-WebSocket-Accept表明服务器端是否愿意接受连接；如果该值存在，该字段必须发送包含客户端Sec-WebSocket-Key字段和一个预定义的GUID的哈希值；任何其他值都不能被解释为接受服务器连接</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">HTTP/1.1 101 Switching Protocols 
+Upgrade: websocket 
+Connection: Upgrade 
+Sec-WebSocket-Accept: s3pPLMBiTxaQ9kYGzzhZRbK+xOo= 
+</code></pre></div>
+<p>这些值被客户端的WebSocket页面脚本检查，如果Sec-WebSocket-Accept的值和预期值不匹配，或者响应头有字段缺失，或者HTTP状态码不是101，握手连接将不会被监听,并且WebSocket消息帧也不会被发送。
+服务器端响应算法 
+为了证明收到握手请求,服务器端必须将两部分信息组合起来构成发送响应。 第一部分来自客户端握手请求头中的Sec-WebSocket-Key字段:</p>
+
+<p>Sec-WebSocket-Key: dGhlIHNhbXBsZSBub25jZQ==
+对于该字段,服务器需要获取到请求头中该字段的值(其值采用base64编码的随机16字节长的字符序列，前后无空格。 然后将GUID为”258EAFA5-E914-47DA-95CA-C5AB0DC85B11”加在该获取到的Sec-WebSocket-Key值后面，用来防止网络端点的请求确实是Websocket协议而不是其他的(比如http等等) 然后拿这个字符串做SHA-1 hash计算，然后再把得到的结果通过base64加密，就得到了返回给客户端的值。</p>
+
+<p>用上面的例子具体来说， Sec-WebSocket-Key字段的值为dGhlIHNhbXBsZSBub25jZQ==, 服务器端将GUID和该值相加形成一个字符串dGhlIHNhbXBsZSBub25jZQ==258EAFA5-E914-47DA-95CAC5AB0DC85B11 然后服务器端将该字符串进行SHA-1 hash计算，得到如下值：</p>
+
+<p>0xb3 0x7a 0x4f 0x2c 0xc0 0x62 0x4f 0x16 0x90 0xf6
+  0x46 0x06 0xcf 0x38 0x59 0x45 0xb2 0xbe 0xc4 0xea
+然后对该字符串做base64加密计算，得到的字符串s3pPLMBiTxaQ9kYGzzhZRbK+xOo=就是返回给客户端的Sec-WebSocket-Accept响应头的值。
+由于RFC6455规范的定稿时间较晚，因此服务器端和浏览器的支持情况并不好，推荐使用Node.js或者nginx附加模块实现服务器端的WebSocket协议；浏览器可以使用最新版的Chrome16进行实例的编写。:-D</p>
+
+<p>HTML5最新技术资讯</p>
+
+<p>第一期 20100215
+第二期 .....
+相关资源</p>
+
+<p>文档翻阅
+HTML5草案:www.w3.org/TR/html5
+HTML5中文手册：http://www.html5china.com/manual/html5/
+专注HTML5语义化标签HTML5Doctor:html5doctor.com
+HTML5开发者文档:developers.whatwg.org
+浏览器兼容性 a.表单输入元素兼容性 b.HTML5 &amp; CSS3 Support
+Mozilla Developer Network : HTML5
+A List Apart : HTML5 Topics
+CSS3.info
+Top Ten CSS3 Techniques
+自我提升
+GOOGLE 官方HTML5训练营:www.html5rocks.com
+Adobe Developer推出HTML5+CSS3最新特性展示 http://beta.theexpressiveweb.com/</p>
+
+                        </div>
+                        <footer>
+                            <div class="clearfix"></div>
+                        </footer>
+                    </div>
+                </article>
+
+                <!-- Duoshuo Comment BEGIN -->
+                <div class="ds-thread"></div>
+                <script type="text/javascript">
+                    var duoshuoQuery = {short_name:"zj-baozi"};
+                    (function() {
+                        var ds = document.createElement('script');
+                        ds.type = 'text/javascript';ds.async = true;
+                        ds.src = 'http://static.duoshuo.com/embed.js';
+                        ds.charset = 'UTF-8';
+                        (document.getElementsByTagName('head')[0]
+                                || document.getElementsByTagName('body')[0]).appendChild(ds);
+                    })();
+                </script>
+                <!-- Duoshuo Comment END -->
+                </div></div>
+                <aside id="sidebar" class="alignright">
+                    <div class="search">
+                        <form action="//google.com/search" method="get" accept-charset="utf-8">
+                            <input type="search" name="q" results="0" placeholder="搜索">
+                            <input type="hidden" name="q" value="site:zj-baozi.github.io">
+                        </form>
+                    </div>
+
+
+                    <div class="widget tag">
+                        <h3 class="title"> 分类 </h3>
+  <ul class="entry">
+      
+            
+                <li>
+                <a href="/categories/工具"> 工具 (1) </a>
+                </li>
+            
+      
+            
+                <li>
+                <a href="/categories/笔记"> 笔记 (13) </a>
+                </li>
+            
+      
+            
+                <li>
+                <a href="/categories/javascript基础"> javascript基础 (8) </a>
+                </li>
+            
+      
+            
+                <li>
+                <a href="/categories/转载"> 转载 (9) </a>
+                </li>
+            
+      
+            
+                <li>
+                <a href="/categories/jekyll"> jekyll (2) </a>
+                </li>
+            
+      
+            
+                <li>
+                <a href="/categories/javascript模式"> javascript模式 (5) </a>
+                </li>
+            
+      
+            
+                <li>
+                <a href="/categories/javascript设计模式"> javascript设计模式 (6) </a>
+                </li>
+            
+      
+            
+                <li>
+                <a href="/categories/javasript设计模式"> javasript设计模式 (1) </a>
+                </li>
+            
+      
+            
+                <li>
+                <a href="/categories/html5高级程序设计"> html5高级程序设计 (1) </a>
+                </li>
+            
+      
+            
+                <li>
+                <a href="/categories/javascript模式 设计模式"> javascript模式 设计模式 (1) </a>
+                </li>
+            
+      
+            
+                <li>
+                <a href="/categories/响应式 笔记"> 响应式 笔记 (2) </a>
+                </li>
+            
+      
+            
+                <li style="background-color: #444">
+                <a href="/categories/html5 跨终端"> html5 跨终端 (1) </a>
+                </li>
+            
+      
+            
+                <li>
+                <a href="/categories/viewport 跨终端"> viewport 跨终端 (1) </a>
+                </li>
+            
+      
+            
+                <li>
+                <a href="/categories/html5"> html5 (1) </a>
+                </li>
+            
+      
+  </ul>
+
+
+                    </div>
+                    <div class="widget tag">
+                        <!--归挡-->
+                        <h3 class="title"> 归档 </h3>
+  <ul class="entry">
+    
+    
+    
+        
+        
+        
+        
+    
+        
+        
+        
+        
+    
+        
+        
+        
+        
+    
+        
+        
+        
+        
+    
+        
+        
+        
+        
+            
+            <li>
+                <a href="/2014/06">
+                    2014-06 (5)
+                </a>
+            </li>
+
+        
+        
+    
+        
+        
+        
+        
+    
+        
+        
+        
+        
+    
+        
+        
+        
+        
+    
+        
+        
+        
+        
+    
+        
+        
+        
+        
+    
+        
+        
+        
+        
+    
+        
+        
+        
+        
+    
+        
+        
+        
+        
+    
+        
+        
+        
+        
+    
+        
+        
+        
+        
+    
+        
+        
+        
+        
+    
+        
+        
+        
+        
+            
+            <li>
+                <a href="/2014/05">
+                    2014-05 (12)
+                </a>
+            </li>
+
+        
+        
+    
+        
+        
+        
+        
+    
+        
+        
+        
+        
+    
+        
+        
+        
+        
+    
+        
+        
+        
+        
+    
+        
+        
+        
+        
+    
+        
+        
+        
+        
+    
+        
+        
+        
+        
+            
+            <li>
+                <a href="/2014/04">
+                    2014-04 (7)
+                </a>
+            </li>
+
+        
+        
+    
+        
+        
+        
+        
+    
+        
+        
+        
+        
+    
+        
+        
+        
+        
+    
+        
+        
+        
+        
+    
+        
+        
+        
+        
+            
+            <li>
+                <a href="/2014/03">
+                    2014-03 (5)
+                </a>
+            </li>
+
+        
+        
+    
+        
+        
+        
+        
+            
+            <li>
+                <a href="/2013/10">
+                    2013-10 (1)
+                </a>
+            </li>
+
+        
+        
+    
+  </ul>
+
+                    </div>
+                    <!--<div class="widget tag">
+                        <h3 class="title">最新文章</h3>
+                        <ul class="entry">
+                            
+                            <li><span>26 Jun 2014</span> &raquo; <a href="/html5/2014/06/26/html5%20Geolocation.html">about media query</a></li>
+                            
+                            <li><span>21 Jun 2014</span> &raquo; <a href="/viewport%20%E8%B7%A8%E7%BB%88%E7%AB%AF/2014/06/21/viewport%E7%AC%94%E8%AE%B0.html">about media query</a></li>
+                            
+                            <li><span>21 Jun 2014</span> &raquo; <a href="/html5%20%E8%B7%A8%E7%BB%88%E7%AB%AF/2014/06/21/html5%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5.html">about media query</a></li>
+                            
+                            <li><span>19 Jun 2014</span> &raquo; <a href="/%E5%93%8D%E5%BA%94%E5%BC%8F%20%E7%AC%94%E8%AE%B0/2014/06/19/media%20query%E7%AC%94%E8%AE%B0.html">media query笔记</a></li>
+                            
+                            <li><span>19 Jun 2014</span> &raquo; <a href="/%E5%93%8D%E5%BA%94%E5%BC%8F%20%E7%AC%94%E8%AE%B0/2014/06/19/about-media%20query.html">about media query</a></li>
+                            
+                            <li><span>25 May 2014</span> &raquo; <a href="/%E8%BD%AC%E8%BD%BD/javascript%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/2014/05/25/%E5%A4%8D%E6%9D%82%E8%A1%A8%E5%8D%95%E5%BA%94%E7%94%A8%E8%A7%A3%E8%80%A6%EF%BC%8C%E6%B7%98%E5%AE%9D%E6%9C%BA%E7%A5%A8%E8%AE%A2%E5%8D%95%E5%AE%9E%E8%B7%B5.html">复杂表单应用解耦，淘宝机票订单实践</a></li>
+                            
+                            <li><span>25 May 2014</span> &raquo; <a href="/%E8%BD%AC%E8%BD%BD/jekyll/2014/05/25/%E4%BD%BF%E7%94%A8%20GitHub,%20Jekyll%20%E6%89%93%E9%80%A0%E8%87%AA%E5%B7%B1%E7%9A%84%E5%85%8D%E8%B4%B9%E7%8B%AC%E7%AB%8B%E5%8D%9A%E5%AE%A2.html">使用 GitHub, Jekyll 打造自己的免费独立博客</a></li>
+                            
+                            <li><span>25 May 2014</span> &raquo; <a href="/javascript%E6%A8%A1%E5%BC%8F%20%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/2014/05/25/%E3%80%8Ajavascript%E6%A8%A1%E5%BC%8F%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0---.html">《javascript模式》读书笔记---设计模式-代理模式</a></li>
+                            
+                            <li><span>25 May 2014</span> &raquo; <a href="/%E7%AC%94%E8%AE%B0/html5%E9%AB%98%E7%BA%A7%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/2014/05/25/%E3%80%8Ahtml5%E9%AB%98%E7%BA%A7%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E3%80%8Bcanvas.html">canvas</a></li>
+                            
+                            <li><span>25 May 2014</span> &raquo; <a href="/%E7%AC%94%E8%AE%B0/javascript%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/2014/05/25/%E3%80%8Ajavascript%E6%A8%A1%E5%BC%8F%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0---%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E5%A4%96%E8%A7%82%E6%A8%A1%E5%BC%8F.html">《javascript模式》读书笔记---设计模式-外观模式</a></li>
+                            
+                            <li><span>24 May 2014</span> &raquo; <a href="/%E7%AC%94%E8%AE%B0/javascript%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/2014/05/24/%E3%80%8Ajavascript%E6%A8%A1%E5%BC%8F%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0---%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E8%BF%AD%E4%BB%A3%E5%99%A8%E6%A8%A1%E5%BC%8F.html">《javascript模式》读书笔记---设计模式-迭代器模式</a></li>
+                            
+                            <li><span>24 May 2014</span> &raquo; <a href="/%E7%AC%94%E8%AE%B0/javascript%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/2014/05/24/%E3%80%8Ajavascript%E6%A8%A1%E5%BC%8F%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0---%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E8%A3%85%E9%A5%B0%E8%80%85%E6%A8%A1%E5%BC%8F.html">《javascript模式》读书笔记---设计模式-装饰者模式</a></li>
+                            
+                            <li><span>20 May 2014</span> &raquo; <a href="/%E7%AC%94%E8%AE%B0/javascript%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/2014/05/20/%E3%80%8Ajavascript%E6%A8%A1%E5%BC%8F%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0---%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F.html">《javascript模式》读书笔记---设计模式-工厂模式</a></li>
+                            
+                            <li><span>20 May 2014</span> &raquo; <a href="/%E7%AC%94%E8%AE%B0/javasript%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/2014/05/20/%E3%80%8Ajavascript%E6%A8%A1%E5%BC%8F%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0---%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E4%BD%BF%E7%94%A8new%E6%93%8D%E4%BD%9C%E7%AC%A6.html">《javascript模式》读书笔记---设计模式-使用new操作符</a></li>
+                            
+                            <li><span>11 May 2014</span> &raquo; <a href="/%E8%BD%AC%E8%BD%BD/javascript%E5%9F%BA%E7%A1%80/2014/05/11/cookie.html">JavaScript 操作 Cookie</a></li>
+                            
+                            <li><span>11 May 2014</span> &raquo; <a href="/%E8%BD%AC%E8%BD%BD/javascript%E5%9F%BA%E7%A1%80/2014/05/11/arguments%E8%BD%AC%E6%8D%A2%E4%B8%BA%E6%95%B0%E7%BB%84.html">arguments转换为数组</a></li>
+                            
+                            <li><span>10 May 2014</span> &raquo; <a href="/%E8%BD%AC%E8%BD%BD/javascript%E5%9F%BA%E7%A1%80/2014/05/10/escape,encodeURI,encodeURIComponent%E7%9A%84%E5%8C%BA%E5%88%AB.html">escape,encodeURI和encodeURIComponent的区别</a></li>
+                            
+                            <li><span>20 Apr 2014</span> &raquo; <a href="/%E7%AC%94%E8%AE%B0/javascript%E6%A8%A1%E5%BC%8F/2014/04/20/%E3%80%8Ajavascript%E6%A8%A1%E5%BC%8F%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0---DOM%E5%92%8C%E6%B5%8F%E8%A7%88%E5%99%A8%E6%A8%A1%E5%BC%8F.html">《javascript模式》读书笔记—DOM和浏览器模式</a></li>
+                            
+                            <li><span>20 Apr 2014</span> &raquo; <a href="/%E7%AC%94%E8%AE%B0/javascript%E6%A8%A1%E5%BC%8F/2014/04/20/javascript%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E7%AD%96%E7%95%A5%E6%A8%A1%E5%BC%8F.html">《javascript模式》-策略模式</a></li>
+                            
+                            <li><span>20 Apr 2014</span> &raquo; <a href="/%E8%BD%AC%E8%BD%BD/javascript%E5%9F%BA%E7%A1%80/2014/04/20/Array.prototype.slice.call(arguments).html">Array.prototype.slice.call(arguments)</a></li>
+                            
+                            <li><span>20 Apr 2014</span> &raquo; <a href="/%E8%BD%AC%E8%BD%BD/javascript%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/2014/04/20/23%E7%A7%8D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E5%8F%8A%E8%A7%A3%E9%87%8A%EF%BC%88%E4%B8%AD%E8%8B%B1%E6%96%87%E5%AF%B9%E7%85%A7.html">23种设计模式及解释（中英文对照）</a></li>
+                            
+                            <li><span>14 Apr 2014</span> &raquo; <a href="/%E7%AC%94%E8%AE%B0/javascript%E6%A8%A1%E5%BC%8F/2014/04/14/%E3%80%8Ajavascript%E6%A8%A1%E5%BC%8F%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0---%E4%BB%A3%E7%A0%81%E5%A4%8D%E7%94%A8%E6%A8%A1%E5%BC%8F.html">《javascript模式》读书笔记—代码复用模式（继承）</a></li>
+                            
+                            <li><span>05 Apr 2014</span> &raquo; <a href="/%E7%AC%94%E8%AE%B0/javascript%E6%A8%A1%E5%BC%8F/2014/04/05/%E3%80%8Ajavascript%E6%A8%A1%E5%BC%8F%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0---%E5%AF%B9%E8%B1%A1%E5%88%9B%E5%BB%BA%E6%A8%A1%E5%BC%8F.html">《javascript模式》读书笔记—对象创建模式</a></li>
+                            
+                            <li><span>05 Apr 2014</span> &raquo; <a href="/%E7%AC%94%E8%AE%B0/javascript%E6%A8%A1%E5%BC%8F/2014/04/05/%E3%80%8Ajavascript%E6%A8%A1%E5%BC%8F%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0---%E5%87%BD%E6%95%B0.html">《javascript模式》读书笔记---函数</a></li>
+                            
+                            <li><span>31 Mar 2014</span> &raquo; <a href="/%E7%AC%94%E8%AE%B0/javascript%E5%9F%BA%E7%A1%80/2014/03/31/%E3%80%8Ajavascript%E6%A8%A1%E5%BC%8F%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0---%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86.html">《javascript模式》读书笔记---基础知识</a></li>
+                            
+                            <li><span>31 Mar 2014</span> &raquo; <a href="/jekyll/2014/03/31/welcome-to-jekyll.html">Welcome to Jekyll!</a></li>
+                            
+                            <li><span>31 Mar 2014</span> &raquo; <a href="/%E8%BD%AC%E8%BD%BD/javascript%E5%9F%BA%E7%A1%80/2014/03/31/javascript-object.prototype.toString().html">转：JavaScript:Object.prototype.toString方法的原理</a></li>
+                            
+                            <li><span>31 Mar 2014</span> &raquo; <a href="/%E8%BD%AC%E8%BD%BD/javascript%E5%9F%BA%E7%A1%80/2014/03/31/javascipt-object.html">转:JavaScript 本地对象、内置对象、宿主对象</a></li>
+                            
+                            <li><span>31 Mar 2014</span> &raquo; <a href="/%E7%AC%94%E8%AE%B0/javascript%E5%9F%BA%E7%A1%80/2014/03/31/hasOwnPropertyVSisPrototypeOf.html">hasOwnProperty VS isPrototypeOf</a></li>
+                            
+                            <li><span>24 Oct 2013</span> &raquo; <a href="/%E5%B7%A5%E5%85%B7/2013/10/24/markdonnote.html">使用 Markdown</a></li>
+                            
+
+                        </ul>
+                    </div>-->
+
+                </aside>
+                <div class="clearfix"></div>
+            </div>
+
+
+
+          <div class="footer inner" id="footer">
+    <div class="contact">
+        <p>
+            &copy; 2014 zj-baozi<br />
+            @淘宝<br />
+            295112462@qq.com
+        </p>
+    </div>
+    <div class="contact">
+        <p>
+            <a href="https://github.com/zj-baozi">github.com/zj-baozi</a><br />
+
+        </p>
+    </div>
+</div>
+        </div>
+
+    </body>
+</html>

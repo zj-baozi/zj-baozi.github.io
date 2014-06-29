@@ -60,7 +60,7 @@
 
 
       <div class="post-title">
-        <a href="/%E8%BD%AC%E8%BD%BD/2014/05/10/escape,encodeURI,encodeURIComponent%E7%9A%84%E5%8C%BA%E5%88%AB.html"> escape,encodeURI和encodeURIComponent的区别</a> </br>
+        <a href="/%E8%BD%AC%E8%BD%BD/javascript%E5%9F%BA%E7%A1%80/2014/05/10/escape,encodeURI,encodeURIComponent%E7%9A%84%E5%8C%BA%E5%88%AB.html"> escape,encodeURI和encodeURIComponent的区别</a> </br>
       </div>
 
       <div class="post-info">
@@ -73,13 +73,13 @@
       <div class="post-preview">
         <p>今天听到一篇关于编码的分享，对于escape,encodeURI,encodeURIComponent的区别确实没仔细研究过，于是上网查一些资料，以记录。</p>
  
-        <a href="/%E8%BD%AC%E8%BD%BD/2014/05/10/escape,encodeURI,encodeURIComponent%E7%9A%84%E5%8C%BA%E5%88%AB.html"> Read More2222 ... </a> </br>
+        <a href="/%E8%BD%AC%E8%BD%BD/javascript%E5%9F%BA%E7%A1%80/2014/05/10/escape,encodeURI,encodeURIComponent%E7%9A%84%E5%8C%BA%E5%88%AB.html"> Read More2222 ... </a> </br>
       </div>
 
 
 
       <div class="post-title">
-        <a href="/%E8%BD%AC%E8%BD%BD/2014/05/11/arguments%E8%BD%AC%E6%8D%A2%E4%B8%BA%E6%95%B0%E7%BB%84.html"> arguments转换为数组</a> </br>
+        <a href="/%E8%BD%AC%E8%BD%BD/javascript%E5%9F%BA%E7%A1%80/2014/05/11/arguments%E8%BD%AC%E6%8D%A2%E4%B8%BA%E6%95%B0%E7%BB%84.html"> arguments转换为数组</a> </br>
       </div>
 
       <div class="post-info">
@@ -92,13 +92,13 @@
       <div class="post-preview">
         <p>Array.prototype.slice.call(arguments,0);</p>
  
-        <a href="/%E8%BD%AC%E8%BD%BD/2014/05/11/arguments%E8%BD%AC%E6%8D%A2%E4%B8%BA%E6%95%B0%E7%BB%84.html"> Read More2222 ... </a> </br>
+        <a href="/%E8%BD%AC%E8%BD%BD/javascript%E5%9F%BA%E7%A1%80/2014/05/11/arguments%E8%BD%AC%E6%8D%A2%E4%B8%BA%E6%95%B0%E7%BB%84.html"> Read More2222 ... </a> </br>
       </div>
 
 
 
       <div class="post-title">
-        <a href="/%E8%BD%AC%E8%BD%BD/2014/05/11/cookie.html"> JavaScript 操作 Cookie</a> </br>
+        <a href="/%E8%BD%AC%E8%BD%BD/javascript%E5%9F%BA%E7%A1%80/2014/05/11/cookie.html"> JavaScript 操作 Cookie</a> </br>
       </div>
 
       <div class="post-info">
@@ -193,13 +193,13 @@ cookie 有两种清除方式：
 　　document.cookie = &quot;name=value;expires=date&quot;
 　　上面代码中的date值为GMT(格林威治时间)格式的日期型字符串，生成方式如下：
 </code></pre></div> 
-        <a href="/%E8%BD%AC%E8%BD%BD/2014/05/11/cookie.html"> Read More2222 ... </a> </br>
+        <a href="/%E8%BD%AC%E8%BD%BD/javascript%E5%9F%BA%E7%A1%80/2014/05/11/cookie.html"> Read More2222 ... </a> </br>
       </div>
 
 
 
       <div class="post-title">
-        <a href="/%E7%AC%94%E8%AE%B0/2014/05/20/%E3%80%8Ajavascript%E6%A8%A1%E5%BC%8F%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0---%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E4%BD%BF%E7%94%A8new%E6%93%8D%E4%BD%9C%E7%AC%A6.html"> 《javascript模式》读书笔记---设计模式-使用new操作符</a> </br>
+        <a href="/%E7%AC%94%E8%AE%B0/javasript%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/2014/05/20/%E3%80%8Ajavascript%E6%A8%A1%E5%BC%8F%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0---%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E4%BD%BF%E7%94%A8new%E6%93%8D%E4%BD%9C%E7%AC%A6.html"> 《javascript模式》读书笔记---设计模式-使用new操作符</a> </br>
       </div>
 
       <div class="post-info">
@@ -217,79 +217,14 @@ cookie 有两种清除方式：
 <div class="highlight"><pre><code class="language-text" data-lang="text">　　var uni = new Universe();
 　　var uni2 = new Universe();
 　　console.log(uni === uni2);  //结果为true
-</code></pre></div>
-<p>在上面的例子中，uni对象仅在第一次调用构造函数时被创建。在第二次（以及第三次。。。）创建时将会返回同一个uni对象。这就是为什么uni===uni2,因为它们本质上指向同一个对象的两个引用。
-如何实现呢？</p>
-
-<h2>需要Universe构造函数缓存该对象实例this，以便当第二次调用该构造函数时能够创建并返回同一个对象</h2>
-
-<p>做法：</p>
-
-<p><strong>1、使用全局变量来存储该实例。不推荐！</strong>
-<strong>2、可以在构造函数的静态属性中缓存该实例。（可以使用类似Universe.instance的属性并将实例缓存在该属性中。很好的实现方法！缺点：instance属性是公开可访问的属性，在外部代码中可能会修改该属性，以至于丢失了该实例。）</strong></p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">//静态属性中的实例
- function Universe(){
-     //我们有一个现有的实例吗？
-     if(typeof Universe.instance === &#39;object&#39;){
-         return Universe.instance;
-     }
-     //正常进行
-     this.start_time = 0;
-     this.bang = &#39;Big&#39;;
-
-     //缓存
-     Universe.instance = this;
-
-     //隐式返回
-     return this;
- }
-   var  uni = new Universe();
-   var  uni2 = new Universe();
-    console.log(uni === uni2);
-</code></pre></div>
-<p><strong>3、可以将该实例包装在闭包中。（保证实例的私有性，带来了额外的闭包开销。）</strong></p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">//闭包中的实例
-function Universe2(){
-    //缓存实例
-    var instance = this;
-
-    //正常进行
-    this.start_time = 0;
-    this.bang  = &#39;Big&#39;;
-
-    //重写该构造函数
-    Universe = function(){
-        return instance;
-    }
-}
-    var uni3 = new Universe();
-    var uni4 = new Universe();
-    console.log(uni3 === uni4);
-</code></pre></div>
-<p>这种实现实际上来自于第4章的自定义函数模式的另一个例子。缺点：主要在于重写构造函数【在本例中，也就是构造函数Universe()】会丢失所有在初始定义和重定义时刻之间的对象都不会存在指向由原始实现所创建实例的活动链接。
-测试：</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">    Universe2.prototype.nothing = true;
-    var uni3 = new Universe2();
-    //在创建初始化对象之后，
-    //再次向该原型添加属性
-    Universe2.prototype.everything = true;
-    var uni4 = new Universe2();
-    console.log(uni3.nothing);//true
-    console.log(uni4.nothing); //true
-    console.log(&#39;everything:&#39;+uni3.everything);//undefined
-    console.log(&#39;everything:&#39;+uni4.everything);//undefined
-    //结果看上去是正确的
-    uni3.constructor.name; //Universe2
-    //但是很奇怪
-    console.log(uni3.constructor === Universe2); //false
 </code></pre></div> 
-        <a href="/%E7%AC%94%E8%AE%B0/2014/05/20/%E3%80%8Ajavascript%E6%A8%A1%E5%BC%8F%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0---%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E4%BD%BF%E7%94%A8new%E6%93%8D%E4%BD%9C%E7%AC%A6.html"> Read More2222 ... </a> </br>
+        <a href="/%E7%AC%94%E8%AE%B0/javasript%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/2014/05/20/%E3%80%8Ajavascript%E6%A8%A1%E5%BC%8F%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0---%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E4%BD%BF%E7%94%A8new%E6%93%8D%E4%BD%9C%E7%AC%A6.html"> Read More2222 ... </a> </br>
       </div>
 
 
 
       <div class="post-title">
-        <a href="/%E7%AC%94%E8%AE%B0/2014/05/20/%E3%80%8Ajavascript%E6%A8%A1%E5%BC%8F%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0---%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F.html"> 《javascript模式》读书笔记---设计模式-工厂模式</a> </br>
+        <a href="/%E7%AC%94%E8%AE%B0/javascript%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/2014/05/20/%E3%80%8Ajavascript%E6%A8%A1%E5%BC%8F%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0---%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F.html"> 《javascript模式》读书笔记---设计模式-工厂模式</a> </br>
       </div>
 
       <div class="post-info">
@@ -358,13 +293,13 @@ function Universe2(){
             console.log(cherokee.drive());
 })();
 </code></pre></div> 
-        <a href="/%E7%AC%94%E8%AE%B0/2014/05/20/%E3%80%8Ajavascript%E6%A8%A1%E5%BC%8F%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0---%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F.html"> Read More2222 ... </a> </br>
+        <a href="/%E7%AC%94%E8%AE%B0/javascript%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/2014/05/20/%E3%80%8Ajavascript%E6%A8%A1%E5%BC%8F%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0---%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F.html"> Read More2222 ... </a> </br>
       </div>
 
 
 
       <div class="post-title">
-        <a href="/%E7%AC%94%E8%AE%B0/2014/05/24/%E3%80%8Ajavascript%E6%A8%A1%E5%BC%8F%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0---%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E8%A3%85%E9%A5%B0%E8%80%85%E6%A8%A1%E5%BC%8F.html"> 《javascript模式》读书笔记---设计模式-装饰者模式</a> </br>
+        <a href="/%E7%AC%94%E8%AE%B0/javascript%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/2014/05/24/%E3%80%8Ajavascript%E6%A8%A1%E5%BC%8F%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0---%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E8%A3%85%E9%A5%B0%E8%80%85%E6%A8%A1%E5%BC%8F.html"> 《javascript模式》读书笔记---设计模式-装饰者模式</a> </br>
       </div>
 
       <div class="post-info">
@@ -382,13 +317,13 @@ function Universe2(){
 <p>在装饰者模式中，可以在运行时动态添加附加功能到对象中。
 <em>在迭代器模式中，对象需要提供一个next()方法。依次调用next()必须返回下一个连续的元素。（下一个代表什么由程序决定）</em></p>
  
-        <a href="/%E7%AC%94%E8%AE%B0/2014/05/24/%E3%80%8Ajavascript%E6%A8%A1%E5%BC%8F%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0---%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E8%A3%85%E9%A5%B0%E8%80%85%E6%A8%A1%E5%BC%8F.html"> Read More2222 ... </a> </br>
+        <a href="/%E7%AC%94%E8%AE%B0/javascript%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/2014/05/24/%E3%80%8Ajavascript%E6%A8%A1%E5%BC%8F%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0---%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E8%A3%85%E9%A5%B0%E8%80%85%E6%A8%A1%E5%BC%8F.html"> Read More2222 ... </a> </br>
       </div>
 
 
 
       <div class="post-title">
-        <a href="/%E7%AC%94%E8%AE%B0/2014/05/24/%E3%80%8Ajavascript%E6%A8%A1%E5%BC%8F%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0---%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E8%BF%AD%E4%BB%A3%E5%99%A8%E6%A8%A1%E5%BC%8F.html"> 《javascript模式》读书笔记---设计模式-迭代器模式</a> </br>
+        <a href="/%E7%AC%94%E8%AE%B0/javascript%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/2014/05/24/%E3%80%8Ajavascript%E6%A8%A1%E5%BC%8F%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0---%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E8%BF%AD%E4%BB%A3%E5%99%A8%E6%A8%A1%E5%BC%8F.html"> 《javascript模式》读书笔记---设计模式-迭代器模式</a> </br>
       </div>
 
       <div class="post-info">
@@ -407,13 +342,13 @@ function Universe2(){
 
 <p><em>在迭代器模式中，对象需要提供一个next()方法。依次调用next()必须返回下一个连续的元素。（下一个代表什么由程序决定）</em></p>
  
-        <a href="/%E7%AC%94%E8%AE%B0/2014/05/24/%E3%80%8Ajavascript%E6%A8%A1%E5%BC%8F%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0---%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E8%BF%AD%E4%BB%A3%E5%99%A8%E6%A8%A1%E5%BC%8F.html"> Read More2222 ... </a> </br>
+        <a href="/%E7%AC%94%E8%AE%B0/javascript%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/2014/05/24/%E3%80%8Ajavascript%E6%A8%A1%E5%BC%8F%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0---%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E8%BF%AD%E4%BB%A3%E5%99%A8%E6%A8%A1%E5%BC%8F.html"> Read More2222 ... </a> </br>
       </div>
 
 
 
       <div class="post-title">
-        <a href="/%E7%AC%94%E8%AE%B0/2014/05/25/%E3%80%8Ajavascript%E6%A8%A1%E5%BC%8F%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0---%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E5%A4%96%E8%A7%82%E6%A8%A1%E5%BC%8F.html"> 《javascript模式》读书笔记---设计模式-外观模式</a> </br>
+        <a href="/%E7%AC%94%E8%AE%B0/javascript%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/2014/05/25/%E3%80%8Ajavascript%E6%A8%A1%E5%BC%8F%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0---%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E5%A4%96%E8%A7%82%E6%A8%A1%E5%BC%8F.html"> 《javascript模式》读书笔记---设计模式-外观模式</a> </br>
       </div>
 
       <div class="post-info">
@@ -460,19 +395,86 @@ function Universe2(){
 </code></pre></div>
 <p>通过使用外观模式，可以首先考虑新对象的API，然后继续在原有对象的前面创建一个外观。这样，当您着手完全取代原有对象的时候，仅需修改更少的客户端代码，这是由于任何最新的客户端代码都已经使用了这个新API.</p>
  
-        <a href="/%E7%AC%94%E8%AE%B0/2014/05/25/%E3%80%8Ajavascript%E6%A8%A1%E5%BC%8F%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0---%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E5%A4%96%E8%A7%82%E6%A8%A1%E5%BC%8F.html"> Read More2222 ... </a> </br>
+        <a href="/%E7%AC%94%E8%AE%B0/javascript%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/2014/05/25/%E3%80%8Ajavascript%E6%A8%A1%E5%BC%8F%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0---%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E5%A4%96%E8%A7%82%E6%A8%A1%E5%BC%8F.html"> Read More2222 ... </a> </br>
       </div>
 
 
 
       <div class="post-title">
-        <a href="/%E7%AC%94%E8%AE%B0/2014/05/25/%E3%80%8Ajavascript%E6%A8%A1%E5%BC%8F%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0---%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E4%BB%A3%E7%90%86%E6%A8%A1%E5%BC%8F.html"> 《javascript模式》读书笔记---设计模式-代理模式</a> </br>
+        <a href="/%E7%AC%94%E8%AE%B0/html5%E9%AB%98%E7%BA%A7%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/2014/05/25/%E3%80%8Ahtml5%E9%AB%98%E7%BA%A7%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E3%80%8Bcanvas.html"> canvas</a> </br>
       </div>
 
       <div class="post-info">
         <ol>
           <li class="post-time">2014-05-25</li> 
-          <li class="post-category"> 笔记 </li>
+          <li class="post-category">  </li>
+        </ol>
+      </div>
+
+      <div class="post-preview">
+        <p>canvas</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">&lt;canvas&gt;&lt;/canvas&gt;
+</code></pre></div>
+<p>默认情况下是一个300*150的矩形区域。</p>
+
+<h2>坐标</h2>
+
+<p>默认从左上角开始，x轴沿着水平方向向右延伸，y轴沿垂直方向向下延伸。 左上角坐标为x=0,y=0的点称作原点。</p>
+
+<h2>canvas编程</h2>
+
+<ol>
+<li>获取上下文（context）,在上下文中执行动作，最后将动作应用到上下文中。（getContext(&#39;2d&#39;)）</li>
+<li>beginPath 创建一条路径</li>
+<li>moveTo(x,y) 不绘制，只是将当前位置移到新的目标坐标(x,y)</li>
+<li>lineTo(x,y) 移动到新的目标坐标，而且在两个坐标之间画一条直线。</li>
+<li>stroke(绘制)/fill(填充)</li>
+<li>save() 保存当前绘图状态</li>
+<li>restore() 恢复原有的绘图状态</li>
+<li>closePath() 闭合路径</li>
+<li></li>
+</ol>
+
+<h2>变换</h2>
+
+<p>缩放，平移，旋转</p>
+
+<p>变换
+context.scale(2,2)
+context.translate(100,100)</p>
+
+<h2>描边样式</h2>
+
+<ol>
+<li>context.lineWidth = 4; 加宽线条</li>
+<li>context.lineJoin = &#39;round&#39;; 平滑路径的接合点</li>
+<li>context.strokeStyle = &#39;#663300&#39;; 将颜色改为棕色</li>
+<li>context.lineCap = butt/square/round 指定线条未端的样式</li>
+</ol>
+
+<h2>填充样式</h2>
+
+<ol>
+<li>context.fillStyle = &#39;#339900&#39;;</li>
+<li>context.fill();</li>
+<li>context.fillRect(-5,-50,10,50); 填充用作树干的矩形区域</li>
+<li>strokeRect 基于给出的位置和坐标画出矩形的轮廓</li>
+<li>clearRect 清除矩形区域内的所有内容并将它恢复到初始状态，即透明色。</li>
+</ol>
+ 
+        <a href="/%E7%AC%94%E8%AE%B0/html5%E9%AB%98%E7%BA%A7%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/2014/05/25/%E3%80%8Ahtml5%E9%AB%98%E7%BA%A7%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E3%80%8Bcanvas.html"> Read More2222 ... </a> </br>
+      </div>
+
+
+
+      <div class="post-title">
+        <a href="/javascript%E6%A8%A1%E5%BC%8F%20%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/2014/05/25/%E3%80%8Ajavascript%E6%A8%A1%E5%BC%8F%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0---.html"> 《javascript模式》读书笔记---设计模式-代理模式</a> </br>
+      </div>
+
+      <div class="post-info">
+        <ol>
+          <li class="post-time">2014-05-25</li> 
+          <li class="post-category"> javascript模式 设计模式 </li>
         </ol>
       </div>
 
@@ -485,7 +487,103 @@ function Universe2(){
 
 <p>与外观模式的区别之外在于，在外观模式中您所拥有的是合并了多个方法调用的便利方法。代理则介于对象的客户端和对象本身之间，并且对该对象的访问进行保护。\n\n\n</p>
  
-        <a href="/%E7%AC%94%E8%AE%B0/2014/05/25/%E3%80%8Ajavascript%E6%A8%A1%E5%BC%8F%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0---%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E4%BB%A3%E7%90%86%E6%A8%A1%E5%BC%8F.html"> Read More2222 ... </a> </br>
+        <a href="/javascript%E6%A8%A1%E5%BC%8F%20%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/2014/05/25/%E3%80%8Ajavascript%E6%A8%A1%E5%BC%8F%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0---.html"> Read More2222 ... </a> </br>
+      </div>
+
+
+
+      <div class="post-title">
+        <a href="/%E8%BD%AC%E8%BD%BD/jekyll/2014/05/25/%E4%BD%BF%E7%94%A8%20GitHub,%20Jekyll%20%E6%89%93%E9%80%A0%E8%87%AA%E5%B7%B1%E7%9A%84%E5%85%8D%E8%B4%B9%E7%8B%AC%E7%AB%8B%E5%8D%9A%E5%AE%A2.html"> 使用 GitHub, Jekyll 打造自己的免费独立博客</a> </br>
+      </div>
+
+      <div class="post-info">
+        <ol>
+          <li class="post-time">2014-05-25</li> 
+          <li class="post-category">  </li>
+        </ol>
+      </div>
+
+      <div class="post-preview">
+        <p>代理模式</p>
+
+<p><strong>表现</strong></p>
+
+<p>一个对象充当另一个对象的接口。</p>
+
+<p>与外观模式的区别之外在于，在外观模式中您所拥有的是合并了多个方法调用的便利方法。代理则介于对象的客户端和对象本身之间，并且对该对象的访问进行保护。\n\n\n</p>
+ 
+        <a href="/%E8%BD%AC%E8%BD%BD/jekyll/2014/05/25/%E4%BD%BF%E7%94%A8%20GitHub,%20Jekyll%20%E6%89%93%E9%80%A0%E8%87%AA%E5%B7%B1%E7%9A%84%E5%85%8D%E8%B4%B9%E7%8B%AC%E7%AB%8B%E5%8D%9A%E5%AE%A2.html"> Read More2222 ... </a> </br>
+      </div>
+
+
+
+      <div class="post-title">
+        <a href="/%E8%BD%AC%E8%BD%BD/javascript%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/2014/05/25/%E5%A4%8D%E6%9D%82%E8%A1%A8%E5%8D%95%E5%BA%94%E7%94%A8%E8%A7%A3%E8%80%A6%EF%BC%8C%E6%B7%98%E5%AE%9D%E6%9C%BA%E7%A5%A8%E8%AE%A2%E5%8D%95%E5%AE%9E%E8%B7%B5.html"> 复杂表单应用解耦，淘宝机票订单实践</a> </br>
+      </div>
+
+      <div class="post-info">
+        <ol>
+          <li class="post-time">2014-05-25</li> 
+          <li class="post-category">  </li>
+        </ol>
+      </div>
+
+      <div class="post-preview">
+        <h2>背景</h2>
+
+<p>在web应用中，复杂表单这类web应用富交互元素多,业务逻辑复杂，犬牙交错，且需求变化频繁。及容易成为晦涩和幽暗之地，也经常是各种代码坏味道的来源。针对这种典型的复杂应用，本文以淘宝机票订单为例提出一种架构模式梳理和消化表单带来的复杂性。</p>
+
+<p><img src="http://img01.taobaocdn.com/tps/i1/T1QnT5XgXgXXbg.PHc-559-579.png" alt=""></p>
+
+<h2>模块和组件划分</h2>
+
+<p>解决复杂表单的的第一步，划分模块。</p>
+
+<p>概念上，为了复用和解耦方便，应将模块按照功能的内聚程度进行划分。强相关，频繁沟通和交互的功能应该归为一个模块。模块间尽量不存在依赖关系。也就是常说的“高内聚，低耦合”。</p>
+
+<p>如下图所示，淘宝机票订单页面主要有被分为7个主要模块。</p>
+
+<p><img src="http://img01.taobaocdn.com/tps/i1/T1oBL6XfhbXXaUqr_A-712-569.png" alt=""></p>
+
+<p>模块划分完毕，下一步确认组成模块的组件。
+关于模块和组件的区分。一般按照以下三个纬度考量。</p>
+
+<p>是否有业务逻辑参与。</p>
+
+<p>是否包含html。</p>
+
+<p>是否具备一定独立性。</p>
+
+<p>“模块”，定义为一个包含”html”、”css(图片被认为是css的一部分)“、”javascript”的代码集。模块的应用方式多为通过web模板技术(如：velocity、freemarker、php)。因为包含了html，使得模块必须通过服务端合并加载并且最终推送到用户浏览器。此外，“模块”还是具备一定独立业务和交互的集合，最好可以被其他页面引用。良好的独立性也可以帮助协同开发，在实际开发中可多人可以并行开发多个独立模块，提高效率。</p>
+
+<p>“组件”，定义为一个仅包含”css”和”javascript”的代码集。正因为不包含html，所以组件可通过javascript异步加载。因为这种可异步加载的特性，组件在复用方面的容易性远超模块。组件没有业务逻辑或者仅有少部分公共业务逻辑。业务逻辑越多，组件的可复用性就越低。</p>
+
+<p>模块、组件间通讯</p>
+
+<p>组件/模块划分的目的是将彼此间相对独立的功能分离，前面通过模块和组件的划分解决了分离问题。实际中，模块之间存在协作关系。模块间应以一种轻量的方式协作。一般的为了更好的分离和解耦，可以考虑用广播的方式在模块间沟通，考虑使用事件的方式在组件间通讯。</p>
+
+<p>如下图所示，淘宝机票订单页面的数据流向。</p>
+
+<p><img src="http://img03.taobaocdn.com/tps/i3/T1JpP6XkVfXXaC6yMd-631-608.png" alt=""></p>
+
+<p>不同模块在后期均有可能扩展小功能。例如不定期的活动优惠等。事件广播可以让不同模块/组件间新增功能影响面缩小。在淘宝机票订单中应用中，使用广播组件通讯主要用来完成以下意图。</p>
+
+<p><img src="http://img02.taobaocdn.com/tps/i2/T1cnf5Xl8fXXcjd2LH-715-615.png" alt=""></p>
+
+<p>1、知会。</p>
+
+<p>知会的特性在于异步通讯。广播发起方只需要放出事件，无需等待其他关注者完成处理。称为异步广播。例如表单模块的内容变更需要知会到显示订单金额的模块，显示订单金额的模块接受事件后需要更改金额。
+基于这种方式的通讯，各模块之需要做好自己的事情，外部关注的事件广播出去即可。异步广播还有一个好处是系统坚固性比较强，广播发送者不会因为事件监听者的使用不当而异常。</p>
+
+<p>2、请求数据</p>
+
+<p>例如，模块6(负责提交)需要在被点击后从模块2(乘机人表单)，模块4(联系地址)、模块7(金额计算)。获取具体数据提交。请求数据的场景特性在于，广播发起者需要等待事件处理者完成处理后再继续下一步行为。称为同步广播。</p>
+
+<p>基于此机制。提交模块只需要负责综合校验，浮层，网络请求及异常处理。而具体请求的内容由其他模块决定。对后续模块的扩充起到了很好的左右。</p>
+
+<h2>复杂组件拆分</h2>
+ 
+        <a href="/%E8%BD%AC%E8%BD%BD/javascript%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/2014/05/25/%E5%A4%8D%E6%9D%82%E8%A1%A8%E5%8D%95%E5%BA%94%E7%94%A8%E8%A7%A3%E8%80%A6%EF%BC%8C%E6%B7%98%E5%AE%9D%E6%9C%BA%E7%A5%A8%E8%AE%A2%E5%8D%95%E5%AE%9E%E8%B7%B5.html"> Read More2222 ... </a> </br>
       </div>
 
 
@@ -531,31 +629,85 @@ function Universe2(){
       
             
                 <li>
+                <a href="/categories/工具"> 工具 (1) </a>
+                </li>
+            
+      
+            
+                <li>
                 <a href="/categories/笔记"> 笔记 (13) </a>
                 </li>
             
       
             
                 <li>
-                <a href="/categories/转载"> 转载 (7) </a>
+                <a href="/categories/javascript基础"> javascript基础 (8) </a>
                 </li>
             
       
             
                 <li>
-                <a href="/categories/jekyll"> jekyll (1) </a>
+                <a href="/categories/转载"> 转载 (9) </a>
                 </li>
             
       
             
                 <li>
-                <a href="/categories/update"> update (1) </a>
+                <a href="/categories/jekyll"> jekyll (2) </a>
                 </li>
             
       
             
                 <li>
-                <a href="/categories/javascript模式"> javascript模式 (1) </a>
+                <a href="/categories/javascript模式"> javascript模式 (5) </a>
+                </li>
+            
+      
+            
+                <li>
+                <a href="/categories/javascript设计模式"> javascript设计模式 (6) </a>
+                </li>
+            
+      
+            
+                <li>
+                <a href="/categories/javasript设计模式"> javasript设计模式 (1) </a>
+                </li>
+            
+      
+            
+                <li>
+                <a href="/categories/html5高级程序设计"> html5高级程序设计 (1) </a>
+                </li>
+            
+      
+            
+                <li>
+                <a href="/categories/javascript模式 设计模式"> javascript模式 设计模式 (1) </a>
+                </li>
+            
+      
+            
+                <li>
+                <a href="/categories/响应式 笔记"> 响应式 笔记 (2) </a>
+                </li>
+            
+      
+            
+                <li>
+                <a href="/categories/html5 跨终端"> html5 跨终端 (1) </a>
+                </li>
+            
+      
+            
+                <li>
+                <a href="/categories/viewport 跨终端"> viewport 跨终端 (1) </a>
+                </li>
+            
+      
+            
+                <li>
+                <a href="/categories/html5"> html5 (1) </a>
                 </li>
             
       
@@ -569,6 +721,55 @@ function Universe2(){
   <ul class="entry">
     
     
+    
+        
+        
+        
+        
+    
+        
+        
+        
+        
+    
+        
+        
+        
+        
+    
+        
+        
+        
+        
+    
+        
+        
+        
+        
+            
+            <li>
+                <a href="/2014/06">
+                    2014-06 (5)
+                </a>
+            </li>
+
+        
+        
+    
+        
+        
+        
+        
+    
+        
+        
+        
+        
+    
+        
+        
+        
+        
     
         
         
@@ -617,7 +818,7 @@ function Universe2(){
             
             <li>
                 <a href="/2014/05">
-                    2014-05 (9)
+                    2014-05 (12)
                 </a>
             </li>
 
@@ -702,6 +903,20 @@ function Universe2(){
         
         
     
+        
+        
+        
+        
+            
+            <li>
+                <a href="/2013/10">
+                    2013-10 (1)
+                </a>
+            </li>
+
+        
+        
+    
   </ul>
 
                     </div>
@@ -709,47 +924,65 @@ function Universe2(){
                         <h3 class="title">最新文章</h3>
                         <ul class="entry">
                             
-                            <li><span>25 May 2014</span> &raquo; <a href="/%E7%AC%94%E8%AE%B0/2014/05/25/%E3%80%8Ajavascript%E6%A8%A1%E5%BC%8F%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0---%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E4%BB%A3%E7%90%86%E6%A8%A1%E5%BC%8F.html">《javascript模式》读书笔记---设计模式-代理模式</a></li>
+                            <li><span>26 Jun 2014</span> &raquo; <a href="/html5/2014/06/26/html5%20Geolocation.html">about media query</a></li>
                             
-                            <li><span>25 May 2014</span> &raquo; <a href="/%E7%AC%94%E8%AE%B0/2014/05/25/%E3%80%8Ajavascript%E6%A8%A1%E5%BC%8F%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0---%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E5%A4%96%E8%A7%82%E6%A8%A1%E5%BC%8F.html">《javascript模式》读书笔记---设计模式-外观模式</a></li>
+                            <li><span>21 Jun 2014</span> &raquo; <a href="/viewport%20%E8%B7%A8%E7%BB%88%E7%AB%AF/2014/06/21/viewport%E7%AC%94%E8%AE%B0.html">about media query</a></li>
                             
-                            <li><span>24 May 2014</span> &raquo; <a href="/%E7%AC%94%E8%AE%B0/2014/05/24/%E3%80%8Ajavascript%E6%A8%A1%E5%BC%8F%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0---%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E8%BF%AD%E4%BB%A3%E5%99%A8%E6%A8%A1%E5%BC%8F.html">《javascript模式》读书笔记---设计模式-迭代器模式</a></li>
+                            <li><span>21 Jun 2014</span> &raquo; <a href="/html5%20%E8%B7%A8%E7%BB%88%E7%AB%AF/2014/06/21/html5%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5.html">about media query</a></li>
                             
-                            <li><span>24 May 2014</span> &raquo; <a href="/%E7%AC%94%E8%AE%B0/2014/05/24/%E3%80%8Ajavascript%E6%A8%A1%E5%BC%8F%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0---%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E8%A3%85%E9%A5%B0%E8%80%85%E6%A8%A1%E5%BC%8F.html">《javascript模式》读书笔记---设计模式-装饰者模式</a></li>
+                            <li><span>19 Jun 2014</span> &raquo; <a href="/%E5%93%8D%E5%BA%94%E5%BC%8F%20%E7%AC%94%E8%AE%B0/2014/06/19/media%20query%E7%AC%94%E8%AE%B0.html">media query笔记</a></li>
                             
-                            <li><span>20 May 2014</span> &raquo; <a href="/%E7%AC%94%E8%AE%B0/2014/05/20/%E3%80%8Ajavascript%E6%A8%A1%E5%BC%8F%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0---%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F.html">《javascript模式》读书笔记---设计模式-工厂模式</a></li>
+                            <li><span>19 Jun 2014</span> &raquo; <a href="/%E5%93%8D%E5%BA%94%E5%BC%8F%20%E7%AC%94%E8%AE%B0/2014/06/19/about-media%20query.html">about media query</a></li>
                             
-                            <li><span>20 May 2014</span> &raquo; <a href="/%E7%AC%94%E8%AE%B0/2014/05/20/%E3%80%8Ajavascript%E6%A8%A1%E5%BC%8F%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0---%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E4%BD%BF%E7%94%A8new%E6%93%8D%E4%BD%9C%E7%AC%A6.html">《javascript模式》读书笔记---设计模式-使用new操作符</a></li>
+                            <li><span>25 May 2014</span> &raquo; <a href="/%E8%BD%AC%E8%BD%BD/javascript%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/2014/05/25/%E5%A4%8D%E6%9D%82%E8%A1%A8%E5%8D%95%E5%BA%94%E7%94%A8%E8%A7%A3%E8%80%A6%EF%BC%8C%E6%B7%98%E5%AE%9D%E6%9C%BA%E7%A5%A8%E8%AE%A2%E5%8D%95%E5%AE%9E%E8%B7%B5.html">复杂表单应用解耦，淘宝机票订单实践</a></li>
                             
-                            <li><span>11 May 2014</span> &raquo; <a href="/%E8%BD%AC%E8%BD%BD/2014/05/11/cookie.html">JavaScript 操作 Cookie</a></li>
+                            <li><span>25 May 2014</span> &raquo; <a href="/%E8%BD%AC%E8%BD%BD/jekyll/2014/05/25/%E4%BD%BF%E7%94%A8%20GitHub,%20Jekyll%20%E6%89%93%E9%80%A0%E8%87%AA%E5%B7%B1%E7%9A%84%E5%85%8D%E8%B4%B9%E7%8B%AC%E7%AB%8B%E5%8D%9A%E5%AE%A2.html">使用 GitHub, Jekyll 打造自己的免费独立博客</a></li>
                             
-                            <li><span>11 May 2014</span> &raquo; <a href="/%E8%BD%AC%E8%BD%BD/2014/05/11/arguments%E8%BD%AC%E6%8D%A2%E4%B8%BA%E6%95%B0%E7%BB%84.html">arguments转换为数组</a></li>
+                            <li><span>25 May 2014</span> &raquo; <a href="/javascript%E6%A8%A1%E5%BC%8F%20%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/2014/05/25/%E3%80%8Ajavascript%E6%A8%A1%E5%BC%8F%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0---.html">《javascript模式》读书笔记---设计模式-代理模式</a></li>
                             
-                            <li><span>10 May 2014</span> &raquo; <a href="/%E8%BD%AC%E8%BD%BD/2014/05/10/escape,encodeURI,encodeURIComponent%E7%9A%84%E5%8C%BA%E5%88%AB.html">escape,encodeURI和encodeURIComponent的区别</a></li>
+                            <li><span>25 May 2014</span> &raquo; <a href="/%E7%AC%94%E8%AE%B0/html5%E9%AB%98%E7%BA%A7%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/2014/05/25/%E3%80%8Ahtml5%E9%AB%98%E7%BA%A7%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E3%80%8Bcanvas.html">canvas</a></li>
                             
-                            <li><span>20 Apr 2014</span> &raquo; <a href="/%E7%AC%94%E8%AE%B0/2014/04/20/%E3%80%8Ajavascript%E6%A8%A1%E5%BC%8F%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0---DOM%E5%92%8C%E6%B5%8F%E8%A7%88%E5%99%A8%E6%A8%A1%E5%BC%8F.html">《javascript模式》读书笔记—DOM和浏览器模式</a></li>
+                            <li><span>25 May 2014</span> &raquo; <a href="/%E7%AC%94%E8%AE%B0/javascript%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/2014/05/25/%E3%80%8Ajavascript%E6%A8%A1%E5%BC%8F%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0---%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E5%A4%96%E8%A7%82%E6%A8%A1%E5%BC%8F.html">《javascript模式》读书笔记---设计模式-外观模式</a></li>
                             
-                            <li><span>20 Apr 2014</span> &raquo; <a href="/%E7%AC%94%E8%AE%B0/2014/04/20/javascript%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E7%AD%96%E7%95%A5%E6%A8%A1%E5%BC%8F.html">《javascript模式》-策略模式</a></li>
+                            <li><span>24 May 2014</span> &raquo; <a href="/%E7%AC%94%E8%AE%B0/javascript%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/2014/05/24/%E3%80%8Ajavascript%E6%A8%A1%E5%BC%8F%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0---%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E8%BF%AD%E4%BB%A3%E5%99%A8%E6%A8%A1%E5%BC%8F.html">《javascript模式》读书笔记---设计模式-迭代器模式</a></li>
                             
-                            <li><span>20 Apr 2014</span> &raquo; <a href="/%E8%BD%AC%E8%BD%BD/2014/04/20/Array.prototype.slice.call(arguments).html">Array.prototype.slice.call(arguments)</a></li>
+                            <li><span>24 May 2014</span> &raquo; <a href="/%E7%AC%94%E8%AE%B0/javascript%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/2014/05/24/%E3%80%8Ajavascript%E6%A8%A1%E5%BC%8F%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0---%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E8%A3%85%E9%A5%B0%E8%80%85%E6%A8%A1%E5%BC%8F.html">《javascript模式》读书笔记---设计模式-装饰者模式</a></li>
                             
-                            <li><span>20 Apr 2014</span> &raquo; <a href="/%E8%BD%AC%E8%BD%BD/2014/04/20/23%E7%A7%8D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E5%8F%8A%E8%A7%A3%E9%87%8A%EF%BC%88%E4%B8%AD%E8%8B%B1%E6%96%87%E5%AF%B9%E7%85%A7.html">23种设计模式及解释（中英文对照）</a></li>
+                            <li><span>20 May 2014</span> &raquo; <a href="/%E7%AC%94%E8%AE%B0/javascript%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/2014/05/20/%E3%80%8Ajavascript%E6%A8%A1%E5%BC%8F%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0---%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F.html">《javascript模式》读书笔记---设计模式-工厂模式</a></li>
                             
-                            <li><span>14 Apr 2014</span> &raquo; <a href="/%E7%AC%94%E8%AE%B0/2014/04/14/%E3%80%8Ajavascript%E6%A8%A1%E5%BC%8F%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0---%E4%BB%A3%E7%A0%81%E5%A4%8D%E7%94%A8%E6%A8%A1%E5%BC%8F.html">《javascript模式》读书笔记—代码复用模式（继承）</a></li>
+                            <li><span>20 May 2014</span> &raquo; <a href="/%E7%AC%94%E8%AE%B0/javasript%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/2014/05/20/%E3%80%8Ajavascript%E6%A8%A1%E5%BC%8F%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0---%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E4%BD%BF%E7%94%A8new%E6%93%8D%E4%BD%9C%E7%AC%A6.html">《javascript模式》读书笔记---设计模式-使用new操作符</a></li>
                             
-                            <li><span>05 Apr 2014</span> &raquo; <a href="/%E7%AC%94%E8%AE%B0/2014/04/05/%E3%80%8Ajavascript%E6%A8%A1%E5%BC%8F%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0---%E5%AF%B9%E8%B1%A1%E5%88%9B%E5%BB%BA%E6%A8%A1%E5%BC%8F.html">《javascript模式》读书笔记—对象创建模式</a></li>
+                            <li><span>11 May 2014</span> &raquo; <a href="/%E8%BD%AC%E8%BD%BD/javascript%E5%9F%BA%E7%A1%80/2014/05/11/cookie.html">JavaScript 操作 Cookie</a></li>
+                            
+                            <li><span>11 May 2014</span> &raquo; <a href="/%E8%BD%AC%E8%BD%BD/javascript%E5%9F%BA%E7%A1%80/2014/05/11/arguments%E8%BD%AC%E6%8D%A2%E4%B8%BA%E6%95%B0%E7%BB%84.html">arguments转换为数组</a></li>
+                            
+                            <li><span>10 May 2014</span> &raquo; <a href="/%E8%BD%AC%E8%BD%BD/javascript%E5%9F%BA%E7%A1%80/2014/05/10/escape,encodeURI,encodeURIComponent%E7%9A%84%E5%8C%BA%E5%88%AB.html">escape,encodeURI和encodeURIComponent的区别</a></li>
+                            
+                            <li><span>20 Apr 2014</span> &raquo; <a href="/%E7%AC%94%E8%AE%B0/javascript%E6%A8%A1%E5%BC%8F/2014/04/20/%E3%80%8Ajavascript%E6%A8%A1%E5%BC%8F%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0---DOM%E5%92%8C%E6%B5%8F%E8%A7%88%E5%99%A8%E6%A8%A1%E5%BC%8F.html">《javascript模式》读书笔记—DOM和浏览器模式</a></li>
+                            
+                            <li><span>20 Apr 2014</span> &raquo; <a href="/%E7%AC%94%E8%AE%B0/javascript%E6%A8%A1%E5%BC%8F/2014/04/20/javascript%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E7%AD%96%E7%95%A5%E6%A8%A1%E5%BC%8F.html">《javascript模式》-策略模式</a></li>
+                            
+                            <li><span>20 Apr 2014</span> &raquo; <a href="/%E8%BD%AC%E8%BD%BD/javascript%E5%9F%BA%E7%A1%80/2014/04/20/Array.prototype.slice.call(arguments).html">Array.prototype.slice.call(arguments)</a></li>
+                            
+                            <li><span>20 Apr 2014</span> &raquo; <a href="/%E8%BD%AC%E8%BD%BD/javascript%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/2014/04/20/23%E7%A7%8D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E5%8F%8A%E8%A7%A3%E9%87%8A%EF%BC%88%E4%B8%AD%E8%8B%B1%E6%96%87%E5%AF%B9%E7%85%A7.html">23种设计模式及解释（中英文对照）</a></li>
+                            
+                            <li><span>14 Apr 2014</span> &raquo; <a href="/%E7%AC%94%E8%AE%B0/javascript%E6%A8%A1%E5%BC%8F/2014/04/14/%E3%80%8Ajavascript%E6%A8%A1%E5%BC%8F%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0---%E4%BB%A3%E7%A0%81%E5%A4%8D%E7%94%A8%E6%A8%A1%E5%BC%8F.html">《javascript模式》读书笔记—代码复用模式（继承）</a></li>
+                            
+                            <li><span>05 Apr 2014</span> &raquo; <a href="/%E7%AC%94%E8%AE%B0/javascript%E6%A8%A1%E5%BC%8F/2014/04/05/%E3%80%8Ajavascript%E6%A8%A1%E5%BC%8F%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0---%E5%AF%B9%E8%B1%A1%E5%88%9B%E5%BB%BA%E6%A8%A1%E5%BC%8F.html">《javascript模式》读书笔记—对象创建模式</a></li>
                             
                             <li><span>05 Apr 2014</span> &raquo; <a href="/%E7%AC%94%E8%AE%B0/javascript%E6%A8%A1%E5%BC%8F/2014/04/05/%E3%80%8Ajavascript%E6%A8%A1%E5%BC%8F%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0---%E5%87%BD%E6%95%B0.html">《javascript模式》读书笔记---函数</a></li>
                             
-                            <li><span>31 Mar 2014</span> &raquo; <a href="/%E7%AC%94%E8%AE%B0/2014/03/31/%E3%80%8Ajavascript%E6%A8%A1%E5%BC%8F%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0---%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86.html">《javascript模式》读书笔记---基础知识</a></li>
+                            <li><span>31 Mar 2014</span> &raquo; <a href="/%E7%AC%94%E8%AE%B0/javascript%E5%9F%BA%E7%A1%80/2014/03/31/%E3%80%8Ajavascript%E6%A8%A1%E5%BC%8F%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0---%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86.html">《javascript模式》读书笔记---基础知识</a></li>
                             
-                            <li><span>31 Mar 2014</span> &raquo; <a href="/jekyll/update/2014/03/31/welcome-to-jekyll.html">Welcome to Jekyll!</a></li>
+                            <li><span>31 Mar 2014</span> &raquo; <a href="/jekyll/2014/03/31/welcome-to-jekyll.html">Welcome to Jekyll!</a></li>
                             
-                            <li><span>31 Mar 2014</span> &raquo; <a href="/%E8%BD%AC%E8%BD%BD/2014/03/31/javascript-object.prototype.toString().html">转：JavaScript:Object.prototype.toString方法的原理</a></li>
+                            <li><span>31 Mar 2014</span> &raquo; <a href="/%E8%BD%AC%E8%BD%BD/javascript%E5%9F%BA%E7%A1%80/2014/03/31/javascript-object.prototype.toString().html">转：JavaScript:Object.prototype.toString方法的原理</a></li>
                             
-                            <li><span>31 Mar 2014</span> &raquo; <a href="/%E8%BD%AC%E8%BD%BD/2014/03/31/javascipt-object.html">转:JavaScript 本地对象、内置对象、宿主对象</a></li>
+                            <li><span>31 Mar 2014</span> &raquo; <a href="/%E8%BD%AC%E8%BD%BD/javascript%E5%9F%BA%E7%A1%80/2014/03/31/javascipt-object.html">转:JavaScript 本地对象、内置对象、宿主对象</a></li>
                             
-                            <li><span>31 Mar 2014</span> &raquo; <a href="/%E7%AC%94%E8%AE%B0/2014/03/31/hasOwnPropertyVSisPrototypeOf.html">hasOwnProperty VS isPrototypeOf</a></li>
+                            <li><span>31 Mar 2014</span> &raquo; <a href="/%E7%AC%94%E8%AE%B0/javascript%E5%9F%BA%E7%A1%80/2014/03/31/hasOwnPropertyVSisPrototypeOf.html">hasOwnProperty VS isPrototypeOf</a></li>
+                            
+                            <li><span>24 Oct 2013</span> &raquo; <a href="/%E5%B7%A5%E5%85%B7/2013/10/24/markdonnote.html">使用 Markdown</a></li>
                             
 
                         </ul>

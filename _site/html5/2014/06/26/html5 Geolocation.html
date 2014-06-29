@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>about media query</title>
+        <meta name="viewport" content="width=device-width">
+
+        <!-- syntax highlighting CSS -->
+        <link rel="stylesheet" href="/css/syntax.css">
+
+        <!-- Custom CSS -->
+        <link rel="stylesheet" href="/css/main.css">
+        <!-- Google Analytics Start-->
+        <!--<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-48100787-1', 'zj-baozi.github.io');
+  ga('send', 'pageview');
+
+</script>
+-->
+        <!-- Google Analytics End -->
+    </head>
+    <body>
+
+        <div class="site">
+            <header id="header" class="inner"><div class="alignleft">
+                <h1><a href="/">前端记录</a></h1>
+                <h2><a href="/"></a></h2>
+            </div>
+                <nav id="main-nav" class="alignright">
+                    <ul>
+
+                        <li><a href="/">首页</a></li>
+
+                        <li><a href="/archives">所有文章</a></li>
+
+                    </ul>
+                    <div class="clearfix"></div>
+                </nav>
+                <div class="clearfix"></div>
+            </header>
+            <div id="content" class="inner">
+                <div id="main-col" class="alignleft">
+                <div id="wrapper">
+                <article class="post">
+
+                    <div class="post-content">
+                        <header>
+                            <div class="icon"></div>
+                        </header>
+                        <div class="entry">
+
+                            <p>做h5开发，最经常用到的H5特性就是地理定位了，但一直用并没有仔细研究，周末有时间好好补了一下。
+物理定位的应用场景很广，我能想到的有：</p>
+
+<ol>
+<li>显示当前位置，根据当前位位置进行一些推荐周边美食，旅游景点，等等。</li>
+<li>微信中好友的分享当前位置，便于迅速找到好友，或了解好友动态</li>
+<li>根据位置的移动计算移动的距离，从而计算运动距离，跟消耗的卡路里相结合就是健身软件了。</li>
+<li>还有很多。。。</li>
+</ol>
+
+<h2>Geolocation Api的使用</h2>
+
+<ol>
+<li>请求一个位置信息</li>
+<li>如果用户同意，浏览器就会返回位置信息，该信息通过支持h5地理定位功能的底层设备（笔记本，手机）提供给浏览器。</li>
+<li>位置信息由纬度、经度坐标和一些其他元数据组成。</li>
+</ol>
+
+<p><strong>经纬度坐标分两种格式：</strong></p>
+
+<p>1、十进制格式（39.17222）（h5 Geolocation API返回的为十进制格式）</p>
+
+<p>2、DMS（Degree Minute Second，角度）格式（例如，39°11’20‘）</p>
+
+<h2>位置信息从何而来</h2>
+
+<p><strong>设备可以使用下列数据源：</strong></p>
+
+<p><strong>IP地址</strong></p>
+
+<p>优点：</p>
+
+<ol>
+<li>任何地方都可用</li>
+<li>在服务器端处理</li>
+</ol>
+
+<p>缺点：</p>
+
+<ol>
+<li><p>不精确（经常出错，一般精确到城市级）</p></li>
+<li><p>运算代价大</p></li>
+</ol>
+
+<p><strong>三维坐标</strong></p>
+
+<p>优点：</p>
+
+<ol>
+<li>任何地方都可用</li>
+<li>在服务器端处理</li>
+</ol>
+
+<p>缺点：</p>
+
+<ol>
+<li><p>不精确（经常出错，一般精确到城市级）</p></li>
+<li><p>运算代价大</p></li>
+</ol>
+
+<p>*<em>GPS（Global Positioning System，全球定位系统）
+*</em></p>
+
+<p>优点：</p>
+
+<ol>
+<li>很精确</li>
+</ol>
+
+<p>缺点：</p>
+
+<ol>
+<li>定位时间长，用户耗电量大</li>
+<li>室内效果不好</li>
+<li>需要额外硬件设备</li>
+</ol>
+
+<p>*<em>从RFID、Wi-Fi和蓝牙到Wi-Fi的MAC地址（Wifi地理定位）
+*</em></p>
+
+<p>优点：</p>
+
+<ol>
+<li>精确</li>
+<li>可在室内使用</li>
+<li>可以简单，快捷定位</li>
+</ol>
+
+<p>缺点：</p>
+
+<ol>
+<li>在乡村这些无线接入点较少的地区效果不好<br></li>
+</ol>
+
+<p><strong>GSM或CDMA手机的ID（手机地理定位）</strong></p>
+
+<p>优点：</p>
+
+<ol>
+<li>相当准确</li>
+<li>可在室内使用</li>
+<li>可以简单、快捷定位</li>
+<li></li>
+</ol>
+
+<p>缺点：</p>
+
+<ol>
+<li><p>需要能够访问手机或其modem的设备</p></li>
+<li><p>在基站较少的偏远地区效果不好</p></li>
+</ol>
+
+<p><strong>用户自定义数据</strong></p>
+
+<p>优点：</p>
+
+<ol>
+<li>用户可以获得比程序定位服务更准确的位置数据</li>
+<li>允许地理定位服务的结果作为备用位置信息</li>
+<li>用户自行输入可能比自动检测更快</li>
+</ol>
+
+<p>缺点：</p>
+
+<ol>
+<li>可能很不准确，特别是当用户位置变更后</li>
+</ol>
+
+<h2>检查浏览器支持性</h2>
+<div class="highlight"><pre><code class="language-text" data-lang="text">function loadDemo(){
+            if(navigator.geolocation){
+                document.getElementById(&#39;support&#39;).innerHTML = &#39;Geolocation supported.&#39;;
+            }else{
+                document.getElementById(&#39;support&#39;).innerHTML = &#39;Geolocation is not supported.&#39;;
+            }
+        }
+</code></pre></div>
+<h2>方法</h2>
+
+<p><strong>navigator.geolocation.getCurrentPosition(updateLocation,handleLocationError)</strong></p>
+
+<p>navigator.geolocation.updateLocation</p>
+
+<p>重要的位置数据都包含在了coords特性中：
+latitude(纬度)
+longitude(经度)
+accuracy(准确度)</p>
+
+<p><strong>错误编号设置在错误对象中，错误对象作为code参数传递给错误处理程序，而message特性可提供更详细的问题说明：</strong></p>
+
+<p>PERMISSION_DENIED(错误编号1) -- 用户拒绝浏览器获得其位置信息。</p>
+
+<p>POSITION_UNAVAILABLE（错误编号2）-- 尝试获取用户位置数据，但失败了</p>
+
+<p>TIMEOUT(错误编号3）-- 设置了可选的timeout值。尝试确定用户位置的过程超时。</p>
+
+<p><strong>navigator.geolocation.watchPosition</strong></p>
+
+<p>重复更新</p>
+
+<p>用于移动时不停的检测当前位置</p>
+
+<p><strong>navigator.geolocation.clearWatch</strong></p>
+
+<p>关闭更新</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">var watchId = navigator.geolocation.watchPosition(updateLocation,handleLocationError);
+
+navigator.geolocation.clearWatch(watchId);
+</code></pre></div>
+<p><strong>可选的地理定位请求特性</strong></p>
+
+<ol>
+<li><p>enableHighAccuracy（true/false）：通知浏览器启用html5 Geolocation服务的高精确度模式。（导致机器花费更多的时间和资源来确定位置，所以应谨慎使用）</p></li>
+<li><p>timeout(ms)：告诉浏览器计算当前位置所允许的最长时间。如果在这个时间段内未完成计算，就会调用错误处理程序。</p></li>
+<li><p>maximumAge(ms)：浏览器重新计算位置的时间间隔。</p></li>
+</ol>
+
+<p>若浏览器没有在maximumAge设定时间之内更新过数据，它还是会重新获取数据。
+这里的极限情况：如果将maximumAge设置为“0”则浏览器在每次请求时都需要获取数据，如果设置为Infinity则意味着不再重新获取数据。</p>
+
+                        </div>
+                        <footer>
+                            <div class="clearfix"></div>
+                        </footer>
+                    </div>
+                </article>
+
+                <!-- Duoshuo Comment BEGIN -->
+                <div class="ds-thread"></div>
+                <script type="text/javascript">
+                    var duoshuoQuery = {short_name:"zj-baozi"};
+                    (function() {
+                        var ds = document.createElement('script');
+                        ds.type = 'text/javascript';ds.async = true;
+                        ds.src = 'http://static.duoshuo.com/embed.js';
+                        ds.charset = 'UTF-8';
+                        (document.getElementsByTagName('head')[0]
+                                || document.getElementsByTagName('body')[0]).appendChild(ds);
+                    })();
+                </script>
+                <!-- Duoshuo Comment END -->
+                </div></div>
+                <aside id="sidebar" class="alignright">
+                    <div class="search">
+                        <form action="//google.com/search" method="get" accept-charset="utf-8">
+                            <input type="search" name="q" results="0" placeholder="搜索">
+                            <input type="hidden" name="q" value="site:zj-baozi.github.io">
+                        </form>
+                    </div>
+
+
+                    <div class="widget tag">
+                        <h3 class="title"> 分类 </h3>
+  <ul class="entry">
+      
+            
+                <li>
+                <a href="/categories/工具"> 工具 (1) </a>
+                </li>
+            
+      
+            
+                <li>
+                <a href="/categories/笔记"> 笔记 (13) </a>
+                </li>
+            
+      
+            
+                <li>
+                <a href="/categories/javascript基础"> javascript基础 (8) </a>
+                </li>
+            
+      
+            
+                <li>
+                <a href="/categories/转载"> 转载 (9) </a>
+                </li>
+            
+      
+            
+                <li>
+                <a href="/categories/jekyll"> jekyll (2) </a>
+                </li>
+            
+      
+            
+                <li>
+                <a href="/categories/javascript模式"> javascript模式 (5) </a>
+                </li>
+            
+      
+            
+                <li>
+                <a href="/categories/javascript设计模式"> javascript设计模式 (6) </a>
+                </li>
+            
+      
+            
+                <li>
+                <a href="/categories/javasript设计模式"> javasript设计模式 (1) </a>
+                </li>
+            
+      
+            
+                <li>
+                <a href="/categories/html5高级程序设计"> html5高级程序设计 (1) </a>
+                </li>
+            
+      
+            
+                <li>
+                <a href="/categories/javascript模式 设计模式"> javascript模式 设计模式 (1) </a>
+                </li>
+            
+      
+            
+                <li>
+                <a href="/categories/响应式 笔记"> 响应式 笔记 (2) </a>
+                </li>
+            
+      
+            
+                <li>
+                <a href="/categories/html5 跨终端"> html5 跨终端 (1) </a>
+                </li>
+            
+      
+            
+                <li>
+                <a href="/categories/viewport 跨终端"> viewport 跨终端 (1) </a>
+                </li>
+            
+      
+            
+                <li style="background-color: #444">
+                <a href="/categories/html5"> html5 (1) </a>
+                </li>
+            
+      
+  </ul>
+
+
+                    </div>
+                    <div class="widget tag">
+                        <!--归挡-->
+                        <h3 class="title"> 归档 </h3>
+  <ul class="entry">
+    
+    
+    
+        
+        
+        
+        
+    
+        
+        
+        
+        
+    
+        
+        
+        
+        
+    
+        
+        
+        
+        
+    
+        
+        
+        
+        
+            
+            <li>
+                <a href="/2014/06">
+                    2014-06 (5)
+                </a>
+            </li>
+
+        
+        
+    
+        
+        
+        
+        
+    
+        
+        
+        
+        
+    
+        
+        
+        
+        
+    
+        
+        
+        
+        
+    
+        
+        
+        
+        
+    
+        
+        
+        
+        
+    
+        
+        
+        
+        
+    
+        
+        
+        
+        
+    
+        
+        
+        
+        
+    
+        
+        
+        
+        
+    
+        
+        
+        
+        
+    
+        
+        
+        
+        
+            
+            <li>
+                <a href="/2014/05">
+                    2014-05 (12)
+                </a>
+            </li>
+
+        
+        
+    
+        
+        
+        
+        
+    
+        
+        
+        
+        
+    
+        
+        
+        
+        
+    
+        
+        
+        
+        
+    
+        
+        
+        
+        
+    
+        
+        
+        
+        
+    
+        
+        
+        
+        
+            
+            <li>
+                <a href="/2014/04">
+                    2014-04 (7)
+                </a>
+            </li>
+
+        
+        
+    
+        
+        
+        
+        
+    
+        
+        
+        
+        
+    
+        
+        
+        
+        
+    
+        
+        
+        
+        
+    
+        
+        
+        
+        
+            
+            <li>
+                <a href="/2014/03">
+                    2014-03 (5)
+                </a>
+            </li>
+
+        
+        
+    
+        
+        
+        
+        
+            
+            <li>
+                <a href="/2013/10">
+                    2013-10 (1)
+                </a>
+            </li>
+
+        
+        
+    
+  </ul>
+
+                    </div>
+                    <!--<div class="widget tag">
+                        <h3 class="title">最新文章</h3>
+                        <ul class="entry">
+                            
+                            <li><span>26 Jun 2014</span> &raquo; <a href="/html5/2014/06/26/html5%20Geolocation.html">about media query</a></li>
+                            
+                            <li><span>21 Jun 2014</span> &raquo; <a href="/viewport%20%E8%B7%A8%E7%BB%88%E7%AB%AF/2014/06/21/viewport%E7%AC%94%E8%AE%B0.html">about media query</a></li>
+                            
+                            <li><span>21 Jun 2014</span> &raquo; <a href="/html5%20%E8%B7%A8%E7%BB%88%E7%AB%AF/2014/06/21/html5%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5.html">about media query</a></li>
+                            
+                            <li><span>19 Jun 2014</span> &raquo; <a href="/%E5%93%8D%E5%BA%94%E5%BC%8F%20%E7%AC%94%E8%AE%B0/2014/06/19/media%20query%E7%AC%94%E8%AE%B0.html">media query笔记</a></li>
+                            
+                            <li><span>19 Jun 2014</span> &raquo; <a href="/%E5%93%8D%E5%BA%94%E5%BC%8F%20%E7%AC%94%E8%AE%B0/2014/06/19/about-media%20query.html">about media query</a></li>
+                            
+                            <li><span>25 May 2014</span> &raquo; <a href="/%E8%BD%AC%E8%BD%BD/javascript%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/2014/05/25/%E5%A4%8D%E6%9D%82%E8%A1%A8%E5%8D%95%E5%BA%94%E7%94%A8%E8%A7%A3%E8%80%A6%EF%BC%8C%E6%B7%98%E5%AE%9D%E6%9C%BA%E7%A5%A8%E8%AE%A2%E5%8D%95%E5%AE%9E%E8%B7%B5.html">复杂表单应用解耦，淘宝机票订单实践</a></li>
+                            
+                            <li><span>25 May 2014</span> &raquo; <a href="/%E8%BD%AC%E8%BD%BD/jekyll/2014/05/25/%E4%BD%BF%E7%94%A8%20GitHub,%20Jekyll%20%E6%89%93%E9%80%A0%E8%87%AA%E5%B7%B1%E7%9A%84%E5%85%8D%E8%B4%B9%E7%8B%AC%E7%AB%8B%E5%8D%9A%E5%AE%A2.html">使用 GitHub, Jekyll 打造自己的免费独立博客</a></li>
+                            
+                            <li><span>25 May 2014</span> &raquo; <a href="/javascript%E6%A8%A1%E5%BC%8F%20%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/2014/05/25/%E3%80%8Ajavascript%E6%A8%A1%E5%BC%8F%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0---.html">《javascript模式》读书笔记---设计模式-代理模式</a></li>
+                            
+                            <li><span>25 May 2014</span> &raquo; <a href="/%E7%AC%94%E8%AE%B0/html5%E9%AB%98%E7%BA%A7%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/2014/05/25/%E3%80%8Ahtml5%E9%AB%98%E7%BA%A7%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E3%80%8Bcanvas.html">canvas</a></li>
+                            
+                            <li><span>25 May 2014</span> &raquo; <a href="/%E7%AC%94%E8%AE%B0/javascript%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/2014/05/25/%E3%80%8Ajavascript%E6%A8%A1%E5%BC%8F%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0---%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E5%A4%96%E8%A7%82%E6%A8%A1%E5%BC%8F.html">《javascript模式》读书笔记---设计模式-外观模式</a></li>
+                            
+                            <li><span>24 May 2014</span> &raquo; <a href="/%E7%AC%94%E8%AE%B0/javascript%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/2014/05/24/%E3%80%8Ajavascript%E6%A8%A1%E5%BC%8F%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0---%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E8%BF%AD%E4%BB%A3%E5%99%A8%E6%A8%A1%E5%BC%8F.html">《javascript模式》读书笔记---设计模式-迭代器模式</a></li>
+                            
+                            <li><span>24 May 2014</span> &raquo; <a href="/%E7%AC%94%E8%AE%B0/javascript%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/2014/05/24/%E3%80%8Ajavascript%E6%A8%A1%E5%BC%8F%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0---%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E8%A3%85%E9%A5%B0%E8%80%85%E6%A8%A1%E5%BC%8F.html">《javascript模式》读书笔记---设计模式-装饰者模式</a></li>
+                            
+                            <li><span>20 May 2014</span> &raquo; <a href="/%E7%AC%94%E8%AE%B0/javascript%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/2014/05/20/%E3%80%8Ajavascript%E6%A8%A1%E5%BC%8F%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0---%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F.html">《javascript模式》读书笔记---设计模式-工厂模式</a></li>
+                            
+                            <li><span>20 May 2014</span> &raquo; <a href="/%E7%AC%94%E8%AE%B0/javasript%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/2014/05/20/%E3%80%8Ajavascript%E6%A8%A1%E5%BC%8F%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0---%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E4%BD%BF%E7%94%A8new%E6%93%8D%E4%BD%9C%E7%AC%A6.html">《javascript模式》读书笔记---设计模式-使用new操作符</a></li>
+                            
+                            <li><span>11 May 2014</span> &raquo; <a href="/%E8%BD%AC%E8%BD%BD/javascript%E5%9F%BA%E7%A1%80/2014/05/11/cookie.html">JavaScript 操作 Cookie</a></li>
+                            
+                            <li><span>11 May 2014</span> &raquo; <a href="/%E8%BD%AC%E8%BD%BD/javascript%E5%9F%BA%E7%A1%80/2014/05/11/arguments%E8%BD%AC%E6%8D%A2%E4%B8%BA%E6%95%B0%E7%BB%84.html">arguments转换为数组</a></li>
+                            
+                            <li><span>10 May 2014</span> &raquo; <a href="/%E8%BD%AC%E8%BD%BD/javascript%E5%9F%BA%E7%A1%80/2014/05/10/escape,encodeURI,encodeURIComponent%E7%9A%84%E5%8C%BA%E5%88%AB.html">escape,encodeURI和encodeURIComponent的区别</a></li>
+                            
+                            <li><span>20 Apr 2014</span> &raquo; <a href="/%E7%AC%94%E8%AE%B0/javascript%E6%A8%A1%E5%BC%8F/2014/04/20/%E3%80%8Ajavascript%E6%A8%A1%E5%BC%8F%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0---DOM%E5%92%8C%E6%B5%8F%E8%A7%88%E5%99%A8%E6%A8%A1%E5%BC%8F.html">《javascript模式》读书笔记—DOM和浏览器模式</a></li>
+                            
+                            <li><span>20 Apr 2014</span> &raquo; <a href="/%E7%AC%94%E8%AE%B0/javascript%E6%A8%A1%E5%BC%8F/2014/04/20/javascript%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E7%AD%96%E7%95%A5%E6%A8%A1%E5%BC%8F.html">《javascript模式》-策略模式</a></li>
+                            
+                            <li><span>20 Apr 2014</span> &raquo; <a href="/%E8%BD%AC%E8%BD%BD/javascript%E5%9F%BA%E7%A1%80/2014/04/20/Array.prototype.slice.call(arguments).html">Array.prototype.slice.call(arguments)</a></li>
+                            
+                            <li><span>20 Apr 2014</span> &raquo; <a href="/%E8%BD%AC%E8%BD%BD/javascript%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/2014/04/20/23%E7%A7%8D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E5%8F%8A%E8%A7%A3%E9%87%8A%EF%BC%88%E4%B8%AD%E8%8B%B1%E6%96%87%E5%AF%B9%E7%85%A7.html">23种设计模式及解释（中英文对照）</a></li>
+                            
+                            <li><span>14 Apr 2014</span> &raquo; <a href="/%E7%AC%94%E8%AE%B0/javascript%E6%A8%A1%E5%BC%8F/2014/04/14/%E3%80%8Ajavascript%E6%A8%A1%E5%BC%8F%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0---%E4%BB%A3%E7%A0%81%E5%A4%8D%E7%94%A8%E6%A8%A1%E5%BC%8F.html">《javascript模式》读书笔记—代码复用模式（继承）</a></li>
+                            
+                            <li><span>05 Apr 2014</span> &raquo; <a href="/%E7%AC%94%E8%AE%B0/javascript%E6%A8%A1%E5%BC%8F/2014/04/05/%E3%80%8Ajavascript%E6%A8%A1%E5%BC%8F%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0---%E5%AF%B9%E8%B1%A1%E5%88%9B%E5%BB%BA%E6%A8%A1%E5%BC%8F.html">《javascript模式》读书笔记—对象创建模式</a></li>
+                            
+                            <li><span>05 Apr 2014</span> &raquo; <a href="/%E7%AC%94%E8%AE%B0/javascript%E6%A8%A1%E5%BC%8F/2014/04/05/%E3%80%8Ajavascript%E6%A8%A1%E5%BC%8F%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0---%E5%87%BD%E6%95%B0.html">《javascript模式》读书笔记---函数</a></li>
+                            
+                            <li><span>31 Mar 2014</span> &raquo; <a href="/%E7%AC%94%E8%AE%B0/javascript%E5%9F%BA%E7%A1%80/2014/03/31/%E3%80%8Ajavascript%E6%A8%A1%E5%BC%8F%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0---%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86.html">《javascript模式》读书笔记---基础知识</a></li>
+                            
+                            <li><span>31 Mar 2014</span> &raquo; <a href="/jekyll/2014/03/31/welcome-to-jekyll.html">Welcome to Jekyll!</a></li>
+                            
+                            <li><span>31 Mar 2014</span> &raquo; <a href="/%E8%BD%AC%E8%BD%BD/javascript%E5%9F%BA%E7%A1%80/2014/03/31/javascript-object.prototype.toString().html">转：JavaScript:Object.prototype.toString方法的原理</a></li>
+                            
+                            <li><span>31 Mar 2014</span> &raquo; <a href="/%E8%BD%AC%E8%BD%BD/javascript%E5%9F%BA%E7%A1%80/2014/03/31/javascipt-object.html">转:JavaScript 本地对象、内置对象、宿主对象</a></li>
+                            
+                            <li><span>31 Mar 2014</span> &raquo; <a href="/%E7%AC%94%E8%AE%B0/javascript%E5%9F%BA%E7%A1%80/2014/03/31/hasOwnPropertyVSisPrototypeOf.html">hasOwnProperty VS isPrototypeOf</a></li>
+                            
+                            <li><span>24 Oct 2013</span> &raquo; <a href="/%E5%B7%A5%E5%85%B7/2013/10/24/markdonnote.html">使用 Markdown</a></li>
+                            
+
+                        </ul>
+                    </div>-->
+
+                </aside>
+                <div class="clearfix"></div>
+            </div>
+
+
+
+          <div class="footer inner" id="footer">
+    <div class="contact">
+        <p>
+            &copy; 2014 zj-baozi<br />
+            @淘宝<br />
+            295112462@qq.com
+        </p>
+    </div>
+    <div class="contact">
+        <p>
+            <a href="https://github.com/zj-baozi">github.com/zj-baozi</a><br />
+
+        </p>
+    </div>
+</div>
+        </div>
+
+    </body>
+</html>

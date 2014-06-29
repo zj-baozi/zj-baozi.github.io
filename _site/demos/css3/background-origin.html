@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        *{margin:0;padding:0;}
+        ul li{list-style: none}
+        .menu{
+
+
+        }
+
+        .menu span{
+            display: block;
+            padding:20px;
+            background: url('http://gtms03.alicdn.com/tps/i3/T1ScUHFGJaXXbtTani-173-73.png') no-repeat 0 0;
+            background-size: 86px 37px;
+
+
+        }
+        .menu span.content-box{
+            background-origin:content-box;
+
+        }
+        .menu span.border-box{
+            background-origin:border-box;
+
+        }
+        .menu span.padding-box{
+           background-origin: padding-box;
+
+        }
+    </style>
+</head>
+<body>
+<div class="menu">
+   <span class="border-box">测试</span>
+</div>
+
+<div class="menu">
+    <span class="content-box">测试</span>
+</div>
+<div class="menu">
+    <span class="padding-box">测试</span>
+</div>
+</body>
+</html>

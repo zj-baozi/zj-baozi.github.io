@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>media query笔记</title>
+        <meta name="viewport" content="width=device-width">
+
+        <!-- syntax highlighting CSS -->
+        <link rel="stylesheet" href="/css/syntax.css">
+
+        <!-- Custom CSS -->
+        <link rel="stylesheet" href="/css/main.css">
+        <!-- Google Analytics Start-->
+        <!--<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-48100787-1', 'zj-baozi.github.io');
+  ga('send', 'pageview');
+
+</script>
+-->
+        <!-- Google Analytics End -->
+    </head>
+    <body>
+
+        <div class="site">
+            <header id="header" class="inner"><div class="alignleft">
+                <h1><a href="/">前端记录</a></h1>
+                <h2><a href="/"></a></h2>
+            </div>
+                <nav id="main-nav" class="alignright">
+                    <ul>
+
+                        <li><a href="/">首页</a></li>
+
+                        <li><a href="/archives">所有文章</a></li>
+
+                    </ul>
+                    <div class="clearfix"></div>
+                </nav>
+                <div class="clearfix"></div>
+            </header>
+            <div id="content" class="inner">
+                <div id="main-col" class="alignleft">
+                <div id="wrapper">
+                <article class="post">
+
+                    <div class="post-content">
+                        <header>
+                            <div class="icon"></div>
+                        </header>
+                        <div class="entry">
+
+                            <p>Media query是由一个media type，加上一个或多个media feature的表达式组成。</p>
+
+<h2>两种形式</h2>
+
+<p>1、link element里面
+<link rel="stylesheet" media="(max-width:800px)" href="example.css" /></p>
+
+<p>2、</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">&lt; style&gt;
+@media (max-width:600px){
+    .sidebar{
+        display:none;
+    }
+}
+&lt;/style&gt;
+</code></pre></div>
+<h2>格式</h2>
+<div class="highlight"><pre><code class="language-text" data-lang="text">@media &lt;media types&gt;{
+
+}
+//example
+@media (min-width:800px),handheld and (orientation:landscape),not screen and (color){
+...
+}
+</code></pre></div>
+<p>all 适配于所有设备</p>
+
+<p>braille 用于支持盲文触摸反馈的设备</p>
+
+<p>embossed 盲文分页打印设备</p>
+
+<p>handheld 适配于手持设备，典型小屏+有限带宽</p>
+
+<p>print 适配于可分页的文件或者材料在打印预览模式下的排版</p>
+
+<p>projection 用于投影的显示，例如投影仪设备等</p>
+
+<p>screen 主要用于彩色电脑屏幕</p>
+
+<p>speech 用于语音合成，语音输出的设备读屏。【听觉样式表】</p>
+
+<p>tty 用于使用固定间距的字符网格的媒体设备（比如，电传打字机，一些传真机，以及一些显示能力有限的便携设备，需要注意的是，在这种type下，不要使用px这种像素单位）</p>
+
+<p>tv 用于电视设备，特指一些带声音输出的，分辨率低，颜色，有限的可滚动屏幕。
+not，作用域只针对当前query语句，不影响逗号分隔的其他字符。</p>
+
+<p>aspect-ratio 限定设备显示区域的横纵显示比，以/分隔
+@media screen and (min-aspect-radio:1/1){...}</p>
+
+<p>device-aspect-ratio 限定设备的宽高比
+@media screen and (device-aspect-ratio:16/9){...}</p>
+
+<p>device-width 设备宽
+device-height 设备高
+width 屏幕宽
+height 屏幕高</p>
+
+<p>orientation 判定设备状态是“横屏”或者“竖屏” （landscape || portrait）
+resolution 判定设备的像素密度，单位dpi
+@media screen and (min-resolution:325dpi){...}
+上面的判定匹配显示屏像素密度大于325dpi的设备，比如retina 的iphone
+device-pixel-ratio 配合 resolution 侦探设备的像素密度。</p>
+
+<p><strong>我们要做一个 media width 从 320 过渡到1024 的响应式设计和实现。同样按照上面的区间分隔，假设这样做，有什么问题呢？</strong></p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">/* Default Layout */
+...
+/* Media */
+@media only screen and (min-width: 1024px) {
+
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1023px) {
+
+}
+
+@media only screen and (min-width: 480px) and (max-width: 767px) {
+
+}
+
+@media only screen and (min-width: 320px) and (max-width: 479px) {
+
+}
+</code></pre></div>
+<p>如果这样做，320 之下的 样式就只能 来自 Default Layout, 也就不再是Mobile的Layout该有的样子了。
+或许我们可以把最后一条改为：</p>
+
+<p>@media only screen and (max-width: 479px) { }
+让phone端样式分两套，480以上和以下来做。但是既然做到这一步了，为什么不再往前走一步。将Mobile端的 Defalut Layout抽离出来，首先 Mobile 的default layout直接定位于主流的320 layout，并且继承于 base 的default layout。然后 phone 的 pad的layout都继承 mobile 的layout。再次phone中，480的layout直接覆盖Mobile Layout中的部分样式，一点点扩展就能做出来。
+至此，按上面的思路就是最开始代码的实现。</p>
+
+<p>同时，将继承关系理顺之后你会发现一个好处，就是代码的冗余量会大大减少。</p>
+
+<p>这也才是对于产品最直接的利益。</p>
+
+                        </div>
+                        <footer>
+                            <div class="clearfix"></div>
+                        </footer>
+                    </div>
+                </article>
+
+                <!-- Duoshuo Comment BEGIN -->
+                <div class="ds-thread"></div>
+                <script type="text/javascript">
+                    var duoshuoQuery = {short_name:"zj-baozi"};
+                    (function() {
+                        var ds = document.createElement('script');
+                        ds.type = 'text/javascript';ds.async = true;
+                        ds.src = 'http://static.duoshuo.com/embed.js';
+                        ds.charset = 'UTF-8';
+                        (document.getElementsByTagName('head')[0]
+                                || document.getElementsByTagName('body')[0]).appendChild(ds);
+                    })();
+                </script>
+                <!-- Duoshuo Comment END -->
+                </div></div>
+                <aside id="sidebar" class="alignright">
+                    <div class="search">
+                        <form action="//google.com/search" method="get" accept-charset="utf-8">
+                            <input type="search" name="q" results="0" placeholder="搜索">
+                            <input type="hidden" name="q" value="site:zj-baozi.github.io">
+                        </form>
+                    </div>
+
+
+                    <div class="widget tag">
+                        <h3 class="title"> 分类 </h3>
+  <ul class="entry">
+      
+            
+                <li>
+                <a href="/categories/工具"> 工具 (1) </a>
+                </li>
+            
+      
+            
+                <li>
+                <a href="/categories/笔记"> 笔记 (13) </a>
+                </li>
+            
+      
+            
+                <li>
+                <a href="/categories/javascript基础"> javascript基础 (8) </a>
+                </li>
+            
+      
+            
+                <li>
+                <a href="/categories/转载"> 转载 (9) </a>
+                </li>
+            
+      
+            
+                <li>
+                <a href="/categories/jekyll"> jekyll (2) </a>
+                </li>
+            
+      
+            
+                <li>
+                <a href="/categories/javascript模式"> javascript模式 (5) </a>
+                </li>
+            
+      
+            
+                <li>
+                <a href="/categories/javascript设计模式"> javascript设计模式 (6) </a>
+                </li>
+            
+      
+            
+                <li>
+                <a href="/categories/javasript设计模式"> javasript设计模式 (1) </a>
+                </li>
+            
+      
+            
+                <li>
+                <a href="/categories/html5高级程序设计"> html5高级程序设计 (1) </a>
+                </li>
+            
+      
+            
+                <li>
+                <a href="/categories/javascript模式 设计模式"> javascript模式 设计模式 (1) </a>
+                </li>
+            
+      
+            
+                <li style="background-color: #444">
+                <a href="/categories/响应式 笔记"> 响应式 笔记 (2) </a>
+                </li>
+            
+      
+            
+                <li>
+                <a href="/categories/html5 跨终端"> html5 跨终端 (1) </a>
+                </li>
+            
+      
+            
+                <li>
+                <a href="/categories/viewport 跨终端"> viewport 跨终端 (1) </a>
+                </li>
+            
+      
+            
+                <li>
+                <a href="/categories/html5"> html5 (1) </a>
+                </li>
+            
+      
+  </ul>
+
+
+                    </div>
+                    <div class="widget tag">
+                        <!--归挡-->
+                        <h3 class="title"> 归档 </h3>
+  <ul class="entry">
+    
+    
+    
+        
+        
+        
+        
+    
+        
+        
+        
+        
+    
+        
+        
+        
+        
+    
+        
+        
+        
+        
+    
+        
+        
+        
+        
+            
+            <li>
+                <a href="/2014/06">
+                    2014-06 (5)
+                </a>
+            </li>
+
+        
+        
+    
+        
+        
+        
+        
+    
+        
+        
+        
+        
+    
+        
+        
+        
+        
+    
+        
+        
+        
+        
+    
+        
+        
+        
+        
+    
+        
+        
+        
+        
+    
+        
+        
+        
+        
+    
+        
+        
+        
+        
+    
+        
+        
+        
+        
+    
+        
+        
+        
+        
+    
+        
+        
+        
+        
+    
+        
+        
+        
+        
+            
+            <li>
+                <a href="/2014/05">
+                    2014-05 (12)
+                </a>
+            </li>
+
+        
+        
+    
+        
+        
+        
+        
+    
+        
+        
+        
+        
+    
+        
+        
+        
+        
+    
+        
+        
+        
+        
+    
+        
+        
+        
+        
+    
+        
+        
+        
+        
+    
+        
+        
+        
+        
+            
+            <li>
+                <a href="/2014/04">
+                    2014-04 (7)
+                </a>
+            </li>
+
+        
+        
+    
+        
+        
+        
+        
+    
+        
+        
+        
+        
+    
+        
+        
+        
+        
+    
+        
+        
+        
+        
+    
+        
+        
+        
+        
+            
+            <li>
+                <a href="/2014/03">
+                    2014-03 (5)
+                </a>
+            </li>
+
+        
+        
+    
+        
+        
+        
+        
+            
+            <li>
+                <a href="/2013/10">
+                    2013-10 (1)
+                </a>
+            </li>
+
+        
+        
+    
+  </ul>
+
+                    </div>
+                    <!--<div class="widget tag">
+                        <h3 class="title">最新文章</h3>
+                        <ul class="entry">
+                            
+                            <li><span>26 Jun 2014</span> &raquo; <a href="/html5/2014/06/26/html5%20Geolocation.html">about media query</a></li>
+                            
+                            <li><span>21 Jun 2014</span> &raquo; <a href="/viewport%20%E8%B7%A8%E7%BB%88%E7%AB%AF/2014/06/21/viewport%E7%AC%94%E8%AE%B0.html">about media query</a></li>
+                            
+                            <li><span>21 Jun 2014</span> &raquo; <a href="/html5%20%E8%B7%A8%E7%BB%88%E7%AB%AF/2014/06/21/html5%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5.html">about media query</a></li>
+                            
+                            <li><span>19 Jun 2014</span> &raquo; <a href="/%E5%93%8D%E5%BA%94%E5%BC%8F%20%E7%AC%94%E8%AE%B0/2014/06/19/media%20query%E7%AC%94%E8%AE%B0.html">media query笔记</a></li>
+                            
+                            <li><span>19 Jun 2014</span> &raquo; <a href="/%E5%93%8D%E5%BA%94%E5%BC%8F%20%E7%AC%94%E8%AE%B0/2014/06/19/about-media%20query.html">about media query</a></li>
+                            
+                            <li><span>25 May 2014</span> &raquo; <a href="/%E8%BD%AC%E8%BD%BD/javascript%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/2014/05/25/%E5%A4%8D%E6%9D%82%E8%A1%A8%E5%8D%95%E5%BA%94%E7%94%A8%E8%A7%A3%E8%80%A6%EF%BC%8C%E6%B7%98%E5%AE%9D%E6%9C%BA%E7%A5%A8%E8%AE%A2%E5%8D%95%E5%AE%9E%E8%B7%B5.html">复杂表单应用解耦，淘宝机票订单实践</a></li>
+                            
+                            <li><span>25 May 2014</span> &raquo; <a href="/%E8%BD%AC%E8%BD%BD/jekyll/2014/05/25/%E4%BD%BF%E7%94%A8%20GitHub,%20Jekyll%20%E6%89%93%E9%80%A0%E8%87%AA%E5%B7%B1%E7%9A%84%E5%85%8D%E8%B4%B9%E7%8B%AC%E7%AB%8B%E5%8D%9A%E5%AE%A2.html">使用 GitHub, Jekyll 打造自己的免费独立博客</a></li>
+                            
+                            <li><span>25 May 2014</span> &raquo; <a href="/javascript%E6%A8%A1%E5%BC%8F%20%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/2014/05/25/%E3%80%8Ajavascript%E6%A8%A1%E5%BC%8F%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0---.html">《javascript模式》读书笔记---设计模式-代理模式</a></li>
+                            
+                            <li><span>25 May 2014</span> &raquo; <a href="/%E7%AC%94%E8%AE%B0/html5%E9%AB%98%E7%BA%A7%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/2014/05/25/%E3%80%8Ahtml5%E9%AB%98%E7%BA%A7%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E3%80%8Bcanvas.html">canvas</a></li>
+                            
+                            <li><span>25 May 2014</span> &raquo; <a href="/%E7%AC%94%E8%AE%B0/javascript%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/2014/05/25/%E3%80%8Ajavascript%E6%A8%A1%E5%BC%8F%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0---%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E5%A4%96%E8%A7%82%E6%A8%A1%E5%BC%8F.html">《javascript模式》读书笔记---设计模式-外观模式</a></li>
+                            
+                            <li><span>24 May 2014</span> &raquo; <a href="/%E7%AC%94%E8%AE%B0/javascript%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/2014/05/24/%E3%80%8Ajavascript%E6%A8%A1%E5%BC%8F%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0---%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E8%BF%AD%E4%BB%A3%E5%99%A8%E6%A8%A1%E5%BC%8F.html">《javascript模式》读书笔记---设计模式-迭代器模式</a></li>
+                            
+                            <li><span>24 May 2014</span> &raquo; <a href="/%E7%AC%94%E8%AE%B0/javascript%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/2014/05/24/%E3%80%8Ajavascript%E6%A8%A1%E5%BC%8F%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0---%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E8%A3%85%E9%A5%B0%E8%80%85%E6%A8%A1%E5%BC%8F.html">《javascript模式》读书笔记---设计模式-装饰者模式</a></li>
+                            
+                            <li><span>20 May 2014</span> &raquo; <a href="/%E7%AC%94%E8%AE%B0/javascript%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/2014/05/20/%E3%80%8Ajavascript%E6%A8%A1%E5%BC%8F%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0---%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F.html">《javascript模式》读书笔记---设计模式-工厂模式</a></li>
+                            
+                            <li><span>20 May 2014</span> &raquo; <a href="/%E7%AC%94%E8%AE%B0/javasript%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/2014/05/20/%E3%80%8Ajavascript%E6%A8%A1%E5%BC%8F%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0---%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E4%BD%BF%E7%94%A8new%E6%93%8D%E4%BD%9C%E7%AC%A6.html">《javascript模式》读书笔记---设计模式-使用new操作符</a></li>
+                            
+                            <li><span>11 May 2014</span> &raquo; <a href="/%E8%BD%AC%E8%BD%BD/javascript%E5%9F%BA%E7%A1%80/2014/05/11/cookie.html">JavaScript 操作 Cookie</a></li>
+                            
+                            <li><span>11 May 2014</span> &raquo; <a href="/%E8%BD%AC%E8%BD%BD/javascript%E5%9F%BA%E7%A1%80/2014/05/11/arguments%E8%BD%AC%E6%8D%A2%E4%B8%BA%E6%95%B0%E7%BB%84.html">arguments转换为数组</a></li>
+                            
+                            <li><span>10 May 2014</span> &raquo; <a href="/%E8%BD%AC%E8%BD%BD/javascript%E5%9F%BA%E7%A1%80/2014/05/10/escape,encodeURI,encodeURIComponent%E7%9A%84%E5%8C%BA%E5%88%AB.html">escape,encodeURI和encodeURIComponent的区别</a></li>
+                            
+                            <li><span>20 Apr 2014</span> &raquo; <a href="/%E7%AC%94%E8%AE%B0/javascript%E6%A8%A1%E5%BC%8F/2014/04/20/%E3%80%8Ajavascript%E6%A8%A1%E5%BC%8F%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0---DOM%E5%92%8C%E6%B5%8F%E8%A7%88%E5%99%A8%E6%A8%A1%E5%BC%8F.html">《javascript模式》读书笔记—DOM和浏览器模式</a></li>
+                            
+                            <li><span>20 Apr 2014</span> &raquo; <a href="/%E7%AC%94%E8%AE%B0/javascript%E6%A8%A1%E5%BC%8F/2014/04/20/javascript%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E7%AD%96%E7%95%A5%E6%A8%A1%E5%BC%8F.html">《javascript模式》-策略模式</a></li>
+                            
+                            <li><span>20 Apr 2014</span> &raquo; <a href="/%E8%BD%AC%E8%BD%BD/javascript%E5%9F%BA%E7%A1%80/2014/04/20/Array.prototype.slice.call(arguments).html">Array.prototype.slice.call(arguments)</a></li>
+                            
+                            <li><span>20 Apr 2014</span> &raquo; <a href="/%E8%BD%AC%E8%BD%BD/javascript%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/2014/04/20/23%E7%A7%8D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E5%8F%8A%E8%A7%A3%E9%87%8A%EF%BC%88%E4%B8%AD%E8%8B%B1%E6%96%87%E5%AF%B9%E7%85%A7.html">23种设计模式及解释（中英文对照）</a></li>
+                            
+                            <li><span>14 Apr 2014</span> &raquo; <a href="/%E7%AC%94%E8%AE%B0/javascript%E6%A8%A1%E5%BC%8F/2014/04/14/%E3%80%8Ajavascript%E6%A8%A1%E5%BC%8F%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0---%E4%BB%A3%E7%A0%81%E5%A4%8D%E7%94%A8%E6%A8%A1%E5%BC%8F.html">《javascript模式》读书笔记—代码复用模式（继承）</a></li>
+                            
+                            <li><span>05 Apr 2014</span> &raquo; <a href="/%E7%AC%94%E8%AE%B0/javascript%E6%A8%A1%E5%BC%8F/2014/04/05/%E3%80%8Ajavascript%E6%A8%A1%E5%BC%8F%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0---%E5%AF%B9%E8%B1%A1%E5%88%9B%E5%BB%BA%E6%A8%A1%E5%BC%8F.html">《javascript模式》读书笔记—对象创建模式</a></li>
+                            
+                            <li><span>05 Apr 2014</span> &raquo; <a href="/%E7%AC%94%E8%AE%B0/javascript%E6%A8%A1%E5%BC%8F/2014/04/05/%E3%80%8Ajavascript%E6%A8%A1%E5%BC%8F%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0---%E5%87%BD%E6%95%B0.html">《javascript模式》读书笔记---函数</a></li>
+                            
+                            <li><span>31 Mar 2014</span> &raquo; <a href="/%E7%AC%94%E8%AE%B0/javascript%E5%9F%BA%E7%A1%80/2014/03/31/%E3%80%8Ajavascript%E6%A8%A1%E5%BC%8F%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0---%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86.html">《javascript模式》读书笔记---基础知识</a></li>
+                            
+                            <li><span>31 Mar 2014</span> &raquo; <a href="/jekyll/2014/03/31/welcome-to-jekyll.html">Welcome to Jekyll!</a></li>
+                            
+                            <li><span>31 Mar 2014</span> &raquo; <a href="/%E8%BD%AC%E8%BD%BD/javascript%E5%9F%BA%E7%A1%80/2014/03/31/javascript-object.prototype.toString().html">转：JavaScript:Object.prototype.toString方法的原理</a></li>
+                            
+                            <li><span>31 Mar 2014</span> &raquo; <a href="/%E8%BD%AC%E8%BD%BD/javascript%E5%9F%BA%E7%A1%80/2014/03/31/javascipt-object.html">转:JavaScript 本地对象、内置对象、宿主对象</a></li>
+                            
+                            <li><span>31 Mar 2014</span> &raquo; <a href="/%E7%AC%94%E8%AE%B0/javascript%E5%9F%BA%E7%A1%80/2014/03/31/hasOwnPropertyVSisPrototypeOf.html">hasOwnProperty VS isPrototypeOf</a></li>
+                            
+                            <li><span>24 Oct 2013</span> &raquo; <a href="/%E5%B7%A5%E5%85%B7/2013/10/24/markdonnote.html">使用 Markdown</a></li>
+                            
+
+                        </ul>
+                    </div>-->
+
+                </aside>
+                <div class="clearfix"></div>
+            </div>
+
+
+
+          <div class="footer inner" id="footer">
+    <div class="contact">
+        <p>
+            &copy; 2014 zj-baozi<br />
+            @淘宝<br />
+            295112462@qq.com
+        </p>
+    </div>
+    <div class="contact">
+        <p>
+            <a href="https://github.com/zj-baozi">github.com/zj-baozi</a><br />
+
+        </p>
+    </div>
+</div>
+        </div>
+
+    </body>
+</html>

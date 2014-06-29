@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>canvas</title>
+    <script>
+        function loadDemo(){
+            if(navigator.geolocation){
+                document.getElementById('support').innerHTML = 'Geolocation supported.';
+            }else{
+                document.getElementById('support').innerHTML = 'Geolocation is not supported.';
+            }
+        }
+       function updateLocation(position){
+           debugger;
+           var latitude = position.coords.latitude;
+           var longitude = position.coords.longtitude;
+           var accuracy = position.coords.accuracy;
+           var timestamp = position.timestamp;
+           document.getElementById('latitude').innerHTML = latitude;
+           document.getElementById('longitude').innerHTML = longitude;
+           document.getElementById('accuracy').innerHTML = accuracy;
+           document.getElementById('timestamp').innerHTML = timestamp;
+       }
+        function handleLocationError(error){
+            debugger;
+            console.log(error.message);
+        }
+        window.onload=function(){
+            navigator.geolocation.getCurrentPosition(updateLocation,handleLocationError,{timeout:10000})
+        }
+    </script>
+</head>
+<body>
+    <div id="support"></div>
+   <div id="latitude"></div>
+    <div id="longitude"></div>
+    <div id="accuracy"></div>
+    <div id="timestamp"></div>
+</body>
+</html>

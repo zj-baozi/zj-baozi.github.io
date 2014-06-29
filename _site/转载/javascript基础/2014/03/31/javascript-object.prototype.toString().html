@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>转：JavaScript:Object.prototype.toString方法的原理</title>
+        <meta name="viewport" content="width=device-width">
+
+        <!-- syntax highlighting CSS -->
+        <link rel="stylesheet" href="/css/syntax.css">
+
+        <!-- Custom CSS -->
+        <link rel="stylesheet" href="/css/main.css">
+        <!-- Google Analytics Start-->
+        <!--<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-48100787-1', 'zj-baozi.github.io');
+  ga('send', 'pageview');
+
+</script>
+-->
+        <!-- Google Analytics End -->
+    </head>
+    <body>
+
+        <div class="site">
+            <header id="header" class="inner"><div class="alignleft">
+                <h1><a href="/">前端记录</a></h1>
+                <h2><a href="/"></a></h2>
+            </div>
+                <nav id="main-nav" class="alignright">
+                    <ul>
+
+                        <li><a href="/">首页</a></li>
+
+                        <li><a href="/archives">所有文章</a></li>
+
+                    </ul>
+                    <div class="clearfix"></div>
+                </nav>
+                <div class="clearfix"></div>
+            </header>
+            <div id="content" class="inner">
+                <div id="main-col" class="alignleft">
+                <div id="wrapper">
+                <article class="post">
+
+                    <div class="post-content">
+                        <header>
+                            <div class="icon"></div>
+                        </header>
+                        <div class="entry">
+
+                            <h3 class="title">转：JavaScript:Object.prototype.toString方法的原理</h3>
+<p class="meta">31 Mar 2014</p>
+
+<div class="post">
+<div class="entry">
+
+
+<p>在JavaScript中,想要判断某个对象值属于哪种内置类型,最靠谱的做法就是通过Object.prototype.toString方法.</p>
+<div class="cnblogs_code">
+<pre><span style="color: #0000ff;">var</span> arr =<span style="color: #000000;"> [];
+console.log(Object.prototype.toString.call(arr))  </span><span style="color: #008000;">//"<span class="objectBox objectBox-text ">[object Array]</span>"</span></pre>
+</div>
+
+<p>本文要讲的就是,toString方法是如何做到这一点的,原理是什么.</p>
+
+<h3>ECMAScript 3</h3>
+
+<p>在<a href="http://bclary.com/2004/11/07/" target="_blank">ES3</a>中,Object.prototype.toString方法的规范如下:</p>
+
+<blockquote><dl><dt>15.2.4.2 Object.prototype.toString()</dt><dd>
+    <p>在<strong><tt>toString</tt></strong>方法被调用时,会执行下面的操作步骤:</p>
+    <p>1. 获取this对象的[[Class]]属性的值.</p>
+    <p>2. 计算出三个字符串<strong><tt>"[object ",</tt></strong> 第一步的操作结果Result(1), 以及 <strong><tt>"]"</tt></strong><tt>连接后的新字符串.</tt></p>
+    <p>3. 返回第二步的操作结果Result(2).</p>
+</dd></dl></blockquote>
+<p>[[Class]]是一个内部属性,所有的对象(原生对象和宿主对象)都拥有该属性.在规范中,[[Class]]是这么定义的</p>
+<table summary="Internal Properties">
+    <thead>
+    <tr><th>内部属性</th><th>描述</th></tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td><a id="_Class_" name="_Class_"></a>[[Class]]</td>
+        <td>一个字符串值,表明了该对象的类型.</td>
+    </tr>
+    </tbody>
+</table>
+<p>然后给了一段解释:</p>
+<blockquote>
+    <p>所有内置对象的[[Class]]属性的值是由本规范定义的.所有宿主对象的[[Class]]属性的值可以是任意值,甚至可以是内置对象使用过的[[Class]]属性的值.[[Class]]属性的值可以用来判断一个原生对象属于哪种内置类型.需要注意的是,除了通过<strong><tt>Object.prototype.toString</tt></strong>方法之外,本规范没有提供任何其他方式来让程序访问该属性的值(查看 15.2.4.2).</p>
+</blockquote>
+
+<p>也就是说,把Object.prototype.toString方法返回的字符串,去掉前面固定的<strong><tt>"[object "</tt></strong>和后面固定的<strong>"]",</strong>就是内部属性[[class]]的值,也就达到了判断对象类型的目的.jQuery中的工具方法$.type(),就是干这个的.</p>
+
+<p>在ES3中,规范文档并没有总结出[[class]]内部属性一共有几种,不过我们可以自己统计一下,原生对象的[[class]]内部属性的值一共有10种.分别是:<code>"Array"</code>, <code>"Boolean"</code>, <code>"Date"</code>, <code>"Error"</code>, <code>"Function"</code><code></code>, <code>"Math"</code>, <code>"Number"</code>, <code>"Object"</code>, <code>"RegExp"</code>, <code>"String".</code></p>
+
+<h3>ECMAScript 5</h3>
+
+<p>在<a href="http://ecma-international.org/ecma-262/5.1" target="_blank">ES5.1</a>中,除了规范写的更详细一些以外,Object.prototype.toString方法和[[class]]内部属性的定义上也有一些变化,Object.prototype.toString方法的规范如下:</p>
+
+<blockquote>
+    <h5><span class="secnum">15.2.4.2</span> Object.prototype.toString ( )</h5>
+    <p>在<strong><tt>toString</tt></strong>方法被调用时,会执行下面的操作步骤:</p>
+    <ol class="proc">
+        <li>如果<strong>this</strong>的值为<strong>undefined</strong>,则返回<code>"[object Undefined]"</code>.</li>
+        <li>如果<strong>this</strong>的值为<strong>null</strong>,则返回<code>"[object Null]"</code>.</li>
+        <li>让<em>O</em>成为调用ToObject(<strong>this)</strong>的结果.</li>
+        <li>让<em>class</em>成为<em>O</em>的内部属性[[Class]]的值.</li>
+        <li>返回三个字符串<strong><tt>"[object ",</tt></strong> <em>class</em>, 以及 <strong><tt>"]"</tt></strong><tt>连接后的新字符串</tt><code></code>.</li>
+    </ol></blockquote>
+<p>可以看出,比ES3多了1,2,3步.第1,2步属于新规则,比较特殊,因为"<code>Undefined"</code>和"<code>Null"</code>并不属于[[class]]属性的值,需要注意的是,这里和严格模式无关(大部分函数在严格模式下,this的值才会保持undefined或null,非严格模式下会自动成为全局对象).第3步并不算是新规则,因为在ES3的引擎中,也都会在这一步将三种原始值类型转换成对应的包装对象,只是规范中没写出来.ES5中,[[Class]]属性的解释更加详细:</p>
+<blockquote>
+    <p>所有内置对象的[[Class]]属性的值是由本规范定义的.所有宿主对象的[[Class]]属性的值可以是除了"Arguments", "Array", "Boolean", "Date", "Error", "Function", "JSON", "Math", "Number", "Object", "RegExp", "String"之外的的任何字符串.[[Class]]内部属性是引擎内部用来判断一个对象属于哪种类型的值的.需要注意的是,除了通过<strong><tt>Object.prototype.toString</tt></strong>方法之外,本规范没有提供任何其他方式来让程序访问该属性的值(查看 15.2.4.2).</p>
+</blockquote>
+
+<p>和ES3对比一下,第一个差别就是[[class]]内部属性的值多了两种,成了12种,一种是arguments对象的[[class]]成了"Arguments",而不是以前的"Object",还有就是多个了全局对象JSON,它的[[class]]值为"JSON".第二个差别就是,宿主对象的[[class]]内部属性的值,不能和这12种值冲突,不过在支持ES3的浏览器中,貌似也没有发现哪些宿主对象故意使用那10个值.</p>
+
+<h3>ECMAScript 6</h3>
+
+<p><a href="http://people.mozilla.org/~jorendorff/es6-draft.html" target="_blank">ES6</a>目前还只是工作草案,但能够肯定的是,<strong>[[class]]内部属性没有了</strong>,取而代之的是另外一个内部属性[[NativeBrand]].[[NativeBrand]]属性是这么定义的:</p>
+
+<blockquote>
+    <table class="real-table">
+        <tbody>
+        <tr><th style="border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-top: 2px solid #000000;">内部属性</th><th style="border-bottom: 1px solid #000000; border-top: 2px solid #000000;">属性值</th><th style="border-bottom: 1px solid #000000; border-right: 1px solid #000000; border-top: 2px solid #000000;">描述</th></tr>
+        <tr>
+            <td>[[NativeBrand]]</td>
+            <td>枚举NativeBrand的一个成员.</td>
+            <td>该属性的值对应一个标志值(tag value),可以用来区分原生对象的类型.</td>
+        </tr>
+        </tbody>
+    </table>
+</blockquote>
+
+<p>&nbsp;[[NativeBrand]]属性的解释:</p>
+
+<blockquote>
+    <p>[[NativeBrand]]内部属性用来识别某个原生对象是否为符合本规范的某一种特定类型的对象.[[NativeBrand]]内部属性的值为下面这些枚举类型的值中的一个:NativeFunction, NativeArray, StringWrapper, BooleanWrapper, NumberWrapper, NativeMath, NativeDate, NativeRegExp, NativeError, NativeJSON, NativeArguments, NativePrivateName.[[NativeBrand]]内部属性仅用来区分区分特定类型的ECMAScript原生对象.只有在表10中明确指出的对象类型才有[[NativeBrand]]内部属性.</p>
+    <p>表10 &mdash; [[NativeBrand]]内部属性的值</p>
+    <table class="real-table">
+        <tbody>
+        <tr><th style="border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-top: 2px solid #000000;">属性值</th><th style="border-bottom: 1px solid #000000; border-top: 2px solid #000000;">对应类型</th></tr>
+        <tr>
+            <td>NativeFunction</td>
+            <td>Function objects</td>
+        </tr>
+        <tr>
+            <td>NativeArray</td>
+            <td>Array objects</td>
+        </tr>
+        <tr>
+            <td>StringWrapper</td>
+            <td>String objects</td>
+        </tr>
+        <tr>
+            <td>BooleanWrapper</td>
+            <td>Boolean objects</td>
+        </tr>
+        <tr>
+            <td>NumberWrapper</td>
+            <td>Number objects</td>
+        </tr>
+        <tr>
+            <td>NativeMath</td>
+            <td>The Math object</td>
+        </tr>
+        <tr>
+            <td>NativeDate</td>
+            <td>Date objects</td>
+        </tr>
+        <tr>
+            <td>NativeRegExp</td>
+            <td>RegExp objects</td>
+        </tr>
+        <tr>
+            <td>NativeError</td>
+            <td>Error objects</td>
+        </tr>
+        <tr>
+            <td>NativeJSON</td>
+            <td>The JSON object</td>
+        </tr>
+        <tr>
+            <td>NativeArguments</td>
+            <td>Arguments objects</td>
+        </tr>
+        <tr>
+            <td>NativePrivateName</td>
+            <td>Private Name objects</td>
+        </tr>
+        </tbody>
+    </table>
+</blockquote>
+
+<p>可见,和[[class]]不同的是,并不是每个对象都拥有[[NativeBrand]].同时,Object.prototype.toString方法的规范也改成了下面这样:</p>
+
+<blockquote>
+    <h5><span class="secnum">15.2.4.2</span> Object.prototype.toString ( )</h5>
+    <p>在<strong><tt>toString</tt></strong>方法被调用时,会执行下面的操作步骤:</p>
+    <ol class="proc">
+        <li>如果<strong>this</strong>的值为<strong>undefined</strong>,则返回<code>"[object Undefined]"</code>.</li>
+        <li><code></code>如果<strong>this</strong>的值为<strong>null</strong>,则返回<code>"[object Null]"</code>.</li>
+        <li>让<em>O</em>成为调用ToObject(<strong>this)</strong>的结果.</li>
+        <li>如果<em>O</em>有[[NativeBrand]]内部属性,让<em>tag</em>成为表29中对应的值.</li>
+        <li>否则<ol class="block">
+            <li>让<em>hasTag</em>成为调用<em>O</em>的[[HasProperty]]内部方法后的结果,参数为@@toStringTag.</li>
+            <li>如果<em>hasTag</em>为<strong>false</strong>,则让<em>tag</em>为<code>"Object"</code>.</li>
+            <li>否则,<ol class="block">
+                <li>让<em>tag</em>成为调用<em>O</em>的[[Get]]内部方法后的结果,参数为@@toStringTag.</li>
+                <li>如果<em>tag</em>是一个abrupt completion,则让<em>tag</em>成为NormalCompletion(<code>"???"</code>).</li>
+                <li>让<em>tag</em>成为<em>tag</em>.[[value]].</li>
+                <li>如果Type(<em>tag</em>)不是字符串,则让<em>tag成为</em><code>"???"</code>.</li>
+                <li>如果<em>tag</em>的值为<code>"Arguments"</code>, <code>"Array"</code>, <code>"Boolean"</code>, <code>"Date"</code>, <code>"Error"</code>, <code>"Function"</code>, <code>"JSON"</code>, <code>"Math"</code>, <code>"Number"</code>, <code>"Object"</code>, <code>"RegExp"</code>,<code>或者"String"中的任一个,则让</code><em>tag</em>成为字符串<code>"~"和</code><em>tag</em>当前的值连接后的结果.</li>
+            </ol></li>
+        </ol></li>
+        <li>返回三个字符串"[object ", tag, and "]"<tt>连接后的新字符串</tt><code></code>.</li>
+    </ol>
+    <p>表29 &mdash; [[NativeBrand]] 标志值</p>
+    <table class="real-table">
+        <tbody>
+        <tr><th style="border-width: 1px; border-style: solid; border-color: black #000000 black black;">[[NativeBrand]]值</th><th style="border-width: 1px; border-style: solid; border-color: black #000000 black black;">标志值</th></tr>
+        <tr>
+            <td style="border-width: 1px; border-style: solid; border-color: black #000000 black black;">NativeFunction</td>
+            <td style="border-width: 1px; border-style: solid; border-color: black #000000 black black;"><code>"Function"</code></td>
+        </tr>
+        <tr>
+            <td style="border-width: 1px; border-style: solid; border-color: black #000000 black black;">NativeArray</td>
+            <td style="border-width: 1px; border-style: solid; border-color: black #000000 black black;"><code>"Array"</code></td>
+        </tr>
+        <tr>
+            <td style="border-width: 1px; border-style: solid; border-color: black #000000 black black;">StringWrapper</td>
+            <td style="border-width: 1px; border-style: solid; border-color: black #000000 black black;"><code>"String"</code></td>
+        </tr>
+        <tr>
+            <td style="border-width: 1px; border-style: solid; border-color: black #000000 black black;">BooleanWrapper</td>
+            <td style="border-width: 1px; border-style: solid; border-color: black #000000 black black;"><code>"Boolean"</code></td>
+        </tr>
+        <tr>
+            <td style="border-width: 1px; border-style: solid; border-color: black #000000 black black;">NumberWrapper</td>
+            <td style="border-width: 1px; border-style: solid; border-color: black #000000 black black;"><code>"Number"</code></td>
+        </tr>
+        <tr>
+            <td style="border-width: 1px; border-style: solid; border-color: black #000000 black black;">NativeMath</td>
+            <td style="border-width: 1px; border-style: solid; border-color: black #000000 black black;"><code>"Math"</code></td>
+        </tr>
+        <tr>
+            <td style="border-width: 1px; border-style: solid; border-color: black #000000 black black;">NativeDate</td>
+            <td style="border-width: 1px; border-style: solid; border-color: black #000000 black black;"><code>"Date"</code></td>
+        </tr>
+        <tr>
+            <td style="border-bottom: 1px solid black; border-left: 1px solid black; border-right: 1px solid #000000;">NativeRegExp</td>
+            <td style="border-bottom: 1px solid black; border-right: 1px solid black;"><code>"RegExp"</code></td>
+        </tr>
+        <tr>
+            <td style="border-width: 1px; border-style: solid; border-color: black #000000 black black;">NativeError</td>
+            <td style="border-bottom: 1px solid black; border-right: 1px solid black;"><code>"Error"</code></td>
+        </tr>
+        <tr>
+            <td style="border-width: 1px; border-style: solid; border-color: black #000000 black black;">NativeJSON</td>
+            <td style="border-bottom: 1px solid black; border-right: 1px solid black;"><code>"JSON"</code></td>
+        </tr>
+        <tr>
+            <td style="border-width: 1px; border-style: solid; border-color: black #000000 black black;">NativeArguments</td>
+            <td style="border-bottom: 1px solid black; border-right: 1px solid black;"><code>"Arguments"</code></td>
+        </tr>
+        </tbody>
+    </table>
+    <div class="note">&nbsp;</div>
+</blockquote>
+
+<p>可以看到,在规范上有了很大的变化,不过对于普通用户来说,貌似感觉不到.</p>
+
+<p>也许你发现了,ES6里的新类型Map,Set等,都没有在表29中.它们在执行toString方法的时候返回的是什么?</p>
+
+<div class="cnblogs_code">
+    <pre>console.log(Object.prototype.toString.call(Map()))   <span style="color: #008000;">//</span><span style="color: #008000;">"[object Map]"<br /><br /></span>console.log(Object.prototype.toString.call(Set()))   <span style="color: #008000;">//</span><span style="color: #008000;">"[object Set]"</span></pre>
+</div>
+
+<p>其中的字符串"Map"是怎么来的呢:</p>
+
+<blockquote>
+    <p><strong>15.14.5.13</strong> Map.prototype.@@toStringTag</p>
+    <p>@@toStringTag 属性的初始值为字符串<strong>"<span style="font-family: monospace;">Map</span>"</strong>.</p>
+</blockquote>
+
+<p>由于ES6的规范还在制定中,各种相关规定都有可能改变,所以如果想了解更多细节.看看下面这两个链接,现在只需要知道的是:[[class]]没了,使用了更复杂的机制.</p>
+
+<p><a href="http://stackoverflow.com/questions/13151643/access-nativebrand-class-in-es6-ecmascript-6" target="_blank">http://stackoverflow.com/questions/13151643/access-nativebrand-class-in-es6-ecmascript-6</a></p>
+
+<p><a href="https://mail.mozilla.org/pipermail/es-discuss/2012-June/023676.html" target="_blank">https://mail.mozilla.org/pipermail/es-discuss/2012-June/023676.html</a></p>
+
+<p>转载来自：<a href="http://www.cnblogs.com/ziyunfei/archive/2012/11/05/2754156.html">紫云飞博客</a></p>
+
+<p></div> </p>
+
+</div>
+
+                        </div>
+                        <footer>
+                            <div class="clearfix"></div>
+                        </footer>
+                    </div>
+                </article>
+
+                <!-- Duoshuo Comment BEGIN -->
+                <div class="ds-thread"></div>
+                <script type="text/javascript">
+                    var duoshuoQuery = {short_name:"zj-baozi"};
+                    (function() {
+                        var ds = document.createElement('script');
+                        ds.type = 'text/javascript';ds.async = true;
+                        ds.src = 'http://static.duoshuo.com/embed.js';
+                        ds.charset = 'UTF-8';
+                        (document.getElementsByTagName('head')[0]
+                                || document.getElementsByTagName('body')[0]).appendChild(ds);
+                    })();
+                </script>
+                <!-- Duoshuo Comment END -->
+                </div></div>
+                <aside id="sidebar" class="alignright">
+                    <div class="search">
+                        <form action="//google.com/search" method="get" accept-charset="utf-8">
+                            <input type="search" name="q" results="0" placeholder="搜索">
+                            <input type="hidden" name="q" value="site:zj-baozi.github.io">
+                        </form>
+                    </div>
+
+
+                    <div class="widget tag">
+                        <h3 class="title"> 分类 </h3>
+  <ul class="entry">
+      
+            
+                <li>
+                <a href="/categories/工具"> 工具 (1) </a>
+                </li>
+            
+      
+            
+                <li>
+                <a href="/categories/笔记"> 笔记 (13) </a>
+                </li>
+            
+      
+            
+                <li>
+                <a href="/categories/javascript基础"> javascript基础 (8) </a>
+                </li>
+            
+      
+            
+                <li>
+                <a href="/categories/转载"> 转载 (9) </a>
+                </li>
+            
+      
+            
+                <li>
+                <a href="/categories/jekyll"> jekyll (2) </a>
+                </li>
+            
+      
+            
+                <li>
+                <a href="/categories/javascript模式"> javascript模式 (5) </a>
+                </li>
+            
+      
+            
+                <li>
+                <a href="/categories/javascript设计模式"> javascript设计模式 (6) </a>
+                </li>
+            
+      
+            
+                <li>
+                <a href="/categories/javasript设计模式"> javasript设计模式 (1) </a>
+                </li>
+            
+      
+            
+                <li>
+                <a href="/categories/html5高级程序设计"> html5高级程序设计 (1) </a>
+                </li>
+            
+      
+            
+                <li>
+                <a href="/categories/javascript模式 设计模式"> javascript模式 设计模式 (1) </a>
+                </li>
+            
+      
+            
+                <li>
+                <a href="/categories/响应式 笔记"> 响应式 笔记 (2) </a>
+                </li>
+            
+      
+            
+                <li>
+                <a href="/categories/html5 跨终端"> html5 跨终端 (1) </a>
+                </li>
+            
+      
+            
+                <li>
+                <a href="/categories/viewport 跨终端"> viewport 跨终端 (1) </a>
+                </li>
+            
+      
+            
+                <li>
+                <a href="/categories/html5"> html5 (1) </a>
+                </li>
+            
+      
+  </ul>
+
+
+                    </div>
+                    <div class="widget tag">
+                        <!--归挡-->
+                        <h3 class="title"> 归档 </h3>
+  <ul class="entry">
+    
+    
+    
+        
+        
+        
+        
+    
+        
+        
+        
+        
+    
+        
+        
+        
+        
+    
+        
+        
+        
+        
+    
+        
+        
+        
+        
+            
+            <li>
+                <a href="/2014/06">
+                    2014-06 (5)
+                </a>
+            </li>
+
+        
+        
+    
+        
+        
+        
+        
+    
+        
+        
+        
+        
+    
+        
+        
+        
+        
+    
+        
+        
+        
+        
+    
+        
+        
+        
+        
+    
+        
+        
+        
+        
+    
+        
+        
+        
+        
+    
+        
+        
+        
+        
+    
+        
+        
+        
+        
+    
+        
+        
+        
+        
+    
+        
+        
+        
+        
+    
+        
+        
+        
+        
+            
+            <li>
+                <a href="/2014/05">
+                    2014-05 (12)
+                </a>
+            </li>
+
+        
+        
+    
+        
+        
+        
+        
+    
+        
+        
+        
+        
+    
+        
+        
+        
+        
+    
+        
+        
+        
+        
+    
+        
+        
+        
+        
+    
+        
+        
+        
+        
+    
+        
+        
+        
+        
+            
+            <li>
+                <a href="/2014/04">
+                    2014-04 (7)
+                </a>
+            </li>
+
+        
+        
+    
+        
+        
+        
+        
+    
+        
+        
+        
+        
+    
+        
+        
+        
+        
+    
+        
+        
+        
+        
+    
+        
+        
+        
+        
+            
+            <li>
+                <a href="/2014/03">
+                    2014-03 (5)
+                </a>
+            </li>
+
+        
+        
+    
+        
+        
+        
+        
+            
+            <li>
+                <a href="/2013/10">
+                    2013-10 (1)
+                </a>
+            </li>
+
+        
+        
+    
+  </ul>
+
+                    </div>
+                    <!--<div class="widget tag">
+                        <h3 class="title">最新文章</h3>
+                        <ul class="entry">
+                            
+                            <li><span>26 Jun 2014</span> &raquo; <a href="/html5/2014/06/26/html5%20Geolocation.html">about media query</a></li>
+                            
+                            <li><span>21 Jun 2014</span> &raquo; <a href="/viewport%20%E8%B7%A8%E7%BB%88%E7%AB%AF/2014/06/21/viewport%E7%AC%94%E8%AE%B0.html">about media query</a></li>
+                            
+                            <li><span>21 Jun 2014</span> &raquo; <a href="/html5%20%E8%B7%A8%E7%BB%88%E7%AB%AF/2014/06/21/html5%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5.html">about media query</a></li>
+                            
+                            <li><span>19 Jun 2014</span> &raquo; <a href="/%E5%93%8D%E5%BA%94%E5%BC%8F%20%E7%AC%94%E8%AE%B0/2014/06/19/media%20query%E7%AC%94%E8%AE%B0.html">media query笔记</a></li>
+                            
+                            <li><span>19 Jun 2014</span> &raquo; <a href="/%E5%93%8D%E5%BA%94%E5%BC%8F%20%E7%AC%94%E8%AE%B0/2014/06/19/about-media%20query.html">about media query</a></li>
+                            
+                            <li><span>25 May 2014</span> &raquo; <a href="/%E8%BD%AC%E8%BD%BD/javascript%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/2014/05/25/%E5%A4%8D%E6%9D%82%E8%A1%A8%E5%8D%95%E5%BA%94%E7%94%A8%E8%A7%A3%E8%80%A6%EF%BC%8C%E6%B7%98%E5%AE%9D%E6%9C%BA%E7%A5%A8%E8%AE%A2%E5%8D%95%E5%AE%9E%E8%B7%B5.html">复杂表单应用解耦，淘宝机票订单实践</a></li>
+                            
+                            <li><span>25 May 2014</span> &raquo; <a href="/%E8%BD%AC%E8%BD%BD/jekyll/2014/05/25/%E4%BD%BF%E7%94%A8%20GitHub,%20Jekyll%20%E6%89%93%E9%80%A0%E8%87%AA%E5%B7%B1%E7%9A%84%E5%85%8D%E8%B4%B9%E7%8B%AC%E7%AB%8B%E5%8D%9A%E5%AE%A2.html">使用 GitHub, Jekyll 打造自己的免费独立博客</a></li>
+                            
+                            <li><span>25 May 2014</span> &raquo; <a href="/javascript%E6%A8%A1%E5%BC%8F%20%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/2014/05/25/%E3%80%8Ajavascript%E6%A8%A1%E5%BC%8F%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0---.html">《javascript模式》读书笔记---设计模式-代理模式</a></li>
+                            
+                            <li><span>25 May 2014</span> &raquo; <a href="/%E7%AC%94%E8%AE%B0/html5%E9%AB%98%E7%BA%A7%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/2014/05/25/%E3%80%8Ahtml5%E9%AB%98%E7%BA%A7%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E3%80%8Bcanvas.html">canvas</a></li>
+                            
+                            <li><span>25 May 2014</span> &raquo; <a href="/%E7%AC%94%E8%AE%B0/javascript%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/2014/05/25/%E3%80%8Ajavascript%E6%A8%A1%E5%BC%8F%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0---%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E5%A4%96%E8%A7%82%E6%A8%A1%E5%BC%8F.html">《javascript模式》读书笔记---设计模式-外观模式</a></li>
+                            
+                            <li><span>24 May 2014</span> &raquo; <a href="/%E7%AC%94%E8%AE%B0/javascript%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/2014/05/24/%E3%80%8Ajavascript%E6%A8%A1%E5%BC%8F%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0---%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E8%BF%AD%E4%BB%A3%E5%99%A8%E6%A8%A1%E5%BC%8F.html">《javascript模式》读书笔记---设计模式-迭代器模式</a></li>
+                            
+                            <li><span>24 May 2014</span> &raquo; <a href="/%E7%AC%94%E8%AE%B0/javascript%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/2014/05/24/%E3%80%8Ajavascript%E6%A8%A1%E5%BC%8F%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0---%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E8%A3%85%E9%A5%B0%E8%80%85%E6%A8%A1%E5%BC%8F.html">《javascript模式》读书笔记---设计模式-装饰者模式</a></li>
+                            
+                            <li><span>20 May 2014</span> &raquo; <a href="/%E7%AC%94%E8%AE%B0/javascript%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/2014/05/20/%E3%80%8Ajavascript%E6%A8%A1%E5%BC%8F%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0---%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F.html">《javascript模式》读书笔记---设计模式-工厂模式</a></li>
+                            
+                            <li><span>20 May 2014</span> &raquo; <a href="/%E7%AC%94%E8%AE%B0/javasript%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/2014/05/20/%E3%80%8Ajavascript%E6%A8%A1%E5%BC%8F%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0---%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E4%BD%BF%E7%94%A8new%E6%93%8D%E4%BD%9C%E7%AC%A6.html">《javascript模式》读书笔记---设计模式-使用new操作符</a></li>
+                            
+                            <li><span>11 May 2014</span> &raquo; <a href="/%E8%BD%AC%E8%BD%BD/javascript%E5%9F%BA%E7%A1%80/2014/05/11/cookie.html">JavaScript 操作 Cookie</a></li>
+                            
+                            <li><span>11 May 2014</span> &raquo; <a href="/%E8%BD%AC%E8%BD%BD/javascript%E5%9F%BA%E7%A1%80/2014/05/11/arguments%E8%BD%AC%E6%8D%A2%E4%B8%BA%E6%95%B0%E7%BB%84.html">arguments转换为数组</a></li>
+                            
+                            <li><span>10 May 2014</span> &raquo; <a href="/%E8%BD%AC%E8%BD%BD/javascript%E5%9F%BA%E7%A1%80/2014/05/10/escape,encodeURI,encodeURIComponent%E7%9A%84%E5%8C%BA%E5%88%AB.html">escape,encodeURI和encodeURIComponent的区别</a></li>
+                            
+                            <li><span>20 Apr 2014</span> &raquo; <a href="/%E7%AC%94%E8%AE%B0/javascript%E6%A8%A1%E5%BC%8F/2014/04/20/%E3%80%8Ajavascript%E6%A8%A1%E5%BC%8F%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0---DOM%E5%92%8C%E6%B5%8F%E8%A7%88%E5%99%A8%E6%A8%A1%E5%BC%8F.html">《javascript模式》读书笔记—DOM和浏览器模式</a></li>
+                            
+                            <li><span>20 Apr 2014</span> &raquo; <a href="/%E7%AC%94%E8%AE%B0/javascript%E6%A8%A1%E5%BC%8F/2014/04/20/javascript%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E7%AD%96%E7%95%A5%E6%A8%A1%E5%BC%8F.html">《javascript模式》-策略模式</a></li>
+                            
+                            <li><span>20 Apr 2014</span> &raquo; <a href="/%E8%BD%AC%E8%BD%BD/javascript%E5%9F%BA%E7%A1%80/2014/04/20/Array.prototype.slice.call(arguments).html">Array.prototype.slice.call(arguments)</a></li>
+                            
+                            <li><span>20 Apr 2014</span> &raquo; <a href="/%E8%BD%AC%E8%BD%BD/javascript%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/2014/04/20/23%E7%A7%8D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E5%8F%8A%E8%A7%A3%E9%87%8A%EF%BC%88%E4%B8%AD%E8%8B%B1%E6%96%87%E5%AF%B9%E7%85%A7.html">23种设计模式及解释（中英文对照）</a></li>
+                            
+                            <li><span>14 Apr 2014</span> &raquo; <a href="/%E7%AC%94%E8%AE%B0/javascript%E6%A8%A1%E5%BC%8F/2014/04/14/%E3%80%8Ajavascript%E6%A8%A1%E5%BC%8F%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0---%E4%BB%A3%E7%A0%81%E5%A4%8D%E7%94%A8%E6%A8%A1%E5%BC%8F.html">《javascript模式》读书笔记—代码复用模式（继承）</a></li>
+                            
+                            <li><span>05 Apr 2014</span> &raquo; <a href="/%E7%AC%94%E8%AE%B0/javascript%E6%A8%A1%E5%BC%8F/2014/04/05/%E3%80%8Ajavascript%E6%A8%A1%E5%BC%8F%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0---%E5%AF%B9%E8%B1%A1%E5%88%9B%E5%BB%BA%E6%A8%A1%E5%BC%8F.html">《javascript模式》读书笔记—对象创建模式</a></li>
+                            
+                            <li><span>05 Apr 2014</span> &raquo; <a href="/%E7%AC%94%E8%AE%B0/javascript%E6%A8%A1%E5%BC%8F/2014/04/05/%E3%80%8Ajavascript%E6%A8%A1%E5%BC%8F%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0---%E5%87%BD%E6%95%B0.html">《javascript模式》读书笔记---函数</a></li>
+                            
+                            <li><span>31 Mar 2014</span> &raquo; <a href="/%E7%AC%94%E8%AE%B0/javascript%E5%9F%BA%E7%A1%80/2014/03/31/%E3%80%8Ajavascript%E6%A8%A1%E5%BC%8F%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0---%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86.html">《javascript模式》读书笔记---基础知识</a></li>
+                            
+                            <li><span>31 Mar 2014</span> &raquo; <a href="/jekyll/2014/03/31/welcome-to-jekyll.html">Welcome to Jekyll!</a></li>
+                            
+                            <li><span>31 Mar 2014</span> &raquo; <a href="/%E8%BD%AC%E8%BD%BD/javascript%E5%9F%BA%E7%A1%80/2014/03/31/javascript-object.prototype.toString().html">转：JavaScript:Object.prototype.toString方法的原理</a></li>
+                            
+                            <li><span>31 Mar 2014</span> &raquo; <a href="/%E8%BD%AC%E8%BD%BD/javascript%E5%9F%BA%E7%A1%80/2014/03/31/javascipt-object.html">转:JavaScript 本地对象、内置对象、宿主对象</a></li>
+                            
+                            <li><span>31 Mar 2014</span> &raquo; <a href="/%E7%AC%94%E8%AE%B0/javascript%E5%9F%BA%E7%A1%80/2014/03/31/hasOwnPropertyVSisPrototypeOf.html">hasOwnProperty VS isPrototypeOf</a></li>
+                            
+                            <li><span>24 Oct 2013</span> &raquo; <a href="/%E5%B7%A5%E5%85%B7/2013/10/24/markdonnote.html">使用 Markdown</a></li>
+                            
+
+                        </ul>
+                    </div>-->
+
+                </aside>
+                <div class="clearfix"></div>
+            </div>
+
+
+
+          <div class="footer inner" id="footer">
+    <div class="contact">
+        <p>
+            &copy; 2014 zj-baozi<br />
+            @淘宝<br />
+            295112462@qq.com
+        </p>
+    </div>
+    <div class="contact">
+        <p>
+            <a href="https://github.com/zj-baozi">github.com/zj-baozi</a><br />
+
+        </p>
+    </div>
+</div>
+        </div>
+
+    </body>
+</html>

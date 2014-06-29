@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>about media query</title>
+        <meta name="viewport" content="width=device-width">
+
+        <!-- syntax highlighting CSS -->
+        <link rel="stylesheet" href="/css/syntax.css">
+
+        <!-- Custom CSS -->
+        <link rel="stylesheet" href="/css/main.css">
+        <!-- Google Analytics Start-->
+        <!--<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-48100787-1', 'zj-baozi.github.io');
+  ga('send', 'pageview');
+
+</script>
+-->
+        <!-- Google Analytics End -->
+    </head>
+    <body>
+
+        <div class="site">
+            <header id="header" class="inner"><div class="alignleft">
+                <h1><a href="/">前端记录</a></h1>
+                <h2><a href="/"></a></h2>
+            </div>
+                <nav id="main-nav" class="alignright">
+                    <ul>
+
+                        <li><a href="/">首页</a></li>
+
+                        <li><a href="/archives">所有文章</a></li>
+
+                    </ul>
+                    <div class="clearfix"></div>
+                </nav>
+                <div class="clearfix"></div>
+            </header>
+            <div id="content" class="inner">
+                <div id="main-col" class="alignleft">
+                <div id="wrapper">
+                <article class="post">
+
+                    <div class="post-content">
+                        <header>
+                            <div class="icon"></div>
+                        </header>
+                        <div class="entry">
+
+                            <p>About Media Queries</p>
+
+<p><a href="http://lessframework.com/">http://lessframework.com/</a></p>
+
+<p><a href="http://bradfrost.github.io/this-is-responsive/patterns.html">http://bradfrost.github.io/this-is-responsive/patterns.html</a></p>
+
+<p><a href="http://alistapart.com/article/responsive-web-design">http://alistapart.com/article/responsive-web-design</a></p>
+
+<p>正如上面提到的几个link所展示的一样，当前的响应式排版实现基本都是基于media query这个css3 的feature。</p>
+
+<h2>什么是Media Queries</h2>
+
+<p>A media query consists of a media type and at least one expression that limits the style sheets&#39; scope by using media features, such as width, height, and color. Added in CSS3, media queries let the presentation of content be tailored to a specific range of output devices without having to change the content itself.
+Media Queries是由一个 media type ,加上一个或多个 media feature 的表达式组成。这个组成会被浏览器解析出结果 True or False。如果当前终端的显示文档的type符合这个query指定的type或conditions,那么这个query里面所有的表达式都会被解析执行。</p>
+
+<p>Media Queries可以指定为两种形式，一种是在一个 link element 里面，一种是用在 style sheet里面。比如：</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">&lt;!-- CSS media query on a link element --&gt;
+&lt; link rel=&quot;stylesheet&quot; media=&quot;(max-width: 800px)&quot; href=&quot;example.css&quot; /&gt;
+
+&lt;!-- CSS media query within a style sheet --&gt;
+&lt; style&gt;
+@media (max-width: 600px) {
+  .facet_sidebar {
+    display: none;
+  }
+}
+&lt;/style&gt;
+</code></pre></div>
+<p>当query为true的时候，里面的表达式都会以css层叠样式应有的方式apply到页面中。但是这其中有个猫腻，就是当media query应用到link element中的时候，即时这个query并没有match，这个link请求依然会被下载，只是content没有被解析执行而已。style sheet中的media query就更是如此。</p>
+
+<p>Media type [Media]Logical operators Media features</p>
+
+<p>Media queries的query包含标题如示几个部分，我们一个一个来说。</p>
+
+<p>Media type
+```
+@media <media types> {
+  /* media-specific rules */
+}</p>
+
+<p>/* for example */
+@media (min-width: 700px), handheld and (orientation: landscape), not screen and (color) { ... }
+```</p>
+
+<p>可以指定的type</p>
+
+<p>all 适配于所有设备</p>
+
+<p>braille 用于支持盲文触摸反馈的设备</p>
+
+<p>embossed 盲文分页打印设备</p>
+
+<p>handheld 适配于手持设备，典型小屏+有限带宽</p>
+
+<p>print 适配于可分页的文件或者材料在打印预览模式下的排版</p>
+
+<p>projection 用于投影的显示，例如投影仪设备等</p>
+
+<p>screen 主要用于彩色电脑屏幕</p>
+
+<p>speech 用于语音合成，语音输出的设备读屏。【听觉样式表】</p>
+
+<p>tty 用于使用固定间距的字符网格的媒体设备（比如，电传打字机，一些传真机，以及一些显示能力有限的便携设备，需要注意的是，在这种type下，不要使用px这种像素单位）</p>
+
+<p>tv 用于电视设备，特指一些带声音输出的，分辨率低，颜色，有限的可滚动屏幕。</p>
+
+<p>比如：</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">@media screen {
+  body { font-size: 14px }
+}
+@media screen, print {
+  body { line-height: 1.5 }
+}
+</code></pre></div>
+<p>[Media]Local operators</p>
+
+<p><strong>not</strong> 易于理解，即表示‘非’的含义，注意的是not的作用范围只针对当前的query语句，不会影响逗号分隔的其他query语句。</p>
+
+<p>@media not screen and (color), print and (color)</p>
+
+<p><strong>and</strong> 表示多个media查询组合，比如多个media type的组合，或者media type和media features间的组合。用and连接起来的query，需要全部match，整个表达式才生效。比如：
+@media tv and (min-width: 700px) and (orientation: landscape) { ... }</p>
+
+<p><strong>only</strong> 顾名思义，只给支持的设备使用，阻止不支持某种features的设备去解析使用。</p>
+
+<p>@media only screen 
+and (min-device-width : 768px) 
+and (max-device-width : 1024px)  { 
+    .selector{}
+}</p>
+
+<p>comma-separated lists 即我们通常说的逗号, ，逗号的作用相对于 and 来说，更像是表达 ‘或’ 的含义，即用逗号分隔几条query，只要有其中任何一条match，那么整个表达式就生效。而且逗号分隔的query语句不相互影响。比如：</p>
+
+<p>@media (min-width: 700px), handheld and (orientation: landscape) { ... }</p>
+
+<p><strong>还有一点，逗号间隔的query语句虽然不相互影响。但是在match判断的时候依旧有先后顺序，亦即在前面的语句没有match上的时候，才会去匹配后面的语句。</strong></p>
+
+<p>Media features</p>
+
+<p><strong>color</strong> 限制设备输出的颜色分量的bit数。如果非彩色设备，值为0。支持min,max这样的前缀。比如：</p>
+
+<p>@media all and (color) { ... }</p>
+
+<p>@media all and (min-color: 4) { ... }</p>
+
+<p><strong>color-index</strong> 限定设备所支持的颜色查找表中的条目数。支持min,max前缀</p>
+
+<p>@media all and (min-color-index: 256) { }</p>
+
+<p><strong>aspect-ratio</strong> 限定设备显示区域的横纵显示比，约定的表达值由/分开，前一个数字表示横向比，后一个为纵向比。同样支持min,max前缀。同时还能替代landscape的表达，比如：</p>
+
+<p>@media screen and (min-aspect-ratio: 1/1) { ... }</p>
+
+<p>上面这条query语句含义其实就限制了只能是 方屏 或者 横屏 时，能match上</p>
+
+<p><strong>device-aspect-ratio</strong> 限定设备的宽高比，aspect-ratio的派生。</p>
+
+<p>@media screen and (device-aspect-ratio: 16/9) {}</p>
+
+<p>比如上面语句就限定设备宽高比为16：9时match。</p>
+
+<p><strong>device-width</strong> 顾名思义，设备宽，支持min,max前缀。</p>
+
+<p><strong>device-height</strong> 和device-width类似。例如</p>
+
+<p>&lt; link rel=&quot;stylesheet&quot; media=&quot;screen and (max-device-width: 799px) and (device-height: 600px)&quot; /&gt;</p>
+
+<p><strong>width, height 和device-width, device-height类似，不同的地方在于加device-前缀的都是指设备级别的宽高，通常是整个屏幕。而不加device-的通常是表示渲染区域的宽高，比如document window一类。</strong></p>
+
+<p><strong>比如以pc端为例，浏览器resize的时候，width,height的变化会触发，但是device-width, device-height就不会。</strong></p>
+
+<p>@media only screen and (max-width: 768px) and (max-height: 480px) {}</p>
+
+<p><strong>grid</strong> 判定设备是 grid device 还是 bitmap device. 比如像一些TTY的终端或者蓝屏手机等设备就是 基于网格 grid-base 的显示设备。</p>
+
+<p>注意通常和 grid 判定配合的时候，都不用px单位。</p>
+
+<p>@media handheld and (grid) and (max-width: 15em) { ... }</p>
+
+<p><strong>monochrome</strong> 限定单色设备，以及单色设备的每像素的bit位。支持min,max前缀。非单色设备的monochrome值为0</p>
+
+<p>@media all and (min-monochrome: 8) { ... }</p>
+
+<p><strong>orientation</strong> 判定设备状态是“横屏”或者“竖屏” landscape | portrait</p>
+
+<p>@media screen and (orientation: landscape) { ... }</p>
+
+<p><strong>resolution</strong> 判定设备的像素密度，单位dpi，支持min, max前缀。比如</p>
+
+<p>@media screen and (min-resolution: 325dpi) { ... }</p>
+
+<p>上面的判定就匹配彩色显示屏像素密度大于325dpi的设备，比如Retina的iphone。</p>
+
+<p><strong>scan</strong> 特定用于media type 为 tv 的判别，用来限定tv设备的扫描过程，progressive | interlace ,渐进或者交错。</p>
+
+<p>@media tv and (scan: progressive) { ... }</p>
+
+<p><strong>此外还有一些没有规范的带浏览器厂商前缀的 Media features。比如带上 -webkit-, -moz- :</strong></p>
+
+<p>images-in-menus
+mac-graphite-theme
+maemo-classic
+<strong>device-pixel-ratio</strong>
+scrollbar-end-backward
+scrollbar-end-forward
+scrollbar-start-backward
+scrollbar-start-forward
+scrollbar-thumb-proportional
+touch-enabled
+windows-classic
+windows-compositor
+windows-default-theme
+windows-theme</p>
+
+<p><strong>其中比较有用的如device-pixel-ratio。配合resolution侦探设备像素密度。</strong></p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">@media (-webkit-min-device-pixel-ratio: 2), /* Webkit-based browsers */
+       (min--moz-device-pixel-ratio: 2),    /* Older Firefox browsers (prior to Firefox 16) */
+       (min-resolution: 2dppx),             /* The standard way */
+       (min-resolution: 192dpi)             /* dppx fallback */ 
+</code></pre></div>
+<p>响应区间的约定</p>
+
+<p>上面说了这么多，基本都是在说Media query怎么来用。有了这个基础，我们接下来谈谈利用Media Queries怎么来安排响应式的实现。 基本上从上面列出的features一个个数下来。重头戏一定落在
+**
+device-width**</p>
+
+<p><strong>device-height</strong></p>
+
+<p><strong>width</strong></p>
+
+<p>*<em>height
+*</em>
+这几个上面。
+从终端设备出发，当前主流终端 基本布局在 phone &gt; pad &gt; pc上，其中phone的尺寸按市场占有率最大规模的就是device-width 320px 和宽屏的 480px的phone。</p>
+
+<p>现在的pad设备主流都在 1024x768, ipad mini 亦是如此。</p>
+
+<p>再过渡到pc，先不论浏览器的resize，按全屏的device-width算，从原始的800开始，一直过渡到当今的1680宽屏，中间间隔了1024，1152， 1280， 1360 等主流屏宽。</p>
+
+<p>至此，我们适配主流终端屏的区间分隔就大致出来了。</p>
+
+<p>我比较赞同的是类似 less framework 那样的区间分隔。类似：</p>
+
+<p>/*      Default Layout: 992px. </p>
+
+<h2>        Leftover space for scrollbars @1024px: 32px.</h2>
+
+<p>cols    1     2      3      4      5      6      7      8      9      10
+px      68    160    252    344    436    528    620    712    804    896    */</p>
+
+<p>body {
+    -webkit-text-size-adjust: 100%; /* Stops Mobile Safari from auto-adjusting font-sizes */
+}</p>
+
+<p>/* WIDE DESKTOP LAYOUT
+----------------------------------------------- */
+@media only screen and (min-width: 1176px) {</p>
+
+<p>}</p>
+
+<p>/*      Tablet Layout: 768px.</p>
+
+<h2>        Inherits styles from: Default Layout.</h2>
+
+<p>cols    1     2      3      4      5      6      7      8
+px      68    160    252    344    436    528    620    712    */</p>
+
+<p>@media only screen and (min-width: 768px) and (max-width: 991px) {</p>
+
+<p>}</p>
+
+<p>/*      Mobile Layout: 320px.</p>
+
+<h2>        Inherits styles from: Default Layout.</h2>
+
+<p>cols    1     2      3
+px      68    160    252    */</p>
+
+<p>@media only screen and (max-width: 767px) {</p>
+
+<p>}</p>
+
+<p>/*      Wide Mobile Layout: 480px.</p>
+
+<h2>        Inherits styles from: Default Layout, Mobile Layout.</h2>
+
+<p>cols    1     2      3      4      5
+px      68    160    252    344    436    */</p>
+
+<p>@media only screen and (min-width: 480px) and (max-width: 767px) {</p>
+
+<p>}</p>
+
+<p>/*  Retina media query.
+    Overrides styles for devices with a 
+    device-pixel-ratio of 2+, such as iPhone 4.
+-----------------------------------------------    */</p>
+
+<p>@media 
+    only screen and (-webkit-min-device-pixel-ratio: 2),
+    only screen and (min-device-pixel-ratio: 2) {</p>
+
+<p>}
+当然，PC端的屏宽粒度分隔可以再细化，但是个人觉得，如此几个区间，基本已够用。
+至于为什么要按如此的思路来做样式的继承，我下面接着说。</p>
+
+<p>区间之间样式的继承</p>
+
+<p>为什么需要做上面继承关系的安排，首先我们需要考虑两个问题：</p>
+
+<p>任何设备下的样式完整性
+代码冗余度和关联度
+样式完整性</p>
+
+<p>我们要做一个 media width 从 320 过渡到1024 的响应式设计和实现。同样按照上面的区间分隔，假设这样做，有什么问题呢？</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">/* Default Layout */
+...
+/* Media */
+@media only screen and (min-width: 1024px) {
+
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1023px) {
+
+}
+
+@media only screen and (min-width: 480px) and (max-width: 767px) {
+
+}
+
+@media only screen and (min-width: 320px) and (max-width: 479px) {
+
+}
+</code></pre></div>
+<p>如果这样做，320 之下的 样式就只能 来自 Default Layout, 也就不再是Mobile的Layout该有的样子了。
+或许我们可以把最后一条改为：</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">@media only screen and (max-width: 479px) { }
+</code></pre></div>
+<p>让phone端样式分两套，480以上和以下来做。但是既然做到这一步了，为什么不再往前走一步。将Mobile端的 Defalut Layout抽离出来，首先 Mobile 的default layout直接定位于主流的320 layout，并且继承于 base 的default layout。然后 phone 的 pad的layout都继承 mobile 的layout。再次phone中，480的layout直接覆盖Mobile Layout中的部分样式，一点点扩展就能做出来。
+至此，按上面的思路就是最开始代码的实现。</p>
+
+<p>同时，将继承关系理顺之后你会发现一个好处，就是代码的冗余量会大大减少。</p>
+
+<p>这也才是对于产品最直接的利益。</p>
+
+<h2>最全的更多根据设备设置临界值参考</h2>
+
+<p>针对iphone&amp;ipad：<a href="http://stephen.io/mediaqueries/">http://stephen.io/mediaqueries/</a></p>
+
+<p>所有设备：<a href="http://nmsdvid.com/snippets/">http://nmsdvid.com/snippets/</a></p>
+
+<h2>响应式框架推荐</h2>
+
+<p><a href="https://github.com/chesihui/MT-Grid">MT-layout</a>：该框架基于 semantic 进行优化，底层基于 sass，易于定义你的栅格参数，扩展灵活；</p>
+
+<p><a href="http://gallery.kissyui.com/mqa/1.0/doc/index.html#!/guide/%E5%BC%80%E5%A7%8B">Mqa</a> : Mqa是一个简单媒体查询假名库, 是对浏览器原生的matchMedia做了一层简单的封装, 提供了更加方便简洁的事件接口以及媒体字符串的简写注册.目前作为KISSY Gallery的一个组件存在, 当然, 您只需做简单的修改就可以独立于KISSY运行(毕竟, 只用到了KISSY的Loader -.-!).</p>
+
+<p>横竖屏的样式切换可以使用以下代码或写在style中来区分：</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">&lt;link rel=&quot;stylesheet&quot; media=&quot;all and (orientation:portrait)&quot; href=&quot;portrait.css&quot; /&gt;
+
+&lt;link rel=&quot;stylesheet&quot; media=&quot;all and (orientation:landscape)&quot; href=&quot;portrait.css&quot; /&gt;
+</code></pre></div>
+<p>参考地址：<a href="http://www.qianduan.net/ipad-orientation-css.html">iPad Orientation CSS</a></p>
+
+                        </div>
+                        <footer>
+                            <div class="clearfix"></div>
+                        </footer>
+                    </div>
+                </article>
+
+                <!-- Duoshuo Comment BEGIN -->
+                <div class="ds-thread"></div>
+                <script type="text/javascript">
+                    var duoshuoQuery = {short_name:"zj-baozi"};
+                    (function() {
+                        var ds = document.createElement('script');
+                        ds.type = 'text/javascript';ds.async = true;
+                        ds.src = 'http://static.duoshuo.com/embed.js';
+                        ds.charset = 'UTF-8';
+                        (document.getElementsByTagName('head')[0]
+                                || document.getElementsByTagName('body')[0]).appendChild(ds);
+                    })();
+                </script>
+                <!-- Duoshuo Comment END -->
+                </div></div>
+                <aside id="sidebar" class="alignright">
+                    <div class="search">
+                        <form action="//google.com/search" method="get" accept-charset="utf-8">
+                            <input type="search" name="q" results="0" placeholder="搜索">
+                            <input type="hidden" name="q" value="site:zj-baozi.github.io">
+                        </form>
+                    </div>
+
+
+                    <div class="widget tag">
+                        <h3 class="title"> 分类 </h3>
+  <ul class="entry">
+      
+            
+                <li>
+                <a href="/categories/工具"> 工具 (1) </a>
+                </li>
+            
+      
+            
+                <li>
+                <a href="/categories/笔记"> 笔记 (13) </a>
+                </li>
+            
+      
+            
+                <li>
+                <a href="/categories/javascript基础"> javascript基础 (8) </a>
+                </li>
+            
+      
+            
+                <li>
+                <a href="/categories/转载"> 转载 (9) </a>
+                </li>
+            
+      
+            
+                <li>
+                <a href="/categories/jekyll"> jekyll (2) </a>
+                </li>
+            
+      
+            
+                <li>
+                <a href="/categories/javascript模式"> javascript模式 (5) </a>
+                </li>
+            
+      
+            
+                <li>
+                <a href="/categories/javascript设计模式"> javascript设计模式 (6) </a>
+                </li>
+            
+      
+            
+                <li>
+                <a href="/categories/javasript设计模式"> javasript设计模式 (1) </a>
+                </li>
+            
+      
+            
+                <li>
+                <a href="/categories/html5高级程序设计"> html5高级程序设计 (1) </a>
+                </li>
+            
+      
+            
+                <li>
+                <a href="/categories/javascript模式 设计模式"> javascript模式 设计模式 (1) </a>
+                </li>
+            
+      
+            
+                <li style="background-color: #444">
+                <a href="/categories/响应式 笔记"> 响应式 笔记 (2) </a>
+                </li>
+            
+      
+            
+                <li>
+                <a href="/categories/html5 跨终端"> html5 跨终端 (1) </a>
+                </li>
+            
+      
+            
+                <li>
+                <a href="/categories/viewport 跨终端"> viewport 跨终端 (1) </a>
+                </li>
+            
+      
+            
+                <li>
+                <a href="/categories/html5"> html5 (1) </a>
+                </li>
+            
+      
+  </ul>
+
+
+                    </div>
+                    <div class="widget tag">
+                        <!--归挡-->
+                        <h3 class="title"> 归档 </h3>
+  <ul class="entry">
+    
+    
+    
+        
+        
+        
+        
+    
+        
+        
+        
+        
+    
+        
+        
+        
+        
+    
+        
+        
+        
+        
+    
+        
+        
+        
+        
+            
+            <li>
+                <a href="/2014/06">
+                    2014-06 (5)
+                </a>
+            </li>
+
+        
+        
+    
+        
+        
+        
+        
+    
+        
+        
+        
+        
+    
+        
+        
+        
+        
+    
+        
+        
+        
+        
+    
+        
+        
+        
+        
+    
+        
+        
+        
+        
+    
+        
+        
+        
+        
+    
+        
+        
+        
+        
+    
+        
+        
+        
+        
+    
+        
+        
+        
+        
+    
+        
+        
+        
+        
+    
+        
+        
+        
+        
+            
+            <li>
+                <a href="/2014/05">
+                    2014-05 (12)
+                </a>
+            </li>
+
+        
+        
+    
+        
+        
+        
+        
+    
+        
+        
+        
+        
+    
+        
+        
+        
+        
+    
+        
+        
+        
+        
+    
+        
+        
+        
+        
+    
+        
+        
+        
+        
+    
+        
+        
+        
+        
+            
+            <li>
+                <a href="/2014/04">
+                    2014-04 (7)
+                </a>
+            </li>
+
+        
+        
+    
+        
+        
+        
+        
+    
+        
+        
+        
+        
+    
+        
+        
+        
+        
+    
+        
+        
+        
+        
+    
+        
+        
+        
+        
+            
+            <li>
+                <a href="/2014/03">
+                    2014-03 (5)
+                </a>
+            </li>
+
+        
+        
+    
+        
+        
+        
+        
+            
+            <li>
+                <a href="/2013/10">
+                    2013-10 (1)
+                </a>
+            </li>
+
+        
+        
+    
+  </ul>
+
+                    </div>
+                    <!--<div class="widget tag">
+                        <h3 class="title">最新文章</h3>
+                        <ul class="entry">
+                            
+                            <li><span>26 Jun 2014</span> &raquo; <a href="/html5/2014/06/26/html5%20Geolocation.html">about media query</a></li>
+                            
+                            <li><span>21 Jun 2014</span> &raquo; <a href="/viewport%20%E8%B7%A8%E7%BB%88%E7%AB%AF/2014/06/21/viewport%E7%AC%94%E8%AE%B0.html">about media query</a></li>
+                            
+                            <li><span>21 Jun 2014</span> &raquo; <a href="/html5%20%E8%B7%A8%E7%BB%88%E7%AB%AF/2014/06/21/html5%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5.html">about media query</a></li>
+                            
+                            <li><span>19 Jun 2014</span> &raquo; <a href="/%E5%93%8D%E5%BA%94%E5%BC%8F%20%E7%AC%94%E8%AE%B0/2014/06/19/media%20query%E7%AC%94%E8%AE%B0.html">media query笔记</a></li>
+                            
+                            <li><span>19 Jun 2014</span> &raquo; <a href="/%E5%93%8D%E5%BA%94%E5%BC%8F%20%E7%AC%94%E8%AE%B0/2014/06/19/about-media%20query.html">about media query</a></li>
+                            
+                            <li><span>25 May 2014</span> &raquo; <a href="/%E8%BD%AC%E8%BD%BD/javascript%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/2014/05/25/%E5%A4%8D%E6%9D%82%E8%A1%A8%E5%8D%95%E5%BA%94%E7%94%A8%E8%A7%A3%E8%80%A6%EF%BC%8C%E6%B7%98%E5%AE%9D%E6%9C%BA%E7%A5%A8%E8%AE%A2%E5%8D%95%E5%AE%9E%E8%B7%B5.html">复杂表单应用解耦，淘宝机票订单实践</a></li>
+                            
+                            <li><span>25 May 2014</span> &raquo; <a href="/%E8%BD%AC%E8%BD%BD/jekyll/2014/05/25/%E4%BD%BF%E7%94%A8%20GitHub,%20Jekyll%20%E6%89%93%E9%80%A0%E8%87%AA%E5%B7%B1%E7%9A%84%E5%85%8D%E8%B4%B9%E7%8B%AC%E7%AB%8B%E5%8D%9A%E5%AE%A2.html">使用 GitHub, Jekyll 打造自己的免费独立博客</a></li>
+                            
+                            <li><span>25 May 2014</span> &raquo; <a href="/javascript%E6%A8%A1%E5%BC%8F%20%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/2014/05/25/%E3%80%8Ajavascript%E6%A8%A1%E5%BC%8F%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0---.html">《javascript模式》读书笔记---设计模式-代理模式</a></li>
+                            
+                            <li><span>25 May 2014</span> &raquo; <a href="/%E7%AC%94%E8%AE%B0/html5%E9%AB%98%E7%BA%A7%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/2014/05/25/%E3%80%8Ahtml5%E9%AB%98%E7%BA%A7%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E3%80%8Bcanvas.html">canvas</a></li>
+                            
+                            <li><span>25 May 2014</span> &raquo; <a href="/%E7%AC%94%E8%AE%B0/javascript%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/2014/05/25/%E3%80%8Ajavascript%E6%A8%A1%E5%BC%8F%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0---%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E5%A4%96%E8%A7%82%E6%A8%A1%E5%BC%8F.html">《javascript模式》读书笔记---设计模式-外观模式</a></li>
+                            
+                            <li><span>24 May 2014</span> &raquo; <a href="/%E7%AC%94%E8%AE%B0/javascript%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/2014/05/24/%E3%80%8Ajavascript%E6%A8%A1%E5%BC%8F%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0---%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E8%BF%AD%E4%BB%A3%E5%99%A8%E6%A8%A1%E5%BC%8F.html">《javascript模式》读书笔记---设计模式-迭代器模式</a></li>
+                            
+                            <li><span>24 May 2014</span> &raquo; <a href="/%E7%AC%94%E8%AE%B0/javascript%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/2014/05/24/%E3%80%8Ajavascript%E6%A8%A1%E5%BC%8F%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0---%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E8%A3%85%E9%A5%B0%E8%80%85%E6%A8%A1%E5%BC%8F.html">《javascript模式》读书笔记---设计模式-装饰者模式</a></li>
+                            
+                            <li><span>20 May 2014</span> &raquo; <a href="/%E7%AC%94%E8%AE%B0/javascript%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/2014/05/20/%E3%80%8Ajavascript%E6%A8%A1%E5%BC%8F%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0---%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F.html">《javascript模式》读书笔记---设计模式-工厂模式</a></li>
+                            
+                            <li><span>20 May 2014</span> &raquo; <a href="/%E7%AC%94%E8%AE%B0/javasript%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/2014/05/20/%E3%80%8Ajavascript%E6%A8%A1%E5%BC%8F%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0---%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E4%BD%BF%E7%94%A8new%E6%93%8D%E4%BD%9C%E7%AC%A6.html">《javascript模式》读书笔记---设计模式-使用new操作符</a></li>
+                            
+                            <li><span>11 May 2014</span> &raquo; <a href="/%E8%BD%AC%E8%BD%BD/javascript%E5%9F%BA%E7%A1%80/2014/05/11/cookie.html">JavaScript 操作 Cookie</a></li>
+                            
+                            <li><span>11 May 2014</span> &raquo; <a href="/%E8%BD%AC%E8%BD%BD/javascript%E5%9F%BA%E7%A1%80/2014/05/11/arguments%E8%BD%AC%E6%8D%A2%E4%B8%BA%E6%95%B0%E7%BB%84.html">arguments转换为数组</a></li>
+                            
+                            <li><span>10 May 2014</span> &raquo; <a href="/%E8%BD%AC%E8%BD%BD/javascript%E5%9F%BA%E7%A1%80/2014/05/10/escape,encodeURI,encodeURIComponent%E7%9A%84%E5%8C%BA%E5%88%AB.html">escape,encodeURI和encodeURIComponent的区别</a></li>
+                            
+                            <li><span>20 Apr 2014</span> &raquo; <a href="/%E7%AC%94%E8%AE%B0/javascript%E6%A8%A1%E5%BC%8F/2014/04/20/%E3%80%8Ajavascript%E6%A8%A1%E5%BC%8F%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0---DOM%E5%92%8C%E6%B5%8F%E8%A7%88%E5%99%A8%E6%A8%A1%E5%BC%8F.html">《javascript模式》读书笔记—DOM和浏览器模式</a></li>
+                            
+                            <li><span>20 Apr 2014</span> &raquo; <a href="/%E7%AC%94%E8%AE%B0/javascript%E6%A8%A1%E5%BC%8F/2014/04/20/javascript%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E7%AD%96%E7%95%A5%E6%A8%A1%E5%BC%8F.html">《javascript模式》-策略模式</a></li>
+                            
+                            <li><span>20 Apr 2014</span> &raquo; <a href="/%E8%BD%AC%E8%BD%BD/javascript%E5%9F%BA%E7%A1%80/2014/04/20/Array.prototype.slice.call(arguments).html">Array.prototype.slice.call(arguments)</a></li>
+                            
+                            <li><span>20 Apr 2014</span> &raquo; <a href="/%E8%BD%AC%E8%BD%BD/javascript%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/2014/04/20/23%E7%A7%8D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E5%8F%8A%E8%A7%A3%E9%87%8A%EF%BC%88%E4%B8%AD%E8%8B%B1%E6%96%87%E5%AF%B9%E7%85%A7.html">23种设计模式及解释（中英文对照）</a></li>
+                            
+                            <li><span>14 Apr 2014</span> &raquo; <a href="/%E7%AC%94%E8%AE%B0/javascript%E6%A8%A1%E5%BC%8F/2014/04/14/%E3%80%8Ajavascript%E6%A8%A1%E5%BC%8F%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0---%E4%BB%A3%E7%A0%81%E5%A4%8D%E7%94%A8%E6%A8%A1%E5%BC%8F.html">《javascript模式》读书笔记—代码复用模式（继承）</a></li>
+                            
+                            <li><span>05 Apr 2014</span> &raquo; <a href="/%E7%AC%94%E8%AE%B0/javascript%E6%A8%A1%E5%BC%8F/2014/04/05/%E3%80%8Ajavascript%E6%A8%A1%E5%BC%8F%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0---%E5%AF%B9%E8%B1%A1%E5%88%9B%E5%BB%BA%E6%A8%A1%E5%BC%8F.html">《javascript模式》读书笔记—对象创建模式</a></li>
+                            
+                            <li><span>05 Apr 2014</span> &raquo; <a href="/%E7%AC%94%E8%AE%B0/javascript%E6%A8%A1%E5%BC%8F/2014/04/05/%E3%80%8Ajavascript%E6%A8%A1%E5%BC%8F%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0---%E5%87%BD%E6%95%B0.html">《javascript模式》读书笔记---函数</a></li>
+                            
+                            <li><span>31 Mar 2014</span> &raquo; <a href="/%E7%AC%94%E8%AE%B0/javascript%E5%9F%BA%E7%A1%80/2014/03/31/%E3%80%8Ajavascript%E6%A8%A1%E5%BC%8F%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0---%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86.html">《javascript模式》读书笔记---基础知识</a></li>
+                            
+                            <li><span>31 Mar 2014</span> &raquo; <a href="/jekyll/2014/03/31/welcome-to-jekyll.html">Welcome to Jekyll!</a></li>
+                            
+                            <li><span>31 Mar 2014</span> &raquo; <a href="/%E8%BD%AC%E8%BD%BD/javascript%E5%9F%BA%E7%A1%80/2014/03/31/javascript-object.prototype.toString().html">转：JavaScript:Object.prototype.toString方法的原理</a></li>
+                            
+                            <li><span>31 Mar 2014</span> &raquo; <a href="/%E8%BD%AC%E8%BD%BD/javascript%E5%9F%BA%E7%A1%80/2014/03/31/javascipt-object.html">转:JavaScript 本地对象、内置对象、宿主对象</a></li>
+                            
+                            <li><span>31 Mar 2014</span> &raquo; <a href="/%E7%AC%94%E8%AE%B0/javascript%E5%9F%BA%E7%A1%80/2014/03/31/hasOwnPropertyVSisPrototypeOf.html">hasOwnProperty VS isPrototypeOf</a></li>
+                            
+                            <li><span>24 Oct 2013</span> &raquo; <a href="/%E5%B7%A5%E5%85%B7/2013/10/24/markdonnote.html">使用 Markdown</a></li>
+                            
+
+                        </ul>
+                    </div>-->
+
+                </aside>
+                <div class="clearfix"></div>
+            </div>
+
+
+
+          <div class="footer inner" id="footer">
+    <div class="contact">
+        <p>
+            &copy; 2014 zj-baozi<br />
+            @淘宝<br />
+            295112462@qq.com
+        </p>
+    </div>
+    <div class="contact">
+        <p>
+            <a href="https://github.com/zj-baozi">github.com/zj-baozi</a><br />
+
+        </p>
+    </div>
+</div>
+        </div>
+
+    </body>
+</html>

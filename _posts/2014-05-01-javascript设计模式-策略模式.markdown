@@ -95,5 +95,6 @@ http://www.kankanews.com/ICkengine/archives/100710.shtml
      }
 ```
 
-
+更多资料：
+[复杂表单应用解耦，淘宝机票订单实践](http://ued.taobao.org/blog/2012/11/refactor-complex-form/)
 
