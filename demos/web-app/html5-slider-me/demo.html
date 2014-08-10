@@ -1,0 +1,117 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no" />
+<meta name="apple-touch-fullscreen" content="YES" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<style>
+	body{
+		margin: 0;
+		padding: 0;
+		background: #333;
+		overflow: hidden;
+	}
+	li,ul{
+		list-style: none;
+		margin: 0;
+		padding: 0;
+		/*height: 100%;*/
+		overflow: hidden;
+	}
+	/* 使得图片居中 webkit-box */
+	/*li{
+		position: absolute;
+		display: -webkit-box;
+		-webkit-box-pack: center;
+		-webkit-box-align: center;
+	}
+	li img {
+		max-width: 100%;
+		max-height: 100%;
+	}*/
+	/* 隐藏画布外的内容 */
+	#canvas{
+		height: 100%;
+		width: 100%;
+		overflow: hidden;
+	}
+    .slider{
+        width:100%;
+        overflow: hidden;
+        position: relative;
+    }
+    .slider-outer{
+        width:640px;
+        height:200px;
+        overflow: hidden;
+        position: relative;
+    }
+    .slider-wrap{
+        position: absolute;
+    }
+    .slider-wrap li{
+        float: left;
+        width:320px;
+        height:200px;
+    }
+    .slider-wrap img{
+        display: block;
+        width:100%;
+    }
+</style>
+</head>
+<body>
+	<!-- 外层画布 -->
+	<div id="canvas">
+        <div  class="slider banner">
+            <div class="slider-outer">
+
+                <ul class="slider-wrap">
+
+                    <!--选项卡内容的父容器-->
+                    <li>
+                        <a href="#"  class="J_Tracker" data-type="Button" data-action="banner1">
+                            <img src="http://gw.alicdn.com/tps/i2/TB1.8yJFVXXXXXIXXXX8Wot0FXX-640-200.png_q75.jpg" class="lazyimg" title="" alt="">
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#"  class="J_Tracker" data-type="Button" data-action="banner2">
+                            <img src="http://gw.alicdn.com/tps/i4/TB1j6X_FVXXXXalXVXX8Wot0FXX-640-200.png_q75.jpg" class="lazyimg" title="" alt="">
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#"  class="J_Tracker" data-type="Button" data-action="banner1">
+                            <img src="http://gw.alicdn.com/tps/i4/TB1BZ_iFVXXXXbdXXXXrVZt0FXX-640-200.jpg_q75.jpg" class="lazyimg" title="" alt="">
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#"  class="J_Tracker" data-type="Button" data-action="banner2">
+                            <img src="http://gw.alicdn.com/tps/i4/TB1hLh3FVXXXXa0XVXXrVZt0FXX-640-200.jpg_q75.jpg" class="lazyimg" title="" alt="">
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="slider-status"></div>
+
+        </div>
+	</div>
+    <script src="slider.js"></script>
+	<script type="text/javascript">
+
+
+
+        //使用
+        slide = new libs.Slider({
+            wrap:'slider',
+            trigger: '.slider-status',
+            lazy: '.lazyimg',
+            play:true,
+            interval:4000,
+            loop:true
+        });
+
+	</script>
+   <!-- <script src="http://10.62.14.154:9090/target/target-script-min.js#anonymous"></script>-->
+</body>
+</html>

@@ -2,33 +2,68 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c50b67b9-b3f5-45d5-8e29-c98dd4eb741f" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_posts/2014-03-31-hasOwnPropertyVSisPrototypeOf.markdown" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_posts/2014-03-31-javascipt-object.markdown" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_posts/2014-03-31-javascript-object.prototype.toString().markdown" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_posts/2014-03-31-《javascript模式》读书笔记---基础知识.markdown" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_site/demos/javascript设计模式-策略模式.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_site/笔记/2014/04/05/《javascript模式》读书笔记---函数.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_site/笔记/2014/04/13/《javascript模式》读书笔记---代码复用模式.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_site/笔记/2014/04/19/javascript设计模式-策略模式.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_site/笔记/2014/04/19/《javascript模式》读书笔记---DOM和浏览器模式.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_site/转载/2014/04/19/23种设计模式及解释（中英文对照.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_site/转载/2014/04/19/Array.prototype.slice.call(arguments).html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_site/转载/2014/05/09/escape,encodeURI,encodeURIComponent的区别.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_site/转载/2014/05/10/arguments转换为数组.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_site/转载/2014/05/10/cookie.html" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_posts/2014-04-05-《javascript模式》读书笔记---函数.markdown" afterPath="$PROJECT_DIR$/_posts/2014-04-05-《javascript模式》读书笔记---函数.markdown" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_posts/2014-04-13-《javascript模式》读书笔记---代码复用模式.markdown" afterPath="$PROJECT_DIR$/_posts/2014-04-13-《javascript模式》读书笔记---代码复用模式.markdown" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_posts/2014-5-25-《javascript模式》读书笔记---设计模式-代理模式.markdown" afterPath="$PROJECT_DIR$/_posts/2014-5-25-《javascript模式》读书笔记---设计模式-代理模式.markdown" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_config.yml" afterPath="$PROJECT_DIR$/_config.yml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_layouts/default.html" afterPath="$PROJECT_DIR$/_layouts/default.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_site/笔记/2014/03/31/hasOwnPropertyVSisPrototypeOf.html" afterPath="$PROJECT_DIR$/_site/笔记/2014/03/31/hasOwnPropertyVSisPrototypeOf.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/demos/-webkit-overflow-scrolling.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/demos/-webkit-tap-highlight-color.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/demos/pageVisibility.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/demos/web-app/html5-slider-me/slider.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/demos/utils.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_site/转载/javascript设计模式/2014/04/20/23种设计模式及解释（中英文对照.html" afterPath="$PROJECT_DIR$/_site/转载/javascript设计模式/2014/04/20/23种设计模式及解释（中英文对照.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_site/转载/javascript基础/2014/04/20/Array.prototype.slice.call(arguments).html" afterPath="$PROJECT_DIR$/_site/转载/javascript基础/2014/04/20/Array.prototype.slice.call(arguments).html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_site/响应式 笔记/2014/06/19/about-media query.html" afterPath="$PROJECT_DIR$/_site/响应式 笔记/2014/06/19/about-media query.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_site/转载/javascript基础/2014/05/11/arguments转换为数组.html" afterPath="$PROJECT_DIR$/_site/转载/javascript基础/2014/05/11/arguments转换为数组.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_site/转载/javascript基础/2014/05/11/cookie.html" afterPath="$PROJECT_DIR$/_site/转载/javascript基础/2014/05/11/cookie.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_site/转载/javascript基础/2014/05/10/escape,encodeURI,encodeURIComponent的区别.html" afterPath="$PROJECT_DIR$/_site/转载/javascript基础/2014/05/10/escape,encodeURI,encodeURIComponent的区别.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_site/笔记/javascript基础/2014/03/31/hasOwnPropertyVSisPrototypeOf.html" afterPath="$PROJECT_DIR$/_site/笔记/javascript基础/2014/03/31/hasOwnPropertyVSisPrototypeOf.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_site/html5/2014/06/26/html5 Geolocation.html" afterPath="$PROJECT_DIR$/_site/html5/2014/06/26/html5 Geolocation.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_site/html5 跨终端/2014/06/21/html5最佳实践.html" afterPath="$PROJECT_DIR$/_site/html5 跨终端/2014/06/21/html5最佳实践.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_site/index.html" afterPath="$PROJECT_DIR$/_site/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_site/转载/2014/03/31/javascipt-object.html" afterPath="$PROJECT_DIR$/_site/转载/2014/03/31/javascipt-object.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_site/转载/2014/03/31/javascript-object.prototype.toString().html" afterPath="$PROJECT_DIR$/_site/转载/2014/03/31/javascript-object.prototype.toString().html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_site/jekyll/update/2014/03/31/welcome-to-jekyll.html" afterPath="$PROJECT_DIR$/_site/jekyll/update/2014/03/31/welcome-to-jekyll.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_site/笔记/2014/03/31/《javascript模式》读书笔记---基础知识.html" afterPath="$PROJECT_DIR$/_site/笔记/2014/03/31/《javascript模式》读书笔记---基础知识.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_site/笔记/2014/04/05/《javascript模式》读书笔记---对象创建模式.html" afterPath="$PROJECT_DIR$/_site/笔记/2014/04/05/《javascript模式》读书笔记---对象创建模式.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_site/2013/10/index.html" afterPath="$PROJECT_DIR$/_site/2013/10/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_site/2014/03/index.html" afterPath="$PROJECT_DIR$/_site/2014/03/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_site/2014/04/index.html" afterPath="$PROJECT_DIR$/_site/2014/04/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_site/2014/05/index.html" afterPath="$PROJECT_DIR$/_site/2014/05/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_site/2014/06/index.html" afterPath="$PROJECT_DIR$/_site/2014/06/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_site/categories/html5 跨终端/index.html" afterPath="$PROJECT_DIR$/_site/categories/html5 跨终端/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_site/categories/html5/index.html" afterPath="$PROJECT_DIR$/_site/categories/html5/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_site/categories/html5高级程序设计/index.html" afterPath="$PROJECT_DIR$/_site/categories/html5高级程序设计/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_site/categories/javascript基础/index.html" afterPath="$PROJECT_DIR$/_site/categories/javascript基础/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_site/categories/javascript模式 设计模式/index.html" afterPath="$PROJECT_DIR$/_site/categories/javascript模式 设计模式/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_site/categories/javascript模式/index.html" afterPath="$PROJECT_DIR$/_site/categories/javascript模式/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_site/categories/javascript设计模式/index.html" afterPath="$PROJECT_DIR$/_site/categories/javascript设计模式/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_site/categories/javasript设计模式/index.html" afterPath="$PROJECT_DIR$/_site/categories/javasript设计模式/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_site/categories/jekyll/index.html" afterPath="$PROJECT_DIR$/_site/categories/jekyll/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_site/categories/viewport 跨终端/index.html" afterPath="$PROJECT_DIR$/_site/categories/viewport 跨终端/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_site/categories/响应式 笔记/index.html" afterPath="$PROJECT_DIR$/_site/categories/响应式 笔记/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_site/categories/工具/index.html" afterPath="$PROJECT_DIR$/_site/categories/工具/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_site/categories/笔记/index.html" afterPath="$PROJECT_DIR$/_site/categories/笔记/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_site/categories/转载/index.html" afterPath="$PROJECT_DIR$/_site/categories/转载/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_site/page2/index.html" afterPath="$PROJECT_DIR$/_site/page2/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_site/page3/index.html" afterPath="$PROJECT_DIR$/_site/page3/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_site/page4/index.html" afterPath="$PROJECT_DIR$/_site/page4/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_site/page5/index.html" afterPath="$PROJECT_DIR$/_site/page5/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_site/page6/index.html" afterPath="$PROJECT_DIR$/_site/page6/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_site/转载/javascript基础/2014/03/31/javascipt-object.html" afterPath="$PROJECT_DIR$/_site/转载/javascript基础/2014/03/31/javascipt-object.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_site/转载/javascript基础/2014/03/31/javascript-object.prototype.toString().html" afterPath="$PROJECT_DIR$/_site/转载/javascript基础/2014/03/31/javascript-object.prototype.toString().html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_site/笔记/javascript模式/2014/04/20/javascript设计模式-策略模式.html" afterPath="$PROJECT_DIR$/_site/笔记/javascript模式/2014/04/20/javascript设计模式-策略模式.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_site/工具/2013/10/24/markdonnote.html" afterPath="$PROJECT_DIR$/_site/工具/2013/10/24/markdonnote.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_site/响应式 笔记/2014/06/19/media query笔记.html" afterPath="$PROJECT_DIR$/_site/响应式 笔记/2014/06/19/media query笔记.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_site/viewport 跨终端/2014/06/21/viewport笔记.html" afterPath="$PROJECT_DIR$/_site/viewport 跨终端/2014/06/21/viewport笔记.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_site/jekyll/2014/03/31/welcome-to-jekyll.html" afterPath="$PROJECT_DIR$/_site/jekyll/2014/03/31/welcome-to-jekyll.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/zj-baozi.github.io.iml" afterPath="$PROJECT_DIR$/.idea/zj-baozi.github.io.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_site/笔记/html5高级程序设计/2014/05/25/《html5高级程序设计》canvas.html" afterPath="$PROJECT_DIR$/_site/笔记/html5高级程序设计/2014/05/25/《html5高级程序设计》canvas.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_site/javascript模式 设计模式/2014/05/25/《javascript模式》读书笔记---.html" afterPath="$PROJECT_DIR$/_site/javascript模式 设计模式/2014/05/25/《javascript模式》读书笔记---.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_site/笔记/javascript模式/2014/04/20/《javascript模式》读书笔记---DOM和浏览器模式.html" afterPath="$PROJECT_DIR$/_site/笔记/javascript模式/2014/04/20/《javascript模式》读书笔记---DOM和浏览器模式.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_site/笔记/javascript模式/2014/04/14/《javascript模式》读书笔记---代码复用模式.html" afterPath="$PROJECT_DIR$/_site/笔记/javascript模式/2014/04/14/《javascript模式》读书笔记---代码复用模式.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_site/笔记/javascript模式/2014/04/05/《javascript模式》读书笔记---函数.html" afterPath="$PROJECT_DIR$/_site/笔记/javascript模式/2014/04/05/《javascript模式》读书笔记---函数.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_site/笔记/javascript基础/2014/03/31/《javascript模式》读书笔记---基础知识.html" afterPath="$PROJECT_DIR$/_site/笔记/javascript基础/2014/03/31/《javascript模式》读书笔记---基础知识.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_site/笔记/javascript模式/2014/04/05/《javascript模式》读书笔记---对象创建模式.html" afterPath="$PROJECT_DIR$/_site/笔记/javascript模式/2014/04/05/《javascript模式》读书笔记---对象创建模式.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_site/笔记/javasript设计模式/2014/05/20/《javascript模式》读书笔记---设计模式-使用new操作符.html" afterPath="$PROJECT_DIR$/_site/笔记/javasript设计模式/2014/05/20/《javascript模式》读书笔记---设计模式-使用new操作符.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_site/笔记/javascript设计模式/2014/05/25/《javascript模式》读书笔记---设计模式-外观模式.html" afterPath="$PROJECT_DIR$/_site/笔记/javascript设计模式/2014/05/25/《javascript模式》读书笔记---设计模式-外观模式.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_site/笔记/javascript设计模式/2014/05/20/《javascript模式》读书笔记---设计模式-工厂模式.html" afterPath="$PROJECT_DIR$/_site/笔记/javascript设计模式/2014/05/20/《javascript模式》读书笔记---设计模式-工厂模式.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_site/笔记/javascript设计模式/2014/05/24/《javascript模式》读书笔记---设计模式-装饰者模式.html" afterPath="$PROJECT_DIR$/_site/笔记/javascript设计模式/2014/05/24/《javascript模式》读书笔记---设计模式-装饰者模式.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_site/笔记/javascript设计模式/2014/05/24/《javascript模式》读书笔记---设计模式-迭代器模式.html" afterPath="$PROJECT_DIR$/_site/笔记/javascript设计模式/2014/05/24/《javascript模式》读书笔记---设计模式-迭代器模式.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_site/转载/jekyll/2014/05/25/使用 GitHub, Jekyll 打造自己的免费独立博客.html" afterPath="$PROJECT_DIR$/_site/转载/jekyll/2014/05/25/使用 GitHub, Jekyll 打造自己的免费独立博客.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_site/转载/javascript设计模式/2014/05/25/复杂表单应用解耦，淘宝机票订单实践.html" afterPath="$PROJECT_DIR$/_site/转载/javascript设计模式/2014/05/25/复杂表单应用解耦，淘宝机票订单实践.html" />
     </list>
     <ignored path="zj-baozi.github.io.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -51,73 +86,66 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="log.xml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/log.xml">
+      <file leaf-file-name="demo.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/demos/web-app/html5-slider-me/demo.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="224">
+            <state line="6" column="70" selection-start="99" selection-end="346" vertical-scroll-proportion="-5.090909" vertical-offset="0" max-vertical-offset="3808">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="_config.yml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/_config.yml">
+      <file leaf-file-name="slider.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/demos/web-app/html5-slider-me/slider.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="8" column="26" selection-start="181" selection-end="181" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="504">
+            <state line="146" column="18" selection-start="4469" selection-end="4469" vertical-scroll-proportion="3.7307692" vertical-offset="4185" max-vertical-offset="6188">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="default.html" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../minixalpha.github.io/_layouts/default.html">
+      <file leaf-file-name="pageshow.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/demos/html5/pageshow.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="63" column="29" selection-start="1742" selection-end="1742" vertical-scroll-proportion="-5.090909" vertical-offset="1596" max-vertical-offset="2604">
+            <state line="19" column="19" selection-start="468" selection-end="468" vertical-scroll-proportion="-8.067797" vertical-offset="56" max-vertical-offset="1680">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="categories.ext" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/_includes/categories.ext">
+      <file leaf-file-name="pageVisibility.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/demos/pageVisibility.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="616">
+            <state line="42" column="20" selection-start="1571" selection-end="1571" vertical-scroll-proportion="0.0" vertical-offset="1075" max-vertical-offset="2212">
+              <folding>
+                <element signature="n#!!doc" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="-webkit-tap-highlight-color.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/demos/-webkit-tap-highlight-color.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="17" column="19" selection-start="0" selection-end="1132" vertical-scroll-proportion="-4.6060605" vertical-offset="324" max-vertical-offset="1484">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="gen_archives.rb" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/_plugins/gen_archives.rb">
+      <file leaf-file-name="-webkit-overflow-scrolling.html" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/demos/-webkit-overflow-scrolling.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="97" column="26" selection-start="2674" selection-end="2684" vertical-scroll-proportion="0.33144477" vertical-offset="2655" max-vertical-offset="4172">
+            <state line="97" column="12" selection-start="1598" selection-end="1598" vertical-scroll-proportion="4.7082534" vertical-offset="291" max-vertical-offset="3416">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="default.html" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/_layouts/default.html">
+      <file leaf-file-name="demo.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/demos/web-app/html5-slider-mk/demo.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="84" column="48" selection-start="2850" selection-end="2850" vertical-scroll-proportion="-1.1355932" vertical-offset="2285" max-vertical-offset="4284">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="post.html" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/_layouts/post.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="3" column="34" selection-start="49" selection-end="49" vertical-scroll-proportion="-2.5454545" vertical-offset="0" max-vertical-offset="420">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.html" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/index.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="17" column="25" selection-start="526" selection-end="526" vertical-scroll-proportion="-7.6363635" vertical-offset="224" max-vertical-offset="2156">
+            <state line="3" column="21" selection-start="48" selection-end="51" vertical-scroll-proportion="0.0" vertical-offset="84" max-vertical-offset="7644">
               <folding />
             </state>
           </provider>
@@ -140,6 +168,13 @@
         <option value="$PROJECT_DIR$/_config.yml" />
         <option value="$PROJECT_DIR$/_layouts/default.html" />
         <option value="$PROJECT_DIR$/../minixalpha.github.io/_layouts/default.html" />
+        <option value="$PROJECT_DIR$/demos/web-app/html5-slider-mk/demo.html" />
+        <option value="$PROJECT_DIR$/demos/web-app/html5-slider-me/demo.html" />
+        <option value="$PROJECT_DIR$/demos/web-app/html5-slider-me/slider.js" />
+        <option value="$PROJECT_DIR$/demos/html5/pageshow.html" />
+        <option value="$PROJECT_DIR$/demos/pageVisibility.js" />
+        <option value="$PROJECT_DIR$/demos/-webkit-tap-highlight-color.html" />
+        <option value="$PROJECT_DIR$/demos/-webkit-overflow-scrolling.html" />
       </list>
     </option>
   </component>
@@ -155,7 +190,7 @@
     <OptionsSetting value="true" id="Update" />
     <OptionsSetting value="true" id="Status" />
     <OptionsSetting value="true" id="Edit" />
-    <ConfirmationsSetting value="0" id="Add" />
+    <ConfirmationsSetting value="2" id="Add" />
     <ConfirmationsSetting value="0" id="Remove" />
   </component>
   <component name="ProjectReloadState">
@@ -174,6 +209,7 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -182,9 +218,50 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="zj-baozi.github.io" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="zj-baozi.github.io" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="zj-baozi.github.io" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="zj-baozi.github.io" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="demos" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="zj-baozi.github.io" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="zj-baozi.github.io" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="demos" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="html5" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -200,8 +277,17 @@
     <property name="options.searchVisible" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/.." />
+    <property name="FullScreen" value="false" />
   </component>
   <component name="RunManager">
+    <configuration default="true" type="DartUnitRunConfigurationType" factoryName="DartUnit">
+      <option name="VMOptions" />
+      <option name="arguments" />
+      <option name="filePath" />
+      <option name="scope" value="ALL" />
+      <option name="testName" />
+      <method />
+    </configuration>
     <configuration default="true" type="DartCommandLineRunConfigurationType" factoryName="Dart Command Line Application">
       <option name="VMOptions" />
       <option name="arguments" />
@@ -212,23 +298,15 @@
       <option name="showConsoleOnStdOut" value="false" />
       <method />
     </configuration>
-    <configuration default="true" type="DartUnitRunConfigurationType" factoryName="DartUnit">
-      <option name="VMOptions" />
-      <option name="arguments" />
-      <option name="filePath" />
-      <option name="scope" value="ALL" />
-      <option name="testName" />
-      <method />
-    </configuration>
-    <configuration default="true" type="JavaScriptTestRunnerKarma" factoryName="Karma" singleton="true" config-file="">
-      <envs />
-      <method />
-    </configuration>
     <configuration default="true" type="JSTestDriver:ConfigurationType" factoryName="JsTestDriver">
       <setting name="configLocationType" value="CONFIG_FILE" />
       <setting name="settingsFile" value="" />
       <setting name="serverType" value="INTERNAL" />
       <setting name="preferredDebugBrowser" value="CHROME" />
+      <method />
+    </configuration>
+    <configuration default="true" type="JavaScriptTestRunnerKarma" factoryName="Karma" singleton="true" config-file="">
+      <envs />
       <method />
     </configuration>
     <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug" singleton="true">
@@ -269,15 +347,14 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="22" width="1280" height="700" extended-state="6" />
-    <editor active="false" />
+    <frame x="0" y="22" width="1280" height="700" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3289256" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
@@ -285,6 +362,7 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3289256" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -308,6 +386,20 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/demos/web-app/html5-slider-me/demo.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="177" column="32" selection-start="4926" selection-end="4933" vertical-scroll-proportion="0.0" vertical-offset="4956" max-vertical-offset="7644">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/demos/web-app/html5-slider-mk/demo.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="160" column="18" selection-start="3133" selection-end="3133" vertical-scroll-proportion="0.0" vertical-offset="4480" max-vertical-offset="7644">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/log.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="224">
@@ -317,16 +409,79 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/_config.yml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="12" selection-start="72" selection-end="84" vertical-scroll-proportion="0.0" vertical-offset="112" max-vertical-offset="364">
-          <folding />
-        </state>
+        <state line="8" column="26" selection-start="157" selection-end="157" vertical-scroll-proportion="0.0" vertical-offset="224" max-vertical-offset="560" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../minixalpha.github.io/_layouts/default.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="63" column="29" selection-start="1742" selection-end="1742" vertical-scroll-proportion="0.0" vertical-offset="1764" max-vertical-offset="2576" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_includes/categories.ext">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="560" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_plugins/gen_archives.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="97" column="26" selection-start="2674" selection-end="2684" vertical-scroll-proportion="0.0" vertical-offset="2716" max-vertical-offset="3892" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/_layouts/default.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="86" column="48" selection-start="2867" selection-end="2870" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3584">
+        <state line="84" column="48" selection-start="3196" selection-end="3196" vertical-scroll-proportion="0.0" vertical-offset="2352" max-vertical-offset="3192" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_layouts/post.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="3" column="34" selection-start="58" selection-end="58" vertical-scroll-proportion="0.0" vertical-offset="84" max-vertical-offset="420" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="17" column="25" selection-start="526" selection-end="526" vertical-scroll-proportion="0.0" vertical-offset="476" max-vertical-offset="2128" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/log.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="224">
           <folding />
         </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_config.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="4" column="12" selection-start="72" selection-end="84" vertical-scroll-proportion="0.0" vertical-offset="112" max-vertical-offset="364" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_layouts/default.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="86" column="48" selection-start="2867" selection-end="2870" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3584" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/npm-debug.log">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-1.407279" vertical-offset="812" max-vertical-offset="1904" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_plugins/gen_archives.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="97" column="23" selection-start="2674" selection-end="2684" vertical-scroll-proportion="0.050724637" vertical-offset="2772" max-vertical-offset="4200" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_includes/categories.ext">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="616" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../minixalpha.github.io/_layouts/default.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="63" column="29" selection-start="1742" selection-end="1742" vertical-scroll-proportion="0.05147059" vertical-offset="1764" max-vertical-offset="2604" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_config.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="8" column="17" selection-start="157" selection-end="157" vertical-scroll-proportion="0.38821492" vertical-offset="0" max-vertical-offset="577" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/log.xml">
@@ -336,56 +491,75 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/npm-debug.log">
+    <entry file="file://$PROJECT_DIR$/_layouts/default.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-1.407279" vertical-offset="812" max-vertical-offset="1904" />
+        <state line="84" column="33" selection-start="3196" selection-end="3196" vertical-scroll-proportion="0.20588236" vertical-offset="2352" max-vertical-offset="3332" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/_layouts/post.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="34" selection-start="49" selection-end="49" vertical-scroll-proportion="-2.5454545" vertical-offset="0" max-vertical-offset="420">
-          <folding />
-        </state>
+        <state line="3" column="34" selection-start="58" selection-end="58" vertical-scroll-proportion="0.15441176" vertical-offset="0" max-vertical-offset="544" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="25" selection-start="526" selection-end="526" vertical-scroll-proportion="-7.6363635" vertical-offset="224" max-vertical-offset="2156">
+        <state line="17" column="25" selection-start="526" selection-end="526" vertical-scroll-proportion="0.05147059" vertical-offset="476" max-vertical-offset="2156" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/demos/web-app/html5-slider-mk/demo.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="3" column="21" selection-start="48" selection-end="51" vertical-scroll-proportion="0.0" vertical-offset="84" max-vertical-offset="7644">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/_config.yml">
+    <entry file="file://$PROJECT_DIR$/demos/web-app/html5-slider-me/slider.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="26" selection-start="181" selection-end="181" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="504">
+        <state line="146" column="18" selection-start="4469" selection-end="4469" vertical-scroll-proportion="3.7307692" vertical-offset="4185" max-vertical-offset="6188">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/_layouts/default.html">
+    <entry file="file://$PROJECT_DIR$/demos/utils.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="84" column="48" selection-start="2850" selection-end="2850" vertical-scroll-proportion="-1.1355932" vertical-offset="2285" max-vertical-offset="4284">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="577">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../minixalpha.github.io/_layouts/default.html">
+    <entry file="file://$PROJECT_DIR$/demos/pageVisibility.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="63" column="29" selection-start="1742" selection-end="1742" vertical-scroll-proportion="-5.090909" vertical-offset="1596" max-vertical-offset="2604">
+        <state line="42" column="20" selection-start="1571" selection-end="1571" vertical-scroll-proportion="0.0" vertical-offset="1075" max-vertical-offset="2212">
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/demos/html5/pageshow.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="19" column="19" selection-start="468" selection-end="468" vertical-scroll-proportion="-8.067797" vertical-offset="56" max-vertical-offset="1680">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/_includes/categories.ext">
+    <entry file="file://$PROJECT_DIR$/demos/web-app/html5-slider-me/demo.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="616">
+        <state line="6" column="70" selection-start="99" selection-end="346" vertical-scroll-proportion="-5.090909" vertical-offset="0" max-vertical-offset="3808">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/_plugins/gen_archives.rb">
+    <entry file="file://$PROJECT_DIR$/demos/-webkit-tap-highlight-color.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="97" column="26" selection-start="2674" selection-end="2684" vertical-scroll-proportion="0.33144477" vertical-offset="2655" max-vertical-offset="4172">
+        <state line="17" column="19" selection-start="0" selection-end="1132" vertical-scroll-proportion="-4.6060605" vertical-offset="324" max-vertical-offset="1484">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/demos/-webkit-overflow-scrolling.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="97" column="12" selection-start="1598" selection-end="1598" vertical-scroll-proportion="4.7082534" vertical-offset="291" max-vertical-offset="3416">
           <folding />
         </state>
       </provider>

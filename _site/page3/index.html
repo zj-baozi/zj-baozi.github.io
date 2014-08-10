@@ -58,6 +58,12 @@
                             <div id="home">
   <ul class="posts">
     <!--
+      <li><span>07 Aug 2014</span> &raquo; <a href="/html5/2014/08/07/%E9%A1%B5%E9%9D%A2%E6%98%BE%E7%A4%BA(pageshow)%E5%92%8C%E9%A1%B5%E9%9D%A2%E9%9A%90%E8%97%8F(pagehide)%E4%BA%8B%E4%BB%B6.html">页面显示(pageshow)和页面隐藏(pagehide)事件</a></li>
+    
+      <li><span>07 Aug 2014</span> &raquo; <a href="/html5/2014/08/07/css%E5%B1%85%E4%B8%AD%E5%A4%A7%E5%85%A8.html">CSS居中大全</a></li>
+    
+      <li><span>06 Aug 2014</span> &raquo; <a href="/css3%20%E8%BD%AC%E8%BD%BD/2014/08/06/%E6%B7%B1%E5%85%A5%E6%B5%8F%E8%A7%88%E5%99%A8%E7%A0%94%E7%A9%B6%20CSS%20%E7%9A%84%E5%8A%A8%E7%94%BB%E5%92%8C%E8%BD%AC%E6%8D%A2%E6%80%A7%E8%83%BD.html">深入浏览器研究 CSS 的动画和转换性能</a></li>
+    
       <li><span>26 Jun 2014</span> &raquo; <a href="/html5/2014/06/26/html5%20Geolocation.html">about media query</a></li>
     
       <li><span>21 Jun 2014</span> &raquo; <a href="/viewport%20%E8%B7%A8%E7%BB%88%E7%AB%AF/2014/06/21/viewport%E7%AC%94%E8%AE%B0.html">about media query</a></li>
@@ -120,6 +126,121 @@
     -->
       <!-- 遍历分页后的文章 -->
       
+      <h1><a href="/javascript%E6%A8%A1%E5%BC%8F%20%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/2014/05/25/%E3%80%8Ajavascript%E6%A8%A1%E5%BC%8F%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0---.html">《javascript模式》读书笔记---设计模式-代理模式</a></h1>
+      <p class="author">
+          <span class="date">2014-05-25 19:35:21 +0800</span>
+      </p>
+      <div class="content">
+          <p>代理模式</p>
+
+<p><strong>表现</strong></p>
+
+<p>一个对象充当另一个对象的接口。</p>
+
+<p>与外观模式的区别之外在于，在外观模式中您所拥有的是合并了多个方法调用的便利方法。代理则介于对象的客户端和对象本身之间，并且对该对象的访问进行保护。\n\n\n</p>
+
+      </div>
+      
+      <h1><a href="/%E7%AC%94%E8%AE%B0/html5%E9%AB%98%E7%BA%A7%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/2014/05/25/%E3%80%8Ahtml5%E9%AB%98%E7%BA%A7%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E3%80%8Bcanvas.html">canvas</a></h1>
+      <p class="author">
+          <span class="date">2014-05-25 19:35:21 +0800</span>
+      </p>
+      <div class="content">
+          <p>canvas</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">&lt;canvas&gt;&lt;/canvas&gt;
+</code></pre></div>
+<p>默认情况下是一个300*150的矩形区域。</p>
+
+<h2>坐标</h2>
+
+<p>默认从左上角开始，x轴沿着水平方向向右延伸，y轴沿垂直方向向下延伸。 左上角坐标为x=0,y=0的点称作原点。</p>
+
+<h2>canvas编程</h2>
+
+<ol>
+<li>获取上下文（context）,在上下文中执行动作，最后将动作应用到上下文中。（getContext(&#39;2d&#39;)）</li>
+<li>beginPath 创建一条路径</li>
+<li>moveTo(x,y) 不绘制，只是将当前位置移到新的目标坐标(x,y)</li>
+<li>lineTo(x,y) 移动到新的目标坐标，而且在两个坐标之间画一条直线。</li>
+<li>stroke(绘制)/fill(填充)</li>
+<li>save() 保存当前绘图状态</li>
+<li>restore() 恢复原有的绘图状态</li>
+<li>closePath() 闭合路径</li>
+<li></li>
+</ol>
+
+<h2>变换</h2>
+
+<p>缩放，平移，旋转</p>
+
+<p>变换
+context.scale(2,2)
+context.translate(100,100)</p>
+
+<h2>描边样式</h2>
+
+<ol>
+<li>context.lineWidth = 4; 加宽线条</li>
+<li>context.lineJoin = &#39;round&#39;; 平滑路径的接合点</li>
+<li>context.strokeStyle = &#39;#663300&#39;; 将颜色改为棕色</li>
+<li>context.lineCap = butt/square/round 指定线条未端的样式</li>
+</ol>
+
+<h2>填充样式</h2>
+
+<ol>
+<li>context.fillStyle = &#39;#339900&#39;;</li>
+<li>context.fill();</li>
+<li>context.fillRect(-5,-50,10,50); 填充用作树干的矩形区域</li>
+<li>strokeRect 基于给出的位置和坐标画出矩形的轮廓</li>
+<li>clearRect 清除矩形区域内的所有内容并将它恢复到初始状态，即透明色。</li>
+</ol>
+
+      </div>
+      
+      <h1><a href="/%E7%AC%94%E8%AE%B0/javascript%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/2014/05/25/%E3%80%8Ajavascript%E6%A8%A1%E5%BC%8F%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0---%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E5%A4%96%E8%A7%82%E6%A8%A1%E5%BC%8F.html">《javascript模式》读书笔记---设计模式-外观模式</a></h1>
+      <p class="author">
+          <span class="date">2014-05-25 05:50:21 +0800</span>
+      </p>
+      <div class="content">
+          <p>外观模式</p>
+
+<p><strong>表现</strong></p>
+
+<p>一种简单的模式，为对象提供了一个可供选择的接口。
+这是一种非常好的设计实践，可保持方法的简洁性并且不会使它们处理过多的工作。</p>
+
+<p>通过创建一个外观方法从而同时调用处理流星器事件的两个方法：</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">var myevent ={
+    stop:function(e){
+        e.preventDefault();
+        e.stopPropagation();
+    }
+}
+</code></pre></div>
+<p>外观模式也非常适合于浏览器脚本处理，据此可将浏览器之间的差异隐藏在外观之后。</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">var myevent={
+    stop:function(e){
+        if(typeof e.preventDefault === &#39;function&#39;){
+            e.preventDefault();
+        }
+        if(typeof e.stopPropagation === &#39;function&#39;){
+            e.stopPropagation();
+        }
+        //ie浏览器
+        if(typeof e.returnValue === &#39;boolean&#39;){
+            e.returnValue = false;
+        }
+        if(typeof e.cancelBubble === &#39;boolean&#39;){
+            e.cancelBubble = true;
+        }
+    }
+}
+</code></pre></div>
+<p>通过使用外观模式，可以首先考虑新对象的API，然后继续在原有对象的前面创建一个外观。这样，当您着手完全取代原有对象的时候，仅需修改更少的客户端代码，这是由于任何最新的客户端代码都已经使用了这个新API.</p>
+
+      </div>
+      
       <h1><a href="/%E7%AC%94%E8%AE%B0/javascript%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/2014/05/24/%E3%80%8Ajavascript%E6%A8%A1%E5%BC%8F%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0---%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E8%BF%AD%E4%BB%A3%E5%99%A8%E6%A8%A1%E5%BC%8F.html">《javascript模式》读书笔记---设计模式-迭代器模式</a></h1>
       <p class="author">
           <span class="date">2014-05-24 19:50:21 +0800</span>
@@ -147,177 +268,6 @@
 <p>在装饰者模式中，可以在运行时动态添加附加功能到对象中。
 <em>在迭代器模式中，对象需要提供一个next()方法。依次调用next()必须返回下一个连续的元素。（下一个代表什么由程序决定）</em></p>
 
-      </div>
-      
-      <h1><a href="/%E7%AC%94%E8%AE%B0/javascript%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/2014/05/20/%E3%80%8Ajavascript%E6%A8%A1%E5%BC%8F%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0---%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F.html">《javascript模式》读书笔记---设计模式-工厂模式</a></h1>
-      <p class="author">
-          <span class="date">2014-05-20 04:42:21 +0800</span>
-      </p>
-      <div class="content">
-          <p>设计工厂模式</p>
-
-<p><strong>目的：</strong>
-为了创建对象。</p>
-
-<p><strong>目标：</strong></p>
-
-<p>1、当创建相似对象时执行重复操作</p>
-
-<p>2、在编译时不知道具体类型（类）的情况下，为工厂客户提供一种创建对象的接口。</p>
-
-<p><strong>实现示例：</strong></p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">function CarMaker() {
-        }
-        CarMaker.prototype.drive = function () {
-            return &#39;Vroom, I have &#39; + this.doors + &#39;doors&#39;;
-        };
-        CarMaker.factory = function (type) {
-            var constr = type,
-                    newcar;
-            //如果构造函数不存在，则发生错误
-            if (typeof CarMaker[constr] !== &#39;function&#39;) {
-                throw{
-                    name: &#39;Error&#39;,
-                    message: constr + &quot;does&#39;t exist&quot;
-                }
-            }
-            //在这里，构造函数是已知存在的
-            //我们使得原型继承父类，但仅继承一次
-            if(typeof CarMaker[constr].prototype.drive !== &#39;function&#39;){
-                CarMaker[constr].prototype = new CarMarker();
-            }
-            //创建一个新的实例
-            newcar = new CarMaker[constr]();
-            //可选择性的调用一些方法然后返回...
-            return newcar;
-        };
-        //定义特定的汽车制造商
-        CarMaker.Compact = function(){
-            this.doors = 4;
-        };
-        CarMaker.Convertible = function(){
-            this.doors = 2;
-        };
-        CarMaker.SUV = function(){
-            this.doors = 24;
-        }
-</code></pre></div>
-<p>使用方法：</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">(function(){
-            var corolla = CarMaker.factory(&#39;Compact&#39;);
-            var solstice = CarMaker.factory(&#39;Convertible&#39;);
-            var cherokee = CarMaker.factory(&#39;SUV&#39;);
-            console.log(corolla.drive());
-            console.log(solstice.drive());
-            console.log(cherokee.drive());
-})();
-</code></pre></div>
-      </div>
-      
-      <h1><a href="/%E7%AC%94%E8%AE%B0/javasript%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/2014/05/20/%E3%80%8Ajavascript%E6%A8%A1%E5%BC%8F%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0---%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E4%BD%BF%E7%94%A8new%E6%93%8D%E4%BD%9C%E7%AC%A6.html">《javascript模式》读书笔记---设计模式-使用new操作符</a></h1>
-      <p class="author">
-          <span class="date">2014-05-20 04:42:21 +0800</span>
-      </p>
-      <div class="content">
-          <p>javascript中具有new语法可全名用构造函数来创建对象，而且有时可能需要使用这种语法的单体实现。</p>
-
-<p>　　
-<strong>这种思想在于当使用同一个构造函数以new操作符来创建多个对象时，应该仅获得指向完全相同的对象的新指针。</strong></p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">　　var uni = new Universe();
-　　var uni2 = new Universe();
-　　console.log(uni === uni2);  //结果为true
-</code></pre></div>
-      </div>
-      
-      <h1><a href="/%E8%BD%AC%E8%BD%BD/javascript%E5%9F%BA%E7%A1%80/2014/05/11/cookie.html">JavaScript 操作 Cookie</a></h1>
-      <p class="author">
-          <span class="date">2014-05-11 04:18:21 +0800</span>
-      </p>
-      <div class="content">
-          <p>　　从事web开发也有些日子了，cookie 是个啥差不多能说明白，可是实际自己一上手操作就是得去搜索(你们懂的)，结果被鄙视了...所以就写一篇博文做为自己的学习笔记，嘿嘿，博客的好处在此体现出来了。</p>
-
-<p>　　什么是 Cookie</p>
-
-<p>　　“cookie 是存储于访问者的计算机中的变量。每当同一台计算机通过浏览器请求某个页面时，就会发送这个 cookie。你可以使用 JavaScript 来创建和取回 cookie 的值。” - w3school
-　　cookie 是访问过的网站创建的文件，用于存储浏览信息，例如个人资料信息。</p>
-
-<p>　　从JavaScript的角度看，cookie 就是一些字符串信息。这些信息存放在客户端的计算机中，用于客户端计算机与服务器之间传递信息。</p>
-
-<p>　　在JavaScript中可以通过 document.cookie 来读取或设置这些信息。由于 cookie 多用在客户端和服务端之间进行通信，所以除了JavaScript以外，服务端的语言（如PHP）也可以存取 cookie。</p>
-
-<p>　　Cookie 基础知识</p>
-
-<p>cookie 是有大小限制的，每个 cookie 所存放的数据不能超过4kb，如果 cookie 字符串的长度超过4kb，则该属性将返回空字符串。
-由于 cookie 最终都是以文件形式存放在客户端计算机中，所以查看和修改 cookie 都是很方便的，这就是为什么常说 cookie 不能存放重要信息的原因。
-每个 cookie 的格式都是这样的：<cookie名>=&lt;值&gt;；名称和值都必须是合法的标示符。
-cookie 是存在 有效期的。在默认情况下，一个 cookie 的生命周期就是在浏览器关闭的时候结束。如果想要 cookie 能在浏览器关掉之后还可以使用，就必须要为该 cookie 设置有效期，也就是 cookie 的失效日期。
-alert(typeof document.cookie)　　结果是 string，曾经我以为是array，还闹过笑话...囧
-cookie 有域和路径这个概念。域就是domain的概念，因为浏览器是个注意安全的环境，所以不同的域之间是不能互相访问 cookie 的(当然可以通过特殊设置的达到 cookie 跨域访问)。路径就是routing的概念，一个网页所创建的 cookie 只能被与这个网页在同一目录或子目录下得所有网页访问，而不能被其他目录下得网页访问（这句话有点绕，一会看个例子就好理解了）。
-其实创建cookie的方式和定义变量的方式有些相似，都需要使用 cookie 名称和 cookie 值。同个网站可以创建多个 cookie ，而多个 cookie 可以存放在同一个cookie 文件中。</p>
-
-<p>　　Cookie常见问题
-cookie 存在两种类型：
-你浏览的当前网站本身设置的 cookie
-来自在网页上嵌入广告或图片等其他域来源的 第三方 cookie (网站可通过使用这些 cookie 跟踪你的使用信息)
-刚刚基础知识里面有说到 cookie 生命周期的问题，其实 cookie 大致可分为两种状态：
-临时性质的cookie。当前使用的过程中网站会储存一些你的个人信息，当浏览器关闭后这些信息也会从计算机中删除
-设置失效时间的cookie。就算浏览器关闭了，这些信息业依然会在计算机中。如 登录名称和密码，这样无须在每次到特定站点时都进行登录。这种cookie 可在计算机中保留几天、几个月甚至几年
-cookie 有两种清除方式：
-通过浏览器工具清除 cookie (有第三方的工具，浏览器自身也有这种功能)
-通过设置 cookie 的有效期来清除 cookie
-注：删除 cookie 有时可能导致某些网页无法正常运行
-浏览器可以通过设置来接受和拒绝访问 cookie。
-出于功能和性能的原因考虑，建议尽量降低 cookie 的使用数量，并且要尽量使用小 cookie。
-关于cookie编码的细节问题将会在cookie高级篇中单独介绍。
-假如是本地磁盘中的页面，chrome的控制台是无法用JavaScript读写操作 cookie 的，解决办法...换一个浏览器^_^。</p>
-
-<p>　　Cookie基础用法</p>
-
-<p>　　一.简单的存取操作</p>
-
-<p>　　在使用JavaScript存取 cookie 时，必须要使用Document对象的 cookie 属性；一行代码介绍如何创建和修改一个 cookie ：</p>
-
-<p>　　document.cookie  = &#39;username=Darren&#39;
-　　以上代码中&#39;username&#39;表示 cookie 名称，&#39;Darren&#39;表示这个名称对应的值。假设 cookie 名称并不存在，那么就是创建一个新的 cookie；如果存在就是修改了这个 cookie 名称对应的值。如果要多次创建 cookie ，重复使用这个方法即可。</p>
-
-<p>　　二.cookie的读取操作</p>
-
-<p>　　要精确的对 cookie 进行读取其实很简单，就是对字符串进行操作。从w3school上copy这段代码来做分析：</p>
-
-<p>复制代码</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">function getCookie(c_name){
-
-　　　　if (document.cookie.length&gt;0){　　
-　　　　//先查询cookie是否为空，为空就return &quot;&quot;
-　　　　　　c_start=document.cookie.indexOf(c_name + &quot;=&quot;)　　
-　　　　　　//通过String对象的indexOf()来检查这个cookie是否存在，不存在就为 -1　　
-　　　　　　if (c_start!=-1){ 
-　　　　　　　　c_start=c_start + c_name.length+1　　
-　　　　　　　　//最后这个+1其实就是表示&quot;=&quot;号啦，这样就获取到了cookie值的开始位置
-　　　　　　　　c_end=document.cookie.indexOf(&quot;;&quot;,c_start)　　
-　　　　　　　　//其实我刚看见indexOf()第二个参数的时候猛然有点晕，后来想起来表示指定的开始索引的位置...这句是为了得到值的结束位置。因为需要考虑是否是最后一项，所以通过&quot;;&quot;号是否存在来判断
-　　　　　　　　if (c_end==-1) c_end=document.cookie.length　　
-　　　　　　　　return unescape(document.cookie.substring(c_start,c_end))　　
-　　　　　　　　//通过substring()得到了值。想了解unescape()得先知道escape()是做什么的，都是很重要的基础，想了解的可以搜索下，在文章结尾处也会进行讲解cookie编码细节
-　　　　　　} 
-　　　　}
-　　　　return &quot;&quot;
-　　}
-　　
-　　```　　
-　　
-复制代码
-　　当然想实现读取cookie的方法还有不少，比如数组，正则等，这里就不往细说了。
-
-
-
-　　三.设置cookie的有效期
-
-　　文章中常常出现的 cookie 的生命周期也就是有效期和失效期，即 cookie 的存在时间。在默认的情况下，cookie 会在浏览器关闭的时候自动清除，但是我们可以通过expires来设置 cookie 的有效期。语法如下：
-
-　　document.cookie = &quot;name=value;expires=date&quot;
-　　上面代码中的date值为GMT(格林威治时间)格式的日期型字符串，生成方式如下：
-</code></pre></div>
       </div>
       
 
@@ -366,6 +316,12 @@ cookie 有两种清除方式：
               <li class="page">
                   
                   <a href="/page6">6</a>
+                  
+              </li>
+              
+              <li class="page">
+                  
+                  <a href="/page7">7</a>
                   
               </li>
               
@@ -496,7 +452,13 @@ cookie 有两种清除方式：
       
             
                 <li>
-                <a href="/categories/html5"> html5 (1) </a>
+                <a href="/categories/html5"> html5 (3) </a>
+                </li>
+            
+      
+            
+                <li>
+                <a href="/categories/css3 转载"> css3 转载 (1) </a>
                 </li>
             
       
@@ -510,6 +472,30 @@ cookie 有两种清除方式：
   <ul class="entry">
     
     
+    
+        
+        
+        
+        
+    
+        
+        
+        
+        
+    
+        
+        
+        
+        
+            
+            <li>
+                <a href="/2014/08">
+                    2014-08 (3)
+                </a>
+            </li>
+
+        
+        
     
         
         
@@ -712,6 +698,12 @@ cookie 有两种清除方式：
                     <!--<div class="widget tag">
                         <h3 class="title">最新文章</h3>
                         <ul class="entry">
+                            
+                            <li><span>07 Aug 2014</span> &raquo; <a href="/html5/2014/08/07/%E9%A1%B5%E9%9D%A2%E6%98%BE%E7%A4%BA(pageshow)%E5%92%8C%E9%A1%B5%E9%9D%A2%E9%9A%90%E8%97%8F(pagehide)%E4%BA%8B%E4%BB%B6.html">页面显示(pageshow)和页面隐藏(pagehide)事件</a></li>
+                            
+                            <li><span>07 Aug 2014</span> &raquo; <a href="/html5/2014/08/07/css%E5%B1%85%E4%B8%AD%E5%A4%A7%E5%85%A8.html">CSS居中大全</a></li>
+                            
+                            <li><span>06 Aug 2014</span> &raquo; <a href="/css3%20%E8%BD%AC%E8%BD%BD/2014/08/06/%E6%B7%B1%E5%85%A5%E6%B5%8F%E8%A7%88%E5%99%A8%E7%A0%94%E7%A9%B6%20CSS%20%E7%9A%84%E5%8A%A8%E7%94%BB%E5%92%8C%E8%BD%AC%E6%8D%A2%E6%80%A7%E8%83%BD.html">深入浏览器研究 CSS 的动画和转换性能</a></li>
                             
                             <li><span>26 Jun 2014</span> &raquo; <a href="/html5/2014/06/26/html5%20Geolocation.html">about media query</a></li>
                             

@@ -58,6 +58,12 @@
                             <div id="home">
   <ul class="posts">
     <!--
+      <li><span>07 Aug 2014</span> &raquo; <a href="/html5/2014/08/07/%E9%A1%B5%E9%9D%A2%E6%98%BE%E7%A4%BA(pageshow)%E5%92%8C%E9%A1%B5%E9%9D%A2%E9%9A%90%E8%97%8F(pagehide)%E4%BA%8B%E4%BB%B6.html">页面显示(pageshow)和页面隐藏(pagehide)事件</a></li>
+    
+      <li><span>07 Aug 2014</span> &raquo; <a href="/html5/2014/08/07/css%E5%B1%85%E4%B8%AD%E5%A4%A7%E5%85%A8.html">CSS居中大全</a></li>
+    
+      <li><span>06 Aug 2014</span> &raquo; <a href="/css3%20%E8%BD%AC%E8%BD%BD/2014/08/06/%E6%B7%B1%E5%85%A5%E6%B5%8F%E8%A7%88%E5%99%A8%E7%A0%94%E7%A9%B6%20CSS%20%E7%9A%84%E5%8A%A8%E7%94%BB%E5%92%8C%E8%BD%AC%E6%8D%A2%E6%80%A7%E8%83%BD.html">深入浏览器研究 CSS 的动画和转换性能</a></li>
+    
       <li><span>26 Jun 2014</span> &raquo; <a href="/html5/2014/06/26/html5%20Geolocation.html">about media query</a></li>
     
       <li><span>21 Jun 2014</span> &raquo; <a href="/viewport%20%E8%B7%A8%E7%BB%88%E7%AB%AF/2014/06/21/viewport%E7%AC%94%E8%AE%B0.html">about media query</a></li>
@@ -119,6 +125,53 @@
       <li><span>24 Oct 2013</span> &raquo; <a href="/%E5%B7%A5%E5%85%B7/2013/10/24/markdonnote.html">使用 Markdown</a></li>
     -->
       <!-- 遍历分页后的文章 -->
+      
+      <h1><a href="/%E7%AC%94%E8%AE%B0/javascript%E6%A8%A1%E5%BC%8F/2014/04/20/%E3%80%8Ajavascript%E6%A8%A1%E5%BC%8F%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0---DOM%E5%92%8C%E6%B5%8F%E8%A7%88%E5%99%A8%E6%A8%A1%E5%BC%8F.html">《javascript模式》读书笔记—DOM和浏览器模式</a></h1>
+      <p class="author">
+          <span class="date">2014-04-20 04:18:21 +0800</span>
+      </p>
+      <div class="content">
+          <h2>记录几个待深入知识点</h2>
+
+<p><strong>IE和FF事件兼容，返回的事件对象都包括什么？ ev</strong>
+<strong>事件代理的实现</strong>
+<strong>Web Workers的深入研究</strong>
+<strong>jsonp的实现</strong>
+<strong>图像灯塔？</strong></p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">new Image().src = &#39;http://*.*.page.php&#39;;
+</code></pre></div>
+<p><strong>无阻塞加载、延迟加载、按需加载、预加载javascript的实现</strong></p>
+
+      </div>
+      
+      <h1><a href="/%E7%AC%94%E8%AE%B0/javascript%E6%A8%A1%E5%BC%8F/2014/04/20/javascript%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E7%AD%96%E7%95%A5%E6%A8%A1%E5%BC%8F.html">《javascript模式》-策略模式</a></h1>
+      <p class="author">
+          <span class="date">2014-04-20 04:18:21 +0800</span>
+      </p>
+      <div class="content">
+          <h2>策略模式的定义</h2>
+
+<p><strong>定义一组算法，将每个算法都封装起来，并且使他们之间可以互换。</strong></p>
+
+<p><strong>使用策略模式的其中一个例子是解决表单验证的问题。可以创建一个具有validate()方法的验证器（validator）对象。无论表单的具体类型是什么，该方法都将会被调用，并且总是返回相同的结果，一个未经验证的数据列表以及任意的错误消息。</strong></p>
+
+      </div>
+      
+      <h1><a href="/%E8%BD%AC%E8%BD%BD/javascript%E5%9F%BA%E7%A1%80/2014/04/20/Array.prototype.slice.call(arguments).html">Array.prototype.slice.call(arguments)</a></h1>
+      <p class="author">
+          <span class="date">2014-04-20 04:18:21 +0800</span>
+      </p>
+      <div class="content">
+          <p>我们知道，Array.prototype.slice.call(arguments)能将具有length属性的对象转成数组，除了IE下的节点集合（因为ie下的dom对象是以com对象的形式实现的，js对象与com对象不能进行转换）</p>
+
+<p>如：</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">1 var a={length:2,0:&#39;first&#39;,1:&#39;second&#39;};
+2 Array.prototype.slice.call(a);//  [&quot;first&quot;, &quot;second&quot;]
+3  
+4 var a={length:2};
+5 Array.prototype.slice.call(a);//  [undefined, undefined]
+</code></pre></div>
+      </div>
       
       <h1><a href="/%E8%BD%AC%E8%BD%BD/javascript%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/2014/04/20/23%E7%A7%8D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E5%8F%8A%E8%A7%A3%E9%87%8A%EF%BC%88%E4%B8%AD%E8%8B%B1%E6%96%87%E5%AF%B9%E7%85%A7.html">23种设计模式及解释（中英文对照）</a></h1>
       <p class="author">
@@ -223,787 +276,6 @@
 
       </div>
       
-      <h1><a href="/%E7%AC%94%E8%AE%B0/javascript%E6%A8%A1%E5%BC%8F/2014/04/05/%E3%80%8Ajavascript%E6%A8%A1%E5%BC%8F%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0---%E5%AF%B9%E8%B1%A1%E5%88%9B%E5%BB%BA%E6%A8%A1%E5%BC%8F.html">《javascript模式》读书笔记—对象创建模式</a></h1>
-      <p class="author">
-          <span class="date">2014-04-05 22:18:21 +0800</span>
-      </p>
-      <div class="content">
-          <p><div class="entry">
-    <h1>对象创建模式</h1>
-   <p>本章中我们将看到命名空间，依赖说明、模块模式、沙箱模式。它们都可以帮助组织应用程序代码的结构，并且降低隐含的全局变量带来的后果。以及私有和特权成员、对象常量、链和一个启发类的方式以定义构造函数。</p></p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">&lt;h3&gt;命名空间模式&lt;/h3&gt;
-&lt;ul&gt;
-    &lt;li&gt;命名空间（namespace）有助于减少程序中所需要的全局变量的数量，并且同时还有助于避免命名冲突或过长的名字前缀。&lt;/li&gt;
-    &lt;li&gt;实现：为应用程序或库创建一个（理想上最好只有一个）全局对象，然后将所有功能添加到该全局对象中，从而在具有大量函数、对象或其他变量的情况下并不会污染全局范围。&lt;/li&gt;
-    &lt;li&gt;
-        &lt;pre&gt;
-            //反例
-            // 5个全局变量
-            // 构造函数
-            function Parent(){}
-            function Child(){}
-            //一个变量
-            var some_var = 1;
-            //一些对象
-            var module1 = {};
-            module1.data = {a:1,b:2};
-            var module2 ={};
-        &lt;/pre&gt;
-        &lt;script&gt;
-            //反例
-            // 5个全局变量
-            // 构造函数
-            function Parent(){}
-            function Child(){}
-            //一个变量
-            var some_var = 1;
-            //一些对象
-            var module1 = {};
-            module1.data = {a:1,b:2};
-            var module2 ={};
-
-        &lt;/script&gt;
-        &lt;p&gt;改善：通过创建全局对象MYAPP，改变所有函数和变量以使其成为全局对象的属性：&lt;/p&gt;
-        &lt;pre&gt;
-           //一个全局变量
-            var MYAPP ={ };
-            MYAPP.Parent =function(){};
-            MYAPP.Child = function(){};
-
-            //一个变量
-            MYAPP.some_var = 1;
-
-            //一个对象容器
-            MYAPP.modules = {};
-
-            //一些对象
-            MYAPP.modules.module1 = {};
-            MYAPP.modules.module1.data = {a:1,b:2};
-            MYAPP.modules.module2 ={};
-        &lt;/pre&gt;
-        &lt;script&gt;
-            //一个全局变量
-            var MYAPP ={ };
-            MYAPP.Parent =function(){};
-            MYAPP.Child = function(){};
-
-            //一个变量
-            MYAPP.some_var = 1;
-
-            //一个对象容器
-            MYAPP.modules = {};
-
-            //一些对象
-            MYAPP.modules.module1 = {};
-            MYAPP.modules.module1.data = {a:1,b:2};
-            MYAPP.modules.module2 ={};
-
-        &lt;/script&gt;
-    &lt;/li&gt;
-    &lt;li&gt;优点是避免了命名冲突，缺点：
-        &lt;ol&gt;
-            &lt;li&gt;需要输入更多的字符，每个变量和函数前都要附加前缀，总体上增加了需要下载的代码量。&lt;/li&gt;
-            &lt;li&gt;仅有一个全局实例意味着任何部分的代码都可以修改该全局实例，并且其余的功能能够获得更新后的状态。&lt;/li&gt;
-            &lt;li&gt;长嵌套名字意味着更长（更慢）的属性解析查询时间。&lt;/li&gt;
-
-        &lt;/ol&gt;
-        &lt;strong class=&quot;c90&quot;&gt;后面讨论的沙箱模式（sandbox pattern）可以解决以上缺点。&lt;/strong&gt;
-    &lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3&gt;通用命名空间函数&lt;/h3&gt;
-&lt;ul&gt;
-    &lt;li&gt;在使用命名空间之前要先检查它是否已存在：&lt;/li&gt;
-    &lt;li&gt;
-        &lt;pre&gt;
-                        //不安全的代码
-            var MYAPP = {};
-            //更好的代码风格
-            if(typeof MYAPP === &#39;undefined&#39;){
-                var MYAPP = {};
-            }
-            //或者用更短的语句
-            var MYAPP = MYAPP || {};
-</code></pre></div>
-<p></pre>
-            <script>
-                //不安全的代码
-                var MYAPP = {};
-                //更好的代码风格
-                if(typeof MYAPP === &#39;undefined&#39;){
-                    var MYAPP = {};
-                }
-                //或者用更短的语句
-                var MYAPP = MYAPP || {};</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">        &lt;/script&gt;
-    &lt;/li&gt;
-    &lt;li&gt;重复的检查，我们需要一个namespace()函数来帮助 我们方便地处理命名空间的细节，做成一个可重用的函数：
-    &lt;p&gt;调用方式：&lt;/p&gt;
-        &lt;pre&gt;
-            MYAPP.namespace(&#39;MYAPP.modules.module2&#39;);
-            //相当于以下代码
-            var MYAPP = {
-                modules :{
-                    module2:{}
-                }
-            }
-        &lt;/pre&gt;
-    &lt;/li&gt;
-    &lt;li&gt;函数实现：（如果已经存在则不会重新创建它）
-        &lt;pre&gt;
-                        var MYAPP = MYAPP || {};
-            MYAPP.namespace = function(ns_string){
-                var parts = ns_string.split(&#39;.&#39;),
-                    parent = MYAPP,
-                    i;
-                //剥离最前面的冗余全局变量
-                if(parts[0] === &#39;MYAPP&#39;){
-                    parts = parts.splice(1);
-                }
-                for(i=0;i&lt; parts.length;i++){
-                    //如果属性不存在则创建
-                    if(typeof parent[parts[i]] === &#39;undefined&#39;){
-                        parent[parts[i]]={};
-                    }
-                    parent = parent[parts[i]];
-                }
-                return parent;
-
-            }
-            var module2 = MYAPP.namespace(&#39;MYAPP.modules.module2&#39;);
-            MYAPP.namespace(&#39;modules.module52&#39;);
-
-        &lt;/pre&gt;
-        &lt;script&gt;
-            var MYAPP = MYAPP || {};
-            MYAPP.namespace = function(ns_string){
-                var parts = ns_string.split(&#39;.&#39;),
-                    parent = MYAPP,
-                    i;
-                //剥离最前面的冗余全局变量
-                if(parts[0] === &#39;MYAPP&#39;){
-                    parts = parts.splice(1);
-                }
-                for(i=0;i&lt; parts.length;i++){
-                    //如果属性不存在则创建
-                    if(typeof parent[parts[i]] === &#39;undefined&#39;){
-                        parent[parts[i]]={};
-                    }
-                    parent = parent[parts[i]];
-                }
-                return parent;
-
-            }
-            var module2 = MYAPP.namespace(&#39;MYAPP.modules.module2&#39;);
-            MYAPP.namespace(&#39;modules.module52&#39;);
-        &lt;/script&gt;
-    &lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3&gt;声明依赖关系&lt;/h3&gt;
-&lt;ul&gt;
-    &lt;li&gt;在函数或模块顶部声明代码所依赖的模块是一个非常好的主意。
-        &lt;pre&gt;
-            var myFunction = function(){
-                //依赖
-                var event = YAHOO.util.Event,
-                        dom = YAHOO.util.dom;
-
-                //使用事件或DOM变量
-                //and so on
-            }
-        &lt;/pre&gt;
-        &lt;script&gt;
-            var myFunction = function(){
-                //依赖
-                var event = YAHOO.util.Event,
-                        dom = YAHOO.util.dom;
-
-                //使用事件或DOM变量
-                //and so on
-            }
-        &lt;/script&gt;
-    &lt;/li&gt;
-    &lt;li&gt;极其简单的模式，却有很多优点：
-        &lt;ol&gt;
-            &lt;li&gt;显示的依赖声明了他们确定需要的特定脚本文件已经包含在该页面中。&lt;/li&gt;
-            &lt;li&gt;在函数顶部的前期声明可以使您很容易地发现并解析依赖。&lt;/li&gt;
-            &lt;li&gt;解析局部变量（比如DOM）的速度总是要比解析全局变量（比如YAHOO）要快，甚至比使用全局变量的嵌套属性（比如YAHOO.util.Dom）还要快，这导致了更好的性能。&lt;/li&gt;
-            &lt;li&gt;类似于YUICompressor或goole闭包编译器的这些高级小工具可以重命名局部变量（因此，event有可能变成一个字符，比如A），这导致了更小的代码量，但是这些工具从不会对全局变量进行重命名，因为这样做不安全。&lt;/li&gt;
-            &lt;li&gt;
-                &lt;pre&gt;
-                   function test1(){
-                        alert(MYAPP.modules.m1);
-                        alert(MYAPP.modules.m2);
-                        alert(MYAPP.modules.m3);
-                    }
-                    /*缩减的test1主体*/
-                    alert(MYAPP.modules.m1);alert(MYAPP.modules.m2);alert(MYAPP.modules.m3);
-                    function test2(){
-                        var modules =MYAPP.modules;
-                        alert(modules.m1);
-                        alert(modules.m2);
-                        alert(modules.m3);
-                    }
-                    /*缩减的test2主体*/
-                    var a =MYAPP.modules;alert(a.m1);alert(a.m2);alert(a.m3);
-                &lt;/pre&gt;
-
-            &lt;/li&gt;
-        &lt;/ol&gt;
-    &lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3&gt;私有属性和方法&lt;/h3&gt;
-&lt;ul&gt;
-    &lt;li&gt;javascript没有特殊语法来表示私有、保护、或公共属性和方法，所有对象的成员是公共的：
-    &lt;pre&gt;
-       var myobj = {
-            myprop:1,
-            getProp:function(){
-                return this.myprop;
-            }
-        };
-        console.log(myobj.myprop); //公有可访问
-        console.log(myobj.getProp());//公有可访问
-    &lt;/pre&gt;
-        &lt;script&gt;
-            var myobj = {
-                myprop:1,
-                getProp:function(){
-                    return this.myprop;
-                }
-            };
-            console.log(myobj.myprop); //公有可访问
-            console.log(myobj.getProp());//公有可访问
-
-        &lt;/script&gt;
-    &lt;/li&gt;
-
-&lt;/ul&gt;
-&lt;h3&gt;私有成员&lt;/h3&gt;
-&lt;ul&gt;
-    &lt;li&gt;
-        &lt;pre&gt;
-           function Gadget(){
-                //私有成员
-                var name = &#39;ipod&#39;;
-                //公有函数
-                this.getName = function(){
-                    return name;
-                };
-            }
-            var toy = new Gadget();
-            //name是私有的，不可访问
-            console.log(toy.name); //undefined
-            console.log(toy.getName()); //ipod
-        &lt;/pre&gt;
-        &lt;script&gt;
-            function Gadget(){
-                //私有成员
-                var name = &#39;ipod&#39;;
-                //公有函数
-                this.getName = function(){
-                    return name;
-                };
-            }
-            var toy = new Gadget();
-            //name是私有的，不可访问
-            console.log(toy.name); //undefined
-            console.log(toy.getName()); //ipod
-        &lt;/script&gt;
-        &lt;p&gt;很容易在javascript实现私有性。需要做的只是在函数中将需要保持为私有属性的数据包装起来，确保其为局部变量，则外部函数不可访问。&lt;/p&gt;
-    &lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3&gt;特权方法&lt;/h3&gt;
-&lt;ul&gt;
-    &lt;li&gt;只是一个名称而已：指那些可以访问私有成员的公共方法&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3&gt;对象字面量以及私有性&lt;/h3&gt;
-&lt;ul&gt;
-    &lt;li&gt;可以使用一个额外的匿名即时函数创建闭包来实现私有性：
-        &lt;pre&gt;
-           var myobj; //这将会是对象
-            (function(){
-                //私有成员
-                var name = &#39;my,oh my&#39;;
-
-                //实现公有部分，没有var
-                myobj = {
-                    //特权方法
-                    getName:function(){
-                        return name;
-                    }
-                }
-            })();
-            myobj.getName(); // my...
-        &lt;/pre&gt;
-        &lt;script&gt;
-            var myobj; //这将会是对象
-            (function(){
-                //私有成员
-                var name = &#39;my,oh my&#39;;
-
-                //实现公有部分，没有var
-                myobj = {
-                    //特权方法
-                    getName:function(){
-                        return name;
-                    }
-                }
-            })();
-            myobj.getName(); // my...
-
-        &lt;/script&gt;
-    &lt;/li&gt;
-    &lt;li&gt;
-        下面的例子与上面有相同的思想，只是在实现上略有不同：
-        &lt;pre&gt;
-            var myobj = (function(){
-                //私有成员
-                var name = &#39;my,oh my&#39;;
-
-                //实现公有部分
-                return {
-                    getName:function(){
-                        return name;
-                    }
-                }
-            }());
-            myobj.getName(); // my...
-        &lt;/pre&gt;
-        &lt;script&gt;
-            var myobj = (function(){
-                //私有成员
-                var name = &#39;my,oh my&#39;;
-
-                //实现公有部分
-                return {
-                    getName:function(){
-                        return name;
-                    }
-                }
-            }());
-            myobj.getName(); // my...
-        &lt;/script&gt;
-        &lt;strong class=&quot;c90&quot;&gt;这个例子也是称之为“模块模式”的基础框架&lt;/strong&gt;
-    &lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3&gt;原型和私有性&lt;/h3&gt;
-&lt;ul&gt;
-    &lt;li&gt;
-        &lt;p class=&quot;c90&quot;&gt;当私有成员与构造函数一起使用时，其中的一个缺点在于每次调用构造函数以创建对象时，这些私有成员都会被重新创建。构造函数中添加到this中的任何成员都实际上面临以上问题。为了避免复制工作和节省内存，可以将常用属性和方法添加到构造函数的prototype属性中。这样，通过同一个构造函数创建的多个实例可以共享常见的部分数据。以及共享隐藏的私有成员&lt;/p&gt;
-        &lt;pre&gt;
-           function Gadget(){
-                //私有成员
-                var name = &#39;ipod&#39;;
-                //公有函数
-                this.getName = function(){
-                    return name;
-                };
-            }
-            Gadget.prototype = (function(){
-               //私有成员
-               var brower = &#39;Mobile Webkit&#39;;
-               //公有原型成员
-                return {
-                    getBrower:function(){
-                        return brower;
-                    }
-                }
-            }());
-            var toy = new Gadget();
-            console.log(toy.getName()); //特权&#39;own&#39;方法
-            console.log(toy.getBrower());//特权原型方法
-        &lt;/pre&gt;
-        &lt;script&gt;
-            function Gadget(){
-                //私有成员
-                var name = &#39;ipod&#39;;
-                //公有函数
-                this.getName = function(){
-                    return name;
-                };
-            }
-            Gadget.prototype = (function(){
-               //私有成员
-               var brower = &#39;Mobile Webkit&#39;;
-               //公有原型成员
-                return {
-                    getBrower:function(){
-                        return brower;
-                    }
-                }
-            }());
-            var toy = new Gadget();
-            console.log(toy.getName()); //特权&#39;own&#39;方法
-            console.log(toy.getBrower());//特权原型方法
-        &lt;/script&gt;
-
-    &lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3&gt;将私有方法揭示为公有方法&lt;/h3&gt;
-&lt;ul&gt;
-    &lt;li&gt;揭示模式可用于将私有方法暴露成为公共方法。&lt;/li&gt;
-    &lt;li&gt;以下例子建立在其中一种私有模式之上，即对象字面量中的私有成员：
-        &lt;pre&gt;
-          var myarray;
-            (function(){
-              var astr = &#39;[object Array]&#39;,
-                  toString = Object.prototype.toString;
-              function isArray(a){
-                  return toString.call(a) === astr;
-              }
-              function indexOf(haystack,needle){
-                  var i= 0,
-                          max = haystack.length;
-                  for(;i&lt;max;i+=1){
-                      if(haystack[i] === needle){
-                          return i;
-                      }
-                  }
-                  return -1;
-              }
-              myarray = {
-                  isArray:isArray,
-                  indexOf:indexOf,
-                  inArray:indexOf
-              }
-            }());
-        &lt;/pre&gt;
-        &lt;script&gt;
-            var myarray;
-            (function(){
-              var astr = &#39;[object Array]&#39;,
-                  toString = Object.prototype.toString;
-              function isArray(a){
-                  return toString.call(a) === astr;
-              }
-              function indexOf(haystack,needle){
-                  var i= 0,
-                          max = haystack.length;
-                  for(;i&lt;max;i+=1){
-                      if(haystack[i] === needle){
-                          return i;
-                      }
-                  }
-                  return -1;
-              }
-              myarray = {
-                  isArray:isArray,
-                  indexOf:indexOf,
-                  inArray:indexOf
-              }
-            }());
-        &lt;/script&gt;
-    &lt;/li&gt;
-
-&lt;/ul&gt;
-&lt;h3&gt;模块模式&lt;/h3&gt;
-&lt;ul&gt;
-    &lt;li&gt;
-        &lt;p class=&quot;c90&quot;&gt;
-            模块模式是本书中迄今为止介绍过的多种模式的组合，也就是到下模式的组合：
-            命名空间&lt;br&gt;
-            即时函数 &lt;br&gt;
-            私有和特权成员&lt;br&gt;
-            声明依赖 &lt;br&gt;
-        &lt;/p&gt;
-    &lt;/li&gt;
-    &lt;li&gt;
-        &lt;pre&gt;
-
-        &lt;/pre&gt;
-        &lt;script&gt;
-            MYAPP.namespace(&#39;MYAPP.utilities.array&#39;);
-            MYAPP.utilities.array = (function(){
-                //依赖
-                var uobj = MYAPP.utilities.object,
-                    ulang = MYAPP.utilities.lang,
-                    //私有属性
-                    array_string = &#39;[object Array]&#39;,
-                    ops = Object.prototype.toString;
-
-                //私有方法
-                //...
-                // var 变量定义结束
-
-                //公有API
-               return{
-                   inArray:function(){
-                      //...
-                   },
-                   isArray:function(){
-                       //...
-                   }
-               }
-            }());
-        &lt;/script&gt;
-    &lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3&gt;揭示模式&lt;/h3&gt;
-&lt;ul&gt;
-    &lt;li&gt;
-        &lt;pre&gt;
-           MYAPP.utilities.array = (function(){
-                //依赖
-                var uobj = MYAPP.utilities.object,
-                        ulang = MYAPP.utilities.lang,
-                //私有属性
-                        array_string = &#39;[object Array]&#39;,
-                        ops = Object.prototype.toString,
-
-                //私有方法
-                isArray = function(){
-
-                },
-                inArray = function(){
-
-                };
-</code></pre></div>
-      </div>
-      
-      <h1><a href="/%E7%AC%94%E8%AE%B0/javascript%E6%A8%A1%E5%BC%8F/2014/04/05/%E3%80%8Ajavascript%E6%A8%A1%E5%BC%8F%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0---%E5%87%BD%E6%95%B0.html">《javascript模式》读书笔记---函数</a></h1>
-      <p class="author">
-          <span class="date">2014-04-05 22:18:21 +0800</span>
-      </p>
-      <div class="content">
-          <p><div class="entry">
-      <h3><strong>四、函数</strong></h3>
-   <ul>
-   <li>
-       <h3>1、函数就是对象，其表现如下：</h3>
-       <ol>
-           <li>函数可以在运行时动态创建，还可以在程序执行过程中创建。</li>
-           <li>函数可以分配给变量，可以将它们的引用复制到其他变量，可以被扩展，此外，除少数特殊情况外，函数还可以被删除。</li>
-           <li>可以作为参数传递给其他函数，并且还可以由其他函数返回。</li>
-           <li>函数可以有自己的属性和方法。</li>
-       </ol>
-   </li></p>
-
-<p><li><h3>2、函数表达式，又名匿名函数</h3>
-            <pre></p>
-
-<p>var add = function(a,b){
-     return a+b;
-};
-            </pre></p>
-
-<p></li>
-   <li>
-       <h3> 2、函数的提升<br></h3>
-       变量提升：对于所有的变量，无论在函数体的何处进行声明，都会在后台被提升到函数顶部。而这对于函数同样适用，其原因在于函数只是分配给变量的对象。唯一“明白”的地方在于当使用函数声明时，函数定义也被提升，而不仅仅是函数声明被提升。<br>
-                 <pre>
-           function foo(){
-               alert(&#39;global foo&#39;);</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">       }
-       function bar(){
-           alert(&#39;global bar&#39;);
-       }
-       function hoistMe(){
-           console.log(typeof foo); //function
-           console.log(typeof bar); // undefined
-           foo();//local foo
-           bar(); // TypeError:bar is not a function
-
-           //函数声明
-           //变量foo以及其实现者被提升
-           function foo(){
-               alert(&#39;local foo&#39;);
-           }
-
-           //函数表达式
-           //仅变量’bar‘被提升
-           //函数实现并未被提升
-           var bar = function(){
-               alert(&#39;local bar&#39;);
-           }
-
-       }
-       hoistMe();
-             &lt;/pre&gt;
-</code></pre></div>
-<p></li>
-   <li>
-       <h3>3、回调模式<br></h3>
-                <pre>
-           var findNodes = function(){
-                var i = 10000,//大而繁重的循环
-                    nodes=[], //存储该结果
-                    found;//找到了下一个节点
-                while(i){
-                    i -=1;
-                    //复杂逻辑
-                    nodes.push(found);
-                }
-                return nodes;
-            }
-            var hide = function(nodes){
-                var i = 0,max=nodes.length;
-                for(i=0;i<max;i+=1){
-                    nodes[i].style.display = 'none';
-                }
-            }
-            //执行该函数
-            hide(findNodes());
-                </pre></p>
-
-<p></li>
-    <li>以上这个实现是低效的，因为hide()必须再次循环遍历由findNodes()所返回的数组节点，如果能避免这种循环，并且只要在findNodes()中选择便可隐藏节点，那么这将是更高效的实现方式：采用回调模式，将节点隐藏逻辑以回调函数方式传递给findNodes()并委托其执行。</li>
-   <li>
-       <h3> 4、回调与作用域 <br></h3>
-                <pre>
-                    //回调与作用域
-            var myapp ={};
-            myapp.color=&#39;green&#39;;
-            myapp.paint = function(node){
-              node.style.color = this.color;
-            }
-            var findNodes = function(callback){
-                //内容同上
-                if(typeof callback === &#39;function&#39;){
-                    callback(found);
-                }
-            }
-            findNodes(myapp.paint)
-                </pre></p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">   它不会按照预期的那样运行，这是由于this.color没有被定义，由于findNodes()是一个全局函数，因此，对象this引用了全局对象。类似的，如果findNodes()是一个名为dom的对象的方法（dom.findNodes()），那么回调内部的this将指向dom，而不是预期的myapp.&lt;br&gt;
-   解决方案是：传递回调函数，并且另外还传递该回调函数所属的对象： &lt;br&gt;
-            &lt;pre&gt;
-                findNodes(myapp.paint,myapp);
-            &lt;/pre&gt;
-   修改findNodes()以绑定所传递进入的对象：
-            &lt;pre&gt;
-</code></pre></div>
-<p>var findNodes = function(callback,callback<em>obj){
-     if(typeof callback === ‘function’){
-          callback.call(callback</em>obj,found);
-     }
-}</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">            &lt;/pre&gt;
-</code></pre></div>
-<p></li>
-   <li>
-       2）、传递一个对象和一个方法以用做回调函数的另一种选择是，将其中的方法作为字符串来传递，因此无需重复两次输入该对象的名称，即：
-                <pre></p>
-
-<p>findNodes(myapp.paint,myapp);</p>
-
-<p>改为：findNodes(‘paint’,myapp);</p>
-
-<p>var findNodes = function(callback,callback<em>obj){
-     if(typeof callback === ’string’){
-          callback = callback</em>obj[calback];
-     }
-     if(typeof callback === ‘function’){
-          callback.call(callback_obj,found);
-     }</p>
-
-<p>}
-                </pre>
-   </li>
-   <li>
-       <h3>5、异步事件监听器</h3>
-   </li>
-   <li>
-                    <pre>
-                    //自定义函数
-            var scareMe = function(){
-                alert(&#39;Boo&#39;);
-                scareMe = function(){
-                    alert(&#39;Double boo!&#39;);
-                };
-            };
-            scareMe(); //Boo
-            scareMe(); //double boo!
-            //即时函数,jslint推荐的做法
-            (function(){
-               alert(&#39;watch out&#39;);
-            }());
-            //第二种做法
-            (function(){
-              alert(&#39;watch out&#39;);
-            })();</p>
-
-      </div>
-      
-      <h1><a href="/%E7%AC%94%E8%AE%B0/javascript%E5%9F%BA%E7%A1%80/2014/03/31/%E3%80%8Ajavascript%E6%A8%A1%E5%BC%8F%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0---%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86.html">《javascript模式》读书笔记---基础知识</a></h1>
-      <p class="author">
-          <span class="date">2014-03-31 22:18:21 +0800</span>
-      </p>
-      <div class="content">
-          <p><div class="entry">       </p>
-
-<h3>基本技巧</h3>
-
-<p><ul>
-<li>1、尽量多使用对象的组合，而不是使用类的继承。（这句话的意思是通过已有的对象组合来获取新对象，是比通过很长的父 - 子继承来创建新的对象更好的一种方法。）</li>
-<li>2、原型（Prototypes）<br/></p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">原型是一个对象，并且创建的每一个对象都会自动获取一个Prototypes属性，该属性指象一个新的空对象。该对象几乎等同于采用对象字面量或Object()创建的对象，区别在于它的constructor属性指向了所创建的函数，而不是指向内置的Object()函数。
-&lt;strong&gt;总结：原型就是一个对象（不是一个类，也不是其他特殊的元素），每一个函数都有prototype属性。&lt;/strong&gt;
-</code></pre></div>
-<p></li>
-<li>
-    3、由于Javascript的两个特性，导致总是出乎意料地创建全局变量：
-    <ol>
-        <li>javascript可直接使用变量，甚至无需声明；</li>
-        <li>javascript有个暗示全局变量（implied globals）的概念，即任何变量，如果未经声明，就为全局对象所有。</li></p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">&lt;/ol&gt;
-</code></pre></div>
-<p></li>
-    <li>
-        <pre>
-            function sum(x,y){
-            //反例，result为暗示全局变量
-            result = x+y;
-            return result;
-            }
-        </pre>
-    </li>
-    <li>
-        4、隐含全局变量和明确定义的全局变量的不同之处在于能否使用delete操作符撤销变量：
-        <ol>
-            <li>使用var 创建的全局变量不能被delete 删除</li>
-            <li>不使用var创建的隐含全局变量可以删除。</li>
-            <li><strong>（这表明隐含全局变量严格来讲不是真正的变量，而是全局对象的属性。属性可以通过delete操作符删除，但变量不可以。）</strong></li>
-        </ol>
-    </li>
-    <li>
-        5、访问全局对象
-        <pre>
-        var global = (function(){
-             return this;
-        }());
-        </pre>
-        <strong>按这种方式通常能获得全局对象，因为this在函数内部作为一个函数调用（而不是通过构造器new创建）时，往往指向该全局对象。</strong>
-    </li>
-    <li>6、单一var 模式
-        <pre>
-        var a,b,c;
-        </pre>
-        <strong>javascript允许在函数的任意地方声明多个变量，无论在哪里声明，效果都等同于在函数顶部进行声明。这就是所谓的提升。</strong>
-        <pre>
-        //反例
-        myname = ‘global’;//全局变量
-        function fund(){
-             alert(myname); //未定义
-             var myname = ‘local’;
-             alert(myname); // 局部变量 local
-        }
-        </pre>
-        <strong>原因是：所有的变量声明都会提升到函数的最顶层。</strong></p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">&lt;/li&gt;
-&lt;li&gt;
-    7、当遍历对象属性来过滤遇到原型链属性时，使用hasOwnProperty（）方法是非常重要的。
-    &lt;pre&gt;
-    var man={
-         hands:2,
-         b:3,
-         c:2
-    }
-    if(typeof Object.prototype.clone === ‘undefined’){
-         Object.prototype.clone = function(){};
-    }
-</code></pre></div>
-      </div>
-      
 
       <!-- 分页链接 -->
       <div id="post-pagination" class="pagination">
@@ -1050,6 +322,12 @@
               <li class="page">
                   
                   <a href="/page6">6</a>
+                  
+              </li>
+              
+              <li class="page">
+                  
+                  <a href="/page7">7</a>
                   
               </li>
               
@@ -1180,7 +458,13 @@
       
             
                 <li>
-                <a href="/categories/html5"> html5 (1) </a>
+                <a href="/categories/html5"> html5 (3) </a>
+                </li>
+            
+      
+            
+                <li>
+                <a href="/categories/css3 转载"> css3 转载 (1) </a>
                 </li>
             
       
@@ -1194,6 +478,30 @@
   <ul class="entry">
     
     
+    
+        
+        
+        
+        
+    
+        
+        
+        
+        
+    
+        
+        
+        
+        
+            
+            <li>
+                <a href="/2014/08">
+                    2014-08 (3)
+                </a>
+            </li>
+
+        
+        
     
         
         
@@ -1396,6 +704,12 @@
                     <!--<div class="widget tag">
                         <h3 class="title">最新文章</h3>
                         <ul class="entry">
+                            
+                            <li><span>07 Aug 2014</span> &raquo; <a href="/html5/2014/08/07/%E9%A1%B5%E9%9D%A2%E6%98%BE%E7%A4%BA(pageshow)%E5%92%8C%E9%A1%B5%E9%9D%A2%E9%9A%90%E8%97%8F(pagehide)%E4%BA%8B%E4%BB%B6.html">页面显示(pageshow)和页面隐藏(pagehide)事件</a></li>
+                            
+                            <li><span>07 Aug 2014</span> &raquo; <a href="/html5/2014/08/07/css%E5%B1%85%E4%B8%AD%E5%A4%A7%E5%85%A8.html">CSS居中大全</a></li>
+                            
+                            <li><span>06 Aug 2014</span> &raquo; <a href="/css3%20%E8%BD%AC%E8%BD%BD/2014/08/06/%E6%B7%B1%E5%85%A5%E6%B5%8F%E8%A7%88%E5%99%A8%E7%A0%94%E7%A9%B6%20CSS%20%E7%9A%84%E5%8A%A8%E7%94%BB%E5%92%8C%E8%BD%AC%E6%8D%A2%E6%80%A7%E8%83%BD.html">深入浏览器研究 CSS 的动画和转换性能</a></li>
                             
                             <li><span>26 Jun 2014</span> &raquo; <a href="/html5/2014/06/26/html5%20Geolocation.html">about media query</a></li>
                             
