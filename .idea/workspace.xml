@@ -2,68 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c50b67b9-b3f5-45d5-8e29-c98dd4eb741f" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/demos/-webkit-overflow-scrolling.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/demos/-webkit-tap-highlight-color.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/demos/pageVisibility.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/demos/web-app/html5-slider-me/slider.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/demos/utils.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_site/转载/javascript设计模式/2014/04/20/23种设计模式及解释（中英文对照.html" afterPath="$PROJECT_DIR$/_site/转载/javascript设计模式/2014/04/20/23种设计模式及解释（中英文对照.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_site/转载/javascript基础/2014/04/20/Array.prototype.slice.call(arguments).html" afterPath="$PROJECT_DIR$/_site/转载/javascript基础/2014/04/20/Array.prototype.slice.call(arguments).html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_site/响应式 笔记/2014/06/19/about-media query.html" afterPath="$PROJECT_DIR$/_site/响应式 笔记/2014/06/19/about-media query.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_site/转载/javascript基础/2014/05/11/arguments转换为数组.html" afterPath="$PROJECT_DIR$/_site/转载/javascript基础/2014/05/11/arguments转换为数组.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_site/转载/javascript基础/2014/05/11/cookie.html" afterPath="$PROJECT_DIR$/_site/转载/javascript基础/2014/05/11/cookie.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_site/转载/javascript基础/2014/05/10/escape,encodeURI,encodeURIComponent的区别.html" afterPath="$PROJECT_DIR$/_site/转载/javascript基础/2014/05/10/escape,encodeURI,encodeURIComponent的区别.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_site/笔记/javascript基础/2014/03/31/hasOwnPropertyVSisPrototypeOf.html" afterPath="$PROJECT_DIR$/_site/笔记/javascript基础/2014/03/31/hasOwnPropertyVSisPrototypeOf.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_site/html5/2014/06/26/html5 Geolocation.html" afterPath="$PROJECT_DIR$/_site/html5/2014/06/26/html5 Geolocation.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_site/html5 跨终端/2014/06/21/html5最佳实践.html" afterPath="$PROJECT_DIR$/_site/html5 跨终端/2014/06/21/html5最佳实践.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_site/index.html" afterPath="$PROJECT_DIR$/_site/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_site/2013/10/index.html" afterPath="$PROJECT_DIR$/_site/2013/10/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_site/2014/03/index.html" afterPath="$PROJECT_DIR$/_site/2014/03/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_site/2014/04/index.html" afterPath="$PROJECT_DIR$/_site/2014/04/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_site/2014/05/index.html" afterPath="$PROJECT_DIR$/_site/2014/05/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_site/2014/06/index.html" afterPath="$PROJECT_DIR$/_site/2014/06/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_site/categories/html5 跨终端/index.html" afterPath="$PROJECT_DIR$/_site/categories/html5 跨终端/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_site/categories/html5/index.html" afterPath="$PROJECT_DIR$/_site/categories/html5/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_site/categories/html5高级程序设计/index.html" afterPath="$PROJECT_DIR$/_site/categories/html5高级程序设计/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_site/categories/javascript基础/index.html" afterPath="$PROJECT_DIR$/_site/categories/javascript基础/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_site/categories/javascript模式 设计模式/index.html" afterPath="$PROJECT_DIR$/_site/categories/javascript模式 设计模式/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_site/categories/javascript模式/index.html" afterPath="$PROJECT_DIR$/_site/categories/javascript模式/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_site/categories/javascript设计模式/index.html" afterPath="$PROJECT_DIR$/_site/categories/javascript设计模式/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_site/categories/javasript设计模式/index.html" afterPath="$PROJECT_DIR$/_site/categories/javasript设计模式/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_site/categories/jekyll/index.html" afterPath="$PROJECT_DIR$/_site/categories/jekyll/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_site/categories/viewport 跨终端/index.html" afterPath="$PROJECT_DIR$/_site/categories/viewport 跨终端/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_site/categories/响应式 笔记/index.html" afterPath="$PROJECT_DIR$/_site/categories/响应式 笔记/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_site/categories/工具/index.html" afterPath="$PROJECT_DIR$/_site/categories/工具/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_site/categories/笔记/index.html" afterPath="$PROJECT_DIR$/_site/categories/笔记/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_site/categories/转载/index.html" afterPath="$PROJECT_DIR$/_site/categories/转载/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_site/page2/index.html" afterPath="$PROJECT_DIR$/_site/page2/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_site/page3/index.html" afterPath="$PROJECT_DIR$/_site/page3/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_site/page4/index.html" afterPath="$PROJECT_DIR$/_site/page4/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_site/page5/index.html" afterPath="$PROJECT_DIR$/_site/page5/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_site/page6/index.html" afterPath="$PROJECT_DIR$/_site/page6/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_site/转载/javascript基础/2014/03/31/javascipt-object.html" afterPath="$PROJECT_DIR$/_site/转载/javascript基础/2014/03/31/javascipt-object.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_site/转载/javascript基础/2014/03/31/javascript-object.prototype.toString().html" afterPath="$PROJECT_DIR$/_site/转载/javascript基础/2014/03/31/javascript-object.prototype.toString().html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_site/笔记/javascript模式/2014/04/20/javascript设计模式-策略模式.html" afterPath="$PROJECT_DIR$/_site/笔记/javascript模式/2014/04/20/javascript设计模式-策略模式.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_site/工具/2013/10/24/markdonnote.html" afterPath="$PROJECT_DIR$/_site/工具/2013/10/24/markdonnote.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_site/响应式 笔记/2014/06/19/media query笔记.html" afterPath="$PROJECT_DIR$/_site/响应式 笔记/2014/06/19/media query笔记.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_site/viewport 跨终端/2014/06/21/viewport笔记.html" afterPath="$PROJECT_DIR$/_site/viewport 跨终端/2014/06/21/viewport笔记.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_site/jekyll/2014/03/31/welcome-to-jekyll.html" afterPath="$PROJECT_DIR$/_site/jekyll/2014/03/31/welcome-to-jekyll.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/demos/html5/chapter7" afterPath="$PROJECT_DIR$/demos/html5/chapter7" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/zj-baozi.github.io.iml" afterPath="$PROJECT_DIR$/.idea/zj-baozi.github.io.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_site/笔记/html5高级程序设计/2014/05/25/《html5高级程序设计》canvas.html" afterPath="$PROJECT_DIR$/_site/笔记/html5高级程序设计/2014/05/25/《html5高级程序设计》canvas.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_site/javascript模式 设计模式/2014/05/25/《javascript模式》读书笔记---.html" afterPath="$PROJECT_DIR$/_site/javascript模式 设计模式/2014/05/25/《javascript模式》读书笔记---.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_site/笔记/javascript模式/2014/04/20/《javascript模式》读书笔记---DOM和浏览器模式.html" afterPath="$PROJECT_DIR$/_site/笔记/javascript模式/2014/04/20/《javascript模式》读书笔记---DOM和浏览器模式.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_site/笔记/javascript模式/2014/04/14/《javascript模式》读书笔记---代码复用模式.html" afterPath="$PROJECT_DIR$/_site/笔记/javascript模式/2014/04/14/《javascript模式》读书笔记---代码复用模式.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_site/笔记/javascript模式/2014/04/05/《javascript模式》读书笔记---函数.html" afterPath="$PROJECT_DIR$/_site/笔记/javascript模式/2014/04/05/《javascript模式》读书笔记---函数.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_site/笔记/javascript基础/2014/03/31/《javascript模式》读书笔记---基础知识.html" afterPath="$PROJECT_DIR$/_site/笔记/javascript基础/2014/03/31/《javascript模式》读书笔记---基础知识.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_site/笔记/javascript模式/2014/04/05/《javascript模式》读书笔记---对象创建模式.html" afterPath="$PROJECT_DIR$/_site/笔记/javascript模式/2014/04/05/《javascript模式》读书笔记---对象创建模式.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_site/笔记/javasript设计模式/2014/05/20/《javascript模式》读书笔记---设计模式-使用new操作符.html" afterPath="$PROJECT_DIR$/_site/笔记/javasript设计模式/2014/05/20/《javascript模式》读书笔记---设计模式-使用new操作符.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_site/笔记/javascript设计模式/2014/05/25/《javascript模式》读书笔记---设计模式-外观模式.html" afterPath="$PROJECT_DIR$/_site/笔记/javascript设计模式/2014/05/25/《javascript模式》读书笔记---设计模式-外观模式.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_site/笔记/javascript设计模式/2014/05/20/《javascript模式》读书笔记---设计模式-工厂模式.html" afterPath="$PROJECT_DIR$/_site/笔记/javascript设计模式/2014/05/20/《javascript模式》读书笔记---设计模式-工厂模式.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_site/笔记/javascript设计模式/2014/05/24/《javascript模式》读书笔记---设计模式-装饰者模式.html" afterPath="$PROJECT_DIR$/_site/笔记/javascript设计模式/2014/05/24/《javascript模式》读书笔记---设计模式-装饰者模式.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_site/笔记/javascript设计模式/2014/05/24/《javascript模式》读书笔记---设计模式-迭代器模式.html" afterPath="$PROJECT_DIR$/_site/笔记/javascript设计模式/2014/05/24/《javascript模式》读书笔记---设计模式-迭代器模式.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_site/转载/jekyll/2014/05/25/使用 GitHub, Jekyll 打造自己的免费独立博客.html" afterPath="$PROJECT_DIR$/_site/转载/jekyll/2014/05/25/使用 GitHub, Jekyll 打造自己的免费独立博客.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_site/转载/javascript设计模式/2014/05/25/复杂表单应用解耦，淘宝机票订单实践.html" afterPath="$PROJECT_DIR$/_site/转载/javascript设计模式/2014/05/25/复杂表单应用解耦，淘宝机票订单实践.html" />
     </list>
     <ignored path="zj-baozi.github.io.iws" />
     <ignored path=".idea/workspace.xml" />
