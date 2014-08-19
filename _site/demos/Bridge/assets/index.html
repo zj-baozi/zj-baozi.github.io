@@ -1,0 +1,43 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>Bridge - Web/Native 双向通信</title>
+</head>
+<style>
+    body {
+        background: #ddd;
+    }
+</style>
+<body>
+<h1>Webview</h1>
+<button id="button1">Web 调用 Native：获取 Model</button>
+<br/>
+<button id="button2">Web 调用 Native：简单运算</button>
+
+<script type="text/javascript" src="bridge.js"></script>
+<script type="text/javascript">
+    document.querySelector('#button1').addEventListener('click', function() {
+        Bridge.callByJS({
+            name: 'model',
+            callback: function(ret) {
+                __log('callByJS callback', JSON.stringify(ret));
+                alert('Model = ' + ret.result);
+            }
+        });
+    }, false);
+    document.querySelector('#button2').addEventListener('click', function() {
+        var num1 = 1;
+        var num2 = 2;
+        Bridge.callByJS({
+            name: 'add',
+            param: {num1: num1, num2: num2},
+            callback: function(ret) {
+                __log('callByJS callback', JSON.stringify(ret));
+                alert(num1 + ' + ' + num2 + ' = ' + ret.result);
+            }
+        });
+    }, false);
+</script>
+</body>
+</html>

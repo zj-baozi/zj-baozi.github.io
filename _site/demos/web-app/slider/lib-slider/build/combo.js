@@ -1,0 +1,1 @@
+document.write('<scr' + 'ipt id="combo_url_1403581830209" type="text/javascript" src="http://g.assets.daily.taobao.net/mtb/??zepto/1.0.4/zepto.js,lib-slider/0.1.1/slider.js"></scr' + 'ipt>')

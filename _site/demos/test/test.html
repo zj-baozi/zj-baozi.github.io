@@ -1,0 +1,81 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>客栈</title>
+    <meta name="description" content="淘宝旅行客栈频道为您提供客栈、公寓、民宿、家庭旅馆、青年旅社等特色客栈的住宿预订、价格查询、优质客栈推荐等服务。同时支付宝交易保障您的交易安全，是您查询预订客栈民宿的最佳选择!">
+    <meta name="keywords" content="客栈,公寓,民宿,家庭旅馆,青年旅舍,农家院,宾馆,特色客栈,客栈推荐,特价客栈,优惠客栈,淘宝客栈">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"/>
+    <meta content="yes" name="apple-mobile-web-app-capable"/>
+    <meta content="black" name="apple-mobile-web-app-status-bar-style"/>
+    <meta name="format-detection" content="telephone=no"/>
+    <meta content="false" name="twcClient" id="twcClient"/>
+    <link rel="apple-touch-icon-precomposed" href="http://gtms01.alicdn.com/tps/i1/T1WKgOFmFgXXa.JOZB-114-114.png"/>
+    <link rel="stylesheet" href="http://g.tbcdn.cn/mpi/base/reset-min.css"/>
+    <link rel="stylesheet" href="http://g.tbcdn.cn/mpi/base/global-min.css"/>
+    <link rel="stylesheet" href="../../libs/base.css"/>
+    <link rel="stylesheet" href="../../pages/search/index.css"/>
+    <link rel="stylesheet" href="../../pages/search/citylist.css" />
+    <link rel="stylesheet" href="../../pages/search/keywordlist.css" />
+    <link rel="stylesheet" href="../../pages/searchlist/index.css"/>
+
+
+    <script type="text/javascript"src="http://g.tbcdn.cn/kissy/m/0.2.7/mini-full.js"></script>
+
+    <script src="http://g.tbcdn.cn/mpi/bridge/index-min.js"></script>
+
+    <script type="text/javascript" src="../../config.js"></script>
+    <style>
+
+        .bg{
+            background:url('http://gtms02.alicdn.com/tps/i2/TB1h5OsFVXXXXXPXFXXtfQQ0FXX-640-360.png') no-repeat center top;
+            background-size: 100% 190px;
+
+            width:100%;
+            height:190px;
+            transition:all 5s ease-in-out;
+            -webkit-transition:all 5s ease-in-out;
+            -webkit-backface-visibility: hidden;
+        }
+    </style>
+</head>
+<body>
+ <div class="bg J_bg"></div>
+ <div class="bg J_bg1"></div>
+<script>
+    (function(S){
+       var J_bg = S.one('.J_bg'),
+           J_bg1 = S.one('.J_bg1');
+
+        J_bg.on('click',function(){
+            J_bg[0].style.webkitTransitionProperty = 'transform';
+            J_bg[0].style.webkitTransitionDuration = '5s';
+            J_bg[0].style.webkitTransitionTimingFunction = 'ease';
+            /*J_bg[0].style.transition = 'all 5s ease-in-out';*/
+            //J_bg[0].style.webkitTransitionDuration = J_bg[0].style.MozTransitionDuration = J_bg[0].style.msTransitionDuration = J_bg[0].style.OTransitionDuration = J_bg[0].style.transitionDuration = '5000ms';
+
+            J_bg.css({
+                '-webkit-transform':'translate3d(320px,0,0)'
+            });
+
+
+        });
+        J_bg1.on('click',function(){
+            J_bg1[0].style.webkitTransitionProperty = 'transform';
+            J_bg1[0].style.webkitTransitionDuration = '5s';
+            J_bg1[0].style.webkitTransitionTimingFunction = 'ease';
+            /*J_bg[0].style.transition = 'all 5s ease-in-out';*/
+            J_bg1[0].style.webkitTransitionDuration = J_bg1[0].style.MozTransitionDuration = J_bg1[0].style.msTransitionDuration = J_bg1[0].style.OTransitionDuration = J_bg1[0].style.transitionDuration = '5000ms';
+
+
+            J_bg1.css({
+             'background':"url('http://gtms04.alicdn.com/tps/i4/TB1OEu7FVXXXXadXpXXBFgU0FXX-640-380.png') no-repeat center top;",'background-size':'100% 190px;'
+             });
+
+        });
+    })(KISSY);
+
+</script>
+
+</body>
+</html>

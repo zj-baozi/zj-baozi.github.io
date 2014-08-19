@@ -1,0 +1,25 @@
+{
+  "name": "lib.slider",
+  "description": "slider",
+  "version": "0.1.1",
+  "author": "caochun <caochun.cr@taobao.com>",
+  "homepage": "http://gitlab.alibaba-inc.com/mtb/lib-slider",
+  "repository": {
+    "type": "git",
+    "url": "git@gitlab.alibaba-inc.com:mtb/lib-slider.git"
+  },
+  "devDependencies": {
+    "grunt": "0.4.x",
+    "grunt-contrib-uglify": "~0.2.2",
+    "grunt-contrib-copy": "~0.4.1",
+    "grunt-depconcat": "~0.2.0",
+    "grunt-depcombo": "~0.1.0"
+  },
+  "combo": {
+    "zepto": "1.0.4"
+  },
+  "keywords": [
+    "slider",
+    "lib"
+  ]
+}
