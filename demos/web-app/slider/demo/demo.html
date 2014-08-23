@@ -1,0 +1,176 @@
+<!doctype html>
+<html>
+<head>
+    <title>slider组件</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no" />
+    <style>
+        body,ul{margin:0;padding:0;font-size:14px;}
+        body{background-color:#eee;}
+        ul{list-style:none;}
+        img{border:0;vertical-align:middle;}
+        .slider{width:280px;margin:10px auto;border:1px #f00 solid;}
+        .slider-status{height:20px;padding-top:2px;text-align:center;}
+        .slider-status span{display:inline-block;width:10px;height:10px;background-color:#ccc;-webkit-border-radius:10px;margin-right:8px;}
+        .slider-status span:last-child{margin-right:0px;}
+        .slider-status .sel{background-color:#FF8040;}
+        .slider-outer{width:280px;height:90px;overflow:hidden;position:relative;}
+        .slider-wrap{position:absolute;}
+        .slider-wrap li{float:left;width:90px;height:90px;margin-left:5px;background:#e4e4e4;}
+        .slider-wrap li:first-child{margin-left:0px;}
+        
+        .slider-big-outer{height:100px;overflow:hidden;position:relative;}
+        .slider-big-wrap{position:absolute;}
+        .slider-big-wrap li{float:left;width:300px;height:100px;background:#e4e4e4;}
+        .slider-big,.slider-new{width:300px;height:150px;margin:10px auto;position:relative;}
+
+        .slider-new{width:400px;}
+        .slider-new .slider-big-wrap li{margin-left:10px;}
+        .slider-new .slider-big-wrap li:first-child{margin-left:0px;}
+        .slider-new b{position:absolute;top:0px;width:40px;height:100px;overflow:hidden;line-height:1000px;background-color:#eee;opacity:0.5;border:0;padding:0;}
+        .slider-new .prev{left:0px;}
+        .slider-new .next{right:0px;}
+        
+        
+        .slider-footer{height:24px;margin-top:8px;}
+        .prev,.next{border:1px #ccc solid;padding:2px 6px;}
+        /*.prev,.slider-status{float:left;}*/
+        .next{float:right;}
+        /*.slider-status{width:180px;}*/
+        
+        .none{display:none}
+    </style>
+<body>
+    <div class="slider">
+        <div class="slider-outer">
+            <ul class="slider-wrap">
+                <li><a href="http://m.taobao.com"><img class="lazyimg" dataimg="img/s1.jpg" src="http://a.tbcdn.cn/mw/webapp/fav/img/grey.gif" width="90" height="90" alt="1" /></a></li>
+                <li><a href="http://m.taobao.com"><img class="lazyimg" dataimg="img/s2.jpg" src="http://a.tbcdn.cn/mw/webapp/fav/img/grey.gif" width="90" height="90" alt="2" /></a></li>
+                <li><a href="http://m.taobao.com"><img class="lazyimg" dataimg="img/s3.jpg" src="http://a.tbcdn.cn/mw/webapp/fav/img/grey.gif" width="90" height="90" alt="3" /></a></li>
+                <li><a href="http://m.taobao.com"><img class="lazyimg" dataimg="img/s4.jpg" src="http://a.tbcdn.cn/mw/webapp/fav/img/grey.gif" width="90" height="90" alt="4" /></a></li>
+                <li><a href="http://m.taobao.com"><img class="lazyimg" dataimg="img/s5.jpg" src="http://a.tbcdn.cn/mw/webapp/fav/img/grey.gif" width="90" height="90" alt="5" /></a></li>
+                <li><a href="http://m.taobao.com"><img class="lazyimg" dataimg="img/s6.jpg" src="http://a.tbcdn.cn/mw/webapp/fav/img/grey.gif" width="90" height="90" alt="6" /></a></li>
+                <li><a href="http://m.taobao.com"><img class="lazyimg" dataimg="img/s7.jpg" src="http://a.tbcdn.cn/mw/webapp/fav/img/grey.gif" width="90" height="90" alt="7" /></a></li>
+            </ul>
+        </div>
+        <div class="slider-status"></div>
+    </div>
+    <br>
+    <div class="slider">
+        <div class="slider-outer">
+            <ul class="slider-wrap">
+                <li><a href="http://m.taobao.com"><img class="lazyimg" dataimg="img/s1.jpg" src="http://a.tbcdn.cn/mw/webapp/fav/img/grey.gif" width="90" height="90" alt="1" /></a></li>
+                <li><a href="http://m.taobao.com"><img class="lazyimg" dataimg="img/s2.jpg" src="http://a.tbcdn.cn/mw/webapp/fav/img/grey.gif" width="90" height="90" alt="2" /></a></li>
+                <li><a href="http://m.taobao.com"><img class="lazyimg" dataimg="img/s3.jpg" src="http://a.tbcdn.cn/mw/webapp/fav/img/grey.gif" width="90" height="90" alt="3" /></a></li>
+                <li><a href="http://m.taobao.com"><img class="lazyimg" dataimg="img/s4.jpg" src="http://a.tbcdn.cn/mw/webapp/fav/img/grey.gif" width="90" height="90" alt="4" /></a></li>
+                <li><a href="http://m.taobao.com"><img class="lazyimg" dataimg="img/s5.jpg" src="http://a.tbcdn.cn/mw/webapp/fav/img/grey.gif" width="90" height="90" alt="5" /></a></li>
+                <li><a href="http://m.taobao.com"><img class="lazyimg" dataimg="img/s6.jpg" src="http://a.tbcdn.cn/mw/webapp/fav/img/grey.gif" width="90" height="90" alt="6" /></a></li>
+                <li><a href="http://m.taobao.com"><img class="lazyimg" dataimg="img/s7.jpg" src="http://a.tbcdn.cn/mw/webapp/fav/img/grey.gif" width="90" height="90" alt="7" /></a></li>
+                <li><a href="http://m.taobao.com"><img class="lazyimg" dataimg="img/s6.jpg" src="http://a.tbcdn.cn/mw/webapp/fav/img/grey.gif" width="90" height="90" alt="6" /></a></li>
+                <li><a href="http://m.taobao.com"><img class="lazyimg" dataimg="img/s7.jpg" src="http://a.tbcdn.cn/mw/webapp/fav/img/grey.gif" width="90" height="90" alt="7" /></a></li>
+            </ul>
+        </div>
+        <div class="slider-status"></div>
+    </div>
+    <!--<div id="outer" style="background-color:#ccc;"></div>-->
+    <div class="slider-big">
+        <div class="slider-big-outer">
+            <ul class="slider-big-wrap">
+                <li><a href="http://m.taobao.com"><img src="img/b1.png" width="300" height="100" alt="1" /></a></li>
+                <li><a href="http://m.taobao.com"><img class="lazyimg" dataimg="img/b2.png" src="http://a.tbcdn.cn/mw/webapp/fav/img/grey.gif" width="300" height="100" alt="2" /></a></li>
+                <li><a href="http://m.taobao.com"><img class="lazyimg" dataimg="img/b3.png" src="http://a.tbcdn.cn/mw/webapp/fav/img/grey.gif" width="300" height="100" alt="3" /></a></li>
+                <li><a href="http://m.taobao.com"><img class="lazyimg" dataimg="img/b4.png" src="http://a.tbcdn.cn/mw/webapp/fav/img/grey.gif" width="300" height="100" alt="4" /></a></li>
+            </ul>
+        </div>
+        <div class="slider-footer">
+            <a href="#" class="prev">上一个</a>
+            <a href="#" class="next">下一个</a>
+            <div class="slider-status"></div>
+        </div>
+    </div>
+    <div style="text-align:center;">
+        <input type="button" id="bigreset" value="重置" />
+    </div>
+
+    <div id="newSlider" class="slider-new">
+        <div class="slider-big-outer">
+            <ul class="slider-big-wrap">
+                <li><a href="http://m.taobao.com"><img  class="lazyimg" dataimg="img/b1.png" src="http://a.tbcdn.cn/mw/webapp/fav/img/grey.gif" width="300" height="100" alt="1" /></a></li>
+                <li><a href="http://m.taobao.com"><img class="lazyimg" dataimg="img/b2.png" src="http://a.tbcdn.cn/mw/webapp/fav/img/grey.gif" width="300" height="100" alt="2" /></a></li>
+                <li><a href="http://m.taobao.com"><img class="lazyimg" dataimg="img/b3.png" src="http://a.tbcdn.cn/mw/webapp/fav/img/grey.gif" width="300" height="100" alt="3" /></a></li>
+                <li><a href="http://m.taobao.com"><img class="lazyimg" dataimg="img/b4.png" src="http://a.tbcdn.cn/mw/webapp/fav/img/grey.gif" width="300" height="100" alt="4" /></a></li>
+            </ul>
+        </div>
+        <b class="prev">上一个</b>
+        <b class="next">下一个</b>
+    </div>
+
+    <div style="text-align:center;">
+        <input type="button" id="sreset" value="重新初始化" />
+        <input type="button" id="recover" value="返回" />
+    </div>
+    <script src="http://g.tbcdn.cn/mtb/zepto/1.0.4/zepto.debug.js"></script>
+    <script src="../build/slider.nz.js"></script>
+    <script type="text/javascript">
+    var slider = lib.Slider;
+    /*var chk = new slider('#newSlider',{
+        prev : '.prev',
+        next : '.next',
+        steps : 300,
+        margin:10,  
+        left : 50,
+        lazyIndex : 2
+    });*/
+
+    var bigSlider = new slider('.slider-big',{
+        prev : '.prev',
+        next : '.next',
+        loop : true,
+        play : true
+    });
+    
+    //测试loop为true，重复复制的问题
+    $('#bigreset').click(function(){
+        bigSlider.stop();
+        bigSlider.reset({steps:300});
+        bigSlider.begin();
+    });
+
+
+    $('.slider').each(function(n,item){
+        new slider(item,{
+            margin : 5,
+            visible : 3,
+            trigger : '.slider-status',
+            hasTrigger : true
+        });
+    });
+
+    var chk = new slider({
+        container : '#newSlider',
+        prev : '.prev',
+        next : '.next',
+        steps : 300,  //步长
+        margin:10,
+        lazyIndex:2,
+        left : 50  //ul初始位置
+    });
+    $('#sreset').click(function(){
+        $('#newSlider')[0].className = 'slider-big';
+        chk.reset({
+            steps : 0,
+            margin : 0,
+            left : 0
+        });
+    });
+    $('#recover').click(function(){
+        $('#newSlider')[0].className = 'slider-new';
+        chk.reset({
+            steps : 300,
+            margin : 10,
+            left : 50
+        });
+    });
+    </script>
+</body>
+</html>
