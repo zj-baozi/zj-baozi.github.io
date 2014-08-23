@@ -1,247 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c50b67b9-b3f5-45d5-8e29-c98dd4eb741f" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/demos/html5/-webkit-overflow-scrolling.html" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_site/demos/html5/chapter7/LICENSE" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_site/demos/html5/chapter7/Makefile" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_site/demos/html5/chapter7/README.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_site/demos/html5/chapter7/docs/assets/css/bootstrap-responsive.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_site/demos/html5/chapter7/docs/assets/css/bootstrap.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_site/demos/html5/chapter7/docs/assets/css/docs.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_site/demos/html5/chapter7/docs/assets/css/style.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_site/demos/html5/chapter7/docs/assets/ico/apple-touch-icon-114-precomposed.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_site/demos/html5/chapter7/docs/assets/ico/apple-touch-icon-144-precomposed.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_site/demos/html5/chapter7/docs/assets/ico/apple-touch-icon-57-precomposed.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_site/demos/html5/chapter7/docs/assets/ico/apple-touch-icon-72-precomposed.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_site/demos/html5/chapter7/docs/assets/ico/favicon.ico" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_site/demos/html5/chapter7/docs/assets/img/bird.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_site/demos/html5/chapter7/docs/assets/img/bootstrap-mdo-sfmoma-01.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_site/demos/html5/chapter7/docs/assets/img/bootstrap-mdo-sfmoma-02.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_site/demos/html5/chapter7/docs/assets/img/bootstrap-mdo-sfmoma-03.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_site/demos/html5/chapter7/docs/assets/img/browsers.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_site/demos/html5/chapter7/docs/assets/img/example-sites/fleetio.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_site/demos/html5/chapter7/docs/assets/img/example-sites/jshint.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_site/demos/html5/chapter7/docs/assets/img/example-sites/kippt.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_site/demos/html5/chapter7/docs/assets/img/example-sites/soundready.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_site/demos/html5/chapter7/docs/assets/img/examples/bootstrap-example-fluid.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_site/demos/html5/chapter7/docs/assets/img/examples/bootstrap-example-hero.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_site/demos/html5/chapter7/docs/assets/img/examples/bootstrap-example-starter.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_site/demos/html5/chapter7/docs/assets/img/github-16px.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_site/demos/html5/chapter7/docs/assets/img/glyphicons-halflings-white.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_site/demos/html5/chapter7/docs/assets/img/glyphicons-halflings.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_site/demos/html5/chapter7/docs/assets/img/glyphicons/glyphicons_009_magic.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_site/demos/html5/chapter7/docs/assets/img/glyphicons/glyphicons_042_group.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_site/demos/html5/chapter7/docs/assets/img/glyphicons/glyphicons_079_podium.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_site/demos/html5/chapter7/docs/assets/img/glyphicons/glyphicons_082_roundabout.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_site/demos/html5/chapter7/docs/assets/img/glyphicons/glyphicons_155_show_thumbnails.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_site/demos/html5/chapter7/docs/assets/img/glyphicons/glyphicons_163_iphone.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_site/demos/html5/chapter7/docs/assets/img/glyphicons/glyphicons_214_resize_small.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_site/demos/html5/chapter7/docs/assets/img/glyphicons/glyphicons_266_book_open.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_site/demos/html5/chapter7/docs/assets/img/grid-18px-masked.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_site/demos/html5/chapter7/docs/assets/img/icon-css3.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_site/demos/html5/chapter7/docs/assets/img/icon-github.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_site/demos/html5/chapter7/docs/assets/img/icon-html5.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_site/demos/html5/chapter7/docs/assets/img/icon-twitter.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_site/demos/html5/chapter7/docs/assets/img/iphone_ver.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_site/demos/html5/chapter7/docs/assets/img/less-logo-large.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_site/demos/html5/chapter7/docs/assets/img/less-small.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_site/demos/html5/chapter7/docs/assets/img/responsive-illustrations.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_site/demos/html5/chapter7/docs/assets/js/README.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_site/demos/html5/chapter7/docs/assets/js/application.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_site/demos/html5/chapter7/docs/assets/js/bootstrap-alert.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_site/demos/html5/chapter7/docs/assets/js/bootstrap-button.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_site/demos/html5/chapter7/docs/assets/js/bootstrap-carousel.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_site/demos/html5/chapter7/docs/assets/js/bootstrap-collapse.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_site/demos/html5/chapter7/docs/assets/js/bootstrap-dropdown.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_site/demos/html5/chapter7/docs/assets/js/bootstrap-modal.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_site/demos/html5/chapter7/docs/assets/js/bootstrap-popover.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_site/demos/html5/chapter7/docs/assets/js/bootstrap-scrollspy.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_site/demos/html5/chapter7/docs/assets/js/bootstrap-tab.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_site/demos/html5/chapter7/docs/assets/js/bootstrap-tooltip.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_site/demos/html5/chapter7/docs/assets/js/bootstrap-transition.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_site/demos/html5/chapter7/docs/assets/js/bootstrap-typeahead.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_site/demos/html5/chapter7/docs/assets/js/bootstrap.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_site/demos/html5/chapter7/docs/assets/js/bootstrap.min.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_site/demos/html5/chapter7/docs/assets/js/google-code-prettify/prettify.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_site/demos/html5/chapter7/docs/assets/js/google-code-prettify/prettify.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_site/demos/html5/chapter7/docs/assets/js/jquery.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_site/demos/html5/chapter7/docs/examples/d3-location.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_site/demos/html5/chapter7/docs/examples/fireeagle-embed.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_site/demos/html5/chapter7/docs/examples/fireeagle.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_site/demos/html5/chapter7/docs/examples/fluid.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_site/demos/html5/chapter7/docs/examples/geoloqi-embed.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_site/demos/html5/chapter7/docs/examples/geoloqi-socket-embed.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_site/demos/html5/chapter7/docs/examples/geoloqi-socket.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_site/demos/html5/chapter7/docs/examples/geoloqi.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_site/demos/html5/chapter7/docs/examples/hero.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_site/demos/html5/chapter7/docs/examples/jqueryMobile-embed.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_site/demos/html5/chapter7/docs/examples/jqueryMobile.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_site/demos/html5/chapter7/docs/examples/location-name-embed.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_site/demos/html5/chapter7/docs/examples/longlat-embed.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_site/demos/html5/chapter7/docs/examples/polyfill-embed.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_site/demos/html5/chapter7/docs/examples/polyfill.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_site/demos/html5/chapter7/docs/examples/reverse-embed.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_site/demos/html5/chapter7/docs/examples/reverse.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_site/demos/html5/chapter7/docs/examples/starter-template.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_site/demos/html5/chapter7/docs/examples/update-embed.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_site/demos/html5/chapter7/docs/examples/update.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_site/demos/html5/chapter7/docs/templates/layout.mustache" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_site/demos/html5/chapter7/docs/templates/pages/base-css.mustache" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_site/demos/html5/chapter7/docs/templates/pages/components.mustache" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_site/demos/html5/chapter7/docs/templates/pages/download.mustache" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_site/demos/html5/chapter7/docs/templates/pages/examples.mustache" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_site/demos/html5/chapter7/docs/templates/pages/index.mustache" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_site/demos/html5/chapter7/docs/templates/pages/javascript.mustache" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_site/demos/html5/chapter7/docs/templates/pages/less.mustache" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_site/demos/html5/chapter7/docs/templates/pages/scaffolding.mustache" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_site/demos/html5/chapter7/docs/templates/pages/upgrading.mustache" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_site/demos/html5/chapter7/img/glyphicons-halflings-white.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_site/demos/html5/chapter7/img/glyphicons-halflings.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_site/demos/html5/chapter7/index.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_site/demos/html5/chapter7/js/README.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_site/demos/html5/chapter7/js/bootstrap-alert.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_site/demos/html5/chapter7/js/bootstrap-button.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_site/demos/html5/chapter7/js/bootstrap-carousel.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_site/demos/html5/chapter7/js/bootstrap-collapse.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_site/demos/html5/chapter7/js/bootstrap-dropdown.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_site/demos/html5/chapter7/js/bootstrap-modal.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_site/demos/html5/chapter7/js/bootstrap-popover.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_site/demos/html5/chapter7/js/bootstrap-scrollspy.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_site/demos/html5/chapter7/js/bootstrap-tab.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_site/demos/html5/chapter7/js/bootstrap-tooltip.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_site/demos/html5/chapter7/js/bootstrap-transition.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_site/demos/html5/chapter7/js/bootstrap-typeahead.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_site/demos/html5/chapter7/js/modernizr.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_site/demos/html5/chapter7/js/polyfiller.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_site/demos/html5/chapter7/js/tests/index.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_site/demos/html5/chapter7/js/tests/phantom.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_site/demos/html5/chapter7/js/tests/server.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_site/demos/html5/chapter7/js/tests/unit/bootstrap-alert.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_site/demos/html5/chapter7/js/tests/unit/bootstrap-button.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_site/demos/html5/chapter7/js/tests/unit/bootstrap-carousel.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_site/demos/html5/chapter7/js/tests/unit/bootstrap-collapse.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_site/demos/html5/chapter7/js/tests/unit/bootstrap-dropdown.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_site/demos/html5/chapter7/js/tests/unit/bootstrap-modal.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_site/demos/html5/chapter7/js/tests/unit/bootstrap-phantom.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_site/demos/html5/chapter7/js/tests/unit/bootstrap-popover.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_site/demos/html5/chapter7/js/tests/unit/bootstrap-scrollspy.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_site/demos/html5/chapter7/js/tests/unit/bootstrap-tab.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_site/demos/html5/chapter7/js/tests/unit/bootstrap-tooltip.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_site/demos/html5/chapter7/js/tests/unit/bootstrap-transition.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_site/demos/html5/chapter7/js/tests/unit/bootstrap-typeahead.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_site/demos/html5/chapter7/js/tests/vendor/jquery.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_site/demos/html5/chapter7/js/tests/vendor/qunit.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_site/demos/html5/chapter7/js/tests/vendor/qunit.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_site/demos/html5/chapter7/js/yepnope.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_site/demos/html5/chapter7/less/accordion.less" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_site/demos/html5/chapter7/less/alerts.less" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_site/demos/html5/chapter7/less/bootstrap.less" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_site/demos/html5/chapter7/less/breadcrumbs.less" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_site/demos/html5/chapter7/less/button-groups.less" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_site/demos/html5/chapter7/less/buttons.less" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_site/demos/html5/chapter7/less/carousel.less" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_site/demos/html5/chapter7/less/close.less" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_site/demos/html5/chapter7/less/code.less" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_site/demos/html5/chapter7/less/component-animations.less" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_site/demos/html5/chapter7/less/dropdowns.less" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_site/demos/html5/chapter7/less/forms.less" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_site/demos/html5/chapter7/less/grid.less" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_site/demos/html5/chapter7/less/hero-unit.less" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_site/demos/html5/chapter7/less/labels-badges.less" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_site/demos/html5/chapter7/less/layouts.less" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_site/demos/html5/chapter7/less/mixins.less" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_site/demos/html5/chapter7/less/modals.less" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_site/demos/html5/chapter7/less/navbar.less" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_site/demos/html5/chapter7/less/navs.less" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_site/demos/html5/chapter7/less/pager.less" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_site/demos/html5/chapter7/less/pagination.less" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_site/demos/html5/chapter7/less/popovers.less" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_site/demos/html5/chapter7/less/progress-bars.less" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_site/demos/html5/chapter7/less/reset.less" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_site/demos/html5/chapter7/less/responsive-1200px-min.less" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_site/demos/html5/chapter7/less/responsive-767px-max.less" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_site/demos/html5/chapter7/less/responsive-768px-979px.less" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_site/demos/html5/chapter7/less/responsive-navbar.less" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_site/demos/html5/chapter7/less/responsive-utilities.less" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_site/demos/html5/chapter7/less/responsive.less" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_site/demos/html5/chapter7/less/scaffolding.less" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_site/demos/html5/chapter7/less/sprites.less" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_site/demos/html5/chapter7/less/tables.less" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_site/demos/html5/chapter7/less/tests/css-tests.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_site/demos/html5/chapter7/less/tests/css-tests.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_site/demos/html5/chapter7/less/tests/forms.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_site/demos/html5/chapter7/less/tests/navbar.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_site/demos/html5/chapter7/less/thumbnails.less" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_site/demos/html5/chapter7/less/tooltip.less" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_site/demos/html5/chapter7/less/type.less" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_site/demos/html5/chapter7/less/utilities.less" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_site/demos/html5/chapter7/less/variables.less" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_site/demos/html5/chapter7/less/wells.less" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_posts/2014-8-10-《跨终端web》笔记第一章_终端_vs_设备.md" afterPath="$PROJECT_DIR$/_posts/2014-8-10-《跨终端web》笔记第一章_终端_vs_设备.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_site/转载/javascript设计模式/2014/04/20/23种设计模式及解释（中英文对照.html" afterPath="$PROJECT_DIR$/_site/转载/javascript设计模式/2014/04/20/23种设计模式及解释（中英文对照.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_site/转载/javascript基础/2014/04/20/Array.prototype.slice.call(arguments).html" afterPath="$PROJECT_DIR$/_site/转载/javascript基础/2014/04/20/Array.prototype.slice.call(arguments).html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_site/响应式 笔记/2014/06/19/about-media query.html" afterPath="$PROJECT_DIR$/_site/响应式 笔记/2014/06/19/about-media query.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_site/转载/javascript基础/2014/05/11/arguments转换为数组.html" afterPath="$PROJECT_DIR$/_site/转载/javascript基础/2014/05/11/arguments转换为数组.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_site/转载/javascript基础/2014/05/11/cookie.html" afterPath="$PROJECT_DIR$/_site/转载/javascript基础/2014/05/11/cookie.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_site/html5/2014/08/07/css居中大全.html" afterPath="$PROJECT_DIR$/_site/html5/2014/08/07/css居中大全.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_site/转载/javascript基础/2014/05/10/escape,encodeURI,encodeURIComponent的区别.html" afterPath="$PROJECT_DIR$/_site/转载/javascript基础/2014/05/10/escape,encodeURI,encodeURIComponent的区别.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_site/笔记/javascript基础/2014/03/31/hasOwnPropertyVSisPrototypeOf.html" afterPath="$PROJECT_DIR$/_site/笔记/javascript基础/2014/03/31/hasOwnPropertyVSisPrototypeOf.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_site/html5/2014/06/26/html5 Geolocation.html" afterPath="$PROJECT_DIR$/_site/html5/2014/06/26/html5 Geolocation.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_site/html5 跨终端/2014/06/21/html5最佳实践.html" afterPath="$PROJECT_DIR$/_site/html5 跨终端/2014/06/21/html5最佳实践.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_site/index.html" afterPath="$PROJECT_DIR$/_site/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_site/2013/10/index.html" afterPath="$PROJECT_DIR$/_site/2013/10/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_site/2014/03/index.html" afterPath="$PROJECT_DIR$/_site/2014/03/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_site/2014/04/index.html" afterPath="$PROJECT_DIR$/_site/2014/04/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_site/2014/05/index.html" afterPath="$PROJECT_DIR$/_site/2014/05/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_site/2014/06/index.html" afterPath="$PROJECT_DIR$/_site/2014/06/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_site/2014/08/index.html" afterPath="$PROJECT_DIR$/_site/2014/08/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_site/categories/css3 转载/index.html" afterPath="$PROJECT_DIR$/_site/categories/css3 转载/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_site/categories/html5 跨终端/index.html" afterPath="$PROJECT_DIR$/_site/categories/html5 跨终端/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_site/categories/html5/index.html" afterPath="$PROJECT_DIR$/_site/categories/html5/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_site/categories/html5高级程序设计/index.html" afterPath="$PROJECT_DIR$/_site/categories/html5高级程序设计/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_site/categories/javascript基础/index.html" afterPath="$PROJECT_DIR$/_site/categories/javascript基础/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_site/categories/javascript模式 设计模式/index.html" afterPath="$PROJECT_DIR$/_site/categories/javascript模式 设计模式/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_site/categories/javascript模式/index.html" afterPath="$PROJECT_DIR$/_site/categories/javascript模式/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_site/categories/javascript设计模式/index.html" afterPath="$PROJECT_DIR$/_site/categories/javascript设计模式/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_site/categories/javasript设计模式/index.html" afterPath="$PROJECT_DIR$/_site/categories/javasript设计模式/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_site/categories/jekyll/index.html" afterPath="$PROJECT_DIR$/_site/categories/jekyll/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_site/categories/viewport 跨终端/index.html" afterPath="$PROJECT_DIR$/_site/categories/viewport 跨终端/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_site/categories/响应式 笔记/index.html" afterPath="$PROJECT_DIR$/_site/categories/响应式 笔记/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_site/categories/工具/index.html" afterPath="$PROJECT_DIR$/_site/categories/工具/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_site/categories/笔记/index.html" afterPath="$PROJECT_DIR$/_site/categories/笔记/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_site/categories/转载/index.html" afterPath="$PROJECT_DIR$/_site/categories/转载/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_site/page2/index.html" afterPath="$PROJECT_DIR$/_site/page2/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_site/page3/index.html" afterPath="$PROJECT_DIR$/_site/page3/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_site/page4/index.html" afterPath="$PROJECT_DIR$/_site/page4/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_site/page5/index.html" afterPath="$PROJECT_DIR$/_site/page5/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_site/page6/index.html" afterPath="$PROJECT_DIR$/_site/page6/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_site/page7/index.html" afterPath="$PROJECT_DIR$/_site/page7/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_site/转载/javascript基础/2014/03/31/javascipt-object.html" afterPath="$PROJECT_DIR$/_site/转载/javascript基础/2014/03/31/javascipt-object.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_site/转载/javascript基础/2014/03/31/javascript-object.prototype.toString().html" afterPath="$PROJECT_DIR$/_site/转载/javascript基础/2014/03/31/javascript-object.prototype.toString().html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_site/笔记/javascript模式/2014/04/20/javascript设计模式-策略模式.html" afterPath="$PROJECT_DIR$/_site/笔记/javascript模式/2014/04/20/javascript设计模式-策略模式.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_site/工具/2013/10/24/markdonnote.html" afterPath="$PROJECT_DIR$/_site/工具/2013/10/24/markdonnote.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_site/响应式 笔记/2014/06/19/media query笔记.html" afterPath="$PROJECT_DIR$/_site/响应式 笔记/2014/06/19/media query笔记.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_site/viewport 跨终端/2014/06/21/viewport笔记.html" afterPath="$PROJECT_DIR$/_site/viewport 跨终端/2014/06/21/viewport笔记.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_site/jekyll/2014/03/31/welcome-to-jekyll.html" afterPath="$PROJECT_DIR$/_site/jekyll/2014/03/31/welcome-to-jekyll.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_site/笔记/html5高级程序设计/2014/05/25/《html5高级程序设计》canvas.html" afterPath="$PROJECT_DIR$/_site/笔记/html5高级程序设计/2014/05/25/《html5高级程序设计》canvas.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_site/javascript模式 设计模式/2014/05/25/《javascript模式》读书笔记---.html" afterPath="$PROJECT_DIR$/_site/javascript模式 设计模式/2014/05/25/《javascript模式》读书笔记---.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_site/笔记/javascript模式/2014/04/20/《javascript模式》读书笔记---DOM和浏览器模式.html" afterPath="$PROJECT_DIR$/_site/笔记/javascript模式/2014/04/20/《javascript模式》读书笔记---DOM和浏览器模式.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_site/笔记/javascript模式/2014/04/14/《javascript模式》读书笔记---代码复用模式.html" afterPath="$PROJECT_DIR$/_site/笔记/javascript模式/2014/04/14/《javascript模式》读书笔记---代码复用模式.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_site/笔记/javascript模式/2014/04/05/《javascript模式》读书笔记---函数.html" afterPath="$PROJECT_DIR$/_site/笔记/javascript模式/2014/04/05/《javascript模式》读书笔记---函数.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_site/笔记/javascript基础/2014/03/31/《javascript模式》读书笔记---基础知识.html" afterPath="$PROJECT_DIR$/_site/笔记/javascript基础/2014/03/31/《javascript模式》读书笔记---基础知识.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_site/笔记/javascript模式/2014/04/05/《javascript模式》读书笔记---对象创建模式.html" afterPath="$PROJECT_DIR$/_site/笔记/javascript模式/2014/04/05/《javascript模式》读书笔记---对象创建模式.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_site/笔记/javasript设计模式/2014/05/20/《javascript模式》读书笔记---设计模式-使用new操作符.html" afterPath="$PROJECT_DIR$/_site/笔记/javasript设计模式/2014/05/20/《javascript模式》读书笔记---设计模式-使用new操作符.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_site/笔记/javascript设计模式/2014/05/25/《javascript模式》读书笔记---设计模式-外观模式.html" afterPath="$PROJECT_DIR$/_site/笔记/javascript设计模式/2014/05/25/《javascript模式》读书笔记---设计模式-外观模式.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_site/笔记/javascript设计模式/2014/05/20/《javascript模式》读书笔记---设计模式-工厂模式.html" afterPath="$PROJECT_DIR$/_site/笔记/javascript设计模式/2014/05/20/《javascript模式》读书笔记---设计模式-工厂模式.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_site/笔记/javascript设计模式/2014/05/24/《javascript模式》读书笔记---设计模式-装饰者模式.html" afterPath="$PROJECT_DIR$/_site/笔记/javascript设计模式/2014/05/24/《javascript模式》读书笔记---设计模式-装饰者模式.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_site/笔记/javascript设计模式/2014/05/24/《javascript模式》读书笔记---设计模式-迭代器模式.html" afterPath="$PROJECT_DIR$/_site/笔记/javascript设计模式/2014/05/24/《javascript模式》读书笔记---设计模式-迭代器模式.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_site/转载/jekyll/2014/05/25/使用 GitHub, Jekyll 打造自己的免费独立博客.html" afterPath="$PROJECT_DIR$/_site/转载/jekyll/2014/05/25/使用 GitHub, Jekyll 打造自己的免费独立博客.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_site/转载/javascript设计模式/2014/05/25/复杂表单应用解耦，淘宝机票订单实践.html" afterPath="$PROJECT_DIR$/_site/转载/javascript设计模式/2014/05/25/复杂表单应用解耦，淘宝机票订单实践.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_site/css3 转载/2014/08/06/深入浏览器研究 CSS 的动画和转换性能.html" afterPath="$PROJECT_DIR$/_site/css3 转载/2014/08/06/深入浏览器研究 CSS 的动画和转换性能.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_site/html5/2014/08/07/页面显示(pageshow)和页面隐藏(pagehide)事件.html" afterPath="$PROJECT_DIR$/_site/html5/2014/08/07/页面显示(pageshow)和页面隐藏(pagehide)事件.html" />
-    </list>
+    <list default="true" id="c50b67b9-b3f5-45d5-8e29-c98dd4eb741f" name="Default" comment="" />
     <ignored path="zj-baozi.github.io.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -302,7 +62,7 @@
       <file leaf-file-name="-webkit-overflow-scrolling.html" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/demos/html5/-webkit-overflow-scrolling.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="47" column="14" selection-start="1266" selection-end="1266" vertical-scroll-proportion="0.0" vertical-offset="1316" max-vertical-offset="3108">
+            <state line="47" column="14" selection-start="1266" selection-end="1266" vertical-scroll-proportion="0.053742804" vertical-offset="1288" max-vertical-offset="3136">
               <folding />
             </state>
           </provider>
@@ -413,6 +173,7 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -483,7 +244,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -757,7 +517,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/demos/html5/-webkit-overflow-scrolling.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="47" column="14" selection-start="1266" selection-end="1266" vertical-scroll-proportion="0.0" vertical-offset="1316" max-vertical-offset="3108">
+        <state line="47" column="14" selection-start="1266" selection-end="1266" vertical-scroll-proportion="0.053742804" vertical-offset="1288" max-vertical-offset="3136">
           <folding />
         </state>
       </provider>
